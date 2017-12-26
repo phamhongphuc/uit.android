@@ -45,26 +45,28 @@ public class MainActivity extends AppCompatActivity {
         state.accessToken.set(AccessToken.getCurrentAccessToken());
 
         try {
-            final Socket socket = IO.socket("http://ai.ai:5");
+            final Socket socket = IO.socket("http://10.0.2.2:5/");
 
             socket.on(Socket.EVENT_CONNECT_ERROR, new Emitter.Listener() {
                 @Override
                 public void call(Object... args) {
-                    /*state.status.set("timeout");*/
+                    state.status.set("Timeout, không thể kết nối");
                 }
             }).on(Socket.EVENT_CONNECT, new Emitter.Listener() {
                 @Override
                 public void call(Object... args) {
-                    socket.emit("foo", "Tín hiệu này được gửi đi từ laptop");
-                }
-            }).on("event", new Emitter.Listener() {
-                @Override
-                public void call(Object... args) {
+                    socket.emit("foo", "Tín hiệu này được gửi đi từ điện thoại");
+                    state.status.set("Đã gửi đi một tín hiệu");
                 }
             }).on(Socket.EVENT_DISCONNECT, new Emitter.Listener() {
                 @Override
                 public void call(Object... args) {
-                    // do something
+                    state.status.set("Đã ngắt kết nối");
+                }
+            }).on("eventName", new Emitter.Listener() {
+                @Override
+                public void call(Object... args) {
+                    state.status.set("Nhận được một event trả về.");
                 }
             });
             socket.connect();

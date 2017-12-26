@@ -107,7 +107,7 @@
                 <TextView
                     android:layout_width="150dp"
                     android:layout_height="50dp"
-                    android:text="@{State.accessToken}"
+                    android:text="@{State.status}"
                     android:layout_marginStart="34dp"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentStart="true"
