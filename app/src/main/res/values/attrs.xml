@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Theme">
+        <attr name="ButtonStyle" format="reference"/>
+        <attr name="LineStyle" format="reference"/>
+    </declare-styleable>
+    <declare-styleable name="Button">
+        <attr name="_icon" format="string"/>
+        <attr name="_path" format="string"/>
+        <attr name="_active" format="boolean"/>
+    </declare-styleable>
+</resources>

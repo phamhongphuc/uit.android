@@ -1,4 +1,4 @@
-package uit.group.manager.main;
+package uit.group.manager;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -14,8 +14,8 @@ import java.net.URISyntaxException;
 import io.socket.client.IO;
 import io.socket.client.Socket;
 import io.socket.emitter.Emitter;
-import uit.group.manager.R;
 import uit.group.manager.databinding.ActivityMainBinding;
+import uit.group.manager.main.MainState;
 
 public class MainActivity extends AppCompatActivity {
     private MainState state = new MainState();
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_main);
-//        Initialize();
+        Initialize();
     }
 
     private void Initialize() {
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         state.accessToken.set(AccessToken.getCurrentAccessToken());
 
         try {
-            final Socket socket = IO.socket("http://10.0.2.2:5");
+            final Socket socket = IO.socket("http://ai.ai:5");
 
             socket.on(Socket.EVENT_CONNECT_ERROR, new Emitter.Listener() {
                 @Override
@@ -55,8 +55,7 @@ public class MainActivity extends AppCompatActivity {
             }).on(Socket.EVENT_CONNECT, new Emitter.Listener() {
                 @Override
                 public void call(Object... args) {
-                    socket.emit("foo", "hi");
-                    // socket.disconnect();
+                    socket.emit("foo", "Tín hiệu này được gửi đi từ laptop");
                 }
             }).on("event", new Emitter.Listener() {
                 @Override
