@@ -13,15 +13,16 @@ import com.facebook.FacebookSdk;
 
 import java.net.URISyntaxException;
 
+import application.ApplicationClass;
+import application.ApplicationState;
 import io.socket.client.IO;
 import io.socket.client.Socket;
 import io.socket.emitter.Emitter;
 import uit.group.manager.databinding.ActivityMainBinding;
-import uit.group.manager.main.MainState;
 
 public class MainActivity extends AppCompatActivity {
     private CallbackManager callbackManager = CallbackManager.Factory.create();
-    private MainState state = new MainState();
+    private ApplicationState state = ApplicationClass.getState();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,19 +34,18 @@ public class MainActivity extends AppCompatActivity {
 
     private void Initialize() {
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        state.status.set("123123");
         binding.setState(state);
 
         new AccessTokenTracker() {
             @Override
             protected void onCurrentAccessTokenChanged(AccessToken oldAccessToken, AccessToken currentAccessToken) {
-                state.accessToken.set(currentAccessToken);
+//                state.accessToken.set(currentAccessToken);
                 if (currentAccessToken != null) {
                     state.status.set(currentAccessToken.getUserId() + " log");
                 }
             }
         };
-        state.accessToken.set(AccessToken.getCurrentAccessToken());
+//        state.accessToken.set(AccessToken.getCurrentAccessToken());
 
         try {
             final Socket socket = IO.socket("http://10.0.2.2:5/");
@@ -80,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // Có kết quả trả về activity này ~ (khi đã đăng nhập xong)
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
     }

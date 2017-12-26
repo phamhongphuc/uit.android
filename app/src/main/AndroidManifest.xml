@@ -4,7 +4,7 @@
           package="uit.group.manager">
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
-        android:name=".ApplicationClass"
+        android:name="application.ApplicationClass"
         android:allowBackup="true"
         android:fullBackupContent="true"
         android:icon="@drawable/ic_origami"

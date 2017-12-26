@@ -3,7 +3,7 @@
     <data>
         <variable
             name="State"
-            type="uit.group.manager.main.MainState"/>
+            type="application.ApplicationState"/>
     </data>
 
     <android.support.v7.widget.LinearLayoutCompat
