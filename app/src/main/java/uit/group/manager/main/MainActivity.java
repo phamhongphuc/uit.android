@@ -3,9 +3,11 @@ package uit.group.manager.main;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
+import com.facebook.FacebookSdk;
 
 import java.net.URISyntaxException;
 
@@ -21,8 +23,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_main);
-        Initialize();
+//        Initialize();
     }
 
     private void Initialize() {
@@ -69,5 +72,11 @@ public class MainActivity extends AppCompatActivity {
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
+    }
+
+    public void check(View view) {
+    }
+
+    public void update(View view) {
     }
 }

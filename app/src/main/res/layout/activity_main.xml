@@ -1,21 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
-
+<layout>
     <data>
-
         <variable
-            name="state"
+            name="State"
             type="uit.group.manager.main.MainState"/>
     </data>
 
-    <LinearLayout
-        android:orientation="vertical"
+    <android.support.v7.widget.LinearLayoutCompat
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{state.status}"/>
-    </LinearLayout>
+        <android.support.v7.widget.LinearLayoutCompat
+            android:elevation="2dp"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size">
+
+            <components.Button
+                android:onClick="update"
+                android:layout_width="@dimen/size"
+                android:layout_height="match_parent"
+                app:_icon=""/>
+
+            <components.Line
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
+
+            <components.Button
+                android:onClick="check"
+                android:layout_width="@dimen/size"
+                android:layout_height="match_parent"
+                app:_icon=""/>
+
+            <components.Line
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
+        </android.support.v7.widget.LinearLayoutCompat>
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:background="@color/white"
+                android:elevation="4dp"
+                android:layout_width="@dimen/size"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <View
+                        android:id="@+id/hover"
+                        android:background="@color/blueTransparent"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/size"/>
+                </RelativeLayout>
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="@dimen/size"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <components.Button
+                        android:onClick="check"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:_icon=""/>
+
+                    <components.Button
+                        android:onClick="check"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:_icon=""/>
+
+                    <components.Line
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+
+                    <components.Button
+                        android:onClick="check"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:_icon=""/>
+
+                    <components.Button
+                        android:onClick="check"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:_icon=""/>
+                </android.support.v7.widget.LinearLayoutCompat>
+            </FrameLayout>
+
+            <RelativeLayout
+                android:background="#eee"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:text="@{State.status}"
+                    android:layout_marginStart="34dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="93dp"
+                    android:id="@+id/textView2"/>
+
+                <com.facebook.login.widget.LoginButton
+                    android:id="@+id/login_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"/>
+            </RelativeLayout>
+        </android.support.v7.widget.LinearLayoutCompat>
+    </android.support.v7.widget.LinearLayoutCompat>
 </layout>
