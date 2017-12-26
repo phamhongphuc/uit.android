@@ -28,7 +28,8 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
-    compile('io.socket:socket.io-client:1.0.0') {
+    api ('io.socket:socket.io-client:1.0.0') {
         exclude group: 'org.json', module: 'json'
     }
+    api 'com.facebook.android:facebook-android-sdk:4.6.0'
 }

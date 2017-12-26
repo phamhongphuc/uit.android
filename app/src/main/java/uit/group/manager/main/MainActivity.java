@@ -4,6 +4,9 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.facebook.AccessToken;
+import com.facebook.AccessTokenTracker;
+
 import java.net.URISyntaxException;
 
 import io.socket.client.IO;
@@ -26,6 +29,17 @@ public class MainActivity extends AppCompatActivity {
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         state.status.set("123123");
         binding.setState(state);
+
+        new AccessTokenTracker() {
+            @Override
+            protected void onCurrentAccessTokenChanged(AccessToken oldAccessToken, AccessToken currentAccessToken) {
+                state.accessToken.set(currentAccessToken);
+                if (currentAccessToken != null) {
+                    state.status.set(currentAccessToken.getUserId() + " log");
+                }
+            }
+        };
+        state.accessToken.set(AccessToken.getCurrentAccessToken());
 
         try {
             final Socket socket = IO.socket("http://10.0.2.2:5");
