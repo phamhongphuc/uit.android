@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:onClick="facebookLogin"
-            app:_text="hchchc"
+            app:_text="Đăng nhập với Facebook"
             app:_icon=""/>
     </LinearLayout>
 </LinearLayout>

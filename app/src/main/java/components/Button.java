@@ -5,6 +5,7 @@ import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.support.annotation.AttrRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -45,12 +46,17 @@ public class Button extends LinearLayoutCompat {
         InitializeAttr(context, attrs);
 
         TextView iconView = new TextView(context);
-//        iconView.setTypeface();
+
+        iconView.setTypeface(
+                Typeface.createFromAsset(getContext().getAssets(), "fonts/aicon.ttf")
+        );
         iconView.setText(icon);
         addView(iconView);
 
         TextView textView = new TextView(context);
-//        iconView.setTypeface();
+        textView.setTypeface(
+                Typeface.createFromAsset(getContext().getAssets(), "fonts/segoe.ttf")
+        );
         textView.setText(text);
         addView(textView);
     }
