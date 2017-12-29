@@ -21,6 +21,9 @@ public class Button extends LinearLayoutCompat {
     private String text;
     private String icon;
     private boolean active = false;
+    private int background;
+    private int foreground;
+
     private TextView textView;
     private TextView iconView;
     private Drawable selectedItemDrawable;
@@ -44,16 +47,14 @@ public class Button extends LinearLayoutCompat {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.Button);
         icon = (String) typedArray.getText(R.styleable.Button__icon);
         text = (String) typedArray.getText(R.styleable.Button__text);
-//        background = (Color) typedArray.getColor(R.styleable.)
+        active = typedArray.getBoolean(R.styleable.Button__active, false);
+        background = typedArray.getColor(R.styleable.Button__background, Color.TRANSPARENT);
+        foreground = typedArray.getColor(R.styleable.Button__background, Color.BLACK);
         typedArray.recycle();
     }
 
     private void Initialize(@NonNull Context context, @Nullable AttributeSet attrs) {
         InitializeAttr(context, attrs);
-        setBackground(context
-                .obtainStyledAttributes(new int[]{R.attr.selectableItemBackground})
-                .getDrawable(0)
-        );
 
         if (icon != null) {
             iconView = new TextView(context);
@@ -78,6 +79,7 @@ public class Button extends LinearLayoutCompat {
                     LayoutParams.WRAP_CONTENT,
                     LayoutParams.MATCH_PARENT
             ));
+//            textView.setBackgroundColor(Color.parseColor("#FF123456"));
             textView.setGravity(Gravity.CENTER);
             addView(textView);
         }
@@ -100,7 +102,7 @@ public class Button extends LinearLayoutCompat {
             textView.setTextSize(size * 0.35f / dp);
             textView.setPadding(
                     iconView == null ? (int) (size * 0.5f / dp) : 0,
-                    (int) (size * 0.1f / dp),
+                    0,
                     (int) (size * 0.5f / dp),
                     0
             );
@@ -108,14 +110,12 @@ public class Button extends LinearLayoutCompat {
     }
 
     public void setActive() {
-        setActive(!this.active);
+        setActive(this.active);
     }
 
     public void setActive(Boolean active) {
-        if (this.active == active) return;
-        this.active = active;
         ObjectAnimator animator = ObjectAnimator.ofInt(
-                this,
+                textView,
                 "backgroundColor",
                 this.active ?
                         Color.TRANSPARENT :

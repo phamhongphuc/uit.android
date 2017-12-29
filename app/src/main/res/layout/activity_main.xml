@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+
     <data>
+
         <variable
             name="State"
             type="app.State"/>
@@ -15,15 +17,15 @@
         android:orientation="vertical">
 
         <android.support.v7.widget.LinearLayoutCompat
-            android:elevation="2dp"
-            android:background="@color/white"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/size">
+            android:layout_height="@dimen/size"
+            android:background="@color/white"
+            android:elevation="2dp">
 
             <components.Button
-                android:onClick="update"
                 android:layout_width="@dimen/size"
                 android:layout_height="match_parent"
+                android:onClick="update"
                 app:_icon=""/>
 
             <components.Line
@@ -31,11 +33,12 @@
                 android:layout_height="match_parent"/>
 
             <components.Button
-                android:onClick="check"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                app:_text="@string/app_name"
-                app:_icon=""/>
+                android:onClick="check"
+                app:_active="true"
+                app:_icon=""
+                app:_text="@string/app_name"/>
 
             <components.Line
                 android:layout_width="wrap_content"
@@ -43,16 +46,16 @@
         </android.support.v7.widget.LinearLayoutCompat>
 
         <android.support.v7.widget.LinearLayoutCompat
-            android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/white"
             android:orientation="horizontal">
 
             <FrameLayout
-                android:background="@color/white"
-                android:elevation="4dp"
                 android:layout_width="@dimen/size"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:elevation="4dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -60,9 +63,9 @@
 
                     <View
                         android:id="@+id/hover"
-                        android:background="@color/blueTransparent"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/size"/>
+                        android:layout_height="@dimen/size"
+                        android:background="@color/blueTransparent"/>
                 </RelativeLayout>
 
                 <android.support.v7.widget.LinearLayoutCompat
@@ -71,15 +74,15 @@
                     android:orientation="vertical">
 
                     <components.Button
-                        android:onClick="check"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:onClick="check"
                         app:_icon=""/>
 
                     <components.Button
-                        android:onClick="check"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:onClick="check"
                         app:_icon=""/>
 
                     <components.Line
@@ -87,33 +90,33 @@
                         android:layout_height="match_parent"/>
 
                     <components.Button
-                        android:onClick="check"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:onClick="check"
                         app:_icon=""/>
 
                     <components.Button
-                        android:onClick="check"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:onClick="check"
                         app:_icon=""/>
                 </android.support.v7.widget.LinearLayoutCompat>
             </FrameLayout>
 
             <RelativeLayout
-                android:background="#eee"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="#eee">
 
                 <TextView
+                    android:id="@+id/textView2"
                     android:layout_width="150dp"
                     android:layout_height="50dp"
-                    android:text="@{State.status}"
-                    android:layout_marginStart="34dp"
-                    android:layout_alignParentTop="true"
                     android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="34dp"
                     android:layout_marginTop="93dp"
-                    android:id="@+id/textView2"/>
+                    android:text="@{State.status}"/>
 
                 <com.facebook.login.widget.LoginButton
                     android:id="@+id/login_button"
