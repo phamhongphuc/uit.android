@@ -22,14 +22,13 @@ public class Button extends LinearLayoutCompat {
     private String text;
     private String icon;
     private boolean active = false;
+    private int backgroundActive;
     private int background;
     private int foreground;
-    private int activeColor;
 
     private TextView textView;
     private TextView iconView;
     private Drawable selectedItemDrawable;
-    private AnimatorSet set;
 
     public Button(@NonNull Context context) {
         super(context, null, R.attr.ButtonStyle);
@@ -51,15 +50,21 @@ public class Button extends LinearLayoutCompat {
         icon = (String) typedArray.getText(R.styleable.Button__icon);
         text = (String) typedArray.getText(R.styleable.Button__text);
         active = typedArray.getBoolean(R.styleable.Button__active, false);
+        backgroundActive = typedArray.getColor(R.styleable.Button__activeColor, Color.parseColor("#333498db"));
         background = typedArray.getColor(R.styleable.Button__background, Color.TRANSPARENT);
         foreground = typedArray.getColor(R.styleable.Button__foreground, context.getColor(R.color.blue));
-        activeColor = typedArray.getColor(R.styleable.Button__activeColor, Color.parseColor("#333498db"));
         typedArray.recycle();
     }
 
     private void Initialize(@NonNull Context context, @Nullable AttributeSet attrs) {
         InitializeAttr(context, attrs);
+        AddView(context);
+        SetRipple();
+    }
 
+    private void AddView(@NonNull Context context) {
+//        int currentColor = !active ? background : backgroundActive;
+        int currentColor = Color.TRANSPARENT;
         if (icon != null) {
             iconView = new TextView(context);
             iconView.setText(icon);
@@ -72,7 +77,7 @@ public class Button extends LinearLayoutCompat {
             ));
             iconView.setGravity(Gravity.CENTER);
             iconView.setTextColor(foreground);
-            iconView.setBackgroundColor(background);
+            iconView.setBackgroundColor(currentColor);
             addView(iconView);
         }
         if (text != null) {
@@ -86,12 +91,10 @@ public class Button extends LinearLayoutCompat {
                     LayoutParams.MATCH_PARENT
             ));
             textView.setTextColor(foreground);
-            textView.setBackgroundColor(background);
+            textView.setBackgroundColor(currentColor);
             textView.setGravity(Gravity.CENTER);
             addView(textView);
         }
-
-        SetActive();
     }
 
     @Override
@@ -120,23 +123,20 @@ public class Button extends LinearLayoutCompat {
 
     public void toggleActive() {
         active = !active;
-        SetActive();
+        SetActiveAnimation();
     }
 
-    public void SetActive(boolean active) {
+    public void SetActiveAnimation(boolean active) {
         this.active = active;
-        SetActive();
+        SetActiveAnimation();
     }
 
-    public void SetActive() {
-        setBackground(active ?
-                getContext()
-                        .obtainStyledAttributes(new int[]{R.attr.selectableItemBackground})
-                        .getDrawable(0) :
-                new ColorDrawable(Color.TRANSPARENT)
-        );
-        int colorFrom = active ? Color.TRANSPARENT : activeColor;
-        int colorTo = !active ? Color.TRANSPARENT : activeColor;
+    public void SetActiveAnimation() {
+        SetRipple();
+        int colorFrom = active ? background : backgroundActive;
+        int colorTo = !active ? background : backgroundActive;
+
+        AnimatorSet set;
         set = new AnimatorSet();
         set.playTogether(
                 ObjectAnimator.ofArgb(iconView, "backgroundColor", colorFrom, colorTo),
@@ -146,5 +146,14 @@ public class Button extends LinearLayoutCompat {
         if (!set.isRunning()) set.start();
 
         invalidate();
+    }
+
+    private void SetRipple() {
+        setForeground(active ?
+                new ColorDrawable(Color.TRANSPARENT) :
+                getContext()
+                        .obtainStyledAttributes(new int[]{R.attr.selectableItemBackground})
+                        .getDrawable(0)
+        );
     }
 }

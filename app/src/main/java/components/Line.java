@@ -1,6 +1,7 @@
 package components;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.support.annotation.NonNull;
@@ -9,13 +10,12 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.ViewGroup;
 
 import uit.group.manager.R;
 
 public class Line extends View {
-    protected int size;
     private static final Paint paint = new Paint();
+    private boolean isFull = false;
 
     public Line(Context context) {
         super(context, null, R.attr.LineStyle);
@@ -38,8 +38,13 @@ public class Line extends View {
     }
 
     private void Initialize(@NonNull Context context, @Nullable AttributeSet attrs) {
-        // do something here
-        setLayoutParams(new ViewGroup.LayoutParams(1, 10));
+        InitializeAttr(context, attrs);
+    }
+
+    private void InitializeAttr(@NonNull Context context, @Nullable AttributeSet attrs) {
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.Line);
+        isFull = typedArray.getBoolean(R.styleable.Button__icon, false);
+        typedArray.recycle();
     }
 
     @Override
@@ -47,7 +52,7 @@ public class Line extends View {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         int width = MeasureSpec.getSize(widthMeasureSpec);
         int height = MeasureSpec.getSize(heightMeasureSpec);
-        size = Math.min(width, height);
+        int size = Math.min(width, height);
 
         if (this.getParent() instanceof LinearLayoutCompat) {
             int dp = (int) getResources().getDisplayMetrics().density;
@@ -69,7 +74,7 @@ public class Line extends View {
 
         int width = getWidth();
         int height = getHeight();
-        float space = 0.15f;
+        float space = isFull ? 0 : 0.15f;
         if (width > height) {
             canvas.drawRect(
                     width * space,

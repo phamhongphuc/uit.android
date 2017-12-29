@@ -2,6 +2,11 @@ package module;
 
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
+import com.facebook.login.LoginManager;
+
+import java.util.Collections;
+
+import uit.group.manager.LoginActivity;
 
 public class _Facebook {
     /**
@@ -14,5 +19,13 @@ public class _Facebook {
                 _Socket.EmitAccessToken(currentAccessToken == null ? "null" : currentAccessToken.getToken());
             }
         };
+    }
+
+    public static void Login(LoginActivity loginActivity) {
+        LoginManager.getInstance().logInWithReadPermissions(loginActivity, Collections.singletonList("email"));
+    }
+
+    public static void Logout() {
+        LoginManager.getInstance().logOut();
     }
 }

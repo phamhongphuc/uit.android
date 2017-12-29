@@ -10,7 +10,7 @@ import module._Socket;
 
 public class App extends Application {
     // Private
-    public static State state = new State();
+//    public static MainState state = new MainState();
 
     @Override
     public void onCreate() {

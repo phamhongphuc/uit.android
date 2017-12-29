@@ -3,13 +3,13 @@ package uit.group.manager;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 
-import app.App;
-import components.Button;
+import app.MainState;
 import uit.group.manager.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
+
+    private MainState state = new MainState();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,17 +25,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void InitializeDataBinding() {
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        binding.setState(App.state);
+        binding.setState(state);
     }
 
-    public void clicker(View view) {
-        ((Button) view).SetActive();
-    }
-
-    public void update(View view) {
-    }
-
-    public void check(View view) {
-        ((Button) view).toggleActive();
-    }
+//    startActivity(new Intent(this, MainActivity.class));
 }
