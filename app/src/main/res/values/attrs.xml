@@ -6,7 +6,7 @@
     </declare-styleable>
     <declare-styleable name="Button">
         <attr name="_icon" format="string"/>
-        <attr name="_path" format="string"/>
+        <attr name="_text" format="string"/>
         <attr name="_active" format="boolean"/>
     </declare-styleable>
 </resources>
