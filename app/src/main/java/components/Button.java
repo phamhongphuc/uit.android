@@ -61,17 +61,19 @@ public class Button extends LinearLayoutCompat {
         addView(textView);
     }
 
-//    @Override
-//    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-////        int size = Math.min(
-////                MeasureSpec.getSize(widthMeasureSpec),
-////                MeasureSpec.getSize(heightMeasureSpec)
-////        );
-//
-//        // setTextSize(26);
-////        setTextSize(size * 0.4f / getResources().getDisplayMetrics().density);
-////        setMeasuredDimension(size, size);
-//    }
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+
+        int size = Math.min(
+                MeasureSpec.getSize(widthMeasureSpec),
+                MeasureSpec.getSize(heightMeasureSpec)
+        );
+
+        // setTextSize(26);
+//        setTextSize(size * 0.4f / getResources().getDisplayMetrics().density);
+//        setMeasuredDimension(size, size);
+    }
 
     public void setActive() {
         setActive(!this.mActive);

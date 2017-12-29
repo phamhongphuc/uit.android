@@ -1,6 +1,5 @@
 package components;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -10,70 +9,83 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.LinearLayout;
+import android.view.ViewGroup;
 
 import uit.group.manager.R;
 
 public class Line extends View {
     protected int size;
+    private static final Paint paint = new Paint();
 
     public Line(Context context) {
         super(context, null, R.attr.LineStyle);
-        init(context, null);
+        Initialize(context, null);
     }
 
     public Line(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs, R.attr.LineStyle);
-        init(context, attrs);
+        Initialize(context, attrs);
     }
 
     public Line(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, R.attr.LineStyle);
-        init(context, attrs);
+        Initialize(context, attrs);
     }
 
     public Line(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, R.attr.LineStyle, defStyleRes);
-        init(context, attrs);
+        Initialize(context, attrs);
     }
 
-    private void init(@NonNull Context context, @Nullable AttributeSet attrs) {
+    private void Initialize(@NonNull Context context, @Nullable AttributeSet attrs) {
         // do something here
+        setLayoutParams(new ViewGroup.LayoutParams(1, 10));
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        View parent = (View) this.getParent();
-        if (parent instanceof LinearLayout || parent instanceof LinearLayoutCompat) {
-            size = Math.min(MeasureSpec.getSize(widthMeasureSpec), MeasureSpec.getSize(heightMeasureSpec));
-            float dp = getResources().getDisplayMetrics().density;
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        int width = MeasureSpec.getSize(widthMeasureSpec);
+        int height = MeasureSpec.getSize(heightMeasureSpec);
+        size = Math.min(width, height);
+
+        if (this.getParent() instanceof LinearLayoutCompat) {
+            int dp = (int) getResources().getDisplayMetrics().density;
             switch (((LinearLayoutCompat) this.getParent()).getOrientation()) {
-                case LinearLayout.HORIZONTAL:
-                    setMeasuredDimension((int) dp, size);
+                case LinearLayoutCompat.HORIZONTAL:
+                    setMeasuredDimension(dp, size);
                     break;
-                case LinearLayout.VERTICAL:
-                    setMeasuredDimension(size, (int) dp);
+                case LinearLayoutCompat.VERTICAL:
+                    setMeasuredDimension(size, dp);
                     break;
-                default:
-                    setMeasuredDimension(size, size);
             }
-        } else {
-            setMeasuredDimension(size, size);
         }
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
-        @SuppressLint("DrawAllocation")
-        Paint paint = new Paint();
         paint.setColor(ContextCompat.getColor(getContext(), R.color.blue));
 
-        if (getWidth() > getHeight()) {
-            canvas.drawRect(getWidth() * 0.15f, 0, getWidth() * 0.85f, getHeight(), paint);
-        } else if (getWidth() < getHeight()) {
-            canvas.drawRect(0, getHeight() * 0.15f, getWidth(), getHeight() * 0.85f, paint);
+        int width = getWidth();
+        int height = getHeight();
+        float space = 0.15f;
+        if (width > height) {
+            canvas.drawRect(
+                    width * space,
+                    0,
+                    width * (1 - space),
+                    height,
+                    paint
+            );
+        } else if (width < height) {
+            canvas.drawRect(
+                    0,
+                    height * space,
+                    width,
+                    height * (1 - space),
+                    paint
+            );
         }
     }
 }
