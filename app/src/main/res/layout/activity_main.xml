@@ -32,8 +32,9 @@
 
             <components.Button
                 android:onClick="check"
-                android:layout_width="@dimen/size"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                app:_text="@string/app_name"
                 app:_icon=""/>
 
             <components.Line

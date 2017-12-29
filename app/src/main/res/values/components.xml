@@ -2,7 +2,7 @@
 <resources>
 
     <style name="Button_Style">
-        <item name="android:background">?android:attr/selectableItemBackground</item>
+        <!--<item name="android:background">?android:attr/selectableItemBackground</item>-->
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/blue</item>
     </style>
