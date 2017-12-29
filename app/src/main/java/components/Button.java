@@ -90,6 +90,8 @@ public class Button extends LinearLayoutCompat {
             textView.setGravity(Gravity.CENTER);
             addView(textView);
         }
+
+        SetActive();
     }
 
     @Override
@@ -118,15 +120,15 @@ public class Button extends LinearLayoutCompat {
 
     public void toggleActive() {
         active = !active;
-        setActive();
+        SetActive();
     }
 
-    public void setActive(boolean active) {
+    public void SetActive(boolean active) {
         this.active = active;
-        setActive();
+        SetActive();
     }
 
-    public void setActive() {
+    public void SetActive() {
         setBackground(active ?
                 getContext()
                         .obtainStyledAttributes(new int[]{R.attr.selectableItemBackground})

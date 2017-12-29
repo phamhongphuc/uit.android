@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clicker(View view) {
-        ((Button) view).setActive();
+        ((Button) view).SetActive();
     }
 
     public void update(View view) {
