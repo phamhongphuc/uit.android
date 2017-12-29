@@ -36,5 +36,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void check(View view) {
+        ((Button) view).toggleActive();
     }
 }

@@ -36,7 +36,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:onClick="check"
-                app:_active="true"
                 app:_icon=""
                 app:_text="@string/app_name"/>
 
@@ -51,57 +50,40 @@
             android:background="@color/white"
             android:orientation="horizontal">
 
-            <FrameLayout
+            <android.support.v7.widget.LinearLayoutCompat
                 android:layout_width="@dimen/size"
                 android:layout_height="match_parent"
-                android:background="@color/white"
-                android:elevation="4dp">
+                android:orientation="vertical">
 
-                <RelativeLayout
+                <components.Button
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content"
+                    android:onClick="check"
+                    app:_icon=""/>
 
-                    <View
-                        android:id="@+id/hover"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/size"
-                        android:background="@color/blueTransparent"/>
-                </RelativeLayout>
+                <components.Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="check"
+                    app:_icon=""/>
 
-                <android.support.v7.widget.LinearLayoutCompat
-                    android:layout_width="@dimen/size"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+                <components.Line
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
 
-                    <components.Button
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:onClick="check"
-                        app:_icon=""/>
+                <components.Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="check"
+                    app:_active="true"
+                    app:_icon=""/>
 
-                    <components.Button
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:onClick="check"
-                        app:_icon=""/>
-
-                    <components.Line
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"/>
-
-                    <components.Button
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:onClick="check"
-                        app:_icon=""/>
-
-                    <components.Button
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:onClick="check"
-                        app:_icon=""/>
-                </android.support.v7.widget.LinearLayoutCompat>
-            </FrameLayout>
+                <components.Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="check"
+                    app:_icon=""/>
+            </android.support.v7.widget.LinearLayoutCompat>
 
             <RelativeLayout
                 android:layout_width="match_parent"

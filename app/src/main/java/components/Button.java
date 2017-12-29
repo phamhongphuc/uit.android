@@ -1,11 +1,12 @@
 package components;
 
-import android.animation.ArgbEvaluator;
+import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.AttrRes;
 import android.support.annotation.NonNull;
@@ -23,10 +24,12 @@ public class Button extends LinearLayoutCompat {
     private boolean active = false;
     private int background;
     private int foreground;
+    private int activeColor;
 
     private TextView textView;
     private TextView iconView;
     private Drawable selectedItemDrawable;
+    private AnimatorSet set;
 
     public Button(@NonNull Context context) {
         super(context, null, R.attr.ButtonStyle);
@@ -49,7 +52,8 @@ public class Button extends LinearLayoutCompat {
         text = (String) typedArray.getText(R.styleable.Button__text);
         active = typedArray.getBoolean(R.styleable.Button__active, false);
         background = typedArray.getColor(R.styleable.Button__background, Color.TRANSPARENT);
-        foreground = typedArray.getColor(R.styleable.Button__background, Color.BLACK);
+        foreground = typedArray.getColor(R.styleable.Button__foreground, context.getColor(R.color.blue));
+        activeColor = typedArray.getColor(R.styleable.Button__activeColor, Color.parseColor("#333498db"));
         typedArray.recycle();
     }
 
@@ -67,6 +71,8 @@ public class Button extends LinearLayoutCompat {
                     LayoutParams.MATCH_PARENT
             ));
             iconView.setGravity(Gravity.CENTER);
+            iconView.setTextColor(foreground);
+            iconView.setBackgroundColor(background);
             addView(iconView);
         }
         if (text != null) {
@@ -79,7 +85,8 @@ public class Button extends LinearLayoutCompat {
                     LayoutParams.WRAP_CONTENT,
                     LayoutParams.MATCH_PARENT
             ));
-//            textView.setBackgroundColor(Color.parseColor("#FF123456"));
+            textView.setTextColor(foreground);
+            textView.setBackgroundColor(background);
             textView.setGravity(Gravity.CENTER);
             addView(textView);
         }
@@ -109,24 +116,33 @@ public class Button extends LinearLayoutCompat {
         }
     }
 
-    public void setActive() {
-        setActive(this.active);
+    public void toggleActive() {
+        active = !active;
+        setActive();
     }
 
-    public void setActive(Boolean active) {
-        ObjectAnimator animator = ObjectAnimator.ofInt(
-                textView,
-                "backgroundColor",
-                this.active ?
-                        Color.TRANSPARENT :
-                        Color.parseColor("#66000000"),
-                this.active ?
-                        Color.parseColor("#66000000") :
-                        Color.TRANSPARENT
+    public void setActive(boolean active) {
+        this.active = active;
+        setActive();
+    }
+
+    public void setActive() {
+        setBackground(active ?
+                getContext()
+                        .obtainStyledAttributes(new int[]{R.attr.selectableItemBackground})
+                        .getDrawable(0) :
+                new ColorDrawable(Color.TRANSPARENT)
         );
-        animator.setDuration(150);
-        animator.setEvaluator(new ArgbEvaluator());
-        if (!animator.isRunning()) animator.start();
+        int colorFrom = active ? Color.TRANSPARENT : activeColor;
+        int colorTo = !active ? Color.TRANSPARENT : activeColor;
+        set = new AnimatorSet();
+        set.playTogether(
+                ObjectAnimator.ofArgb(iconView, "backgroundColor", colorFrom, colorTo),
+                ObjectAnimator.ofArgb(textView, "backgroundColor", colorFrom, colorTo)
+        );
+        set.setDuration(150);
+        if (!set.isRunning()) set.start();
+
         invalidate();
     }
 }

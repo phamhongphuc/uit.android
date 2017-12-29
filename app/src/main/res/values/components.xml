@@ -2,7 +2,7 @@
 <resources>
 
     <style name="Button_Style">
-        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+        <!--<item name="android:foreground">?android:attr/selectableItemBackground</item>-->
     </style>
 
     <style name="Line_Style">

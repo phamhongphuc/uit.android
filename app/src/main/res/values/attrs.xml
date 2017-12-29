@@ -9,6 +9,7 @@
         <attr name="_text" format="string"/>
         <attr name="_foreground" format="color"/>
         <attr name="_background" format="color"/>
+        <attr name="_activeColor" format="color"/>
         <attr name="_active" format="boolean"/>
     </declare-styleable>
 </resources>
