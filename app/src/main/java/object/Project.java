@@ -31,6 +31,7 @@ public class Project extends RealmObject {
         this.deadline = deadline;
     }
 
+    ///Getter
     public int getId() {
         return id;
     }
@@ -42,15 +43,16 @@ public class Project extends RealmObject {
     public RealmList<Task> getTasks() {
         return tasks;
     }
-/*
+
     public int getNumberSameStatusTasks(int Status){
-        Task newTask = new Task(1,"",new Date(),"",this.assigned);
         int count=0;
         for(Task each:this.tasks){
-            count+=(each.)
+            if (each.getStatus() == Status) {
+                count++;
+            }
         }
+        return count;
     }
-*/
 
     public RealmList<User> getMembers() {
         return members;
@@ -80,7 +82,7 @@ public class Project extends RealmObject {
         return deadline;
     }
 
-
+    ///Add tung phan tu (channel, task, member<>(), tag)
     public void addChannel(Channel channel) {
         this.channels.add(channel);
     }
