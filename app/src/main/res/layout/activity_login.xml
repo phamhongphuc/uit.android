@@ -15,6 +15,12 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="25dp">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/loginPage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </android.support.v4.view.ViewPager>
     </android.support.v7.widget.LinearLayoutCompat>
 
     <components.Line

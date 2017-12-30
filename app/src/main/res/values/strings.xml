@@ -2,4 +2,7 @@
     <string name="app_name">Group Manager</string>
     <string name="facebook_app_id">1770196659861627</string>
     <string name="fb_login_protocol_scheme">fb1770196659861627</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

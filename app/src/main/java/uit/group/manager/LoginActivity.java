@@ -3,12 +3,14 @@ package uit.group.manager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 
+import fragment.FragmentAdapter;
 import module._Facebook;
 
 public class LoginActivity extends AppCompatActivity {
@@ -24,6 +26,13 @@ public class LoginActivity extends AppCompatActivity {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        ((ViewPager) findViewById(R.id.loginPage)).setAdapter(
+                new FragmentAdapter(getSupportFragmentManager(), new int[]{
+                        R.layout.fragment_login_fragment__one,
+                        R.layout.fragment_login_fragment__two,
+                })
+        );
     }
 
     @Override

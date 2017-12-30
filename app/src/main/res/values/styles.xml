@@ -7,7 +7,7 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowContentTransitions">true</item>
         <item name="android:windowActivityTransitions">true</item>
-        <item name="android:statusBarColor">#000000</item>
+        <item name="android:statusBarColor">@color/blue</item>
 
         <item name="colorAccent">#0088cc</item>
         <item name="android:colorControlHighlight">@color/blueTransparent</item>
