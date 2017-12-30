@@ -22,7 +22,10 @@ public class _Facebook {
     }
 
     public static void Login(LoginActivity loginActivity) {
-        LoginManager.getInstance().logInWithReadPermissions(loginActivity, Collections.singletonList("email"));
+        LoginManager.getInstance().logInWithReadPermissions(
+                loginActivity,
+                Collections.singletonList("email")
+        );
     }
 
     public static void Logout() {
