@@ -10,7 +10,7 @@ import io.realm.annotations.PrimaryKey;
 
 public class Project extends RealmObject {
     @PrimaryKey
-    private String id;
+    private int id;
     private String name;
     private RealmList<Task> tasks;
     private RealmList<User> members;
@@ -21,7 +21,7 @@ public class Project extends RealmObject {
     private Date createdate;
     private Date deadline;
 
-    public Project(String id, String name, String description, User assigned, Date deadline) {
+    public Project(int id, String name, String description, User assigned, Date deadline) {
         this.id = id;
         this.name = name;
         this.description = description;

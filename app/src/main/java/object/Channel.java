@@ -11,7 +11,7 @@ public class Channel extends RealmObject {
     @PrimaryKey
     private String id;
     private String name;
-    private Member asssigned;
+    private User assigned;
     private RealmList<User> members;
     private Date createdate;
 
@@ -28,12 +28,12 @@ public class Channel extends RealmObject {
         return name;
     }
 
-    public Member getAsssigned() {
-        return asssigned;
+    public User getAssigned() {
+        return assigned;
     }
 
-    public void setAsssigned(Member asssigned) {
-        this.asssigned = asssigned;
+    public void setAssigned(User assigned) {
+        this.assigned = assigned;
     }
 
     public RealmList<User> getMembers() {

@@ -6,6 +6,7 @@ import java.util.Date;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
+import io.realm.RealmList;
 import object.User;
 
 /**
@@ -26,12 +27,16 @@ public class Function {
         }
         return user;
     }
-    ///3
-/*
-    public static Project createProject(final User user, final String name, final Date deadline, final String description){
-        realm.beginTransaction();
 
+    ///3
+    public static Project createProject(final int id,final User assigned,
+                                        final String name, final Date deadline,
+                                        final String description,) {
+        realm.beginTransaction();
+        Project newProject = new Project(id, name, description, assigned, deadline);
+        realm.copyToRealm(newProject);
         realm.commitTransaction();
+        return newProject;
     }
-*/
+    ///
 }
