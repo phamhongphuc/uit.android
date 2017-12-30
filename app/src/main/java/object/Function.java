@@ -4,9 +4,9 @@ import java.util.Date;
 
 import io.realm.Realm;
 import io.realm.RealmList;
+import io.realm.RealmResults;
 
 public class Function {
-
     /// 1 lay ID, Ten, email tu socket
     public static User Login(final String ID, final String Name, final String Email) {
         Realm realm = Realm.getDefaultInstance();
@@ -29,6 +29,13 @@ public class Function {
         realm.copyToRealm(newProject);
         realm.commitTransaction();
         return newProject;
+    }
+    public static RealmResults<User> getMemberList(Project project, User user){
+        /// Tru nguoi dang su dung ra, vi nguoi su dung de tren dau
+        return project.getMembers()
+                .where()
+                .notEqualTo("id",user.getId())
+                .findAll();
     }
 
 }
