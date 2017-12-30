@@ -2,7 +2,6 @@ package object;
 
 import java.util.Date;
 
-import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -15,30 +14,15 @@ public class User extends RealmObject {
     private Boolean gender;
     private String email;
     private String description;
-
-    public RealmList<Project> getProjects() {
-        return projects;
-    }
-
     private RealmList<Project> projects;
 
-    public static void addUser(final User user) {
-        Realm realmDB = Realm.getDefaultInstance();
-        realmDB.executeTransaction(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-                realm.copyToRealmOrUpdate(user);
-            }
-        });
+    public User() {
     }
 
-    public User(String ID, String Name, String Email) {
-        this.id = ID;
-        this.name = Name;
-//        this.birthdate = BirthDate;
-//        this.gender = Gender;
-        this.email = Email;
-//        this.description = Description;
+    public User(String id, String name, String email) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
     }
 
     public String getId() {
@@ -63,5 +47,9 @@ public class User extends RealmObject {
 
     public String getDescription() {
         return description;
+    }
+
+    public RealmList<Project> getProjects() {
+        return projects;
     }
 }

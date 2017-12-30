@@ -22,7 +22,7 @@ import java.util.Objects;
 
 import uit.group.manager.R;
 
-@BindingMethods({
+@BindingMethods(value = {
         @BindingMethod(type = Button.class, attribute = "app:_text", method = "setText")
 })
 public class Button extends LinearLayoutCompat {
@@ -148,10 +148,6 @@ public class Button extends LinearLayoutCompat {
     public void setText(String text) {
         this.text = text;
         InitializeView(getContext());
-    }
-
-    public String getText() {
-        return this.text;
     }
 
     public void toggleActive() {

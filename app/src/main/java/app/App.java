@@ -9,9 +9,6 @@ import module._Facebook;
 import module._Socket;
 
 public class App extends Application {
-    // Private
-//    public static MainState state = new MainState();
-
     @Override
     public void onCreate() {
         super.onCreate();

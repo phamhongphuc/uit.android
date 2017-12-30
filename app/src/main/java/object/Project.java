@@ -1,9 +1,7 @@
 package object;
 
-import java.lang.reflect.Member;
 import java.util.Date;
 
-import bolts.Task;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -20,6 +18,9 @@ public class Project extends RealmObject {
     private RealmList<Channel> channels;
     private Date createdate;
     private Date deadline;
+
+    public Project() {
+    }
 
     public Project(int id, String name, String description, User assigned, Date deadline, RealmList<User> members) {
         this.id = id;

@@ -7,10 +7,14 @@ import io.realm.annotations.PrimaryKey;
 
 public class Message extends RealmObject {
     @PrimaryKey
+    private long id;
     private Date time;
     private User sender;
-    private Channel idchannel;
+    private Channel channel;
     private String content;
+
+    public Message() {
+    }
 
     public Message(String content) {
         this.content = content;
@@ -32,12 +36,12 @@ public class Message extends RealmObject {
         this.sender = sender;
     }
 
-    public Channel getIdchannel() {
-        return idchannel;
+    public Channel getChannel() {
+        return channel;
     }
 
-    public void setIdchannel(Channel idchannel) {
-        this.idchannel = idchannel;
+    public void setChannel(Channel channel) {
+        this.channel = channel;
     }
 
     public String getContent() {

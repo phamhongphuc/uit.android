@@ -1,6 +1,5 @@
 package object;
 
-import java.lang.reflect.Member;
 import java.util.Date;
 
 import io.realm.RealmList;
