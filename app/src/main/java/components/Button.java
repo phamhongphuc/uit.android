@@ -4,8 +4,6 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.databinding.BindingMethod;
-import android.databinding.BindingMethods;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
@@ -22,9 +20,9 @@ import java.util.Objects;
 
 import uit.group.manager.R;
 
-@BindingMethods(value = {
-        @BindingMethod(type = Button.class, attribute = "app:_text", method = "setText")
-})
+//@BindingMethods(value = {
+//        @BindingMethod(type = Button.class, attribute = "app:_text", method = "setText")
+//})
 public class Button extends LinearLayoutCompat {
     private String text;
     private String icon;
@@ -37,17 +35,17 @@ public class Button extends LinearLayoutCompat {
     private TextView iconView;
     private Drawable selectedItemDrawable;
 
-    public Button(@NonNull Context context) {
+    public Button(Context context) {
         super(context, null, R.attr.ButtonStyle);
         Initialize(context, null);
     }
 
-    public Button(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public Button(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs, R.attr.ButtonStyle);
         Initialize(context, attrs);
     }
 
-    public Button(@NonNull Context context, @Nullable AttributeSet attrs, @AttrRes int defStyleAttr) {
+    public Button(Context context, @Nullable AttributeSet attrs, @AttrRes int defStyleAttr) {
         super(context, attrs, R.attr.ButtonStyle);
         Initialize(context, attrs);
     }
@@ -67,6 +65,10 @@ public class Button extends LinearLayoutCompat {
         InitializeAttr(context, attrs);
         InitializeView(context);
         InitializeRipple();
+    }
+
+    private void InitializeView() {
+        InitializeView(getContext());
     }
 
     private void InitializeView(@NonNull Context context) {
@@ -145,9 +147,14 @@ public class Button extends LinearLayoutCompat {
         }
     }
 
-    public void setText(String text) {
+    public void set_text(String text) {
         this.text = text;
-        InitializeView(getContext());
+        InitializeView();
+    }
+
+    public void set_icon(String icon) {
+        this.icon = icon;
+        InitializeView();
     }
 
     public void toggleActive() {

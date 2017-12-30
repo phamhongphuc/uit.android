@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Button_Style"/>
+    <style name="Button_Style">
+        <item name="android:clickable">true</item>
+        <!--<item name="android:focusable">true</item>-->
+    </style>
 
     <style name="Line_Style">
         <item name="android:layout_gravity">center</item>

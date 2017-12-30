@@ -11,7 +11,6 @@ import android.view.View;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 
-import module._Facebook;
 import uit.group.manager.databinding.ActivityLoginBinding;
 import view.fragment.FragmentAdapter;
 import view.state.LoginState;
@@ -53,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         };
-        ViewPager viewPager = findViewById(R.id.loginPage);
+        ViewPager viewPager = findViewById(R.id.loginPager);
         viewPager.addOnPageChangeListener(listener);
         viewPager.setAdapter(
                 new FragmentAdapter(getSupportFragmentManager(), new int[]{
@@ -76,6 +75,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void facebookLogin(View view) {
-        _Facebook.Login(this);
+//        _Facebook.Login(this);
     }
 }

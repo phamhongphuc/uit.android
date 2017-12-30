@@ -22,11 +22,10 @@
             android:layout_weight="1"
             android:background="@color/white"
             android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="25dp">
+            android:orientation="horizontal">
 
             <android.support.v4.view.ViewPager
-                android:id="@+id/loginPage"
+                android:id="@+id/loginPager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
             </android.support.v4.view.ViewPager>
@@ -63,7 +62,6 @@
                 <components.Button
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
-                    android:background="#ffffff"
                     android:onClick="facebookLogin"
                     app:_background="#ffffff"
                     app:_foreground="@color/blue"
