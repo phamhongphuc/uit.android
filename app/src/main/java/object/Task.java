@@ -1,5 +1,9 @@
 package object;
 
+import android.annotation.SuppressLint;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import io.realm.RealmList;
@@ -24,14 +28,21 @@ public class Task extends RealmObject {
     public Task() {
     }
 
-    public Task(int id, String name, Date deadline, String description, User assigned) {
+    public Task(int id, String name, String deadline, String description, User assigned) {
         this.id = id;
         this.name = name;
-        this.deadline = deadline;
         this.createdate = new Date();
         this.description = description;
         this.assigned = assigned;
         this.status = ONGOING;
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        Date date = null;
+        try {
+            date = format.parse(deadline);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        this.deadline = date;
     }
 
     public String getName() {
