@@ -22,7 +22,7 @@ public class Task extends RealmObject {
     private Date deadline;
     private String description;
     private User assigned;
-    private RealmList<User> subscribers;
+    private RealmList<User> members;
     private int status;
 
     public Task() {
@@ -45,16 +45,13 @@ public class Task extends RealmObject {
         this.deadline = date;
     }
 
+    ///Getter
     public String getName() {
         return name;
     }
 
     public Date getCreatedate() {
         return createdate;
-    }
-
-    public void setCreatedate(Date createdate) {
-        this.createdate = createdate;
     }
 
     public Date getDeadline() {
@@ -69,32 +66,30 @@ public class Task extends RealmObject {
         return assigned;
     }
 
-    public RealmList<User> getSubscribers() {
-        return subscribers;
-    }
-
-    public void setSubscribers(RealmList<User> subscribers) {
-        this.subscribers = subscribers;
+    public RealmList<User> getMembers() {
+        return members;
     }
 
     public int getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
-        this.status = (status == ONGOING || status == COMPLETE) ? status : ONHOLD;
-    }
-
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public long getDaysLeft() {
         long daysLeft = deadline.getTime() - (new Date()).getTime();
         return (daysLeft / (60 * 60 * 1000));
     }
+
+    ///Setter
+    public void addMembers(RealmList<User> members) {
+        this.members.addAll(members);
+    }
+
+    public void setStatus(int status) {
+        this.status = (status == ONGOING || status == COMPLETE) ? status : ONHOLD;
+    }
+
 }
