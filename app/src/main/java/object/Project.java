@@ -21,7 +21,7 @@ public class Project extends RealmObject {
     private Date createdate;
     private Date deadline;
 
-    public Project(int id, String name, String description, User assigned, Date deadline) {
+    public Project(int id, String name, String description, User assigned, Date deadline, RealmList<User> members) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -30,7 +30,7 @@ public class Project extends RealmObject {
         this.deadline = deadline;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 

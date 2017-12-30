@@ -31,9 +31,9 @@ public class Function {
     ///3
     public static Project createProject(final int id,final User assigned,
                                         final String name, final Date deadline,
-                                        final String description,) {
+                                        final String description,final RealmList<User> members) {
         realm.beginTransaction();
-        Project newProject = new Project(id, name, description, assigned, deadline);
+        Project newProject = new Project(id, name, description, assigned, deadline, members);
         realm.copyToRealm(newProject);
         realm.commitTransaction();
         return newProject;
