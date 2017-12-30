@@ -43,7 +43,7 @@ public class Line extends View {
 
     private void InitializeAttr(@NonNull Context context, @Nullable AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.Line);
-        isFull = typedArray.getBoolean(R.styleable.Button__icon, false);
+        isFull = typedArray.getBoolean(R.styleable.Line__isFull, false);
         typedArray.recycle();
     }
 

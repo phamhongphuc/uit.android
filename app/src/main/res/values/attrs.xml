@@ -15,4 +15,7 @@
     <declare-styleable name="Line">
         <attr name="_isFull" format="boolean"/>
     </declare-styleable>
+    <declare-styleable name="Vector">
+        <attr name="_src" format="integer"/>
+    </declare-styleable>
 </resources>
