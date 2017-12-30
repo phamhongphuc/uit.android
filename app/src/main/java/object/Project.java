@@ -41,17 +41,18 @@ public class Project extends RealmObject {
     public RealmList<Task> getTasks() {
         return tasks;
     }
-
-    public void setTasks(RealmList<Task> tasks) {
-        this.tasks = tasks;
+/*
+    public int getNumberSameStatusTasks(int Status){
+        Task newTask = new Task(1,"",new Date(),"",this.assigned);
+        int count=0;
+        for(Task each:this.tasks){
+            count+=(each.)
+        }
     }
+*/
 
     public RealmList<User> getMembers() {
         return members;
-    }
-
-    public void setMembers(RealmList<User> members) {
-        this.members = members;
     }
 
     public String getDescription() {
@@ -62,36 +63,37 @@ public class Project extends RealmObject {
         return assigned;
     }
 
-    public void setAssigned(User assigned) {
-        this.assigned = assigned;
-    }
-
     public RealmList<String> getTags() {
         return tags;
-    }
-
-    public void setTags(RealmList<String> tags) {
-        this.tags = tags;
     }
 
     public Date getCreatedate() {
         return createdate;
     }
 
-    public void setCreatedate(Date createdate) {
-        this.createdate = createdate;
+    public RealmList<Channel> getChannels() {
+        return channels;
     }
 
     public Date getDeadline() {
         return deadline;
     }
 
-    public RealmList<Channel> getChannels() {
-        return channels;
+
+    public void addChannel(Channel channel) {
+        this.channels.add(channel);
     }
 
-    public void setChannels(RealmList<Channel> channels) {
-        this.channels = channels;
+    public void addTask(Task task) {
+        this.tasks.add(task);
+    }
+
+    public void addMembers(RealmList<User> members) {
+        this.members.addAll(members);
+    }
+
+    public void addTag(String tag) {
+        this.tags.add(tag);
     }
 }
 
