@@ -15,6 +15,10 @@
     <declare-styleable name="Line">
         <attr name="_isFull" format="boolean"/>
     </declare-styleable>
+    <declare-styleable name="PageIndex">
+        <attr name="_fragmentAdapter" format="integer"/>
+        <attr name="_fragmentAdapterIndex" format="integer"/>
+    </declare-styleable>
     <declare-styleable name="Vector">
         <attr name="_src" format="integer"/>
     </declare-styleable>

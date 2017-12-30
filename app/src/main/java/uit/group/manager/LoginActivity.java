@@ -32,10 +32,10 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         InitializeDataBinding();
-        InitializeViewPager();
+        InitializePages();
     }
 
-    private void InitializeViewPager() {
+    private void InitializePages() {
         ViewPager.OnPageChangeListener listener = new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {

@@ -11,18 +11,15 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.AttrRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.util.AttributeSet;
 import android.view.Gravity;
-import android.widget.TextView;
 
 import java.util.Objects;
 
 import uit.group.manager.R;
 
-//@BindingMethods(value = {
-//        @BindingMethod(type = Button.class, attribute = "app:_text", method = "setText")
-//})
 public class Button extends LinearLayoutCompat {
     private String text;
     private String icon;
@@ -31,8 +28,8 @@ public class Button extends LinearLayoutCompat {
     private int background;
     private int foreground;
 
-    private TextView textView;
-    private TextView iconView;
+    private AppCompatTextView textView;
+    private AppCompatTextView iconView;
     private Drawable selectedItemDrawable;
 
     public Button(Context context) {
@@ -75,7 +72,7 @@ public class Button extends LinearLayoutCompat {
         int currentColor = !active ? background : backgroundActive;
         if (icon != null && !Objects.equals(icon, "")) {
             if (iconView == null) {
-                iconView = new TextView(context);
+                iconView = new AppCompatTextView(context);
                 addView(iconView);
             }
             iconView.setText(icon);
@@ -95,7 +92,7 @@ public class Button extends LinearLayoutCompat {
 
         if (text != null && !Objects.equals(text, "")) {
             if (textView == null) {
-                textView = new TextView(context);
+                textView = new AppCompatTextView(context);
                 addView(textView);
             }
             textView.setText(text);
