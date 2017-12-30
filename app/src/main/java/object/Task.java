@@ -11,6 +11,7 @@ public class Task extends RealmObject {
     public static final int ONHOLD = 1;
     public static final int COMPLETE = 2;
 
+
     @PrimaryKey
     private int id;
     private String name;
@@ -21,8 +22,8 @@ public class Task extends RealmObject {
     private RealmList<User> subscribers;
     private int status;
 
-
-    public Task(String name, Date deadline, String description, User assigned) {
+    public Task(int id, String name, Date deadline, String description, User assigned) {
+        this.id = id;
         this.name = name;
         this.deadline = deadline;
         createdate = new Date();
@@ -57,6 +58,10 @@ public class Task extends RealmObject {
 
     public int getStatus() {
         return status;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public void setId(int id) {

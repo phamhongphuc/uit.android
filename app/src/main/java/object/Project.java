@@ -8,88 +8,90 @@ import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-public class Project extends RealmObject{
+public class Project extends RealmObject {
     @PrimaryKey
-    private String ID;
-    private String Name;
-    private RealmList<Task> Tasks;
-    private RealmList<User> Members;
-    private String Description;
-    private Member Assigned;
-    private RealmList<String> Tags;
-    private RealmList<Channel> Channels;
-    private Date CreateDate;
-    private Date Deadline;
+    private String id;
+    private String name;
+    private RealmList<Task> tasks;
+    private RealmList<User> members;
+    private String description;
+    private User assigned;
+    private RealmList<String> tags;
+    private RealmList<Channel> channels;
+    private Date createdate;
+    private Date deadline;
 
-    public Project(String id, String name, String description, Date deadline) {
-        ID = id;
-        Name = name;
-        Description = description;
-        Deadline = deadline;
+    public Project(String id, String name, String description, User assigned, Date deadline) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.assigned = assigned;
+        this.createdate = new Date();
+        this.deadline = deadline;
     }
 
-    public String getID() {
-        return ID;
+    public String getId() {
+        return id;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public RealmList<Task> getTasks() {
-        return Tasks;
+        return tasks;
     }
 
     public void setTasks(RealmList<Task> tasks) {
-        Tasks = tasks;
+        this.tasks = tasks;
     }
 
     public RealmList<User> getMembers() {
-        return Members;
+        return members;
     }
 
     public void setMembers(RealmList<User> members) {
-        Members = members;
+        this.members = members;
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
-    public Member getAssigned() {
-        return Assigned;
+    public User getAssigned() {
+        return assigned;
     }
 
-    public void setAssigned(Member assigned) {
-        Assigned = assigned;
+    public void setAssigned(User assigned) {
+        this.assigned = assigned;
     }
 
     public RealmList<String> getTags() {
-        return Tags;
+        return tags;
     }
 
     public void setTags(RealmList<String> tags) {
-        Tags = tags;
+        this.tags = tags;
     }
 
-    public Date getCreateDate() {
-        return CreateDate;
+    public Date getCreatedate() {
+        return createdate;
     }
 
-    public void setCreateDate(Date createDate) {
-        CreateDate = createDate;
+    public void setCreatedate(Date createdate) {
+        this.createdate = createdate;
     }
 
     public Date getDeadline() {
-        return Deadline;
+        return deadline;
     }
 
     public RealmList<Channel> getChannels() {
-        return Channels;
+        return channels;
     }
 
     public void setChannels(RealmList<Channel> channels) {
-        Channels = channels;
+        this.channels = channels;
     }
 }
 

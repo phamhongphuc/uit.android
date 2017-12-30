@@ -9,12 +9,17 @@ import io.realm.annotations.PrimaryKey;
 
 public class User extends RealmObject {
     @PrimaryKey
-    private String ID;
+    private String id;
     private String name;
     private Date birthdate;
     private Boolean gender;
     private String email;
     private String description;
+
+    public RealmList<Project> getProjects() {
+        return projects;
+    }
+
     private RealmList<Project> projects;
 
     public static void addUser(final User user) {
@@ -27,17 +32,17 @@ public class User extends RealmObject {
         });
     }
 
-    public User(String ID, String Name, Date BirthDate, Boolean Gender, String Email, String Description) {
-        this.ID = ID;
+    public User(String ID, String Name, String Email) {
+        this.id = ID;
         this.name = Name;
-        this.birthdate = BirthDate;
-        this.gender = Gender;
+//        this.birthdate = BirthDate;
+//        this.gender = Gender;
         this.email = Email;
-        this.description = Description;
+//        this.description = Description;
     }
 
-    public String getID() {
-        return ID;
+    public String getId() {
+        return id;
     }
 
     public String getName() {

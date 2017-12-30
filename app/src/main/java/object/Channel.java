@@ -9,46 +9,46 @@ import io.realm.annotations.PrimaryKey;
 
 public class Channel extends RealmObject {
     @PrimaryKey
-    private String ID;
-    private String Name;
-    private Member Asssigned;
-    private RealmList<User> Members;
-    private Date CreateDate;
+    private String id;
+    private String name;
+    private Member asssigned;
+    private RealmList<User> members;
+    private Date createdate;
 
     public Channel(String id, String name) {
-        ID = id;
-        Name = name;
+        this.id = id;
+        this.name = name;
     }
 
-    public String getID() {
-        return ID;
+    public String getId() {
+        return id;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public Member getAsssigned() {
-        return Asssigned;
+        return asssigned;
     }
 
     public void setAsssigned(Member asssigned) {
-        Asssigned = asssigned;
+        this.asssigned = asssigned;
     }
 
     public RealmList<User> getMembers() {
-        return Members;
+        return members;
     }
 
     public void setMembers(RealmList<User> members) {
-        Members = members;
+        this.members = members;
     }
 
-    public Date getCreateDate() {
-        return CreateDate;
+    public Date getCreatedate() {
+        return createdate;
     }
 
-    public void setCreateDate(Date createDate) {
-        CreateDate = createDate;
+    public void setCreatedate(Date createdate) {
+        this.createdate = createdate;
     }
 }
