@@ -81,4 +81,9 @@ public class Task extends RealmObject {
     public void setId(int id) {
         this.id = id;
     }
+
+    public long getDaysLeft() {
+        long daysLeft = deadline.getTime() - (new Date()).getTime();
+        return (daysLeft / (60 * 60 * 1000));
+    }
 }

@@ -1,9 +1,14 @@
 package object;
 
+import android.annotation.SuppressLint;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;
+import io.realm.RealmQuery;
 import io.realm.annotations.PrimaryKey;
 
 public class Project extends RealmObject {
@@ -22,13 +27,21 @@ public class Project extends RealmObject {
     public Project() {
     }
 
-    public Project(int id, String name, String description, User assigned, Date deadline, RealmList<User> members) {
+    public Project(int id, String name, String description, User assigned, String deadline, RealmList<User> members) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.assigned = assigned;
         this.createdate = new Date();
-        this.deadline = deadline;
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat format
+                = new SimpleDateFormat("dd/MM/yyyy");
+        Date date = null;
+        try {
+            date = format.parse(deadline);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        this.deadline = date;
     }
 
     ///Getter
@@ -52,6 +65,10 @@ public class Project extends RealmObject {
             }
         }
         return count;
+    }
+
+    public RealmQuery<Task> getSameStatusTasks(int Status) {
+        return tasks.where().equalTo("status", Status);
     }
 
     public RealmList<User> getMembers() {
