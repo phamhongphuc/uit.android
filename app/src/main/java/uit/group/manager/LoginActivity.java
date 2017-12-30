@@ -1,6 +1,7 @@
 package uit.group.manager;
 
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
@@ -10,11 +11,14 @@ import android.view.View;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 
-import fragment.FragmentAdapter;
 import module._Facebook;
+import uit.group.manager.databinding.ActivityLoginBinding;
+import view.fragment.FragmentAdapter;
+import view.state.LoginState;
 
 public class LoginActivity extends AppCompatActivity {
     private CallbackManager callbackManager = CallbackManager.Factory.create();
+    private LoginState state = new LoginState();
 
     private void checkLogin() {
         if (AccessToken.getCurrentAccessToken() == null) return;
@@ -25,14 +29,43 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        state.status.set("Goocssdfsdf");
         setContentView(R.layout.activity_login);
 
-        ((ViewPager) findViewById(R.id.loginPage)).setAdapter(
+        InitializeDataBinding();
+        InitializeViewPager();
+    }
+
+    private void InitializeViewPager() {
+        ViewPager.OnPageChangeListener listener = new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                state.status.set(String.valueOf(position));
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        };
+        ViewPager viewPager = findViewById(R.id.loginPage);
+        viewPager.addOnPageChangeListener(listener);
+        viewPager.setAdapter(
                 new FragmentAdapter(getSupportFragmentManager(), new int[]{
-                        R.layout.fragment_login_fragment__one,
-                        R.layout.fragment_login_fragment__two,
+                        R.layout.fragment_login_1,
+                        R.layout.fragment_login_2,
                 })
         );
+    }
+
+    private void InitializeDataBinding() {
+        ActivityLoginBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
+        binding.setState(state);
     }
 
     @Override
@@ -42,11 +75,6 @@ public class LoginActivity extends AppCompatActivity {
         checkLogin();
     }
 
-    /**
-     * Facebook Login Button
-     *
-     * @param view components.button
-     */
     public void facebookLogin(View view) {
         _Facebook.Login(this);
     }

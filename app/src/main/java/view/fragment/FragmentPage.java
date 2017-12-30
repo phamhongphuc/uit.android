@@ -1,4 +1,4 @@
-package fragment;
+package view.fragment;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;

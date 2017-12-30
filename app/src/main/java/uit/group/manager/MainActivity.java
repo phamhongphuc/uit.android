@@ -4,8 +4,8 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import app.MainState;
 import uit.group.manager.databinding.ActivityMainBinding;
+import view.state.MainState;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,11 +16,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         InitializeDataBinding();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
     }
 
     private void InitializeDataBinding() {

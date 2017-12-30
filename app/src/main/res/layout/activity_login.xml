@@ -1,55 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.LinearLayoutCompat
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    android:orientation="vertical">
+<layout>
+
+    <data>
+
+        <variable
+            name="State"
+            type="view.state.LoginState"/>
+    </data>
 
     <android.support.v7.widget.LinearLayoutCompat
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="match_parent"
         android:background="@color/white"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="25dp">
+        android:orientation="vertical">
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/loginPage"
+        <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </android.support.v4.view.ViewPager>
-    </android.support.v7.widget.LinearLayoutCompat>
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="25dp">
 
-    <components.Line
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:_isFull="true"/>
+            <android.support.v4.view.ViewPager
+                android:id="@+id/loginPage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            </android.support.v4.view.ViewPager>
+        </android.support.v7.widget.LinearLayoutCompat>
 
-    <android.support.v7.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:gravity="center">
-
-        <android.support.v7.widget.ContentFrameLayout
-            android:layout_width="wrap_content"
+        <components.Line
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="25dp"
-            android:background="@color/blue"
-            android:padding="1dp">
+            app:_isFull="true"/>
 
-            <components.Button
+        <components.Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:_text="@{State.status}"/>
+
+        <components.Line
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:_isFull="true"/>
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center">
+
+            <android.support.v7.widget.ContentFrameLayout
                 android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:background="#ffffff"
-                android:onClick="facebookLogin"
-                app:_background="#ffffff"
-                app:_foreground="@color/blue"
-                app:_icon=""
-                app:_text="Đăng nhập với Facebook"/>
-        </android.support.v7.widget.ContentFrameLayout>
+                android:layout_height="wrap_content"
+                android:layout_margin="25dp"
+                android:background="@color/blue"
+                android:padding="1dp">
+
+                <components.Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:background="#ffffff"
+                    android:onClick="facebookLogin"
+                    app:_background="#ffffff"
+                    app:_foreground="@color/blue"
+                    app:_icon=""
+                    app:_text="Đăng nhập với Facebook"/>
+            </android.support.v7.widget.ContentFrameLayout>
+        </android.support.v7.widget.LinearLayoutCompat>
     </android.support.v7.widget.LinearLayoutCompat>
-</android.support.v7.widget.LinearLayoutCompat>
+</layout>

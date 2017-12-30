@@ -4,6 +4,8 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.databinding.BindingMethod;
+import android.databinding.BindingMethods;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
@@ -16,8 +18,13 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 import android.widget.TextView;
 
+import java.util.Objects;
+
 import uit.group.manager.R;
 
+@BindingMethods({
+        @BindingMethod(type = Button.class, attribute = "app:_text", method = "setText")
+})
 public class Button extends LinearLayoutCompat {
     private String text;
     private String icon;
@@ -58,15 +65,17 @@ public class Button extends LinearLayoutCompat {
 
     private void Initialize(@NonNull Context context, @Nullable AttributeSet attrs) {
         InitializeAttr(context, attrs);
-        AddView(context);
-        SetRipple();
+        InitializeView(context);
+        InitializeRipple();
     }
 
-    private void AddView(@NonNull Context context) {
-//        int currentColor = !active ? background : backgroundActive;
-        int currentColor = Color.TRANSPARENT;
-        if (icon != null) {
-            iconView = new TextView(context);
+    private void InitializeView(@NonNull Context context) {
+        int currentColor = !active ? background : backgroundActive;
+        if (icon != null && !Objects.equals(icon, "")) {
+            if (iconView == null) {
+                iconView = new TextView(context);
+                addView(iconView);
+            }
             iconView.setText(icon);
             iconView.setTypeface(
                     Typeface.createFromAsset(getContext().getAssets(), "fonts/aicon.ttf")
@@ -78,10 +87,15 @@ public class Button extends LinearLayoutCompat {
             iconView.setGravity(Gravity.CENTER);
             iconView.setTextColor(foreground);
             iconView.setBackgroundColor(currentColor);
-            addView(iconView);
+        } else if (iconView != null) {
+            removeView(iconView);
         }
-        if (text != null) {
-            textView = new TextView(context);
+
+        if (text != null && !Objects.equals(text, "")) {
+            if (textView == null) {
+                textView = new TextView(context);
+                addView(textView);
+            }
             textView.setText(text);
             textView.setTypeface(
                     Typeface.createFromAsset(getContext().getAssets(), "fonts/segoe.ttf")
@@ -93,8 +107,18 @@ public class Button extends LinearLayoutCompat {
             textView.setTextColor(foreground);
             textView.setBackgroundColor(currentColor);
             textView.setGravity(Gravity.CENTER);
-            addView(textView);
+        } else if (textView != null) {
+            removeView(textView);
         }
+    }
+
+    private void InitializeRipple() {
+        setForeground(active ?
+                new ColorDrawable(Color.TRANSPARENT) :
+                getContext()
+                        .obtainStyledAttributes(new int[]{R.attr.selectableItemBackground})
+                        .getDrawable(0)
+        );
     }
 
     @Override
@@ -121,6 +145,15 @@ public class Button extends LinearLayoutCompat {
         }
     }
 
+    public void setText(String text) {
+        this.text = text;
+        InitializeView(getContext());
+    }
+
+    public String getText() {
+        return this.text;
+    }
+
     public void toggleActive() {
         active = !active;
         SetActiveAnimation();
@@ -132,7 +165,7 @@ public class Button extends LinearLayoutCompat {
     }
 
     public void SetActiveAnimation() {
-        SetRipple();
+        InitializeRipple();
         int colorFrom = active ? background : backgroundActive;
         int colorTo = !active ? background : backgroundActive;
 
@@ -148,12 +181,4 @@ public class Button extends LinearLayoutCompat {
         invalidate();
     }
 
-    private void SetRipple() {
-        setForeground(active ?
-                new ColorDrawable(Color.TRANSPARENT) :
-                getContext()
-                        .obtainStyledAttributes(new int[]{R.attr.selectableItemBackground})
-                        .getDrawable(0)
-        );
-    }
 }
