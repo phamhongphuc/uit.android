@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Group Manager</string>
+    <string name="app_name">Choose your Project</string>
     <string name="facebook_app_id">1770196659861627</string>
     <string name="fb_login_protocol_scheme">fb1770196659861627</string>
 </resources>

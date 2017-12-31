@@ -2,6 +2,9 @@ package object;
 
 import android.annotation.SuppressLint;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -114,6 +117,25 @@ public class Project extends RealmObject {
 
     public void addTag(String tag) {
         this.tags.add(tag);
+    }
+
+    public JSONObject getJson() {
+        JSONObject obj = new JSONObject();
+        try {
+            obj.put("id", id);
+            obj.put("name", name);
+            obj.put("tasks", tasks);
+            obj.put("members", members);
+            obj.put("description", description);
+            obj.put("assigned", assigned);
+            obj.put("tags", tags);
+            obj.put("channels", channels);
+            obj.put("createdate", createdate);
+            obj.put("deadline", deadline);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return obj;
     }
 }
 

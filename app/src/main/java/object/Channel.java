@@ -1,5 +1,8 @@
 package object;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.Date;
 
 import io.realm.RealmList;
@@ -51,5 +54,19 @@ public class Channel extends RealmObject {
 
     public void setCreatedate(Date createdate) {
         this.createdate = createdate;
+    }
+
+    public JSONObject getJson() {
+        JSONObject obj = new JSONObject();
+        try {
+            obj.put("id", id);
+            obj.put("name", name);
+            obj.put("assigned", assigned);
+            obj.put("members", members);
+            obj.put("createdate", createdate);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return obj;
     }
 }

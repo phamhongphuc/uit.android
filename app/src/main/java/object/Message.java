@@ -1,5 +1,8 @@
 package object;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.Date;
 
 import io.realm.RealmObject;
@@ -46,6 +49,20 @@ public class Message extends RealmObject {
 
     public String getContent() {
         return content;
+    }
+
+    public JSONObject getJson() {
+        JSONObject obj = new JSONObject();
+        try {
+            obj.put("id", id);
+            obj.put("time", time);
+            obj.put("sender", sender);
+            obj.put("channel", channel);
+            obj.put("content", content);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return obj;
     }
 }
 

@@ -30,6 +30,16 @@ public class Function {
         realm.commitTransaction();
         return newProject;
     }
+
+    public static Task createTask(final int id, final String name, final String deadline, final String description, final User assigned) {
+        Realm realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+        Task newTask = new Task(id, name, deadline, description, assigned);
+        realm.copyToRealm(newTask);
+        realm.commitTransaction();
+        return newTask;
+    }
+
     public static RealmResults<User> getMemberList(Project project, User user){
         /// Tru nguoi dang su dung ra, vi nguoi su dung de tren dau
         return project.getMembers()
