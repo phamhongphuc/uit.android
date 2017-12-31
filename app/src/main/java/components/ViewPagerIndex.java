@@ -15,7 +15,7 @@ import uit.group.manager.R;
 
 public class ViewPagerIndex extends View {
     private static final Paint paint = new Paint();
-    private static final float RATIO = 0.3f;
+    private static final float RATIO = 0.4f;
 
     private int count;
     private int index;

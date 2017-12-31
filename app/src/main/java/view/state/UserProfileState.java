@@ -3,10 +3,7 @@ package view.state;
 import android.databinding.BaseObservable;
 import android.databinding.ObservableField;
 
-import java.net.Socket;
-
 import app.Global;
-import io.realm.Realm;
 import module._Socket;
 import object.User;
 
@@ -16,7 +13,7 @@ import object.User;
 
 public class UserProfileState extends BaseObservable {
     public final ObservableField<User> user = new ObservableField<>();
-    private final io.socket.client.Socket socket = _Socket.Socket();
+    private final io.socket.client.Socket socket = _Socket.getSocket();
 
     public UserProfileState() {
         user.set(Global.user.get());

@@ -12,37 +12,39 @@ public class _Socket {
     public static String status;
 
     public static void Initialize() {
-        try {
-            socket = IO.socket(Constant.SERVER_URL);
-            socket.on(Socket.EVENT_CONNECT_ERROR, new Emitter.Listener() {
-                @Override
-                public void call(Object... args) {
-                    int a = 1;
-                }
-            }).on(Socket.EVENT_CONNECT, new Emitter.Listener() {
-                @Override
-                public void call(Object... args) {
-                    int a = 1;
-                }
-            }).on(Socket.EVENT_CONNECT_TIMEOUT, new Emitter.Listener() {
-                @Override
-                public void call(Object... args) {
-                    int a = 1;
-                }
-            }).on(Socket.EVENT_DISCONNECT, new Emitter.Listener() {
-                @Override
-                public void call(Object... args) {
-                    int a = 1;
-                }
-            });
-            socket.connect();
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
+        getSocket();
+        socket.on(Socket.EVENT_CONNECT_ERROR, new Emitter.Listener() {
+            @Override
+            public void call(Object... args) {
+                status = Socket.EVENT_CONNECT_ERROR;
+            }
+        }).on(Socket.EVENT_CONNECT, new Emitter.Listener() {
+            @Override
+            public void call(Object... args) {
+                status = Socket.EVENT_CONNECT;
+            }
+        }).on(Socket.EVENT_CONNECT_TIMEOUT, new Emitter.Listener() {
+            @Override
+            public void call(Object... args) {
+                status = Socket.EVENT_CONNECT_TIMEOUT;
+            }
+        }).on(Socket.EVENT_DISCONNECT, new Emitter.Listener() {
+            @Override
+            public void call(Object... args) {
+                status = Socket.EVENT_DISCONNECT;
+            }
+        });
+        socket.connect();
     }
 
-    public static Socket Socket() {
-        if (socket == null) Initialize();
+    public static Socket getSocket() {
+        if (socket == null) {
+            try {
+                socket = IO.socket(Constant.SERVER_URL);
+            } catch (URISyntaxException e) {
+                socket = null;
+            }
+        }
         return socket;
     }
 

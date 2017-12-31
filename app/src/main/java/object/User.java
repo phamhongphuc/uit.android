@@ -1,5 +1,8 @@
 package object;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.Date;
 
 import io.realm.RealmList;
@@ -51,5 +54,20 @@ public class User extends RealmObject {
 
     public RealmList<Project> getProjects() {
         return projects;
+    }
+
+    public JSONObject getJson(){
+        JSONObject obj = new JSONObject();
+        try {
+            obj.put("id", id);
+            obj.put("name", name);
+            obj.put("email", email);
+            obj.put("birthdate", birthdate);
+            obj.put("gender", gender);
+            obj.put("description", description);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return obj;
     }
 }

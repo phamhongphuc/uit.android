@@ -60,7 +60,7 @@
                     app:_background="#ffffff"
                     app:_foreground="@color/blue"
                     app:_icon=""
-                    app:_text="@{State.status}"/>
+                    app:_text="Đăng nhập với Facebook"/>
             </android.support.v7.widget.ContentFrameLayout>
         </android.support.v7.widget.LinearLayoutCompat>
     </android.support.v7.widget.LinearLayoutCompat>

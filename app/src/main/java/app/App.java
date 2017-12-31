@@ -4,11 +4,16 @@ import android.app.Application;
 
 import com.facebook.FacebookSdk;
 
+import org.json.JSONObject;
+
 import io.realm.Realm;
 import module._Facebook;
 import module._Socket;
+import object.User;
 
 public class App extends Application {
+    public static Global global = new Global();
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -16,6 +21,9 @@ public class App extends Application {
 
         _Socket.Initialize();
         _Facebook.Initialize();
+
+        JSONObject JSON = new User("123", "java", "mail@mail").getJson();
+        _Socket.getSocket().emit("aJson", JSON);
 
         Realm.init(this);
     }
