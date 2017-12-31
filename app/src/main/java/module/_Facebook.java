@@ -1,29 +1,30 @@
 package module;
 
+import android.support.v7.app.AppCompatActivity;
+
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
 import com.facebook.login.LoginManager;
 
 import java.util.Collections;
 
-import uit.group.manager.LoginActivity;
-
 public class _Facebook {
     /**
      * Hàm này được khai báo luôn trong App
      */
     public static void Initialize() {
+        _Socket.GetUserByAccessToken();
         new AccessTokenTracker() {
             @Override
             protected void onCurrentAccessTokenChanged(AccessToken oldAccessToken, AccessToken currentAccessToken) {
-                _Socket.EmitAccessToken(currentAccessToken == null ? "null" : currentAccessToken.getToken());
+                _Socket.GetUserByAccessToken();
             }
         };
     }
 
-    public static void Login(LoginActivity loginActivity) {
+    public static void Login(AppCompatActivity activity) {
         LoginManager.getInstance().logInWithReadPermissions(
-                loginActivity,
+                activity,
                 Collections.singletonList("email")
         );
     }

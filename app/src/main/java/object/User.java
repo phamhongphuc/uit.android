@@ -5,6 +5,8 @@ import org.json.JSONObject;
 
 import java.util.Date;
 
+import app.Global;
+import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -69,5 +71,16 @@ public class User extends RealmObject {
             e.printStackTrace();
         }
         return obj;
+    }
+
+    public static void SetCurrentUser(final String id, final String name, final String email) {
+        Realm realm = Realm.getDefaultInstance();
+        User user = realm.where(User.class).equalTo("id", id).findFirst();
+        if (user == null) {
+            realm.beginTransaction();
+            user = realm.copyToRealm(new User(id, name, email));
+            realm.commitTransaction();
+        }
+        Global.user.set(user);
     }
 }

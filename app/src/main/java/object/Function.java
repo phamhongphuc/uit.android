@@ -1,23 +1,12 @@
 package object;
 
-import java.util.Date;
-
 import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmResults;
 
 public class Function {
     /// 1 lay ID, Ten, email tu socket
-    public static User Login(final String ID, final String Name, final String Email) {
-        Realm realm = Realm.getDefaultInstance();
-        User user = realm.where(User.class).equalTo("id", ID).findFirst();
-        if (user == null) {
-            realm.beginTransaction();
-            user = realm.copyToRealm(new User(ID, Name, Email));
-            realm.commitTransaction();
-        }
-        return user;
-    }
+
 
     ///3
     public static Project createProject(final int id, final User assigned,

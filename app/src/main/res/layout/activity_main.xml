@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:bind="http://schemas.android.com/tools">
 
     <data>
 
@@ -35,6 +35,7 @@
             <components.Button
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:onClick="debug"
                 app:_icon=""
                 app:_text="@string/app_name"/>
 
@@ -80,27 +81,40 @@
                     app:_icon=""/>
             </android.support.v7.widget.LinearLayoutCompat>
 
-            <RelativeLayout
+            <android.support.v7.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#eee">
+                android:background="#eee"
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/textView2"
                     android:layout_width="150dp"
                     android:layout_height="50dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="34dp"
-                    android:layout_marginTop="93dp"
                     android:text="@{State.status}"/>
 
-                <com.facebook.login.widget.LoginButton
-                    android:id="@+id/login_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"/>
-            </RelativeLayout>
+                <!--<android.support.v7.widget.RecyclerView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--bind:data="@{State.listString}"-->
+                    <!--bind:itemLayout="@{@layout/project_item}">-->
+                <!--</android.support.v7.widget.RecyclerView>-->
+
+                <!--<android.support.v7.widget.RecyclerView-->
+                <!--data-->
+                <!--@{State.listString}"-->
+                <!--bind:-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent">-->
+                <!--</android.support.v7.widget.RecyclerView>-->
+
+                <!--<com.facebook.login.widget.LoginButton-->
+                <!--android:id="@+id/login_button"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_centerInParent="true"/>-->
+            </android.support.v7.widget.LinearLayoutCompat>
         </android.support.v7.widget.LinearLayoutCompat>
     </android.support.v7.widget.LinearLayoutCompat>
 </layout>
