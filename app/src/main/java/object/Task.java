@@ -2,6 +2,9 @@ package object;
 
 import android.annotation.SuppressLint;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -90,6 +93,23 @@ public class Task extends RealmObject {
 
     public void setStatus(int status) {
         this.status = (status == ONGOING || status == COMPLETE) ? status : ONHOLD;
+    }
+
+    public JSONObject getJson() {
+        JSONObject obj = new JSONObject();
+        try {
+            obj.put("id", id);
+            obj.put("name", name);
+            obj.put("createdate", createdate);
+            obj.put("deadline", deadline);
+            obj.put("description", description);
+            obj.put("assigned", assigned);
+            obj.put("members", members);
+            obj.put("status", status);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return obj;
     }
 
 }
