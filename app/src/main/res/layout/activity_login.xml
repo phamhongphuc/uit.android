@@ -25,7 +25,7 @@
             android:orientation="horizontal">
 
             <android.support.v4.view.ViewPager
-                android:id="@+id/loginPager"
+                android:id="@+id/viewPagerLogin"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
             </android.support.v4.view.ViewPager>
@@ -39,34 +39,21 @@
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="vertical">
 
-            <!--app:_fragmentAdapterIndex="@{State.fragmentIndex}"-->
-            <components.PageIndex
+            <components.ViewPagerIndex
+                android:id="@+id/viewPagerIndex"
                 android:layout_width="match_parent"
-                android:layout_height="20dp"/>
-            <!--<View-->
-                <!--android:layout_width="10dp"-->
-                <!--android:layout_height="10dp"-->
-                <!--android:layout_margin="5dp"-->
-                <!--android:background="@drawable/view_circle"/>-->
-
-            <!--<View-->
-                <!--android:layout_width="10dp"-->
-                <!--android:layout_height="10dp"-->
-                <!--android:layout_margin="5dp"-->
-                <!--android:background="@drawable/view_circle"/>-->
-
-            <!--<View-->
-                <!--android:layout_width="10dp"-->
-                <!--android:layout_height="10dp"-->
-                <!--android:layout_margin="5dp"-->
-                <!--android:background="@drawable/view_circle"/>-->
+                android:layout_height="15dp"
+                android:background="#a090"
+                app:_count="@{State.viewPagerCount}"
+                app:_index="@{State.viewPagerIndex}"/>
 
         </android.support.v7.widget.LinearLayoutCompat>
 
         <components.Line
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:_isFull="true"/>
 
@@ -90,7 +77,7 @@
                     app:_background="#ffffff"
                     app:_foreground="@color/blue"
                     app:_icon=""
-                    app:_text="Đăng nhập với Facebook"/>
+                    app:_text="Đăng nhập bằng Facebook"/>
             </android.support.v7.widget.ContentFrameLayout>
         </android.support.v7.widget.LinearLayoutCompat>
     </android.support.v7.widget.LinearLayoutCompat>

@@ -29,7 +29,6 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        state.status.set("Goocssdfsdf");
         setContentView(R.layout.activity_login);
 
         InitializeDataBinding();
@@ -46,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
                 state.status.set(String.valueOf(position));
+                state.viewPagerIndex.set(position);
             }
 
             @Override
@@ -53,14 +53,15 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         };
-        ViewPager viewPager = findViewById(R.id.loginPager);
+
+        FragmentAdapter fragmentAdapter = new FragmentAdapter(getSupportFragmentManager(), new int[]{
+                R.layout.fragment_login_1,
+                R.layout.fragment_login_2,
+        });
+        state.viewPagerCount.set(fragmentAdapter.getCount());
+        ViewPager viewPager = findViewById(R.id.viewPagerLogin);
         viewPager.addOnPageChangeListener(listener);
-        viewPager.setAdapter(
-                new FragmentAdapter(getSupportFragmentManager(), new int[]{
-                        R.layout.fragment_login_1,
-                        R.layout.fragment_login_2,
-                })
-        );
+        viewPager.setAdapter(fragmentAdapter);
     }
 
     private void InitializeDataBinding() {

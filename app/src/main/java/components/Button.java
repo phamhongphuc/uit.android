@@ -48,13 +48,16 @@ public class Button extends LinearLayoutCompat {
     }
 
     private void InitializeAttr(@NonNull Context context, @Nullable AttributeSet attrs) {
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.Button);
+        TypedArray typedArray;
+
+        typedArray = context.obtainStyledAttributes(attrs, R.styleable.Button);
         icon = (String) typedArray.getText(R.styleable.Button__icon);
         text = (String) typedArray.getText(R.styleable.Button__text);
         active = typedArray.getBoolean(R.styleable.Button__active, false);
-        backgroundActive = typedArray.getColor(R.styleable.Button__activeColor, Color.parseColor("#333498db"));
         background = typedArray.getColor(R.styleable.Button__background, Color.TRANSPARENT);
         foreground = typedArray.getColor(R.styleable.Button__foreground, context.getColor(R.color.blue));
+        backgroundActive = typedArray.getColor(R.styleable.Button__backgroundActive, Color.parseColor("#333498db"));
+
         typedArray.recycle();
     }
 
@@ -109,6 +112,8 @@ public class Button extends LinearLayoutCompat {
         } else if (textView != null) {
             removeView(textView);
         }
+
+        requestLayout();
     }
 
     private void InitializeRipple() {

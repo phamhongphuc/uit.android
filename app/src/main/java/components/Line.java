@@ -55,13 +55,13 @@ public class Line extends View {
         int size = Math.min(width, height);
 
         if (this.getParent() instanceof LinearLayoutCompat) {
-            int dp = (int) getResources().getDisplayMetrics().density;
+            float dp = getResources().getDisplayMetrics().density;
             switch (((LinearLayoutCompat) this.getParent()).getOrientation()) {
                 case LinearLayoutCompat.HORIZONTAL:
-                    setMeasuredDimension(dp, size);
+                    setMeasuredDimension((int) dp, size);
                     break;
                 case LinearLayoutCompat.VERTICAL:
-                    setMeasuredDimension(size, dp);
+                    setMeasuredDimension(size, (int) dp);
                     break;
             }
         }
