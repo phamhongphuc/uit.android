@@ -43,7 +43,10 @@
         <activity android:name=".ProjectListActivity" />
         <activity android:name=".MemberListActivity" />
         <activity android:name=".ProjectDetailActivity" />
-        <activity android:name=".UserProfileActivity"></activity>
+        <activity android:name=".UserProfileActivity" />
+        <activity android:name=".TaskListActivity" />
+        <activity android:name=".TaskDetailActivity" />
+        <activity android:name=".TaskEditActivity"></activity>
     </application>
 
 </manifest>
