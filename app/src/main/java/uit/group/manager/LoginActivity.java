@@ -44,7 +44,6 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
-                state.status.set(String.valueOf(position));
                 state.viewPagerIndex.set(position);
             }
 
