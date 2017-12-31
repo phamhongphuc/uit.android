@@ -44,36 +44,6 @@
             android:background="@color/white"
             android:orientation="horizontal">
 
-            <android.support.v7.widget.LinearLayoutCompat
-                android:layout_width="@dimen/size"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <components.Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:_icon="" />
-
-                <components.Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:_icon="" />
-
-                <components.Line
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-
-                <components.Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:_active="true"
-                    app:_icon="" />
-
-                <components.Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:_icon="" />
-            </android.support.v7.widget.LinearLayoutCompat>
 
         </android.support.v7.widget.LinearLayoutCompat>
 
