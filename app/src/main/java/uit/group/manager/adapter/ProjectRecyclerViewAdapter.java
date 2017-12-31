@@ -1,16 +1,17 @@
 package uit.group.manager.adapter;
 
+import android.databinding.DataBindingUtil;
+import android.databinding.ViewDataBinding;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import io.realm.OrderedRealmCollection;
 import io.realm.Realm;
 import io.realm.RealmRecyclerViewAdapter;
 import object.Project;
+import uit.group.manager.BR;
 import uit.group.manager.R;
 
 public class ProjectRecyclerViewAdapter extends RealmRecyclerViewAdapter<Project, ProjectRecyclerViewAdapter.ProjectViewHolder> {
@@ -28,19 +29,24 @@ public class ProjectRecyclerViewAdapter extends RealmRecyclerViewAdapter<Project
 
     @Override
     public ProjectViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(
+        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+        ViewDataBinding viewDataBinding = DataBindingUtil.inflate(
+                layoutInflater,
                 R.layout.project_item,
                 parent, false
         );
-        return new ProjectViewHolder(itemView);
+        return new ProjectViewHolder(viewDataBinding);
     }
 
     @Override
     public void onBindViewHolder(ProjectViewHolder holder, int position) {
-        final Project project = getItem(position);
-        holder.project = project;
-        //noinspection ConstantConditions
-        holder.projectName.setText(project.getName());
+        Project project = getItem(position);
+        holder.bind(project);
+    }
+    //        final Project project = getItem(position);
+//        holder.project = project;
+//        //noinspection ConstantConditions
+//        holder.projectView.set_text(project.getName());
 //        if (inDeletionMode) {
 //            holder.deletedCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 //                @Override
@@ -56,20 +62,22 @@ public class ProjectRecyclerViewAdapter extends RealmRecyclerViewAdapter<Project
 //            holder.deletedCheckBox.setOnCheckedChangeListener(null);
 //        }
 //        holder.deletedCheckBox.setVisibility(inDeletionMode ? View.VISIBLE : View.GONE);
-    }
 
-//    @Override
+    //    @Override
 //    public long getItemId(int position) {
 //        return getItem(position).getId();
 //    }
-
     class ProjectViewHolder extends RecyclerView.ViewHolder {
-        TextView projectName;
-        Project project;
+        private final ViewDataBinding binding;
 
-        ProjectViewHolder(View view) {
-            super(view);
-            projectName = view.findViewById(R.id.textProject);
+        ProjectViewHolder(ViewDataBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
+        }
+
+        public void bind(Project project) {
+            binding.setVariable(BR.project, project);
+            binding.executePendingBindings();
         }
     }
 }

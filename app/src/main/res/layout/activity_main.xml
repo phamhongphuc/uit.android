@@ -87,13 +87,14 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <TextView
+                <components.Button
                     android:id="@+id/textView2"
-                    android:layout_width="150dp"
+                    android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:text="@{State.status}"/>
+                    app:_text="Cái gì đó"/>
 
                 <android.support.v7.widget.RecyclerView
+
                     android:id="@+id/list_project"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
