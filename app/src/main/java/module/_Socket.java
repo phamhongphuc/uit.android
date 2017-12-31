@@ -1,5 +1,7 @@
 package module;
 
+import android.util.Log;
+
 import com.facebook.AccessToken;
 
 import org.json.JSONException;
@@ -14,8 +16,8 @@ import io.socket.emitter.Emitter;
 import object.User;
 
 public class _Socket {
-    private static Socket socket;
     public static String status;
+    private static Socket socket;
 
     public static void Initialize() {
         getSocket();
@@ -23,21 +25,25 @@ public class _Socket {
             @Override
             public void call(Object... args) {
                 status = Socket.EVENT_CONNECT_ERROR;
+                Log.d("SOCKET EVENT:", status);
             }
         }).on(Socket.EVENT_CONNECT, new Emitter.Listener() {
             @Override
             public void call(Object... args) {
                 status = Socket.EVENT_CONNECT;
+                Log.d("SOCKET EVENT:", status);
             }
         }).on(Socket.EVENT_CONNECT_TIMEOUT, new Emitter.Listener() {
             @Override
             public void call(Object... args) {
                 status = Socket.EVENT_CONNECT_TIMEOUT;
+                Log.d("SOCKET EVENT:", status);
             }
         }).on(Socket.EVENT_DISCONNECT, new Emitter.Listener() {
             @Override
             public void call(Object... args) {
                 status = Socket.EVENT_DISCONNECT;
+                Log.d("SOCKET EVENT:", status);
             }
         });
 

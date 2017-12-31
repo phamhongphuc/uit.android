@@ -1,12 +1,8 @@
 package object;
 
-import android.annotation.SuppressLint;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import io.realm.RealmList;
@@ -30,21 +26,9 @@ public class Project extends RealmObject {
     public Project() {
     }
 
-    public Project(int id, String name, String description, User assigned, String deadline, RealmList<User> members) {
+    public Project(int id, String name) {
         this.id = id;
         this.name = name;
-        this.description = description;
-        this.assigned = assigned;
-        this.createdate = new Date();
-        @SuppressLint("SimpleDateFormat") SimpleDateFormat format
-                = new SimpleDateFormat("dd/MM/yyyy");
-        Date date = null;
-        try {
-            date = format.parse(deadline);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        this.deadline = date;
     }
 
     ///Getter
@@ -60,9 +44,9 @@ public class Project extends RealmObject {
         return tasks;
     }
 
-    public int getNumberSameStatusTasks(int Status){
-        int count=0;
-        for(Task each:this.tasks){
+    public int getNumberSameStatusTasks(int Status) {
+        int count = 0;
+        for (Task each : this.tasks) {
             if (each.getStatus() == Status) {
                 count++;
             }

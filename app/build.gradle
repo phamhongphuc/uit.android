@@ -36,4 +36,5 @@ dependencies {
         exclude group: 'org.json', module: 'json'
     }
     api 'com.facebook.android:facebook-android-sdk:4.6.0'
+    api 'io.realm:android-adapters:2.1.1'
 }

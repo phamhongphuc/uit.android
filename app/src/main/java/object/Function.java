@@ -14,7 +14,7 @@ public class Function {
                                         final String description, final RealmList<User> members) {
         Realm realm = Realm.getDefaultInstance();
         realm.beginTransaction();
-        Project newProject = new Project(id, name, description, assigned, deadline, members);
+        Project newProject = new Project(id, name);
         realm.copyToRealm(newProject);
         realm.commitTransaction();
         return newProject;
