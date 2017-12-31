@@ -2,4 +2,7 @@
     <string name="app_name">Choose your Project</string>
     <string name="facebook_app_id">1770196659861627</string>
     <string name="fb_login_protocol_scheme">fb1770196659861627</string>
+    <string name="title_activity_user_profile">UserProfileActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 </resources>
