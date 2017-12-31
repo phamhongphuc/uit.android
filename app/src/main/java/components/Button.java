@@ -140,6 +140,7 @@ public class Button extends LinearLayoutCompat {
         }
         if (textView != null) {
             textView.setTextSize(size * 0.35f / dp);
+            textView.setWidth(width - (iconView == null ? 0 : size));
             textView.setPadding(
                     iconView == null ? (int) (size * 0.5f / dp) : 0,
                     0,
