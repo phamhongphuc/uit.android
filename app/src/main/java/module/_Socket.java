@@ -10,6 +10,7 @@ import org.json.JSONObject;
 import java.net.URISyntaxException;
 
 import app.Constant;
+import io.socket.client.Ack;
 import io.socket.client.IO;
 import io.socket.client.Socket;
 import io.socket.emitter.Emitter;
@@ -86,7 +87,21 @@ public class _Socket {
      */
     public static void GetUserByAccessToken() {
         if (AccessToken.getCurrentAccessToken() != null) {
-            socket.emit("GetUserByAccessToken", AccessToken.getCurrentAccessToken().getToken());
+//            JSONObject json = new JSONObject();
+//            try {
+//                json.put("accessToken", AccessToken.getCurrentAccessToken().getToken());
+//                json.put("id", AccessToken.getCurrentAccessToken().getUserId());
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+            String accessToken = AccessToken.getCurrentAccessToken().getToken();
+            String id = AccessToken.getCurrentAccessToken().getUserId();
+            socket.emit("Get:User(accessToken, id)", accessToken, id, new Ack() {
+                @Override
+                public void call(Object... args) {
+                    int a = 5;
+                }
+            });
         }
     }
 }

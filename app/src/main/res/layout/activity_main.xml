@@ -2,6 +2,7 @@
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     >
 
     <data>
@@ -27,11 +28,11 @@
 
             <components.Button
                 android:layout_width="wrap_content"
-                android:layout_weight="1"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:onClick="debug"
                 app:_icon=""
-                app:_text="Choose your project" />
+                app:_text="Choose your project"/>
 
             <components.Line
                 android:layout_width="wrap_content"
@@ -40,7 +41,7 @@
             <components.Button
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                app:_icon="" />
+                app:_icon=""/>
         </android.support.v7.widget.LinearLayoutCompat>
 
         <android.support.v7.widget.LinearLayoutCompat
@@ -50,62 +51,22 @@
             android:orientation="horizontal">
 
             <android.support.v7.widget.LinearLayoutCompat
-                android:layout_width="@dimen/size"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <components.Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:_icon=""/>
-
-                <components.Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:_icon=""/>
-
-                <components.Line
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
-
-                <components.Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:_active="true"
-                    app:_icon=""/>
-
-                <components.Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:_icon=""/>
-            </android.support.v7.widget.LinearLayoutCompat>
-
-            <android.support.v7.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#eee"
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <components.Button
-                    android:id="@+id/textView2"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    app:_text="Cái gì đó"/>
-
                 <android.support.v7.widget.RecyclerView
-
                     android:id="@+id/list_project"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                </android.support.v7.widget.RecyclerView>
-
-                <!--<com.facebook.login.widget.LoginButton-->
-                <!--android:id="@+id/login_button"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_centerInParent="true"/>-->
+                    android:layout_height="match_parent"
+                    android:padding="5dp"
+                    android:scrollbarSize="3dp"
+                    android:scrollbarThumbVertical="@color/blueTransparent"
+                    android:scrollbars="vertical"
+                    tools:itemCount="2"
+                    tools:listitem="@layout/project_item"/>
 
             </android.support.v7.widget.LinearLayoutCompat>
         </android.support.v7.widget.LinearLayoutCompat>
