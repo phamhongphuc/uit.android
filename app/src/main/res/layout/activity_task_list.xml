@@ -29,9 +29,15 @@
             <components.Button
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:onClick="debug"
                 app:_icon=""
                 app:_text="Task list" />
+
+            <components.Button
+                android:layout_width="@dimen/size"
+                android:layout_height="@dimen/size"
+                app:_icon="" />
 
 
         </android.support.v7.widget.LinearLayoutCompat>

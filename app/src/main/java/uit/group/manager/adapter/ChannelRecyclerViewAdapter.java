@@ -11,7 +11,6 @@ import io.realm.OrderedRealmCollection;
 import io.realm.Realm;
 import io.realm.RealmRecyclerViewAdapter;
 import object.Channel;
-import object.Project;
 import uit.group.manager.BR;
 import uit.group.manager.R;
 

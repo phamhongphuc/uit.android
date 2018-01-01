@@ -37,7 +37,7 @@
         <components.Button
             android:layout_width="@dimen/size"
             android:layout_height="match_parent"
-            app:_icon="+" />
+            app:_icon="" />
 
         <components.Line
             android:layout_width="wrap_content"
