@@ -13,12 +13,13 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="10dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="Description"
+            android:text="@string/description"
             tools:_text="abc" />
 
         <components.Line
@@ -30,103 +31,56 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="About me"
+            android:text="@string/about_me"
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Gender"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Birthday"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="@dimen/size"
-                android:layout_weight="1"
-                android:text="gender" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="@dimen/size"
-                android:layout_weight="1"
-                android:text="birthdate" />
-        </LinearLayout>
+                android:text="@string/gender"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Email Address"
-            android:textStyle="bold" />
+            android:text="gender" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/birthday"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="birthdate" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/email_address"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp" />
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-
             <TextView
-
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="email" />
-
-            <components.Line
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
-
             <components.Button
                 android:layout_width="@dimen/size"
                 android:layout_height="@dimen/size"
                 app:_icon="" />
 
         </android.support.v7.widget.LinearLayoutCompat>
-
-        <components.Line
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Professional skills"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <components.Line
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Personal skills"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
 
     </android.support.v7.widget.LinearLayoutCompat>
 
