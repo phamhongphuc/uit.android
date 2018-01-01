@@ -21,6 +21,7 @@ import io.socket.client.IO;
 import io.socket.client.Socket;
 import io.socket.emitter.Emitter;
 import object.Project;
+import object.Task;
 import object.User;
 
 public class _Socket {
@@ -160,5 +161,26 @@ public class _Socket {
                 }
             }
         });
+    }
+
+    public static RealmList<Task> GetTasksByProjectId(String projectId) {
+        socket.emit("Get:Project.Tasks(projectId)", projectId, new Ack() {
+            @Override
+            public void call(Object... args) {
+                if (args[0] != null) {
+                    Log.d("SOCKET: ERROR", "Lỗi trả về: " + args[0]);
+                } else {
+                    JSONArray array = (JSONArray) args[1];
+                    for (int i = 0; i < array.length(); i++) {
+                        try {
+                            int taskId = (int) array.get(i);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+        });
+        return new RealmList<>();
     }
 }
