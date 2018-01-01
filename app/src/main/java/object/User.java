@@ -53,6 +53,10 @@ public class User extends RealmObject {
         return email;
     }
 
+    public String getImageUrl() {
+        return "http://graph.facebook.com/" + id + "/picture";
+    }
+
     public String getDescription() {
         return description;
     }
