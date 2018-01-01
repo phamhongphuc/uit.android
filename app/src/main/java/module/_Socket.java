@@ -6,6 +6,8 @@ import android.util.Log;
 
 import com.facebook.AccessToken;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.net.URISyntaxException;
@@ -13,10 +15,12 @@ import java.net.URISyntaxException;
 import app.Constant;
 import app.Global;
 import io.realm.Realm;
+import io.realm.RealmList;
 import io.socket.client.Ack;
 import io.socket.client.IO;
 import io.socket.client.Socket;
 import io.socket.emitter.Emitter;
+import object.Project;
 import object.User;
 
 public class _Socket {
@@ -114,5 +118,47 @@ public class _Socket {
                 }
             });
         }
+    }
+
+    public static RealmList<Project> GetProjectsByUserId(String userId) {
+        socket.emit("Get:User.Projects(userId)", userId, new Ack() {
+            @Override
+            public void call(Object... args) {
+                if (args[0] != null) {
+                    Log.d("SOCKET: ERROR", "Lỗi lấy project từ id" + args[0]);
+                } else {
+                    JSONArray array = (JSONArray) args[1];
+                    for (int i = 0; i < array.length(); i++) {
+                        try {
+                            int projectId = (int) array.get(i);
+                            GetProjectById(projectId);
+                            // chua tra ve duoc project
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                }
+            }
+        });
+        return new RealmList<>();
+    }
+
+    public static void GetProjectById(int projectId) {
+        final Project objectFromJson;
+        socket.emit("Get:Project(projectId)", projectId, new Ack() {
+            @Override
+            public void call(Object... args) {
+                Realm realm = Realm.getDefaultInstance();
+                if (args[0] != null) {
+                    Log.d("SOCKET: ERROR", "Lỗi trả về" + args[0]);
+                } else {
+                    JSONObject obj = (JSONObject) args[1];
+                    realm.beginTransaction();
+                    final Project objectFromJson = realm.createOrUpdateObjectFromJson(Project.class, obj);
+                    realm.commitTransaction();
+                }
+            }
+        });
     }
 }
