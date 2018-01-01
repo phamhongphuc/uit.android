@@ -2,6 +2,8 @@ package uit.group.manager;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.databinding.Observable;
+import android.databinding.ObservableField;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
@@ -10,7 +12,9 @@ import android.view.View;
 
 import com.facebook.CallbackManager;
 
+import app.Global;
 import module._Facebook;
+import object.User;
 import uit.group.manager.databinding.ActivityLoginBinding;
 import view.fragment.FragmentAdapter;
 import view.state.LoginState;
@@ -26,6 +30,17 @@ public class LoginActivity extends AppCompatActivity {
 
         InitializeDataBinding();
         InitializePages();
+
+        Global.getInstance().currentUser.addOnPropertyChangedCallback(new Observable.OnPropertyChangedCallback() {
+            @Override
+            public void onPropertyChanged(Observable sender, int propertyId) {
+                User user = (User) ((ObservableField) sender).get();
+                if (user != null) {
+                    startActivity(new Intent(getBaseContext(), MainActivity.class));
+                    finish();
+                }
+            }
+        });
     }
 
     private void InitializePages() {

@@ -17,16 +17,6 @@ public class App extends Application {
         _Socket.Initialize();
         _Facebook.Initialize();
 
-//        JSONObject JSON = new User("123", "java", "mail@mail").getJson();
-//        _Socket.getSocket().emit("aJson", JSON);
-
         Realm.init(this);
-
-//        Stetho.initialize(
-//                Stetho.newInitializerBuilder(this)
-//                        .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
-//                        .enableWebKitInspector(RealmInspectorModulesProvider.builder(this).build())
-//                        .build()
-//        );
     }
 }

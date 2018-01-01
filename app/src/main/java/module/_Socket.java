@@ -108,14 +108,11 @@ public class _Socket {
                         Log.d("SOCKET: ERROR", "Lỗi trả về" + args[0]);
                     } else {
                         JSONObject obj = (JSONObject) args[1];
-//                        try {
-//                            obj.put("projects", new JSONArray());
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
                         realm.beginTransaction();
-                        final User objectFromJson = realm.createOrUpdateObjectFromJson(User.class, obj);
+                        final User user = realm.createOrUpdateObjectFromJson(User.class, obj);
                         realm.commitTransaction();
+
+                        Global.getInstance().currentUser.set(user);
                     }
                 }
             });

@@ -186,5 +186,4 @@ public class Button extends LinearLayoutCompat {
 
         invalidate();
     }
-
 }

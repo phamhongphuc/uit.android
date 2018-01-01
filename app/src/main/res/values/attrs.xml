@@ -8,6 +8,9 @@
     <declare-styleable name="Line">
         <attr name="_isFull" format="boolean"/>
     </declare-styleable>
+    <declare-styleable name="Image">
+        <attr name="_url" format="string"/>
+    </declare-styleable>
     <declare-styleable name="Button">
         <attr name="_icon" format="string"/>
         <attr name="_text" format="string"/>
@@ -21,8 +24,5 @@
         <attr name="_activeColor" format="color"/>
         <attr name="_count" format="integer"/>
         <attr name="_index" format="integer"/>
-    </declare-styleable>
-    <declare-styleable name="Vector">
-        <attr name="_src" format="integer"/>
     </declare-styleable>
 </resources>
