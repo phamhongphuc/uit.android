@@ -19,5 +19,6 @@
         android:textColor="@color/blue"
         android:text="@string/Introduction_1"
         android:textStyle="italic"
+        android:padding="10dp"
         android:textSize="20sp" />
 </LinearLayout>
