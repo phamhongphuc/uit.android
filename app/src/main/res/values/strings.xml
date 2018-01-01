@@ -10,5 +10,6 @@
     <string name="gender">Gender</string>
     <string name="birthday">Birthday</string>
     <string name="email_address">Email Address</string>
-    <string name="Introduction">Organizing work and life\nOrganize and prioritize all your tasks and projects so you can live more and stress less.</string>
+    <string name="Introduction_1">Collaborate efficiently\nKeep teamwork organized too-share projects, assign tasks, discuss the details</string>
+    <string name="Introduction_2">Organizing work and life\nOrganize and prioritize all your tasks and projects so you can live more and stress less.</string>
 </resources>
