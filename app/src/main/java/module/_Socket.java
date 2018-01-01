@@ -112,7 +112,7 @@ public class _Socket {
                         final User user = realm.createOrUpdateObjectFromJson(User.class, obj);
                         realm.commitTransaction();
 
-                        Global.getInstance().currentUser.set(user);
+                        Global.getInstance().currentUserId.set(user.getId());
                     }
                 }
             });
@@ -124,14 +124,14 @@ public class _Socket {
             @Override
             public void call(Object... args) {
                 if (args[0] != null) {
-                    Log.d("SOCKET: ERROR", "Lỗi lấy project từ id" + args[0]);
+                    Log.d("SOCKET: ERROR", "Lỗi lấy projects từ id" + args[0]);
                 } else {
                     JSONArray array = (JSONArray) args[1];
                     for (int i = 0; i < array.length(); i++) {
                         try {
                             int projectId = (int) array.get(i);
                             GetProjectById(projectId);
-                            // chua tra ve duoc project
+                            // chua tra ve duoc projects
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

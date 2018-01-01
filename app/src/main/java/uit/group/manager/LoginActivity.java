@@ -14,7 +14,6 @@ import com.facebook.CallbackManager;
 
 import app.Global;
 import module._Facebook;
-import object.User;
 import uit.group.manager.databinding.ActivityLoginBinding;
 import view.fragment.FragmentAdapter;
 import view.state.LoginState;
@@ -31,11 +30,10 @@ public class LoginActivity extends AppCompatActivity {
         InitializeDataBinding();
         InitializePages();
 
-        Global.getInstance().currentUser.addOnPropertyChangedCallback(new Observable.OnPropertyChangedCallback() {
+        Global.getInstance().currentUserId.addOnPropertyChangedCallback(new Observable.OnPropertyChangedCallback() {
             @Override
             public void onPropertyChanged(Observable sender, int propertyId) {
-                User user = (User) ((ObservableField) sender).get();
-                if (user != null) {
+                if (((ObservableField) sender).get() != null) {
                     startActivity(new Intent(getBaseContext(), MainActivity.class));
                     finish();
                 }

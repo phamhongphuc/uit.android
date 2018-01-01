@@ -22,7 +22,7 @@ public class UserRecyclerViewAdapter extends RealmRecyclerViewAdapter<User, User
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(@NonNull Realm realm) {
-                users.add(new User("123", "abc", ""));
+                users.add(new User());
             }
         });
     }
@@ -39,22 +39,22 @@ public class UserRecyclerViewAdapter extends RealmRecyclerViewAdapter<User, User
     }
 
     @Override
-    public void onBindViewHolder(UserViewHolder holder, int position) {
+    public void onBindViewHolder(UserViewHolder userViewHolder, int position) {
         User user = getItem(position);
-        holder.bind(user);
+        userViewHolder.bind(user);
     }
-    //        final Project project = getItem(position);
-//        holder.project = project;
+    //        final Project projects = getItem(position);
+//        holder.projects = projects;
 //        //noinspection ConstantConditions
-//        holder.projectView.set_text(project.getName());
+//        holder.projectView.set_text(projects.getName());
 //        if (inDeletionMode) {
 //            holder.deletedCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 //                @Override
 //                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 //                    if (isChecked) {
-//                        countersToDelete.add(project.getId());
+//                        countersToDelete.add(projects.getId());
 //                    } else {
-//                        countersToDelete.remove(project.getId());
+//                        countersToDelete.remove(projects.getId());
 //                    }
 //                }
 //            });

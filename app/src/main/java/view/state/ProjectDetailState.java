@@ -8,6 +8,6 @@ public class ProjectDetailState {
     public final ObservableField<Project> project = new ObservableField<>();
 
     public ProjectDetailState() {
-//        project.set(OldGlobal.project.get());
+//        projects.set(OldGlobal.projects.get());
     }
 }

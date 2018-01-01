@@ -9,6 +9,7 @@ import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
+import module._Facebook;
 
 public class User extends RealmObject {
     public static final boolean FEMALE = false;
@@ -27,10 +28,11 @@ public class User extends RealmObject {
     public User() {
     }
 
-    public User(String id, String name, String email) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
+    public static User getUserById(Realm realm, String userId) {
+        realm.beginTransaction();
+        User user = realm.where(User.class).equalTo("id", userId).findFirst();
+        realm.commitTransaction();
+        return user;
     }
 
     public String getId() {
@@ -53,8 +55,8 @@ public class User extends RealmObject {
         return email;
     }
 
-    public String getImageUrl() {
-        return "http://graph.facebook.com/" + id + "/picture";
+    public String getPicture() {
+        return _Facebook.GetPicture(id);
     }
 
     public String getDescription() {
@@ -63,6 +65,10 @@ public class User extends RealmObject {
 
     public RealmList<Project> getProjects() {
         return projects;
+    }
+
+    public Date getLastupdate() {
+        return lastupdate;
     }
 
     public JSONObject getJson() {
@@ -78,19 +84,5 @@ public class User extends RealmObject {
             e.printStackTrace();
         }
         return obj;
-    }
-
-    public static void SetCurrentUser(final String id, final String name, final String email) {
-        Realm realm = Realm.getDefaultInstance();
-        User user = realm.where(User.class).equalTo("id", id).findFirst();
-        if (user == null) {
-            realm.beginTransaction();
-            realm.copyToRealm(new User(id, name, email));
-            realm.commitTransaction();
-        }
-    }
-
-    public Date getLastupdate() {
-        return lastupdate;
     }
 }

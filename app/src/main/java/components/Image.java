@@ -17,6 +17,8 @@ import android.util.AttributeSet;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.Objects;
+
 import uit.group.manager.R;
 
 public class Image extends android.support.v7.widget.AppCompatImageView {
@@ -39,12 +41,45 @@ public class Image extends android.support.v7.widget.AppCompatImageView {
         Initialize(context, attrs);
     }
 
+    public static Bitmap getCroppedBitmap(Bitmap input, int radius) {
+        Bitmap bitmap;
+
+        if (input.getWidth() != radius || input.getHeight() != radius) {
+            float smallest = Math.min(input.getWidth(), input.getHeight());
+            float factor = smallest / radius;
+            bitmap = Bitmap.createScaledBitmap(input,
+                    (int) (input.getWidth() / factor),
+                    (int) (input.getHeight() / factor), false);
+        } else {
+            bitmap = input;
+        }
+
+        Bitmap output = Bitmap.createBitmap(radius, radius, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(output);
+
+        final String color = "#BAB399";
+        final Paint paint = new Paint();
+        final Rect rect = new Rect(0, 0, radius, radius);
+
+        paint.setAntiAlias(true);
+        paint.setFilterBitmap(true);
+        paint.setDither(true);
+        canvas.drawARGB(0, 0, 0, 0);
+        paint.setColor(Color.parseColor(color));
+        canvas.drawCircle(radius / 2 + 0.7f, radius / 2 + 0.7f, radius / 2 + 0.1f, paint);
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        canvas.drawBitmap(bitmap, rect, rect, paint);
+
+        return output;
+    }
+
     private void Initialize(Context context, @Nullable AttributeSet attrs) {
         InitializeAttr(context, attrs);
         InitializeView(context);
     }
 
     private void InitializeView(Context context) {
+        if (Objects.equals(url, "")) return;
         Picasso.with(getContext())
                 .load(url)
                 .into(this);
@@ -83,38 +118,6 @@ public class Image extends android.support.v7.widget.AppCompatImageView {
         Bitmap roundBitmap = getCroppedBitmap(bitmap, size);
         canvas.drawBitmap(roundBitmap, 0, 0, null);
 
-    }
-
-    public static Bitmap getCroppedBitmap(Bitmap input, int radius) {
-        Bitmap bitmap;
-
-        if (input.getWidth() != radius || input.getHeight() != radius) {
-            float smallest = Math.min(input.getWidth(), input.getHeight());
-            float factor = smallest / radius;
-            bitmap = Bitmap.createScaledBitmap(input,
-                    (int) (input.getWidth() / factor),
-                    (int) (input.getHeight() / factor), false);
-        } else {
-            bitmap = input;
-        }
-
-        Bitmap output = Bitmap.createBitmap(radius, radius, Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(output);
-
-        final String color = "#BAB399";
-        final Paint paint = new Paint();
-        final Rect rect = new Rect(0, 0, radius, radius);
-
-        paint.setAntiAlias(true);
-        paint.setFilterBitmap(true);
-        paint.setDither(true);
-        canvas.drawARGB(0, 0, 0, 0);
-        paint.setColor(Color.parseColor(color));
-        canvas.drawCircle(radius / 2 + 0.7f, radius / 2 + 0.7f, radius / 2 + 0.1f, paint);
-        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
-        canvas.drawBitmap(bitmap, rect, rect, paint);
-
-        return output;
     }
 
 }

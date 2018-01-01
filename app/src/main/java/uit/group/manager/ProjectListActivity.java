@@ -1,14 +1,10 @@
 package uit.group.manager;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.MenuItem;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
-
-import java.util.Random;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
@@ -45,8 +41,8 @@ public class ProjectListActivity extends AppCompatActivity {
     }
 
     public void addProject(View v) {
-        ///... thuc hien viec them project
-        /// sau khi them xong, quay tro lai man hinh nay, va hien ra cung voi project moi
+        ///... thuc hien viec them projects
+        /// sau khi them xong, quay tro lai man hinh nay, va hien ra cung voi projects moi
         reloadDB();
     }
 }

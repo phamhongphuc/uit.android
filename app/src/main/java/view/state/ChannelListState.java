@@ -9,6 +9,6 @@ public class ChannelListState {
     public final ObservableField<RealmList<Channel>> channels = new ObservableField<>();
 
     public ChannelListState() {
-//        channels.set(OldGlobal.project.get().getChannels());
+//        channels.set(OldGlobal.projects.get().getChannels());
     }
 }

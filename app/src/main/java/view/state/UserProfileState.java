@@ -15,7 +15,7 @@ public class UserProfileState extends BaseObservable {
 
     public UserProfileState() {
 //        user.set(OldGlobal.user.get());
-//        tasks.set(OldGlobal.project.get().getTasks());
+//        tasks.set(OldGlobal.projects.get().getTasks());
 //        Realm realm = Realm.getDefaultInstance();
 //        User user = realm.where(User.class).equalTo("id")
 //        //        socket.

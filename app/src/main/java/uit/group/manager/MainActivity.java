@@ -2,15 +2,18 @@ package uit.group.manager;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
 import io.realm.Realm;
-import object.User;
+import io.realm.exceptions.RealmPrimaryKeyConstraintException;
+import module._Facebook;
+import object.Project;
 import uit.group.manager.adapter.ProjectRecyclerViewAdapter;
-//import uit.group.manager.adapter.UserRecyclerViewAdapter;
 import uit.group.manager.databinding.ActivityMainBinding;
 import view.state.MainState;
 
@@ -22,25 +25,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        InitializeDataBinding();
 
-        Realm realm = Realm.getDefaultInstance();
-        realm.beginTransaction();
-        User user = realm.where(User.class).findFirst();
-        realm.commitTransaction();
-        if (user != null) {
-            ProjectRecyclerViewAdapter adapter = new ProjectRecyclerViewAdapter(user.getProjects());
-            RecyclerView recyclerView = findViewById(R.id.list_project);
-            recyclerView.setLayoutManager(new LinearLayoutManager(this));
-            recyclerView.setAdapter(adapter);
-            recyclerView.setHasFixedSize(true);
-//            recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL){
-//                @Override
-//                public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
-//                    // super.onDraw(c, parent, state);
-//                }
-//            });
-        }
+        state.UpdateListProject();
+        InitializeDataBinding();
+        InitializeRecyclerView();
+    }
+
+    private void InitializeRecyclerView() {
+        ProjectRecyclerViewAdapter adapter = new ProjectRecyclerViewAdapter(state.projects.get());
+        RecyclerView recyclerView = findViewById(R.id.list_project);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
+        recyclerView.setHasFixedSize(true);
     }
 
     private void InitializeDataBinding() {
@@ -48,9 +44,25 @@ public class MainActivity extends AppCompatActivity {
         binding.setState(state);
     }
 
-    public void debug(View view) {
-        int a = 1;
+    public void facebookLogout(View view) {
+        _Facebook.Logout();
     }
 
-//    startActivity(new Intent(this, MainActivity.class));
+    public void addProject(View view) {
+        Realm realm = Realm.getDefaultInstance();
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(@NonNull Realm realm) {
+                try {
+                    Number id = realm.where(Project.class).max("id");
+                    int nextId = id == null ? 1 : id.intValue() + 1;
+                    Project project = new Project(nextId, "name123123");
+                    realm.copyToRealm(project);
+                } catch (RealmPrimaryKeyConstraintException ignored) {
+                    Log.d("REALM: ", "Trùng ID");
+                }
+            }
+        });
+        state.UpdateListProject();
+    }
 }

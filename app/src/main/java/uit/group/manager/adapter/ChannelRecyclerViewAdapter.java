@@ -42,18 +42,18 @@ public class ChannelRecyclerViewAdapter extends RealmRecyclerViewAdapter<Channel
         Channel channel = getItem(position);
         holder.bind(channel);
     }
-    //        final Project project = getItem(position);
-//        holder.project = project;
+    //        final Project projects = getItem(position);
+//        holder.projects = projects;
 //        //noinspection ConstantConditions
-//        holder.projectView.set_text(project.getName());
+//        holder.projectView.set_text(projects.getName());
 //        if (inDeletionMode) {
 //            holder.deletedCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 //                @Override
 //                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 //                    if (isChecked) {
-//                        countersToDelete.add(project.getId());
+//                        countersToDelete.add(projects.getId());
 //                    } else {
-//                        countersToDelete.remove(project.getId());
+//                        countersToDelete.remove(projects.getId());
 //                    }
 //                }
 //            });
