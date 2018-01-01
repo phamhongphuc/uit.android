@@ -1,10 +1,14 @@
 package object;
 
+import android.util.Log;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Date;
 
+import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.RealmQuery;
@@ -17,13 +21,12 @@ public class Project extends RealmObject {
     private RealmList<Task> tasks;
     private RealmList<User> members;
     private String description;
-    private User assigned;
+    private User creator;
     private RealmList<String> tags;
     private RealmList<Channel> channels;
     private Date createdate;
     private Date deadline;
     private Date lastupdate;
-
     public Project() {
     }
 
@@ -67,8 +70,12 @@ public class Project extends RealmObject {
         return description;
     }
 
-    public User getAssigned() {
-        return assigned;
+    public User getCreator() {
+        return creator;
+    }
+
+    public void setCreator(User creator) {
+        this.creator = creator;
     }
 
     public RealmList<String> getTags() {
@@ -112,7 +119,7 @@ public class Project extends RealmObject {
             obj.put("tasks", tasks);
             obj.put("members", members);
             obj.put("description", description);
-            obj.put("assigned", assigned);
+            obj.put("creator", creator);
             obj.put("tags", tags);
             obj.put("channels", channels);
             obj.put("createdate", createdate);
@@ -121,6 +128,18 @@ public class Project extends RealmObject {
             e.printStackTrace();
         }
         return obj;
+    }
+
+    public void setCreator(Realm realm, String creatorId) {
+        User user = User.getUserById(realm, creatorId);
+        if (user != null) creator = user;
+        else {
+            Log.e("ERROR", "Ngoại lệ");
+        }
+    }
+
+    public void setMembers(Realm realm, JSONArray membersId) {
+//        members.add()
     }
 }
 

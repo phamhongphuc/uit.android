@@ -34,6 +34,6 @@ public class MainState extends BaseObservable {
     }
 
     private void updateProjectsOfUser(Realm realm) {
-        projects = user.get().getProjects().where().findAll();
+        projects = user.get().getProjects();
     }
 }
