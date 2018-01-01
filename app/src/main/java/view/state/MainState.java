@@ -2,9 +2,11 @@ package view.state;
 
 import android.databinding.BaseObservable;
 import android.databinding.ObservableField;
+import android.support.annotation.NonNull;
 
 import app.Global;
 import io.realm.Realm;
+import io.realm.RealmChangeListener;
 import io.realm.RealmResults;
 import object.Project;
 import object.User;
@@ -14,22 +16,24 @@ public class MainState extends BaseObservable {
     public final ObservableField<String> userPicture = new ObservableField<>();
     public final ObservableField<User> user = new ObservableField<>();
     public Global global = Global.getInstance();
-    public ObservableField<RealmResults<Project>> projects;
+    public RealmResults<Project> projects;
 
     public MainState() {
         Realm realm = Realm.getDefaultInstance();
         user.set(User.getUserById(realm, global.currentUserId.get()));
         if (user.get() == null) user.set(new User());
-
-        UpdateListProject();
-
         userPicture.set(user.get().getPicture());
+
+        updateProjects(realm);
+        realm.addChangeListener(new RealmChangeListener<Realm>() {
+            @Override
+            public void onChange(@NonNull Realm realm) {
+                updateProjects(realm);
+            }
+        });
     }
 
-    public void UpdateListProject() {
-        Realm realm = Realm.getDefaultInstance();
-        realm.beginTransaction();
-        projects.set(realm.where(Project.class).findAll());
-        realm.commitTransaction();
+    private void updateProjects(Realm realm) {
+        projects = realm.where(Project.class).findAll();
     }
 }

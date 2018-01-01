@@ -26,17 +26,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        state.UpdateListProject();
         InitializeDataBinding();
         InitializeRecyclerView();
-    }
-
-    private void InitializeRecyclerView() {
-        ProjectRecyclerViewAdapter adapter = new ProjectRecyclerViewAdapter(state.projects.get());
-        RecyclerView recyclerView = findViewById(R.id.list_project);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(adapter);
-        recyclerView.setHasFixedSize(true);
     }
 
     private void InitializeDataBinding() {
@@ -44,11 +35,19 @@ public class MainActivity extends AppCompatActivity {
         binding.setState(state);
     }
 
+    private void InitializeRecyclerView() {
+        ProjectRecyclerViewAdapter adapter = new ProjectRecyclerViewAdapter(state.projects);
+        RecyclerView recyclerView = findViewById(R.id.list_project);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
+        recyclerView.setHasFixedSize(true);
+    }
+
     public void facebookLogout(View view) {
         _Facebook.Logout();
     }
 
-    public void addProject(View view) {
+    public void createProject(View view) {
         Realm realm = Realm.getDefaultInstance();
         realm.executeTransaction(new Realm.Transaction() {
             @Override
@@ -63,6 +62,5 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        state.UpdateListProject();
     }
 }

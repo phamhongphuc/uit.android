@@ -41,8 +41,9 @@ public class ProjectListActivity extends AppCompatActivity {
     }
 
     public void addProject(View v) {
-        ///... thuc hien viec them projects
-        /// sau khi them xong, quay tro lai man hinh nay, va hien ra cung voi projects moi
         reloadDB();
+    }
+
+    public void createProject(View view) {
     }
 }
