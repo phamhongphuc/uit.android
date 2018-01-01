@@ -163,6 +163,23 @@ public class _Socket {
         });
     }
 
+    public static void EditProject(final Project project) {
+        socket.emit("Edit:Project(project)", project, new Ack() {
+            @Override
+            public void call(Object... args) {
+                Realm realm = Realm.getDefaultInstance();
+                if (args[0] != null) {
+                    Log.d("SOCKET: ERROR", "Lỗi chỉnh sửa: " + args[0]);
+                } else {
+                    JSONObject obj = (JSONObject) args[1];
+                    realm.beginTransaction();
+                    final Project objectFromJson = realm.createOrUpdateObjectFromJson(Project.class, obj);
+                    realm.commitTransaction();
+                }
+            }
+        });
+    }
+
     public static RealmList<Task> GetTasksByProjectId(String projectId) {
         socket.emit("Get:Project.Tasks(projectId)", projectId, new Ack() {
             @Override
