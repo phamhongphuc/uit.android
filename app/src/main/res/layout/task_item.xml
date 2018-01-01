@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="task"
+            type="object.Task" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/userSize"
+        android:clipToPadding="false"
+        android:layout_margin="24dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size"
+            android:orientation="horizontal">
+
+            <components.Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#222"
+                android:textAlignment="textStart"
+                app:_text="@{task.name}"
+                tools:_text="123" />
+
+            <components.Button
+                android:layout_width="@dimen/size"
+                android:layout_height="@dimen/size"
+                app:_icon="" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size"
+            android:orientation="horizontal">
+
+            <components.Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textAlignment="textStart"
+                app:_text="@{task.description}"
+                tools:_text="123" />
+
+            <components.Button
+                android:layout_width="@dimen/size"
+                android:layout_height="@dimen/size"
+                android:animationCache="true"
+                android:background="#089"
+                app:_icon="" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

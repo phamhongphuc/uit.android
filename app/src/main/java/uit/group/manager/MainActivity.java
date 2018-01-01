@@ -10,6 +10,7 @@ import android.view.View;
 import io.realm.Realm;
 import object.User;
 import uit.group.manager.adapter.ProjectRecyclerViewAdapter;
+//import uit.group.manager.adapter.UserRecyclerViewAdapter;
 import uit.group.manager.databinding.ActivityMainBinding;
 import view.state.MainState;
 

@@ -12,6 +12,9 @@ import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
 public class User extends RealmObject {
+    public static final boolean Female = false;
+    public static final boolean Male = false;
+
     @PrimaryKey
     private String id;
     private String name;

@@ -44,7 +44,16 @@
             android:background="@color/white"
             android:orientation="horizontal">
 
-
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/list_user"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp"
+                android:scrollbarSize="3dp"
+                android:scrollbarThumbVertical="@color/blueTransparent"
+                android:scrollbars="vertical"
+                tools:itemCount="2"
+                tools:listitem="@layout/user_item" />
         </android.support.v7.widget.LinearLayoutCompat>
 
     </android.support.v7.widget.LinearLayoutCompat>

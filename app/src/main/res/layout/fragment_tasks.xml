@@ -1,6 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout>
 
-</LinearLayout>
+    <data>
+
+    </data>
+
+    <android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/projectSize"
+            android:orientation="horizontal">
+
+            <components.Button
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="@dimen/size"
+                app:_text="Completed" />
+
+            <components.Button
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="@dimen/size"
+                app:_text="On going" />
+        </android.support.v7.widget.LinearLayoutCompat>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/list_user"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:scrollbarSize="3dp"
+            android:scrollbarThumbVertical="@color/blueTransparent"
+            android:scrollbars="vertical"
+            tools:itemCount="2"
+
+            tools:listitem="@layout/task_item" />
+    </android.support.v7.widget.LinearLayoutCompat>
+</layout>
+
