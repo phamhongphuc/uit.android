@@ -9,8 +9,6 @@ import module._Facebook;
 import module._Socket;
 
 public class App extends Application {
-    public static Global global = new Global();
-
     @Override
     public void onCreate() {
         super.onCreate();
@@ -23,5 +21,12 @@ public class App extends Application {
 //        _Socket.getSocket().emit("aJson", JSON);
 
         Realm.init(this);
+
+//        Stetho.initialize(
+//                Stetho.newInitializerBuilder(this)
+//                        .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
+//                        .enableWebKitInspector(RealmInspectorModulesProvider.builder(this).build())
+//                        .build()
+//        );
     }
 }

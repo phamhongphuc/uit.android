@@ -2,10 +2,16 @@ package app;
 
 import android.databinding.ObservableField;
 
-import object.Project;
-import object.User;
-
 public class Global {
-    public static ObservableField<User> user = new ObservableField<>();
-    public static ObservableField<Project> project = new ObservableField<>();
+    private static final Global INSTANCE = new Global();
+
+    public static Global getInstance() {
+        return INSTANCE;
+    }
+
+    public ObservableField<String> socketStatus = new ObservableField<>();
+
+    private Global() {
+
+    }
 }

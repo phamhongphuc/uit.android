@@ -3,8 +3,6 @@ package view.state;
 import android.databinding.BaseObservable;
 import android.databinding.ObservableField;
 
-import app.Global;
-import io.realm.Realm;
 import io.realm.RealmList;
 import module._Socket;
 import object.Task;
@@ -16,8 +14,8 @@ public class UserProfileState extends BaseObservable {
     private final io.socket.client.Socket socket = _Socket.getSocket();
 
     public UserProfileState() {
-        user.set(Global.user.get());
-        tasks.set(Global.project.get().getTasks());
+//        user.set(OldGlobal.user.get());
+//        tasks.set(OldGlobal.project.get().getTasks());
 //        Realm realm = Realm.getDefaultInstance();
 //        User user = realm.where(User.class).equalTo("id")
 //        //        socket.

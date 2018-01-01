@@ -5,7 +5,6 @@ import org.json.JSONObject;
 
 import java.util.Date;
 
-import app.Global;
 import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmObject;
@@ -84,6 +83,5 @@ public class User extends RealmObject {
             user = realm.copyToRealm(new User(id, name, email));
             realm.commitTransaction();
         }
-        Global.user.set(user);
     }
 }
