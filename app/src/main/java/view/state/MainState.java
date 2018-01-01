@@ -24,16 +24,16 @@ public class MainState extends BaseObservable {
         if (user.get() == null) user.set(new User());
         userPicture.set(user.get().getPicture());
 
-        updateProjects(realm);
+        updateProjectsOfUser(realm);
         realm.addChangeListener(new RealmChangeListener<Realm>() {
             @Override
             public void onChange(@NonNull Realm realm) {
-                updateProjects(realm);
+                updateProjectsOfUser(realm);
             }
         });
     }
 
-    private void updateProjects(Realm realm) {
-        projects = realm.where(Project.class).findAll();
+    private void updateProjectsOfUser(Realm realm) {
+        projects = user.get().getProjects().where().findAll();
     }
 }

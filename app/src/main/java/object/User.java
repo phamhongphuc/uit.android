@@ -9,7 +9,7 @@ import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
-import module._Facebook;
+import module.facebook._Facebook;
 
 public class User extends RealmObject {
     public static final boolean FEMALE = false;

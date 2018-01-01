@@ -4,7 +4,7 @@ import android.databinding.BaseObservable;
 import android.databinding.ObservableField;
 
 import io.realm.RealmList;
-import module._Socket;
+import module.socket._Socket;
 import object.Task;
 import object.User;
 

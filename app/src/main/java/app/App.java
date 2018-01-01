@@ -5,8 +5,8 @@ import android.app.Application;
 import com.facebook.FacebookSdk;
 
 import io.realm.Realm;
-import module._Facebook;
-import module._Socket;
+import module.facebook._Facebook;
+import module.socket._Socket;
 
 public class App extends Application {
     @Override

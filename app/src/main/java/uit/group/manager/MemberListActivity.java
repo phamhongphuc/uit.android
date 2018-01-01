@@ -8,12 +8,11 @@ import android.support.v7.widget.RecyclerView;
 
 import io.realm.Realm;
 import object.Project;
-import object.User;
-import uit.group.manager.adapter.ProjectRecyclerViewAdapter;
-//import uit.group.manager.adapter.UserRecyclerViewAdapter;
-import uit.group.manager.adapter.UserRecyclerViewAdapter;
 import uit.group.manager.databinding.ActivityMainBinding;
+import view.adapter.UserRecyclerViewAdapter;
 import view.state.MainState;
+
+//import view.adapter.UserRecyclerViewAdapter;
 
 public class MemberListActivity extends AppCompatActivity {
 

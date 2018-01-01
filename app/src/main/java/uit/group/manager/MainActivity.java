@@ -2,19 +2,15 @@ package uit.group.manager;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 
-import io.realm.Realm;
-import io.realm.exceptions.RealmPrimaryKeyConstraintException;
-import module._Facebook;
-import object.Project;
-import uit.group.manager.adapter.ProjectRecyclerViewAdapter;
+import module.facebook._Facebook;
+import module.socket._Socket_Project;
 import uit.group.manager.databinding.ActivityMainBinding;
+import view.adapter.ProjectRecyclerViewAdapter;
 import view.state.MainState;
 
 public class MainActivity extends AppCompatActivity {
@@ -48,19 +44,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void createProject(View view) {
-        Realm realm = Realm.getDefaultInstance();
-        realm.executeTransaction(new Realm.Transaction() {
-            @Override
-            public void execute(@NonNull Realm realm) {
-                try {
-                    Number id = realm.where(Project.class).max("id");
-                    int nextId = id == null ? 1 : id.intValue() + 1;
-                    Project project = new Project(nextId, "name123123");
-                    realm.copyToRealm(project);
-                } catch (RealmPrimaryKeyConstraintException ignored) {
-                    Log.d("REALM: ", "Trùng ID");
-                }
-            }
-        });
+        _Socket_Project.CreateProject(state.user.get().getId());
     }
 }

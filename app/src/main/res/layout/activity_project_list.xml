@@ -53,7 +53,6 @@
             android:background="@color/white"
             android:orientation="horizontal">
 
-
             <ListView
                 android:id="@+id/lvProjects"
                 android:layout_width="match_parent"

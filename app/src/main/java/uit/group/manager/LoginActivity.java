@@ -10,10 +10,11 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 
 import app.Global;
-import module._Facebook;
+import module.facebook._Facebook;
 import uit.group.manager.databinding.ActivityLoginBinding;
 import view.fragment.FragmentAdapter;
 import view.state.LoginState;
@@ -86,6 +87,9 @@ public class LoginActivity extends AppCompatActivity {
      * @param view button
      */
     public void facebookLogin(View view) {
+        if (AccessToken.getCurrentAccessToken() != null) {
+
+        }
         _Facebook.Login(this);
     }
 }
