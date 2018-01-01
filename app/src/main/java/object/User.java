@@ -11,8 +11,8 @@ import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
 public class User extends RealmObject {
-    public static final boolean Female = false;
-    public static final boolean Male = false;
+    public static final boolean FEMALE = false;
+    public static final boolean MALE = false;
 
     @PrimaryKey
     private String id;
@@ -22,6 +22,7 @@ public class User extends RealmObject {
     private String email;
     private String description;
     private RealmList<Project> projects;
+    private Date lastupdate;
 
     public User() {
     }
@@ -60,7 +61,7 @@ public class User extends RealmObject {
         return projects;
     }
 
-    public JSONObject getJson(){
+    public JSONObject getJson() {
         JSONObject obj = new JSONObject();
         try {
             obj.put("id", id);
@@ -80,8 +81,12 @@ public class User extends RealmObject {
         User user = realm.where(User.class).equalTo("id", id).findFirst();
         if (user == null) {
             realm.beginTransaction();
-            user = realm.copyToRealm(new User(id, name, email));
+            realm.copyToRealm(new User(id, name, email));
             realm.commitTransaction();
         }
+    }
+
+    public Date getLastupdate() {
+        return lastupdate;
     }
 }

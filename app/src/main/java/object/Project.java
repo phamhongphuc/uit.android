@@ -22,6 +22,7 @@ public class Project extends RealmObject {
     private RealmList<Channel> channels;
     private Date createdate;
     private Date deadline;
+    private Date lastupdate;
 
     public Project() {
     }

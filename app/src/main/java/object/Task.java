@@ -27,6 +27,7 @@ public class Task extends RealmObject {
     private User assigned;
     private RealmList<User> members;
     private int status;
+    private Date lastupdate;
 
     public Task() {
     }

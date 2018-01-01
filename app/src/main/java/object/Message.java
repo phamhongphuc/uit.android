@@ -15,6 +15,7 @@ public class Message extends RealmObject {
     private User sender;
     private Channel channel;
     private String content;
+    private Date lastupdate;
 
     public Message() {
     }

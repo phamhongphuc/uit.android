@@ -9,6 +9,5 @@ public class TaskListState {
     public final ObservableField<RealmList<Task>> tasks = new ObservableField<>();
 
     public TaskListState() {
-//        tasks.set(OldGlobal.project.get().getTasks());
     }
 }

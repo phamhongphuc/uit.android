@@ -16,8 +16,10 @@ public class Channel extends RealmObject {
     private User assigned;
     private RealmList<User> members;
     private Date createdate;
+    private Date lastupdate;
 
-    public Channel(){}
+    public Channel() {
+    }
 
     public Channel(String id, String name) {
         this.id = id;
@@ -54,6 +56,10 @@ public class Channel extends RealmObject {
 
     public void setCreatedate(Date createdate) {
         this.createdate = createdate;
+    }
+
+    public Date getLastupdate() {
+        return lastupdate;
     }
 
     public JSONObject getJson() {
