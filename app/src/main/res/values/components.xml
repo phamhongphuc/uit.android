@@ -10,4 +10,9 @@
         <item name="android:layout_gravity">center</item>
         <item name="android:gravity">center</item>
     </style>
+
+    <style name="Text_Style">
+        <item name="android:textColor">@color/blue</item>
+    </style>
+
 </resources>

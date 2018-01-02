@@ -27,7 +27,7 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_margin="10dp"
-                app:_url="@{State.userPicture}"/>
+                app:_url="@{State.user.get().getPicture()}"/>
 
             <FrameLayout
                 android:layout_width="0dp"
@@ -100,7 +100,6 @@
                     android:scrollbarSize="3dp"
                     android:scrollbarThumbVertical="@color/blueTransparent"
                     android:scrollbars="vertical"
-
                     tools:itemCount="2"
                     tools:listitem="@layout/project_item"/>
 

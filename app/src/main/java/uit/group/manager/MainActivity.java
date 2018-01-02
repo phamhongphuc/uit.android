@@ -1,5 +1,6 @@
 package uit.group.manager;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void InitializeRecyclerView() {
-        ProjectRecyclerViewAdapter adapter = new ProjectRecyclerViewAdapter(state.projects);
+        ProjectRecyclerViewAdapter adapter = new ProjectRecyclerViewAdapter(state.user.get().getProjects());
         RecyclerView recyclerView = findViewById(R.id.list_project);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
@@ -41,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void facebookLogout(View view) {
         _Facebook.Logout();
+        startActivity(new Intent(this, LoginActivity.class));
+        finish();
     }
 
     public void createProject(View view) {

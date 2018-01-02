@@ -14,7 +14,7 @@ import android.view.View;
 import uit.group.manager.R;
 
 public class ViewPagerIndex extends View {
-    private static final Paint paint = new Paint();
+    private static final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private static final float RATIO = 0.4f;
 
     private int count;

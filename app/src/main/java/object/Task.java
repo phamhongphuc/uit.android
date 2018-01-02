@@ -70,10 +70,6 @@ public class Task extends RealmObject {
         return assigned;
     }
 
-    public RealmList<User> getMembers() {
-        return members;
-    }
-
     public int getStatus() {
         return status;
     }
@@ -85,15 +81,6 @@ public class Task extends RealmObject {
     public long getDaysLeft() {
         long daysLeft = deadline.getTime() - (new Date()).getTime();
         return (daysLeft / (60 * 60 * 1000));
-    }
-
-    ///Setter
-    public void addMembers(RealmList<User> members) {
-        this.members.addAll(members);
-    }
-
-    public void setStatus(int status) {
-        this.status = (status == ONGOING || status == COMPLETE) ? status : ONHOLD;
     }
 
     public JSONObject getJson() {

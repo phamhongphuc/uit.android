@@ -1,5 +1,7 @@
 package object;
 
+import android.databinding.Observable;
+import android.databinding.ObservableField;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -13,6 +15,7 @@ import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.RealmQuery;
 import io.realm.annotations.PrimaryKey;
+import module.socket._Socket_User;
 
 public class Project extends RealmObject {
     @PrimaryKey
@@ -27,6 +30,7 @@ public class Project extends RealmObject {
     private Date createdate;
     private Date deadline;
     private Date lastupdate;
+
     public Project() {
     }
 
@@ -131,15 +135,46 @@ public class Project extends RealmObject {
     }
 
     public void setCreator(Realm realm, String creatorId) {
-        User user = User.getUserById(realm, creatorId);
+        User user = User.getUserById_client(realm, creatorId);
         if (user != null) creator = user;
         else {
             Log.e("ERROR", "Ngoại lệ");
         }
     }
 
+    public void addMembers(Realm realm, User user) {
+        boolean in = realm.isInTransaction();
+        if (!in) realm.beginTransaction();
+        members.add(user);
+        if (!in) realm.commitTransaction();
+    }
+
     public void setMembers(Realm realm, JSONArray membersId) {
-//        members.add()
+        for (int i = 0; i < membersId.length(); i++) {
+            try {
+                String userId = membersId.getString(i);
+                User user = User.getUserById_client(realm, userId);
+                if (user != null) members.add(user);
+                else {
+                    final ObservableField<User> userField = new ObservableField<>();
+                    userField.addOnPropertyChangedCallback(new Observable.OnPropertyChangedCallback() {
+                        @Override
+                        public void onPropertyChanged(Observable sender, int propertyId) {
+                            Object value = ((ObservableField) sender).get();
+                            if (value != null) {
+                                int a = 5;
+                            }
+                        }
+                    });
+                    _Socket_User.GetUserById(userId, userField);
+                }
+
+                    User.getUserById_socket(userId);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
 

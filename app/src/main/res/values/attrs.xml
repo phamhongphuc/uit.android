@@ -3,6 +3,7 @@
 
     <declare-styleable name="Theme">
         <attr name="ButtonStyle" format="reference"/>
+        <attr name="TextStyle" format="reference"/>
         <attr name="LineStyle" format="reference"/>
     </declare-styleable>
     <declare-styleable name="Line">

@@ -1,24 +1,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:padding="20dp">
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center"
+              android:orientation="vertical"
+              android:padding="20dp">
 
     <View
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:background="@drawable/ic_login_1" />
+        android:background="@drawable/ic_login_1"/>
 
-    <TextView
+    <components.Text
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:textColor="@color/blue"
-        android:text="@string/Introduction_1"
-        android:textStyle="italic"
-        android:padding="10dp"
-        android:textSize="20sp" />
+        android:text="@string/Login_Introduction_1"
+        android:textAlignment="center"
+        android:textSize="18sp"/>
 </LinearLayout>

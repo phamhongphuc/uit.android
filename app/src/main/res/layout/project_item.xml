@@ -8,6 +8,9 @@
         <variable
             name="project"
             type="object.Project"/>
+        <variable
+            name="action"
+            type="view.adapter.ProjectRecyclerViewAdapter.ProjectItemAction"/>
     </data>
 
     <LinearLayout
@@ -17,11 +20,11 @@
         android:orientation="vertical">
 
         <components.Button
+            android:background="@color/white"
+            android:onClick="@{action.click}"
             android:layout_margin="5dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/button_drawable"
-            android:textAlignment="textStart"
             tools:_text="123"
             app:_text="@{project.name}">
         </components.Button>

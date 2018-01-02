@@ -117,7 +117,5 @@ public class Image extends android.support.v7.widget.AppCompatImageView {
 
         Bitmap roundBitmap = getCroppedBitmap(bitmap, size);
         canvas.drawBitmap(roundBitmap, 0, 0, null);
-
     }
-
 }

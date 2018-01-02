@@ -1,6 +1,7 @@
 package module.socket;
 
 import android.annotation.SuppressLint;
+import android.databinding.ObservableField;
 import android.util.Log;
 
 import com.facebook.AccessToken;
@@ -16,7 +17,7 @@ import object.User;
 public class _Socket_User {
     private static io.socket.client.Socket socket = _Socket.getSocket();
 
-    public static void GetUserById(String userId) {
+    public static void GetUserById(String userId, ObservableField<User> user) {
         socket.emit("Get:User(id)", userId, new Ack() {
             @Override
             public void call(Object... args) {
