@@ -46,7 +46,7 @@
         <activity android:name=".UserProfileActivity" />
         <activity android:name=".TaskListActivity" />
         <activity android:name=".TaskDetailActivity" />
-        <activity android:name=".ProjectEditActivity"></activity>
+        <activity android:name=".TaskEditActivity"></activity>
     </application>
 
 </manifest>

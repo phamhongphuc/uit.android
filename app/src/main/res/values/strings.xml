@@ -10,6 +10,6 @@
     <string name="gender">Gender</string>
     <string name="birthday">Birthday</string>
     <string name="email_address">Email Address</string>
-    <string name="Login_Introduction_1">Collaborate efficiently\nKeep teamwork organized too-\nshare projects, assign tasks,\ndiscuss the details</string>
+    <string name="Login_Introduction_1">Hợp tác cách hiệu quả\n Việc quản lý các thành viên một nhóm trong công việc cũng như trong học tập trước đây đòi hỏi rất nhiều tài nguyên và công sức.</string>
     <string name="Login_Introduction_2">Organizing work and life\nOrganize and prioritize all your\ntasks and projects so you can\nlive more and stress less.</string>
 </resources>
