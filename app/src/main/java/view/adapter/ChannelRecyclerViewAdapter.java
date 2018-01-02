@@ -4,6 +4,7 @@ import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import io.realm.OrderedRealmCollection;
@@ -48,7 +49,20 @@ public class ChannelRecyclerViewAdapter extends RealmRecyclerViewAdapter<Channel
 
         public void bind(Channel channel) {
             binding.setVariable(BR.channel, channel);
+            binding.setVariable(BR.action, new ChannelItemAction(channel));
             binding.executePendingBindings();
         }
     }
+
+    public class ChannelItemAction {
+        private Channel channel;
+
+        ChannelItemAction(Channel channel) {
+            this.channel = channel;
+        }
+
+        public void selectChannel(View view) {
+        }
+    }
+
 }

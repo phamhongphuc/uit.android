@@ -5,6 +5,7 @@ import android.databinding.ViewDataBinding;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import io.realm.OrderedRealmCollection;
@@ -81,7 +82,19 @@ public class TaskRecyclerViewAdapter extends RealmRecyclerViewAdapter<Task, Task
 
         public void bind(Task task) {
             binding.setVariable(BR.task, task);
+            binding.setVariable(BR.action, new TaskItemAction(task));
             binding.executePendingBindings();
+        }
+    }
+
+    public class TaskItemAction {
+        private Task task;
+
+        TaskItemAction(Task task) {
+            this.task = task;
+        }
+
+        public void selectTask(View view) {
         }
     }
 }

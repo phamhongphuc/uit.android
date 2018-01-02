@@ -5,6 +5,7 @@ import android.databinding.ViewDataBinding;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import io.realm.OrderedRealmCollection;
@@ -81,7 +82,19 @@ public class UserRecyclerViewAdapter extends RealmRecyclerViewAdapter<User, User
 
         public void bind(User user) {
             binding.setVariable(BR.user, user);
+            binding.setVariable(BR.action, new UserItemAction(user));
             binding.executePendingBindings();
+        }
+    }
+
+    public class UserItemAction {
+        private User user;
+
+        UserItemAction(User user) {
+            this.user = user;
+        }
+
+        public void selectUser(View view) {
         }
     }
 }
