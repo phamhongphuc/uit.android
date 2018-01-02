@@ -39,9 +39,9 @@ public class TaskRecyclerViewAdapter extends RealmRecyclerViewAdapter<Task, Task
     }
 
     @Override
-    public void onBindViewHolder(TaskViewHolder holder, int position) {
+    public void onBindViewHolder(TaskViewHolder taskViewHolder, int position) {
         Task task = getItem(position);
-        holder.bind(task);
+        taskViewHolder.bind(task);
     }
     //        final Project projects = getItem(position);
 //        holder.projects = projects;
@@ -72,6 +72,10 @@ public class TaskRecyclerViewAdapter extends RealmRecyclerViewAdapter<Task, Task
 
         TaskViewHolder(ViewDataBinding binding) {
             super(binding.getRoot());
+            binding.getRoot().setLayoutParams(new RecyclerView.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+            ));
             this.binding = binding;
         }
 

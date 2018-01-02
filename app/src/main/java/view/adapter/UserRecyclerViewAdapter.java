@@ -72,6 +72,10 @@ public class UserRecyclerViewAdapter extends RealmRecyclerViewAdapter<User, User
 
         UserViewHolder(ViewDataBinding binding) {
             super(binding.getRoot());
+            binding.getRoot().setLayoutParams(new RecyclerView.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+            ));
             this.binding = binding;
         }
 

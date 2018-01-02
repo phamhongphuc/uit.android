@@ -2,13 +2,11 @@ package view.adapter;
 
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
-import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import io.realm.OrderedRealmCollection;
-import io.realm.Realm;
 import io.realm.RealmRecyclerViewAdapter;
 import object.Channel;
 import uit.group.manager.BR;
@@ -18,12 +16,6 @@ public class ChannelRecyclerViewAdapter extends RealmRecyclerViewAdapter<Channel
 
     public ChannelRecyclerViewAdapter(final OrderedRealmCollection<Channel> channels) {
         super(channels, true);
-        Realm realm = Realm.getDefaultInstance();
-        realm.executeTransaction(new Realm.Transaction() {
-            @Override
-            public void execute(@NonNull Realm realm) {
-            }
-        });
     }
 
     @Override
@@ -38,39 +30,19 @@ public class ChannelRecyclerViewAdapter extends RealmRecyclerViewAdapter<Channel
     }
 
     @Override
-    public void onBindViewHolder(ChannelViewHolder holder, int position) {
+    public void onBindViewHolder(ChannelViewHolder channelViewHolder, int position) {
         Channel channel = getItem(position);
-        holder.bind(channel);
+        channelViewHolder.bind(channel);
     }
-    //        final Project projects = getItem(position);
-//        holder.projects = projects;
-//        //noinspection ConstantConditions
-//        holder.projectView.set_text(projects.getName());
-//        if (inDeletionMode) {
-//            holder.deletedCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//                @Override
-//                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                    if (isChecked) {
-//                        countersToDelete.add(projects.getId());
-//                    } else {
-//                        countersToDelete.remove(projects.getId());
-//                    }
-//                }
-//            });
-//        } else {
-//            holder.deletedCheckBox.setOnCheckedChangeListener(null);
-//        }
-//        holder.deletedCheckBox.setVisibility(inDeletionMode ? View.VISIBLE : View.GONE);
-
-    //    @Override
-//    public long getItemId(int position) {
-//        return getItem(position).getId();
-//    }
     class ChannelViewHolder extends RecyclerView.ViewHolder {
         private final ViewDataBinding binding;
 
         ChannelViewHolder(ViewDataBinding binding) {
             super(binding.getRoot());
+            binding.getRoot().setLayoutParams(new RecyclerView.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+            ));
             this.binding = binding;
         }
 
