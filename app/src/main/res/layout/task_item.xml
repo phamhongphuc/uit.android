@@ -10,10 +10,10 @@
             type="object.Task"/>
     </data>
 
-    <FrameLayout
+    <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp">
+        android:orientation="vertical">
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -28,40 +28,51 @@
 
             <android.support.v7.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <components.Button
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/itemSize"
                     android:layout_weight="1"
+                    android:clickable="false"
                     android:textAlignment="textStart"
                     app:_text="@{task.name}"
                     tools:_text="123"/>
 
                 <components.Button
-                    android:layout_width="@dimen/size"
-                    android:layout_height="@dimen/size"
+                    android:layout_width="@dimen/itemSize"
+                    android:layout_height="@dimen/itemSize"
                     app:_icon=""/>
             </android.support.v7.widget.LinearLayoutCompat>
 
             <android.support.v7.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <components.Text
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="@{task.description}"/>
+                    android:gravity="fill_vertical|start"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:text="@{task.description}"
+                    android:textColor="#000"
+                    tools:text="Chú thích"/>
 
                 <components.Button
-                    android:layout_width="@dimen/size"
-                    android:layout_height="@dimen/size"
+                    android:layout_width="@dimen/itemSize"
+                    android:layout_height="@dimen/itemSize"
                     android:animationCache="true"
                     app:_icon=""/>
             </android.support.v7.widget.LinearLayoutCompat>
         </android.support.v7.widget.LinearLayoutCompat>
-    </FrameLayout>
+
+        <components.Line
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:_isFull="true"/>
+    </android.support.v7.widget.LinearLayoutCompat>
 </layout>
