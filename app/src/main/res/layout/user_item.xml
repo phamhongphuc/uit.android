@@ -22,8 +22,9 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="@dimen/size"
-                android:layout_height="@dimen/size"/>
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_margin="10dp" />
 
             <components.Button
                 android:layout_width="0dp"
@@ -46,9 +47,9 @@
                 app:_icon="" />
         </LinearLayout>
 
-        <components.Button
+        <components.Text
             android:layout_width="match_parent"
             android:layout_height="@dimen/size"
-            app:_text="leader" />
+            android:text="@{user.description}" />
     </LinearLayout>
 </layout>

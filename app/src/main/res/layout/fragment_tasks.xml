@@ -43,7 +43,6 @@
             android:scrollbarThumbVertical="@color/blueTransparent"
             android:scrollbars="vertical"
             tools:itemCount="2"
-
             tools:listitem="@layout/task_item" />
     </android.support.v7.widget.LinearLayoutCompat>
 </layout>
