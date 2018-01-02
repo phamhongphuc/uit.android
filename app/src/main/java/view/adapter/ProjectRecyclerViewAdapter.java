@@ -12,7 +12,7 @@ import io.realm.OrderedRealmCollection;
 import io.realm.RealmRecyclerViewAdapter;
 import object.Project;
 import uit.group.manager.BR;
-import uit.group.manager.LoginActivity;
+import uit.group.manager.ProjectDetailActivity;
 import uit.group.manager.R;
 
 public class ProjectRecyclerViewAdapter extends RealmRecyclerViewAdapter<Project, ProjectRecyclerViewAdapter.ProjectViewHolder> {
@@ -29,6 +29,7 @@ public class ProjectRecyclerViewAdapter extends RealmRecyclerViewAdapter<Project
                 R.layout.project_item,
                 parent, false
         );
+//        viewDataBinding
         return new ProjectViewHolder(viewDataBinding);
     }
 
@@ -43,6 +44,10 @@ public class ProjectRecyclerViewAdapter extends RealmRecyclerViewAdapter<Project
 
         ProjectViewHolder(ViewDataBinding binding) {
             super(binding.getRoot());
+            binding.getRoot().setLayoutParams(new RecyclerView.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+            ));
             this.binding = binding;
         }
 
@@ -54,14 +59,16 @@ public class ProjectRecyclerViewAdapter extends RealmRecyclerViewAdapter<Project
     }
 
     public class ProjectItemAction {
-        Project project;
+        private Project project;
 
         ProjectItemAction(Project project) {
             this.project = project;
         }
 
-        public void click(View view) {
-            view.getContext().startActivities(new Intent[]{new Intent(view.getContext(), LoginActivity.class)});
+        public void selectProject(View view) {
+            Intent intent = new Intent(view.getContext(), ProjectDetailActivity.class);
+            intent.putExtra("projectId", project.getId());
+            view.getContext().startActivities(new Intent[]{intent});
         }
     }
 }

@@ -9,26 +9,25 @@ import android.util.AttributeSet;
 
 import uit.group.manager.R;
 
-public class Text extends AppCompatTextView {
-    public Text(Context context) {
+public class TextBold extends AppCompatTextView {
+    public TextBold(Context context) {
         super(context, null, R.attr.TextStyle);
         Initialize(context, null);
     }
 
-    public Text(Context context, AttributeSet attrs) {
+    public TextBold(Context context, AttributeSet attrs) {
         super(context, attrs, R.attr.TextStyle);
         Initialize(context, attrs);
     }
 
-    public Text(Context context, AttributeSet attrs, int defStyleAttr) {
+    public TextBold(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, R.attr.TextStyle);
         Initialize(context, attrs);
     }
 
     private void Initialize(@NonNull Context context, @Nullable AttributeSet attrs) {
         setTypeface(
-                Typeface.createFromAsset(getContext().getAssets(), "fonts/segoe.ttf")
+                Typeface.createFromAsset(getContext().getAssets(), "fonts/segoe bold.ttf")
         );
-//        setTextColor(context.getColor(R.color.blue));
     }
 }

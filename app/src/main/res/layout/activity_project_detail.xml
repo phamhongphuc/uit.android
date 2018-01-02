@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
-    <android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    <data>
 
+        <variable
+            name="State"
+            type="view.state.ProjectDetailState"/>
+    </data>
+
+    <android.support.v7.widget.LinearLayoutCompat
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -20,29 +27,20 @@
             <components.Button
                 android:layout_width="@dimen/size"
                 android:layout_height="match_parent"
-                app:_icon="" />
+                app:_icon=""/>
 
             <components.Line
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"/>
 
             <components.Button
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:_icon=""
-                app:_text="@string/app_name" />
-
-            <components.Line
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
-
-            <components.Button
-                android:layout_width="@dimen/size"
-                android:layout_height="match_parent"
-                app:_icon="" />
+                app:_text="@{State.project.name}"/>
 
         </android.support.v7.widget.LinearLayoutCompat>
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -70,18 +68,16 @@
                             android:layout_width="0dp"
                             android:layout_height="@dimen/size"
                             android:layout_weight="1"
-                            app:_text="Tasks" />
+                            app:_text="Tasks"/>
 
                         <components.Button
 
                             android:layout_width="@dimen/size"
                             android:layout_height="@dimen/size"
-                            app:_icon="" />
+                            app:_icon=""/>
                     </LinearLayout>
 
                     <android.support.v7.widget.RecyclerView
-
-
                         android:id="@+id/list_tasks"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -90,15 +86,15 @@
                         android:scrollbarThumbVertical="@color/blueTransparent"
                         android:scrollbars="vertical"
                         tools:itemCount="2"
-                        tools:listitem="@layout/task_item" />
+                        tools:listitem="@layout/task_item"/>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:layout_marginBottom="10dp"
                     android:background="@color/white"
                     android:orientation="vertical">
 
@@ -112,13 +108,13 @@
                             android:layout_width="0dp"
                             android:layout_height="@dimen/size"
                             android:layout_weight="1"
-                            app:_text="Channels" />
+                            app:_text="Channels"/>
 
                         <components.Button
 
                             android:layout_width="@dimen/size"
                             android:layout_height="@dimen/size"
-                            app:_icon="" />
+                            app:_icon=""/>
                     </LinearLayout>
 
                     <android.support.v7.widget.RecyclerView
@@ -132,15 +128,15 @@
                         android:scrollbarThumbVertical="@color/blueTransparent"
                         android:scrollbars="vertical"
                         tools:itemCount="2"
-                        tools:listitem="@layout/channel_item" />
+                        tools:listitem="@layout/channel_item"/>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:layout_marginBottom="10dp"
                     android:background="@color/white"
                     android:orientation="vertical">
 
@@ -154,13 +150,13 @@
                             android:layout_width="0dp"
                             android:layout_height="@dimen/size"
                             android:layout_weight="1"
-                            app:_text="Members" />
+                            app:_text="Members"/>
 
                         <components.Button
 
                             android:layout_width="@dimen/size"
                             android:layout_height="@dimen/size"
-                            app:_icon="" />
+                            app:_icon=""/>
                     </LinearLayout>
 
                     <android.support.v7.widget.RecyclerView
@@ -174,7 +170,7 @@
                         android:scrollbarThumbVertical="@color/blueTransparent"
                         android:scrollbars="vertical"
                         tools:itemCount="2"
-                        tools:listitem="@layout/user_item" />
+                        tools:listitem="@layout/user_item"/>
                 </LinearLayout>
 
 

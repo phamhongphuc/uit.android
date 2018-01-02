@@ -27,7 +27,7 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_margin="10dp"
-                app:_url="@{State.user.get().getPicture()}"/>
+                app:_url="@{State.user.getPicture()}"/>
 
             <FrameLayout
                 android:layout_width="0dp"
@@ -50,6 +50,7 @@
         </android.support.v7.widget.LinearLayoutCompat>
 
         <components.Line
+            android:background="@color/blueTransparent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:_isFull="true"/>
@@ -78,6 +79,11 @@
                 app:_icon=""/>
         </android.support.v7.widget.LinearLayoutCompat>
 
+        <components.Line
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:_isFull="true"/>
+
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -96,7 +102,6 @@
                     android:id="@+id/list_project"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="5dp"
                     android:scrollbarSize="3dp"
                     android:scrollbarThumbVertical="@color/blueTransparent"
                     android:scrollbars="vertical"

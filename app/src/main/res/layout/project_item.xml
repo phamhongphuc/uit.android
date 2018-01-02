@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -13,21 +12,46 @@
             name="action"
             type="view.adapter.ProjectRecyclerViewAdapter.ProjectItemAction"/>
     </data>
-
-    <LinearLayout
+    <!-- TODO: Sửa lại phần padding sau -->
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_margin="5dp"
-        android:background="@drawable/rectangle_border"
+        android:layout_height="wrap_content"
         android:clipToPadding="false"
-        android:orientation="vertical">
+        android:padding="10dp">
 
-        <components.Button
+        <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:onClick="@{action.click}"
-            app:_text="@{project.name}">
-        </components.Button>
+            android:layout_height="wrap_content"
+            android:background="#afff"
+            android:clickable="true"
+            android:elevation="2dp"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:onClick="@{action::selectProject}"
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <components.TextBold
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="0dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp"
+                android:text="@{project.name}"
+                android:textColor="@color/blue"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+            <components.Text
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="10dp"
+                android:text="@{project.description}"
+                android:textColor="#000"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+        </android.support.v7.widget.LinearLayoutCompat>
+    </FrameLayout>
 </layout>

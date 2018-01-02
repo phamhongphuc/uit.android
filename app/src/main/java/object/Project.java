@@ -150,9 +150,6 @@ public class Project extends RealmObject {
                         @Override
                         public void onPropertyChanged(Observable sender, int propertyId) {
                             Object value = ((ObservableField) sender).get();
-//                            if (value != null) {
-//                                int a = 5;
-//                            }
                         }
                     });
                     _Socket_User.GetUserById(userId, userField);
@@ -161,6 +158,15 @@ public class Project extends RealmObject {
                 e.printStackTrace();
             }
         }
+    }
+
+    public static Project getProjectById(int projectId) {
+        Realm realm = Realm.getDefaultInstance();
+        boolean in = realm.isInTransaction();
+        if (!in) realm.beginTransaction();
+        Project project = realm.where(Project.class).equalTo("id", projectId).findFirst();
+        if (!in) realm.commitTransaction();
+        return project;
     }
 }
 
