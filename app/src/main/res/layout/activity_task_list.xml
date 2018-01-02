@@ -34,6 +34,10 @@
                 app:_icon=""
                 app:_text="Task list" />
 
+            <components.Line
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+
             <components.Button
                 android:layout_width="@dimen/size"
                 android:layout_height="@dimen/size"
