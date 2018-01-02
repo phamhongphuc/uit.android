@@ -1,10 +1,12 @@
 package uit.group.manager;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import io.realm.Realm;
 import object.Project;
@@ -46,5 +48,10 @@ public class MemberListActivity extends AppCompatActivity {
     private void InitializeDataBinding() {
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_member_list);
         binding.setState(state);
+    }
+
+    public void goBackToProjectDetail(View view) {
+        startActivity(new Intent(getBaseContext(), ProjectDetailActivity.class));
+        finish();
     }
 }

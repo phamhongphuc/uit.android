@@ -23,6 +23,7 @@
                 app:_icon="" />
 
             <components.Line
+                android:onClick="goBackToTaskList"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent" />
 

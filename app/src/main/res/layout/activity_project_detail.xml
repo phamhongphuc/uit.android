@@ -25,6 +25,7 @@
             android:orientation="horizontal">
 
             <components.Button
+                android:onClick="goBackToMainActivity"
                 android:layout_width="@dimen/size"
                 android:layout_height="match_parent"
                 app:_icon=""/>

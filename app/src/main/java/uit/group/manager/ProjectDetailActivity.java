@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import object.Project;
 import uit.group.manager.databinding.ActivityProjectDetailBinding;
@@ -30,5 +31,10 @@ public class ProjectDetailActivity extends AppCompatActivity {
     private void InitializeDataBinding() {
         ActivityProjectDetailBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_project_detail);
         binding.setState(state);
+    }
+
+    public void goBackToMainActivity(View view) {
+        startActivity(new Intent(getBaseContext(), MainActivity.class));
+        finish();
     }
 }
