@@ -13,6 +13,7 @@ import object.Project;
 import uit.group.manager.databinding.ActivityProjectDetailBinding;
 import view.adapter.ChannelRecyclerViewAdapter;
 import view.adapter.TaskRecyclerViewAdapter;
+import view.adapter.UserRecyclerViewAdapter;
 import view.state.ProjectDetailState;
 
 public class ProjectDetailActivity extends AppCompatActivity {
@@ -50,7 +51,7 @@ public class ProjectDetailActivity extends AppCompatActivity {
     }
 
     private void InitializeMembersRecyclerView() {
-        ChannelRecyclerViewAdapter adapter = new ChannelRecyclerViewAdapter(state.project.get().getChannels());
+        UserRecyclerViewAdapter adapter = new UserRecyclerViewAdapter(state.project.get().getMembers());
         RecyclerView recyclerView = findViewById(R.id.list_members);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
