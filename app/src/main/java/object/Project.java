@@ -13,7 +13,7 @@ import java.util.Date;
 import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmObject;
-import io.realm.RealmQuery;
+import io.realm.RealmResults;
 import io.realm.annotations.PrimaryKey;
 import module.socket._Socket_User;
 
@@ -34,11 +34,6 @@ public class Project extends RealmObject {
     public Project() {
     }
 
-    public Project(int id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
     ///Getter
     public int getId() {
         return id;
@@ -52,18 +47,12 @@ public class Project extends RealmObject {
         return tasks;
     }
 
-    public int getNumberSameStatusTasks(int Status) {
-        int count = 0;
-        for (Task each : this.tasks) {
-            if (each.getStatus() == Status) {
-                count++;
-            }
-        }
-        return count;
+    public int getTasksCount(int status) {
+        return getTasks(status).size();
     }
 
-    public RealmQuery<Task> getSameStatusTasks(int Status) {
-        return tasks.where().equalTo("status", Status);
+    public RealmResults<Task> getTasks(int status) {
+        return tasks.where().equalTo("status", status).findAll();
     }
 
     public RealmList<User> getMembers() {
@@ -161,16 +150,13 @@ public class Project extends RealmObject {
                         @Override
                         public void onPropertyChanged(Observable sender, int propertyId) {
                             Object value = ((ObservableField) sender).get();
-                            if (value != null) {
-                                int a = 5;
-                            }
+//                            if (value != null) {
+//                                int a = 5;
+//                            }
                         }
                     });
                     _Socket_User.GetUserById(userId, userField);
                 }
-
-                    User.getUserById_socket(userId);
-
             } catch (JSONException e) {
                 e.printStackTrace();
             }

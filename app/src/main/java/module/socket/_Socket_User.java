@@ -17,7 +17,7 @@ import object.User;
 public class _Socket_User {
     private static io.socket.client.Socket socket = _Socket.getSocket();
 
-    public static void GetUserById(String userId, ObservableField<User> user) {
+    public static void GetUserById(String userId, final ObservableField<User> user) {
         socket.emit("Get:User(id)", userId, new Ack() {
             @Override
             public void call(Object... args) {
@@ -27,7 +27,7 @@ public class _Socket_User {
                 } else {
                     JSONObject obj = (JSONObject) args[1];
                     realm.beginTransaction();
-                    final User user = realm.createOrUpdateObjectFromJson(User.class, obj);
+                    user.set(realm.createOrUpdateObjectFromJson(User.class, obj));
                     realm.commitTransaction();
                 }
             }

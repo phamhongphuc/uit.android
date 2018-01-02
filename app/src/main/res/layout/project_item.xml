@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools">
+    >
 
     <data>
 
         <variable
             name="project"
             type="object.Project"/>
+
         <variable
             name="action"
             type="view.adapter.ProjectRecyclerViewAdapter.ProjectItemAction"/>
@@ -15,17 +16,16 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/projectSize"
+        android:layout_height="70dp"
+        android:layout_margin="5dp"
+        android:background="@drawable/rectangle_border"
         android:clipToPadding="false"
         android:orientation="vertical">
 
         <components.Button
-            android:background="@color/white"
-            android:onClick="@{action.click}"
-            android:layout_margin="5dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:_text="123"
+            android:onClick="@{action.click}"
             app:_text="@{project.name}">
         </components.Button>
 

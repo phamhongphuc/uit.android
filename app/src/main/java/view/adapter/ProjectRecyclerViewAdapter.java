@@ -41,21 +41,23 @@ public class ProjectRecyclerViewAdapter extends RealmRecyclerViewAdapter<Project
     class ProjectViewHolder extends RecyclerView.ViewHolder {
         private final ViewDataBinding binding;
 
-
         ProjectViewHolder(ViewDataBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
-            this.binding.setVariable(BR.action, new ProjectItemAction());
         }
 
         public void bind(Project project) {
             binding.setVariable(BR.project, project);
+            binding.setVariable(BR.action, new ProjectItemAction(project));
             binding.executePendingBindings();
         }
     }
 
     public class ProjectItemAction {
-        ProjectItemAction() {
+        Project project;
+
+        ProjectItemAction(Project project) {
+            this.project = project;
         }
 
         public void click(View view) {
