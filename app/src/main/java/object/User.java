@@ -1,7 +1,5 @@
 package object;
 
-import android.databinding.ObservableField;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -12,7 +10,6 @@ import io.realm.RealmObject;
 import io.realm.RealmResults;
 import io.realm.annotations.PrimaryKey;
 import module.facebook._Facebook;
-import module.socket._Socket_User;
 
 public class User extends RealmObject {
     public static final boolean FEMALE = false;
@@ -33,7 +30,8 @@ public class User extends RealmObject {
     }
 
 
-    public static User getUserById_client(Realm realm, String userId) {
+    public static User getUserById_client(String userId) {
+        Realm realm = Realm.getDefaultInstance();
         boolean in = realm.isInTransaction();
         if (!in) realm.beginTransaction();
         User user = realm.where(User.class).equalTo("id", userId).findFirst();

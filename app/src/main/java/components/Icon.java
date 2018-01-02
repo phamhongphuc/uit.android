@@ -7,27 +7,26 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 
-import uit.group.manager.R;
+public class Icon extends AppCompatTextView {
 
-public class Text extends AppCompatTextView {
-    public Text(Context context) {
-        super(context, null, R.attr.TextStyle);
+    public Icon(Context context) {
+        super(context);
         Initialize(context, null);
     }
 
-    public Text(Context context, AttributeSet attrs) {
-        super(context, attrs, R.attr.TextStyle);
+    public Icon(Context context, AttributeSet attrs) {
+        super(context, attrs);
         Initialize(context, attrs);
     }
 
-    public Text(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, R.attr.TextStyle);
+    public Icon(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
         Initialize(context, attrs);
     }
 
     private void Initialize(@NonNull Context context, @Nullable AttributeSet attrs) {
         setTypeface(
-                Typeface.createFromAsset(getContext().getAssets(), "fonts/segoe.ttf")
+                Typeface.createFromAsset(getContext().getAssets(), "fonts/aicon.ttf")
         );
     }
 }

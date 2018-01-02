@@ -24,8 +24,8 @@ public class _Socket_Project {
                 } else {
                     realm.beginTransaction();
                     Project project = realm.createOrUpdateObjectFromJson(Project.class, (JSONObject) args[1]);
-                    User user = User.getUserById_client(realm, userId);
-                    project.addMembers(realm, user);
+                    User user = User.getUserById_client(userId);
+                    project.addMember(user);
                     realm.commitTransaction();
                 }
             }
@@ -72,7 +72,7 @@ public class _Socket_Project {
                         membersId = obj.getJSONArray("membersId");
                         project.setCreator(realm, creatorId);
                         // TODO: setMember
-                        project.setMembers(realm, membersId);
+                        project.addMembers(membersId);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

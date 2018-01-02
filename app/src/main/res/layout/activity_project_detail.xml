@@ -25,9 +25,9 @@
             android:orientation="horizontal">
 
             <components.Button
-                android:onClick="goBackToMainActivity"
                 android:layout_width="@dimen/size"
                 android:layout_height="match_parent"
+                android:onClick="goBackToMainActivity"
                 app:_icon=""/>
 
             <components.Line
@@ -40,16 +40,22 @@
                 android:layout_weight="1"
                 app:_text="@{State.project.name}"/>
 
+            <components.Button
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                app:_icon=""/>
+
         </android.support.v7.widget.LinearLayoutCompat>
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="#eee">
 
             <android.support.v7.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/com_facebook_button_like_background_color_selected"
                 android:orientation="vertical">
 
                 <android.support.v7.widget.LinearLayoutCompat
@@ -66,16 +72,21 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <components.Button
+                        <components.TextBold
                             android:layout_width="0dp"
                             android:layout_height="@dimen/size"
                             android:layout_weight="1"
-                            app:_text="Tasks"/>
+                            android:background="?attr/selectableItemBackground"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:text="@string/tasks"
+                            android:textSize="16sp"/>
 
                         <components.Button
                             android:layout_width="@dimen/size"
                             android:layout_height="@dimen/size"
-                            app:_icon=""/>
+                            app:_icon=""/>
                     </android.support.v7.widget.LinearLayoutCompat>
 
                     <components.Line
@@ -83,15 +94,15 @@
                         android:layout_height="wrap_content"
                         app:_isFull="true"/>
 
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/list_tasks"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:scrollbarSize="3dp"
-                        android:scrollbarThumbVertical="@color/blueTransparent"
-                        android:scrollbars="vertical"
-                        tools:itemCount="1"
-                        tools:listitem="@layout/task_item"/>
+                    <!--<android.support.v7.widget.RecyclerView-->
+                    <!--android:id="@+id/list_tasks"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:scrollbarSize="3dp"-->
+                    <!--android:scrollbarThumbVertical="@color/blueTransparent"-->
+                    <!--android:scrollbars="vertical"-->
+                    <!--tools:itemCount="1"-->
+                    <!--tools:listitem="@layout/task_item"/>-->
                 </android.support.v7.widget.LinearLayoutCompat>
 
                 <android.support.v7.widget.LinearLayoutCompat
@@ -108,18 +119,21 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <components.Button
-
+                        <components.TextBold
                             android:layout_width="0dp"
                             android:layout_height="@dimen/size"
                             android:layout_weight="1"
-                            app:_text="Channels"/>
+                            android:background="?attr/selectableItemBackground"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:text="@string/channels"
+                            android:textSize="16sp"/>
 
                         <components.Button
-
                             android:layout_width="@dimen/size"
                             android:layout_height="@dimen/size"
-                            app:_icon=""/>
+                            app:_icon=""/>
                     </android.support.v7.widget.LinearLayoutCompat>
 
                     <components.Line
@@ -127,15 +141,15 @@
                         android:layout_height="wrap_content"
                         app:_isFull="true"/>
 
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/list_channels"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:scrollbarSize="3dp"
-                        android:scrollbarThumbVertical="@color/blueTransparent"
-                        android:scrollbars="vertical"
-                        tools:itemCount="1"
-                        tools:listitem="@layout/channel_item"/>
+                    <!--<android.support.v7.widget.RecyclerView-->
+                    <!--android:id="@+id/list_channels"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:scrollbarSize="3dp"-->
+                    <!--android:scrollbarThumbVertical="@color/blueTransparent"-->
+                    <!--android:scrollbars="vertical"-->
+                    <!--tools:itemCount="1"-->
+                    <!--tools:listitem="@layout/channel_item"/>-->
                 </android.support.v7.widget.LinearLayoutCompat>
 
                 <android.support.v7.widget.LinearLayoutCompat
@@ -150,16 +164,21 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <components.Button
+                        <components.TextBold
                             android:layout_width="0dp"
                             android:layout_height="@dimen/size"
                             android:layout_weight="1"
-                            app:_text="Members"/>
+                            android:background="?attr/selectableItemBackground"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:text="@string/members"
+                            android:textSize="16sp"/>
 
                         <components.Button
                             android:layout_width="@dimen/size"
                             android:layout_height="@dimen/size"
-                            app:_icon=""/>
+                            app:_icon=""/>
                     </android.support.v7.widget.LinearLayoutCompat>
 
                     <components.Line

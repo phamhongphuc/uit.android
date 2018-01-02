@@ -96,7 +96,7 @@ public class Project extends RealmObject {
         this.tasks.add(task);
     }
 
-    public void addMembers(RealmList<User> members) {
+    public void addMember(RealmList<User> members) {
         this.members.addAll(members);
     }
 
@@ -124,26 +124,31 @@ public class Project extends RealmObject {
     }
 
     public void setCreator(Realm realm, String creatorId) {
-        User user = User.getUserById_client(realm, creatorId);
+        User user = User.getUserById_client(creatorId);
         if (user != null) creator = user;
         else {
             Log.e("ERROR", "Ngoại lệ");
         }
     }
 
-    public void addMembers(Realm realm, User user) {
+    public void addMember(User user) {
+        Realm realm = Realm.getDefaultInstance();
         boolean in = realm.isInTransaction();
         if (!in) realm.beginTransaction();
-        members.add(user);
+        if (user != null && user.getId() != null) {
+            RealmResults<User> users = members.where().contains("id", user.getId()).findAll();
+            if (users.size() == 0) members.add(user);
+        }
         if (!in) realm.commitTransaction();
     }
 
-    public void setMembers(Realm realm, JSONArray membersId) {
+    public void addMembers(JSONArray membersId) {
+        Realm realm = Realm.getDefaultInstance();
         for (int i = 0; i < membersId.length(); i++) {
             try {
                 String userId = membersId.getString(i);
-                User user = User.getUserById_client(realm, userId);
-                if (user != null) members.add(user);
+                User user = User.getUserById_client(userId);
+                if (user != null) addMember(user);
                 else {
                     final ObservableField<User> userField = new ObservableField<>();
                     userField.addOnPropertyChangedCallback(new Observable.OnPropertyChangedCallback() {

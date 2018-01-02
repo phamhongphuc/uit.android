@@ -11,8 +11,6 @@ import com.facebook.GraphResponse;
 import com.facebook.HttpMethod;
 import com.facebook.login.LoginManager;
 
-import org.json.JSONException;
-
 import java.util.Collections;
 
 import module.socket._Socket_User;
@@ -57,8 +55,9 @@ public class _Facebook {
                     public void onCompleted(GraphResponse response) {
                         try {
                             url.set((String) response.getJSONObject().getJSONObject("data").get("url"));
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+                        } catch (Exception e) {
+                            url.set("");
+//                            e.printStackTrace();
                         }
                     }
                 }

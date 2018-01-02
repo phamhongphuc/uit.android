@@ -14,6 +14,6 @@ public class MainState extends BaseObservable {
 
     public MainState() {
         Realm realm = Realm.getDefaultInstance();
-        user.set(User.getUserById_client(realm, global.currentUserId.get()));
+        user.set(User.getUserById_client(global.currentUserId.get()));
     }
 }

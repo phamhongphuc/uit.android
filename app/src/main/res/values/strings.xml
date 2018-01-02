@@ -10,6 +10,20 @@
     <string name="gender">Gender</string>
     <string name="birthday">Birthday</string>
     <string name="email_address">Email Address</string>
-    <string name="Login_Introduction_1">Hợp tác cách hiệu quả\n Việc quản lý các thành viên một nhóm trong công việc cũng như trong học tập trước đây đòi hỏi rất nhiều tài nguyên và công sức.</string>
-    <string name="Login_Introduction_2">Để quản lý công việc cũng như cuộc sống, chúng ta nên đề ra những dự án cũng như nhiệm vụ cụ thể cho cuộc sống nên dễ dàng và bớt căng thẳng hơn.</string>
+    <string name="Login_Introduction_1">
+        Liên kết công việc:
+        \nCác nhiệm vụ trong một nhóm không phải là các nhiệm vụ riêng biệt.
+        \nChúng là sự xâu kết của nhiều nhiệm vụ khác mà tất cả đều cùng hướng đến một mục tiêu chung
+    </string>
+    <string name="Login_Introduction_2">
+        Liên kết thành viên:
+        \nĐể một dự án luôn bắt kịp tiến độ và trôi chảy,
+        sự liên kết giữa các thành viên là một điều
+        không thể thiếu. Họ phải luôn duy trì sự tương tác
+        để đảm bảo việc hiểu rõ các thành viên khác đang làm gì.
+    </string>
+    <string name="icon_email"></string>
+    <string name="members">Danh sách thành viên</string>
+    <string name="channels">Danh sách kênh chat</string>
+    <string name="tasks">Danh sách nhiệm vụ</string>
 </resources>
