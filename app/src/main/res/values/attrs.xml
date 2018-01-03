@@ -24,6 +24,11 @@
     <declare-styleable name="Button" parent="View">
         <attr name="_icon" format="string"/>
         <attr name="_text" format="string"/>
+        <attr name="_textAlign" format="enum">
+            <enum name="left" value="0"/>
+            <enum name="right" value="2"/>
+            <enum name="center" value="1"/>
+        </attr>
         <attr name="_foreground"/>
         <attr name="_background"/>
         <attr name="_backgroundActive" format="color"/>

@@ -16,11 +16,23 @@ import android.support.v7.widget.LinearLayoutCompat;
 import android.util.AttributeSet;
 import android.view.Gravity;
 
+import com.google.common.collect.ImmutableMap;
+
+import java.util.Map;
 import java.util.Objects;
 
 import uit.group.manager.R;
 
 public class Button extends LinearLayoutCompat {
+    private static final int LEFT = 0;
+    private static final int CENTER = 1;
+    private static final int RIGHT = 2;
+    private static final Map<Integer, Integer> ALIGN = ImmutableMap.<Integer, Integer>builder()
+            .put(LEFT, Gravity.START)
+            .put(CENTER, Gravity.CENTER_HORIZONTAL)
+            .put(RIGHT, Gravity.END)
+            .build();
+
     private String text;
     private String icon;
     private boolean active = false;
@@ -31,6 +43,7 @@ public class Button extends LinearLayoutCompat {
     private AppCompatTextView textView;
     private AppCompatTextView iconView;
     private Drawable selectedItemDrawable;
+    private int textAlign;
 
     public Button(Context context) {
         super(context, null, R.attr.ButtonStyle);
@@ -53,6 +66,8 @@ public class Button extends LinearLayoutCompat {
         typedArray = context.obtainStyledAttributes(attrs, R.styleable.Button);
         icon = (String) typedArray.getText(R.styleable.Button__icon);
         text = (String) typedArray.getText(R.styleable.Button__text);
+        textAlign = Gravity.CENTER_VERTICAL | ALIGN.get(typedArray.getInt(R.styleable.Button__textAlign, CENTER));
+
         active = typedArray.getBoolean(R.styleable.Button__active, false);
         background = typedArray.getColor(R.styleable.Button__background, Color.TRANSPARENT);
         foreground = typedArray.getColor(R.styleable.Button__foreground, context.getColor(R.color.blue));
@@ -104,7 +119,7 @@ public class Button extends LinearLayoutCompat {
             ));
             textView.setTextColor(foreground);
             textView.setBackgroundColor(currentColor);
-            textView.setGravity(Gravity.CENTER);
+            textView.setGravity(textAlign);
         } else if (textView != null) {
             removeView(textView);
         }
