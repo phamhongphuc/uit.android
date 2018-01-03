@@ -22,8 +22,9 @@ import java.util.Objects;
 import uit.group.manager.R;
 
 public class Image extends android.support.v7.widget.AppCompatImageView {
-    private String url;
+    private String src;
     private int size;
+    private Picasso picasso = Picasso.with(getContext());
 
     public Image(Context context) {
         super(context);
@@ -79,20 +80,19 @@ public class Image extends android.support.v7.widget.AppCompatImageView {
     }
 
     private void InitializeView(Context context) {
-        if (Objects.equals(url, "")) return;
-        Picasso.with(getContext())
-                .load(url)
-                .into(this);
+        if (Objects.equals(src, "")) return;
+        picasso.load(src).into(this);
+        picasso.setIndicatorsEnabled(true);
     }
 
     private void InitializeAttr(@NonNull Context context, @Nullable AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.Image);
-        url = typedArray.getString(R.styleable.Image__url);
+        src = typedArray.getString(R.styleable.Image__src);
         typedArray.recycle();
     }
 
-    public void set_url(String url) {
-        this.url = url;
+    public void set_src(String src) {
+        this.src = src;
         InitializeView(getContext());
     }
 

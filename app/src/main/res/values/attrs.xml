@@ -7,17 +7,25 @@
         <attr name="LineStyle" format="reference"/>
         <attr name="ViewPagerIndexStyle" format="reference"/>
     </declare-styleable>
+    <declare-styleable name="View">
+        <attr name="_foreground" format="color"/>
+        <attr name="_background" format="color"/>
+        <attr name="_color" format="color"/>
+        <attr name="_colorActive" format="color"/>
+    </declare-styleable>
+
+    <!-- Components -->
     <declare-styleable name="Line">
         <attr name="_isFull" format="boolean"/>
     </declare-styleable>
     <declare-styleable name="Image">
-        <attr name="_url" format="string"/>
+        <attr name="_src" format="string"/>
     </declare-styleable>
-    <declare-styleable name="Button">
+    <declare-styleable name="Button" parent="View">
         <attr name="_icon" format="string"/>
         <attr name="_text" format="string"/>
-        <attr name="_foreground" format="color"/>
-        <attr name="_background" format="color"/>
+        <attr name="_foreground"/>
+        <attr name="_background"/>
         <attr name="_backgroundActive" format="color"/>
         <attr name="_active" format="boolean"/>
     </declare-styleable>
