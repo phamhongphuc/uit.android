@@ -12,7 +12,7 @@ import app.Global;
 import io.realm.Realm;
 import io.socket.client.Ack;
 import io.socket.emitter.Emitter;
-import object.User;
+import module.object.User;
 
 public class _Socket_User {
     private static io.socket.client.Socket socket = _Socket.getSocket();

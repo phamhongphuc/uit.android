@@ -107,7 +107,7 @@
                     android:scrollbarThumbVertical="@color/blueTransparent"
                     android:scrollbars="vertical"
                     tools:itemCount="2"
-                    tools:listitem="@layout/project_item"/>
+                    tools:listitem="@layout/item_project"/>
 
             </android.support.v7.widget.LinearLayoutCompat>
         </android.support.v7.widget.LinearLayoutCompat>

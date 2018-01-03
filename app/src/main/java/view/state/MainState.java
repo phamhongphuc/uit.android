@@ -5,7 +5,7 @@ import android.databinding.ObservableField;
 
 import app.Global;
 import io.realm.Realm;
-import object.User;
+import module.object.User;
 
 public class MainState extends BaseObservable {
     public final ObservableField<String> status = new ObservableField<>();

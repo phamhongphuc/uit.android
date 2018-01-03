@@ -8,7 +8,7 @@ import android.widget.ListView;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
-import object.Project;
+import module.object.Project;
 
 public class ProjectListActivity extends AppCompatActivity {
 

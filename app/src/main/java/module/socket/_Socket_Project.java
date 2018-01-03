@@ -8,8 +8,8 @@ import org.json.JSONObject;
 
 import io.realm.Realm;
 import io.socket.client.Ack;
-import object.Project;
-import object.User;
+import module.object.Project;
+import module.object.User;
 
 public class _Socket_Project {
     private static io.socket.client.Socket socket = _Socket.getSocket();
@@ -64,8 +64,8 @@ public class _Socket_Project {
                 } else {
                     JSONObject obj = (JSONObject) args[1];
                     realm.beginTransaction();
-                    String creatorId = "";
-                    JSONArray membersId = null;
+                    String creatorId;
+                    JSONArray membersId;
                     final Project project = realm.createOrUpdateObjectFromJson(Project.class, obj);
                     try {
                         creatorId = obj.getString("creatorId");

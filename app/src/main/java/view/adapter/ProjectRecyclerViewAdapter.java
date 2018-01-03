@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import io.realm.OrderedRealmCollection;
 import io.realm.RealmRecyclerViewAdapter;
-import object.Project;
+import module.object.Project;
 import uit.group.manager.BR;
 import uit.group.manager.ProjectDetailActivity;
 import uit.group.manager.R;
@@ -26,7 +26,7 @@ public class ProjectRecyclerViewAdapter extends RealmRecyclerViewAdapter<Project
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         ViewDataBinding viewDataBinding = DataBindingUtil.inflate(
                 layoutInflater,
-                R.layout.project_item,
+                R.layout.item_project,
                 parent, false
         );
 //        viewDataBinding

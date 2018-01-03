@@ -1,4 +1,4 @@
-package object;
+package module.object;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -37,6 +37,10 @@ public class User extends RealmObject {
         User user = realm.where(User.class).equalTo("id", userId).findFirst();
         if (!in) realm.commitTransaction();
         return user;
+    }
+
+    public static void getUserById_socket(String userId) {
+
     }
 
     public String getId() {
@@ -89,9 +93,5 @@ public class User extends RealmObject {
             e.printStackTrace();
         }
         return obj;
-    }
-
-    public static void getUserById_socket(String userId) {
-
     }
 }

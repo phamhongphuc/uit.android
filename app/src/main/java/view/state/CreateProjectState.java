@@ -2,7 +2,7 @@ package view.state;
 
 import android.databinding.ObservableField;
 
-import object.User;
+import module.object.User;
 
 public class CreateProjectState {
     public final ObservableField<User> user = new ObservableField<>();

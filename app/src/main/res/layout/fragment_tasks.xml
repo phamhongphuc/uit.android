@@ -5,16 +5,16 @@
 
         <variable
             name="task"
-            type="object.Task" />
+            type="module.object.Task"/>
     </data>
 
     <android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
 
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:orientation="vertical">
+                                                  xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                  xmlns:tools="http://schemas.android.com/tools"
+                                                  android:layout_width="match_parent"
+                                                  android:layout_height="match_parent"
+                                                  android:orientation="vertical">
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -23,14 +23,14 @@
 
             <components.Button
                 android:layout_width="wrap_content"
-                android:layout_weight="1"
                 android:layout_height="@dimen/size"
+                android:layout_weight="1"
                 app:_text="Completed" />
 
             <components.Button
                 android:layout_width="wrap_content"
-                android:layout_weight="1"
                 android:layout_height="@dimen/size"
+                android:layout_weight="1"
                 app:_text="On going" />
         </android.support.v7.widget.LinearLayoutCompat>
 
@@ -43,7 +43,7 @@
             android:scrollbarThumbVertical="@color/blueTransparent"
             android:scrollbars="vertical"
             tools:itemCount="2"
-            tools:listitem="@layout/task_item" />
+            tools:listitem="@layout/item_task"/>
     </android.support.v7.widget.LinearLayoutCompat>
 </layout>
 

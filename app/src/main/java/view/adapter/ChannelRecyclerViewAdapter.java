@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 
 import io.realm.OrderedRealmCollection;
 import io.realm.RealmRecyclerViewAdapter;
-import object.Channel;
+import module.object.Channel;
 import uit.group.manager.BR;
 import uit.group.manager.R;
 
@@ -24,7 +24,7 @@ public class ChannelRecyclerViewAdapter extends RealmRecyclerViewAdapter<Channel
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         ViewDataBinding viewDataBinding = DataBindingUtil.inflate(
                 layoutInflater,
-                R.layout.channel_item,
+                R.layout.item_channel,
                 parent, false
         );
         return new ChannelViewHolder(viewDataBinding);

@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 
 import io.realm.OrderedRealmCollection;
 import io.realm.RealmRecyclerViewAdapter;
-import object.User;
+import module.object.User;
 import uit.group.manager.BR;
 import uit.group.manager.R;
 
@@ -24,7 +24,7 @@ public class UserRecyclerViewAdapter extends RealmRecyclerViewAdapter<User, User
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         ViewDataBinding viewDataBinding = DataBindingUtil.inflate(
                 layoutInflater,
-                R.layout.user_item,
+                R.layout.item_user,
                 parent, false
         );
         return new UserViewHolder(viewDataBinding);

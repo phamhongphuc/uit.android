@@ -1,4 +1,4 @@
-package object;
+package module.object;
 
 import android.databinding.Observable;
 import android.databinding.ObservableField;
@@ -32,6 +32,15 @@ public class Project extends RealmObject {
     private Date lastupdate;
 
     public Project() {
+    }
+
+    public static Project getProjectById(int projectId) {
+        Realm realm = Realm.getDefaultInstance();
+        boolean in = realm.isInTransaction();
+        if (!in) realm.beginTransaction();
+        Project project = realm.where(Project.class).equalTo("id", projectId).findFirst();
+        if (!in) realm.commitTransaction();
+        return project;
     }
 
     ///Getter
@@ -163,15 +172,6 @@ public class Project extends RealmObject {
                 e.printStackTrace();
             }
         }
-    }
-
-    public static Project getProjectById(int projectId) {
-        Realm realm = Realm.getDefaultInstance();
-        boolean in = realm.isInTransaction();
-        if (!in) realm.beginTransaction();
-        Project project = realm.where(Project.class).equalTo("id", projectId).findFirst();
-        if (!in) realm.commitTransaction();
-        return project;
     }
 }
 

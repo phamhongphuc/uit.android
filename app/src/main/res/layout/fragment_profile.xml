@@ -5,7 +5,7 @@
 
         <variable
             name="user"
-            type="object.User" />
+            type="module.object.User"/>
     </data>
 
     <android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
@@ -25,8 +25,8 @@
         <components.Line
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp" />
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -38,33 +38,33 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:text="@string/gender"
-                android:textStyle="bold"
-                android:layout_marginTop="10dp" />
+                android:textStyle="bold"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="gender" />
+            android:text="@string/gender"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="@string/birthday"
-            android:textStyle="bold"
-            android:layout_marginTop="10dp" />
+            android:textStyle="bold"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="birthdate" />
+                android:text="@string/birthday"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="@string/email_address"
-            android:textStyle="bold"
-            android:layout_marginTop="10dp" />
+            android:textStyle="bold"/>
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -74,7 +74,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="email" />
+                android:text="@string/email_address"/>
             <components.Button
                 android:layout_width="@dimen/size"
                 android:layout_height="@dimen/size"

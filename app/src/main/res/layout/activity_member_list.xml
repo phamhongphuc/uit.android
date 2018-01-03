@@ -17,9 +17,9 @@
             android:orientation="horizontal">
 
             <components.Button
-                android:onClick="goBackToProjectDetail"
                 android:layout_width="@dimen/size"
                 android:layout_height="match_parent"
+                android:onClick="goBackToProjectDetail"
                 app:_icon="" />
 
             <components.Line
@@ -28,10 +28,10 @@
 
             <components.Button
                 android:layout_width="match_parent"
-                android:layout_weight="1"
                 android:layout_height="match_parent"
-                app:_text="Member list"
-                app:_icon="" />
+                android:layout_weight="1"
+                app:_icon=""
+                app:_text="Member list"/>
 
             <components.Line
                 android:layout_width="wrap_content"
@@ -54,7 +54,7 @@
                 android:scrollbarThumbVertical="@color/blueTransparent"
                 android:scrollbars="vertical"
                 tools:itemCount="2"
-                tools:listitem="@layout/user_item" />
+                tools:listitem="@layout/item_user"/>
         </android.support.v7.widget.LinearLayoutCompat>
 
     </android.support.v7.widget.LinearLayoutCompat>

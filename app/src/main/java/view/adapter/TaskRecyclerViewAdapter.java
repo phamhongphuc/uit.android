@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import io.realm.OrderedRealmCollection;
 import io.realm.Realm;
 import io.realm.RealmRecyclerViewAdapter;
-import object.Task;
+import module.object.Task;
 import uit.group.manager.BR;
 import uit.group.manager.R;
 
@@ -33,7 +33,7 @@ public class TaskRecyclerViewAdapter extends RealmRecyclerViewAdapter<Task, Task
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         ViewDataBinding viewDataBinding = DataBindingUtil.inflate(
                 layoutInflater,
-                R.layout.task_item,
+                R.layout.item_task,
                 parent, false
         );
         return new TaskViewHolder(viewDataBinding);
