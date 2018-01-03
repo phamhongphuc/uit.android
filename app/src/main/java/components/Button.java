@@ -67,10 +67,6 @@ public class Button extends LinearLayoutCompat {
         InitializeRipple();
     }
 
-    private void InitializeView() {
-        InitializeView(getContext());
-    }
-
     private void InitializeView(@NonNull Context context) {
         int currentColor = !active ? background : backgroundActive;
         if (icon != null && !Objects.equals(icon, "")) {
@@ -112,7 +108,6 @@ public class Button extends LinearLayoutCompat {
         } else if (textView != null) {
             removeView(textView);
         }
-
         requestLayout();
     }
 
@@ -152,12 +147,12 @@ public class Button extends LinearLayoutCompat {
 
     public void set_text(String text) {
         this.text = text;
-        InitializeView();
+        InitializeView(getContext());
     }
 
     public void set_icon(String icon) {
         this.icon = icon;
-        InitializeView();
+        InitializeView(getContext());
     }
 
     public void toggleActive() {

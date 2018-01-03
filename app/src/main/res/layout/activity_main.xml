@@ -42,9 +42,10 @@
                 <components.Button
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:background="@color/blueTransparent"
                     android:clickable="false"
                     android:onClick="facebookLogout"
-                    app:_text="@{State.user.name}"/>
+                    app:_text="State.user.name"/>
             </FrameLayout>
 
             <components.Button
@@ -55,9 +56,9 @@
         </android.support.v7.widget.LinearLayoutCompat>
 
         <components.Line
-            android:background="@color/blueTransparent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@color/blueTransparent"
             app:_isFull="true"/>
 
         <android.support.v7.widget.LinearLayoutCompat

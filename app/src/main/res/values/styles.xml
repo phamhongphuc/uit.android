@@ -15,6 +15,7 @@
         <item name="ButtonStyle">@style/Button_Style</item>
         <item name="LineStyle">@style/Line_Style</item>
         <item name="TextStyle">@style/Text_Style</item>
+        <item name="ViewPagerIndexStyle">@style/ViewPagerIndex_Style</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

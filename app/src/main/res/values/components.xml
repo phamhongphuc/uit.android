@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <style name="Button_Style">
         <item name="android:clickable">true</item>
         <!--<item name="android:focusable">true</item>-->
@@ -15,4 +14,8 @@
         <item name="android:textColor">@color/blue</item>
     </style>
 
+    <style name="ViewPagerIndex_Style">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+    </style>
 </resources>

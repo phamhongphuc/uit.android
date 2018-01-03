@@ -42,30 +42,12 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void InitializePages() {
-        ViewPager.OnPageChangeListener listener = new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                state.viewPagerIndex.set(position);
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        };
-
         FragmentAdapter fragmentAdapter = new FragmentAdapter(getSupportFragmentManager(), new int[]{
                 R.layout.fragment_login_1,
                 R.layout.fragment_login_2,
         });
         state.viewPagerCount.set(fragmentAdapter.getCount());
         ViewPager viewPager = findViewById(R.id.viewPagerLogin);
-        viewPager.addOnPageChangeListener(listener);
         viewPager.setAdapter(fragmentAdapter);
     }
 
@@ -80,16 +62,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    /**
-     * Login Button
-     *
-     * @param view button
-     */
     public void facebookLogin(View view) {
-//        if (AccessToken.getCurrentAccessToken() != null) {
-//            startActivity(new Intent(getBaseContext(), MainActivity.class));
-//            finish();
-//        }
         _Facebook.Login(this);
     }
 }

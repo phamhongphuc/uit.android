@@ -17,31 +17,35 @@ public class ViewPagerIndex extends View {
     private static final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private static final float RATIO = 0.4f;
 
-    private int count;
-    private int index;
+    private int count = 0;
+    private int index = 0;
+
+    // Attr
     private int inactiveColor;
     private int activeColor;
-    private ViewPager viewPager;
+    private int viewPagerId;
+
+    // Measure and Draw
     private int size;
     private int padding;
 
     public ViewPagerIndex(Context context) {
-        super(context, null, R.attr.LineStyle);
+        super(context, null, R.attr.ViewPagerIndexStyle);
         Initialize(context, null);
     }
 
     public ViewPagerIndex(Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs, R.attr.LineStyle);
+        super(context, attrs, R.attr.ViewPagerIndexStyle);
         Initialize(context, attrs);
     }
 
     public ViewPagerIndex(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, R.attr.LineStyle);
+        super(context, attrs, R.attr.ViewPagerIndexStyle);
         Initialize(context, attrs);
     }
 
     public ViewPagerIndex(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, R.attr.LineStyle, defStyleRes);
+        super(context, attrs, R.attr.ViewPagerIndexStyle, defStyleRes);
         Initialize(context, attrs);
     }
 
@@ -51,21 +55,26 @@ public class ViewPagerIndex extends View {
 
     private void InitializeAttr(@NonNull Context context, @Nullable AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ViewPagerIndex);
-        count = typedArray.getInteger(R.styleable.ViewPagerIndex__count, 0);
-        index = typedArray.getInteger(R.styleable.ViewPagerIndex__index, 0);
         activeColor = typedArray.getColor(R.styleable.ViewPagerIndex__activeColor, Color.WHITE);
         inactiveColor = typedArray.getColor(R.styleable.ViewPagerIndex__inactiveColor, Color.BLACK);
+        viewPagerId = typedArray.getResourceId(R.styleable.ViewPagerIndex__viewPagerId, -1);
         typedArray.recycle();
     }
 
-    public void set_count(int count) {
-        this.count = count;
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        ViewPager viewPager = getRootView().findViewById(viewPagerId);
+        assert viewPager != null;
+        count = viewPager.getAdapter().getCount();
         invalidate();
-    }
-
-    public void set_index(int index) {
-        this.index = index;
-        invalidate();
+        viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+                index = position;
+                invalidate();
+            }
+        });
     }
 
     @Override

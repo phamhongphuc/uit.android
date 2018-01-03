@@ -5,6 +5,7 @@
         <attr name="ButtonStyle" format="reference"/>
         <attr name="TextStyle" format="reference"/>
         <attr name="LineStyle" format="reference"/>
+        <attr name="ViewPagerIndexStyle" format="reference"/>
     </declare-styleable>
     <declare-styleable name="Line">
         <attr name="_isFull" format="boolean"/>
@@ -23,7 +24,6 @@
     <declare-styleable name="ViewPagerIndex">
         <attr name="_inactiveColor" format="color"/>
         <attr name="_activeColor" format="color"/>
-        <attr name="_count" format="integer"/>
-        <attr name="_index" format="integer"/>
+        <attr name="_viewPagerId" format="reference"/>
     </declare-styleable>
 </resources>

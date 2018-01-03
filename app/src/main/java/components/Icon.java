@@ -7,6 +7,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 
+import uit.group.manager.R;
+
 public class Icon extends AppCompatTextView {
 
     public Icon(Context context) {
@@ -28,5 +30,20 @@ public class Icon extends AppCompatTextView {
         setTypeface(
                 Typeface.createFromAsset(getContext().getAssets(), "fonts/aicon.ttf")
         );
+        getContext()
+                .obtainStyledAttributes(new int[]{R.attr.selectableItemBackground})
+                .getDrawable(0);
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        float dp = getResources().getDisplayMetrics().density;
+        int width = MeasureSpec.getSize(widthMeasureSpec);
+        int height = MeasureSpec.getSize(heightMeasureSpec);
+        int size = Math.min(width, height);
+
+        setTextSize(size * 0.4f / dp);
+        setMeasuredDimension(size, size);
     }
 }
