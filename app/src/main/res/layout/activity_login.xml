@@ -72,7 +72,7 @@
                     app:_background="#ffffff"
                     app:_foreground="@color/blue"
                     app:_icon=""
-                    app:_text="123"/>
+                    app:_text="@string/button_login_with_facebook"/>
 
             </android.support.v7.widget.ContentFrameLayout>
         </android.support.v7.widget.LinearLayoutCompat>

@@ -22,36 +22,26 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <android.support.v7.widget.LinearLayoutCompat
+            <FrameLayout
                 android:layout_width="@dimen/size"
-                android:layout_height="@dimen/size"
-                android:gravity="center">
-
+                android:layout_height="@dimen/size">
                 <components.Image
                     android:layout_width="35dp"
                     android:layout_height="35dp"
+                    android:layout_gravity="center"
                     app:_src="@{State.user.getPicture()}"/>
-            </android.support.v7.widget.LinearLayoutCompat>
+            </FrameLayout>
 
-            <FrameLayout
+            <components.Button
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <!--<components.Text-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:gravity="center_vertical|end"-->
-                <!--android:text="@string/app_name"/>-->
-                <components.Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:background="@color/blueTransparent"
-                    android:clickable="false"
-                    android:onClick="facebookLogout"
-                    app:_text="State.user.name"
-                    app:_textAlign="left"/>
-            </FrameLayout>
+                android:layout_weight="1"
+                android:background="@color/blueTransparent"
+                android:clickable="false"
+                android:onClick="facebookLogout"
+                app:_text="@{State.user.name}"
+                app:_textAlign="left"
+                tools:_text="State.user.name"/>
 
             <components.Button
                 android:layout_width="50dp"
