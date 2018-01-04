@@ -64,18 +64,20 @@ public class ViewPagerIndex extends View {
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
-        ViewPager viewPager = getRootView().findViewById(viewPagerId);
-        if (viewPager != null) {
-            count = viewPager.getAdapter().getCount();
-            viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-                @Override
-                public void onPageSelected(int index) {
-                    ViewPagerIndex.this.index = index;
-                    invalidate();
-                }
-            });
-            invalidate();
-        }
+        View view = getRootView().findViewById(viewPagerId);
+        if (view == null || !(view instanceof ViewPager)) return;
+
+        ViewPager viewPager = (ViewPager) view;
+//        if (viewPager.getAdapter() == null) return;
+//        count = viewPager.getAdapter().getCount();
+//        viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+//            @Override
+//            public void onPageSelected(int index) {
+//                ViewPagerIndex.this.index = index;
+//                invalidate();
+//            }
+//        });
+        invalidate();
     }
 
     @Override

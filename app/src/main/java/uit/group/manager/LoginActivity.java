@@ -60,6 +60,7 @@ public class LoginActivity extends AppCompatActivity {
     private void InitializeDataBinding() {
         ActivityLoginBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
         binding.setState(state);
+        binding.setGlobal(Global.getInstance());
     }
 
     @Override

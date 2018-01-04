@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -24,18 +24,23 @@
         <components.Socket_Status
             android:layout_width="match_parent"
             android:layout_height="3dp"
-            app:_socketStatus="@{Global.socketStatus}"/>
+            app:_socketStatus="@{Global.socketStatus}">
+        </components.Socket_Status>
 
-        <!--<components.Button-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="50dp"-->
-        <!--app:_text="@{Global.socketStatus}"/>-->
+        <components.Button
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#22890890"
+            app:_active="true"
+            app:_text="@{Global.socketStatus}"
+            tools:_text="Global.socketStatus"/>
 
         <android.support.v4.view.ViewPager
             android:id="@+id/viewPagerLogin"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            tools:background="@color/blueTransparent">
         </android.support.v4.view.ViewPager>
 
         <android.support.v7.widget.LinearLayoutCompat
