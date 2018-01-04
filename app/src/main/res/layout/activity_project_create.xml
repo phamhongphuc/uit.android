@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="uit.group.manager.ProjectCreateActivity">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPagerLogin"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        tools:background="@color/blueTransparent"></android.support.v4.view.ViewPager>
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <components.ViewPagerIndex
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            app:_activeColor="#f08c"
+            app:_inactiveColor="#608c"
+            app:_viewPagerId="@id/viewPagerLogin" />
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center">
+
+        <android.support.v7.widget.ContentFrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="25dp"
+            android:background="@color/blue"
+            android:padding="1dp">
+
+            <components.Button
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                app:_background="#ffffff"
+                app:_foreground="@color/blue"
+                app:_icon=""
+                app:_text="@string/button_login_with_facebook" />
+
+        </android.support.v7.widget.ContentFrameLayout>
+    </android.support.v7.widget.LinearLayoutCompat>
+
+</android.support.v7.widget.LinearLayoutCompat>

@@ -28,4 +28,5 @@
     <string name="channels">Danh sách kênh chat</string>
     <string name="tasks">Danh sách nhiệm vụ</string>
     <string name="button_login_with_facebook">Đăng nhập với Facebook</string>
+    <string name="name_new_project">Name your new project</string>
 </resources>
