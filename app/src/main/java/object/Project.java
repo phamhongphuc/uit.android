@@ -1,4 +1,4 @@
-package module.object;
+package object;
 
 import android.databinding.Observable;
 import android.databinding.ObservableField;

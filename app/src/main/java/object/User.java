@@ -1,4 +1,4 @@
-package module.object;
+package object;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,11 +22,10 @@ public class User extends RealmObject {
     private Boolean gender;
     private String email;
     private String description;
-    //    private final RealmResults<Project> projects;
     private Date lastupdate;
+//  private final RealmResults<Project> projects;
 
     public User() {
-
     }
 
 
@@ -72,8 +71,10 @@ public class User extends RealmObject {
     }
 
     public RealmResults<Project> getProjects() {
-        Realm realm = Realm.getDefaultInstance();
-        return realm.where(Project.class).contains("members.id", id).findAll();
+        return Realm.getDefaultInstance()
+                .where(Project.class)
+                .contains("members.id", id)
+                .findAll();
     }
 
     public Date getLastupdate() {

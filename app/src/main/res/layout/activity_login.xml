@@ -6,6 +6,10 @@
         <variable
             name="State"
             type="view.state.LoginState"/>
+
+        <variable
+            name="Global"
+            type="app.Global"/>
     </data>
 
     <android.support.v7.widget.LinearLayoutCompat
@@ -17,18 +21,15 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <android.support.v7.widget.LinearLayoutCompat
+        <components.Socket_Status
             android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:background="@{State.viewPagerIndex == 0 ? @color/blueTransparent : null}"
-            android:gravity="center">
+            android:layout_height="3dp"
+            app:_socketStatus="@{Global.socketStatus}"/>
 
-            <components.Button
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                app:_foreground="@color/white"
-                app:_text="@{State.global.socketStatus}"/>
-        </android.support.v7.widget.LinearLayoutCompat>
+        <!--<components.Button-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="50dp"-->
+        <!--app:_text="@{Global.socketStatus}"/>-->
 
         <android.support.v4.view.ViewPager
             android:id="@+id/viewPagerLogin"

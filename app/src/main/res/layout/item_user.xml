@@ -6,7 +6,7 @@
 
         <variable
             name="user"
-            type="module.object.User"/>
+            type="object.User"/>
     </data>
 
     <android.support.v7.widget.LinearLayoutCompat

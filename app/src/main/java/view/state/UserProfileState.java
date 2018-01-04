@@ -4,9 +4,9 @@ import android.databinding.BaseObservable;
 import android.databinding.ObservableField;
 
 import io.realm.RealmList;
-import module.object.Task;
-import module.object.User;
 import module.socket._Socket;
+import object.Task;
+import object.User;
 
 public class UserProfileState extends BaseObservable {
     public final ObservableField<User> user = new ObservableField<>();

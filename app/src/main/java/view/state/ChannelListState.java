@@ -3,7 +3,7 @@ package view.state;
 import android.databinding.ObservableField;
 
 import io.realm.RealmList;
-import module.object.Channel;
+import object.Channel;
 
 public class ChannelListState {
     public final ObservableField<RealmList<Channel>> channels = new ObservableField<>();

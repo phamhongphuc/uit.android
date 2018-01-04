@@ -4,6 +4,7 @@
     <declare-styleable name="Theme">
         <attr name="ButtonStyle" format="reference"/>
         <attr name="TextStyle" format="reference"/>
+        <attr name="TextInputStyle" format="reference"/>
         <attr name="LineStyle" format="reference"/>
         <attr name="ViewPagerIndexStyle" format="reference"/>
     </declare-styleable>
@@ -12,6 +13,11 @@
         <attr name="_background" format="color"/>
         <attr name="_color" format="color"/>
         <attr name="_colorActive" format="color"/>
+        <attr name="_textAlign" format="enum">
+            <enum name="left" value="0"/>
+            <enum name="right" value="2"/>
+            <enum name="center" value="1"/>
+        </attr>
     </declare-styleable>
 
     <!-- Components -->
@@ -24,11 +30,7 @@
     <declare-styleable name="Button" parent="View">
         <attr name="_icon" format="string"/>
         <attr name="_text" format="string"/>
-        <attr name="_textAlign" format="enum">
-            <enum name="left" value="0"/>
-            <enum name="right" value="2"/>
-            <enum name="center" value="1"/>
-        </attr>
+        <attr name="_textAlign"/>
         <attr name="_foreground"/>
         <attr name="_background"/>
         <attr name="_backgroundActive" format="color"/>
@@ -38,5 +40,8 @@
         <attr name="_inactiveColor" format="color"/>
         <attr name="_activeColor" format="color"/>
         <attr name="_viewPagerId" format="reference"/>
+    </declare-styleable>
+    <declare-styleable name="Socket_Status">
+        <attr name="_socketStatus" format="reference"/>
     </declare-styleable>
 </resources>

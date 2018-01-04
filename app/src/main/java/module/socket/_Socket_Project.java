@@ -8,8 +8,8 @@ import org.json.JSONObject;
 
 import io.realm.Realm;
 import io.socket.client.Ack;
-import module.object.Project;
-import module.object.User;
+import object.Project;
+import object.User;
 
 public class _Socket_Project {
     private static io.socket.client.Socket socket = _Socket.getSocket();

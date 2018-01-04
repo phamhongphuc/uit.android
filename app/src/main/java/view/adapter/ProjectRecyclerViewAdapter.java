@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import io.realm.OrderedRealmCollection;
 import io.realm.RealmRecyclerViewAdapter;
-import module.object.Project;
+import object.Project;
 import uit.group.manager.BR;
 import uit.group.manager.ProjectDetailActivity;
 import uit.group.manager.R;

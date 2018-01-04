@@ -49,6 +49,12 @@ public class LoginActivity extends AppCompatActivity {
         state.viewPagerCount.set(fragmentAdapter.getCount());
         ViewPager viewPager = findViewById(R.id.viewPagerLogin);
         viewPager.setAdapter(fragmentAdapter);
+        viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+                state.viewPagerIndex.set(position);
+            }
+        });
     }
 
     private void InitializeDataBinding() {

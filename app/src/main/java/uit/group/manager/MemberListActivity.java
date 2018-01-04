@@ -9,7 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import io.realm.Realm;
-import module.object.Project;
+import object.Project;
 import uit.group.manager.databinding.ActivityMainBinding;
 import view.adapter.UserRecyclerViewAdapter;
 import view.state.MainState;

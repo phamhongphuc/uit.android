@@ -9,6 +9,10 @@
         <variable
             name="State"
             type="view.state.MainState"/>
+
+        <variable
+            name="Global"
+            type="app.Global"/>
     </data>
 
     <android.support.v7.widget.LinearLayoutCompat
@@ -17,14 +21,21 @@
         android:background="@color/white"
         android:orientation="vertical">
 
+        <components.Socket_Status
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            app:_socketStatus="@{Global.socketStatus}"/>
+
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
+            <!-- Todo: Chuyển cái chỗ avatar này thành một thẻ riêng -->
             <FrameLayout
                 android:layout_width="@dimen/size"
                 android:layout_height="@dimen/size">
+
                 <components.Image
                     android:layout_width="35dp"
                     android:layout_height="35dp"
@@ -36,38 +47,46 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/blueTransparent"
-                android:clickable="false"
-                android:onClick="facebookLogout"
-                app:_text="@{State.user.name}"
+                app:_text="@{Global.test}"
                 app:_textAlign="left"
                 tools:_text="State.user.name"/>
 
             <components.Button
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
+                android:onClick="facebookLogout"
                 app:_icon=""/>
 
         </android.support.v7.widget.LinearLayoutCompat>
 
         <components.Line
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/blueTransparent"
+            android:layout_gravity="center"
             app:_isFull="true"/>
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="@dimen/size"
             android:background="@color/white"
+            android:descendantFocusability="beforeDescendants"
+            android:focusableInTouchMode="true"
             android:orientation="horizontal">
 
             <components.Button
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/size"
+                android:layout_height="match_parent"
+                app:_icon=""/>
+
+            <components.TextInput
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:_icon=""
-                app:_text="Choose your project"/>
+                android:gravity="center_vertical"
+                android:inputType="text"
+                android:maxLines="1"
+                android:text="@={Global.test}"
+                tools:text="@string/email_address"/>
 
             <components.Line
                 android:layout_width="wrap_content"
@@ -81,7 +100,7 @@
         </android.support.v7.widget.LinearLayoutCompat>
 
         <components.Line
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:_isFull="true"/>
 

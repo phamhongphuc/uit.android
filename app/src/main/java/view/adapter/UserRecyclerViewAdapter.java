@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 
 import io.realm.OrderedRealmCollection;
 import io.realm.RealmRecyclerViewAdapter;
-import module.object.User;
+import object.User;
 import uit.group.manager.BR;
 import uit.group.manager.R;
 

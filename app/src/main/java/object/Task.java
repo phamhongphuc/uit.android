@@ -1,4 +1,4 @@
-package module.object;
+package object;
 
 import android.annotation.SuppressLint;
 

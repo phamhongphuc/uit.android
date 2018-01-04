@@ -52,18 +52,18 @@ public class Line extends View {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         int width = MeasureSpec.getSize(widthMeasureSpec);
         int height = MeasureSpec.getSize(heightMeasureSpec);
-        int size = Math.min(width, height);
 
         if (this.getParent() instanceof LinearLayoutCompat) {
             float dp = getResources().getDisplayMetrics().density;
             switch (((LinearLayoutCompat) this.getParent()).getOrientation()) {
                 case LinearLayoutCompat.HORIZONTAL:
-                    setMeasuredDimension((int) dp, size);
+                    width = (int) dp;
                     break;
                 case LinearLayoutCompat.VERTICAL:
-                    setMeasuredDimension(size, (int) dp);
+                    height = (int) dp;
                     break;
             }
+            setMeasuredDimension(width, height);
         }
     }
 

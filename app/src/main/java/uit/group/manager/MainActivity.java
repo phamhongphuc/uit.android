@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import app.Global;
 import module.facebook._Facebook;
 import module.socket._Socket_Project;
 import uit.group.manager.databinding.ActivityMainBinding;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private void InitializeDataBinding() {
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.setState(state);
+        binding.setGlobal(Global.getInstance());
     }
 
     private void InitializeRecyclerView() {

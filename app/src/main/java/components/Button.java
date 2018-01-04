@@ -118,6 +118,7 @@ public class Button extends LinearLayoutCompat {
                     LayoutParams.MATCH_PARENT
             ));
             textView.setTextColor(foreground);
+            textView.setSingleLine(true);
             textView.setBackgroundColor(currentColor);
             textView.setGravity(textAlign);
         } else if (textView != null) {

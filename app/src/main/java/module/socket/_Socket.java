@@ -17,35 +17,36 @@ public class _Socket {
     private static Global global = Global.getInstance();
 
     public static void Initialize() {
+        Emitter.Listener onError = new Emitter.Listener() {
+            @Override
+            public void call(Object... args) {
+
+            }
+        };
         getSocket();
-        socket.on(Socket.EVENT_CONNECT_ERROR, new Emitter.Listener() {
-            @Override
-            public void call(Object... args) {
-                global.socketStatus.set(Socket.EVENT_CONNECT_ERROR);
-                Log.d("SOCKET EVENT:", global.socketStatus.get());
-            }
-        }).on(Socket.EVENT_CONNECT, new Emitter.Listener() {
-            @Override
-            public void call(Object... args) {
-                global.socketStatus.set(Socket.EVENT_CONNECT);
-                Log.d("SOCKET EVENT:", global.socketStatus.get());
-            }
-        }).on(Socket.EVENT_CONNECT_TIMEOUT, new Emitter.Listener() {
-            @Override
-            public void call(Object... args) {
-                global.socketStatus.set(Socket.EVENT_CONNECT_TIMEOUT);
-                Log.d("SOCKET EVENT:", global.socketStatus.get());
-            }
-        }).on(Socket.EVENT_DISCONNECT, new Emitter.Listener() {
-            @Override
-            public void call(Object... args) {
-                global.socketStatus.set(Socket.EVENT_DISCONNECT);
-                Log.d("SOCKET EVENT:", global.socketStatus.get());
-            }
-        });
+        socket
+                .on(Socket.EVENT_CONNECT, emitter(Socket.EVENT_CONNECT))
+                .on(Socket.EVENT_CONNECTING, emitter(Socket.EVENT_CONNECTING))
+                .on(Socket.EVENT_CONNECT_ERROR, emitter(Socket.EVENT_CONNECT_ERROR))
+                .on(Socket.EVENT_CONNECT_TIMEOUT, emitter(Socket.EVENT_CONNECT_TIMEOUT))
+                .on(Socket.EVENT_RECONNECT, emitter(Socket.EVENT_RECONNECT))
+                .on(Socket.EVENT_RECONNECT_ERROR, emitter(Socket.EVENT_RECONNECT_ERROR))
+                .on(Socket.EVENT_RECONNECT_FAILED, emitter(Socket.EVENT_RECONNECT_FAILED))
+                .on(Socket.EVENT_RECONNECT_ATTEMPT, emitter(Socket.EVENT_RECONNECT_ATTEMPT))
+                .on(Socket.EVENT_RECONNECTING, emitter(Socket.EVENT_RECONNECTING));
         _Socket_User.socket_on();
 
         socket.connect();
+    }
+
+    private static Emitter.Listener emitter(final String event) {
+        return new Emitter.Listener() {
+            @Override
+            public void call(Object... args) {
+                Log.d("SOCKET", event);
+                global.socketStatus.set(event);
+            }
+        };
     }
 
     public static Socket getSocket() {

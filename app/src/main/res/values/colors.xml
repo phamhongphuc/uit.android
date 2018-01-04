@@ -4,9 +4,13 @@
     <color name="blueTransparent">#443498db</color>
     <color name="white">#ffffff</color>
     <color name="whiteTransparent">#66ffffff</color>
+    <color name="transparent">#00000000</color>
 
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
+    <color name="color_connected">#2ecc71</color>
+    <color name="color_pending">#e67e22</color>
+    <color name="color_disconnected">#e67e22</color>
 </resources>

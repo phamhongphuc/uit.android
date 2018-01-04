@@ -8,12 +8,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import module.object.Project;
+import object.Project;
 import uit.group.manager.databinding.ActivityProjectDetailBinding;
 import view.adapter.UserRecyclerViewAdapter;
 import view.state.ProjectDetailState;
 
-//import module.object.Channel;
+//import object.Channel;
 
 public class ProjectDetailActivity extends AppCompatActivity {
 
