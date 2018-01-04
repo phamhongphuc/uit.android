@@ -12,6 +12,8 @@
         <item name="colorAccent">#0088cc</item>
         <item name="android:colorControlHighlight">@color/blueTransparent</item>
 
+        <item name="android:windowAnimationStyle">@style/WindowAnimationStyle</item>
+
         <item name="ButtonStyle">@style/Button_Style</item>
         <item name="LineStyle">@style/Line_Style</item>
         <item name="TextStyle">@style/Text_Style</item>
@@ -19,7 +21,12 @@
         <item name="ViewPagerIndexStyle">@style/ViewPagerIndex_Style</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+    <style name="WindowAnimationStyle">
+        <item name="android:windowEnterAnimation">@anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+    </style>
 </resources>
