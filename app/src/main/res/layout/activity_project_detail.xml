@@ -2,7 +2,9 @@
 <layout>
 
     <data>
-
+        <variable
+            name="Global"
+            type="app.Global"/>
         <variable
             name="State"
             type="view.state.ProjectDetailState"/>
@@ -17,6 +19,11 @@
         android:orientation="vertical"
         tools:context="uit.group.manager.ProjectDetailActivity">
 
+        <components.Socket_Status
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            app:_socketStatus="@{Global.socketStatus}"/>
+
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="@dimen/size"
@@ -27,7 +34,7 @@
             <components.Button
                 android:layout_width="@dimen/size"
                 android:layout_height="match_parent"
-                android:onClick="goBackToMainActivity"
+                android:onClick="back"
                 app:_icon=""/>
 
             <components.Line

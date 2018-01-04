@@ -54,6 +54,8 @@ public class _Socket_User {
                     }
                 }
             });
+        } else {
+            Global.getInstance().currentUserId.set(null);
         }
     }
 

@@ -47,7 +47,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:_text="@{Global.test}"
+                app:_text="@{State.user.name}"
                 app:_textAlign="left"
                 tools:_text="State.user.name"/>
 
@@ -85,7 +85,8 @@
                 android:gravity="center_vertical"
                 android:inputType="text"
                 android:maxLines="1"
-                android:text="@={Global.test}"
+                android:text=""
+                android:imeOptions="actionDone"
                 tools:text="@string/email_address"/>
 
             <components.Line

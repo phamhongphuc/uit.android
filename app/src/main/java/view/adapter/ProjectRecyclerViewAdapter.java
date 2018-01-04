@@ -68,7 +68,8 @@ public class ProjectRecyclerViewAdapter extends RealmRecyclerViewAdapter<Project
         public void selectProject(View view) {
             Intent intent = new Intent(view.getContext(), ProjectDetailActivity.class);
             intent.putExtra("projectId", project.getId());
-            view.getContext().startActivities(new Intent[]{intent});
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            view.getContext().startActivity(intent);
         }
     }
 }

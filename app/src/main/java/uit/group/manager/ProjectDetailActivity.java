@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import app.Global;
 import object.Project;
 import uit.group.manager.databinding.ActivityProjectDetailBinding;
 import view.adapter.UserRecyclerViewAdapter;
@@ -67,10 +68,10 @@ public class ProjectDetailActivity extends AppCompatActivity {
     private void InitializeDataBinding() {
         ActivityProjectDetailBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_project_detail);
         binding.setState(state);
+        binding.setGlobal(Global.getInstance());
     }
 
-    public void goBackToMainActivity(View view) {
-        startActivity(new Intent(getBaseContext(), MainActivity.class));
+    public void back(View view) {
         finish();
     }
 }

@@ -27,14 +27,6 @@
             app:_socketStatus="@{Global.socketStatus}">
         </components.Socket_Status>
 
-        <components.Button
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="#22890890"
-            app:_active="true"
-            app:_text="@{Global.socketStatus}"
-            tools:_text="Global.socketStatus"/>
-
         <android.support.v4.view.ViewPager
             android:id="@+id/viewPagerLogin"
             android:layout_width="match_parent"

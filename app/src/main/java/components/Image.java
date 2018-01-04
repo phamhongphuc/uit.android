@@ -22,9 +22,9 @@ import java.util.Objects;
 import uit.group.manager.R;
 
 public class Image extends android.support.v7.widget.AppCompatImageView {
+    private Picasso picasso = Picasso.with(getContext());
     private String src;
     private int size;
-    private Picasso picasso = Picasso.with(getContext());
 
     public Image(Context context) {
         super(context);

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.support.v7.widget.AppCompatEditText;
 import android.util.AttributeSet;
+import android.view.inputmethod.EditorInfo;
 
 import uit.group.manager.R;
 
@@ -49,6 +50,14 @@ public class TextInput extends AppCompatEditText {
                 (int) (size * 0.5f / dp), 0,
                 (int) (size * 0.5f / dp), 0
         );
+    }
+
+    @Override
+    public void onEditorAction(int actionCode) {
+        super.onEditorAction(actionCode);
+        if (actionCode == EditorInfo.IME_ACTION_DONE) {
+            
+        }
     }
 }
 

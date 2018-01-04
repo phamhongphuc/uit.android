@@ -29,7 +29,10 @@ public class LoginActivity extends AppCompatActivity {
 
         InitializeDataBinding();
         InitializePages();
+        InitializeListener();
+    }
 
+    private void InitializeListener() {
         Global.getInstance().currentUserId.addOnPropertyChangedCallback(new Observable.OnPropertyChangedCallback() {
             @Override
             public void onPropertyChanged(Observable sender, int propertyId) {
