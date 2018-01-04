@@ -24,7 +24,7 @@ public class _Socket_Project {
                 } else {
                     realm.beginTransaction();
                     Project project = realm.createOrUpdateObjectFromJson(Project.class, (JSONObject) args[1]);
-                    User user = User.getUserById_client(userId);
+                    User user = User.getUserById(userId);
                     project.addMember(user);
                     realm.commitTransaction();
                 }

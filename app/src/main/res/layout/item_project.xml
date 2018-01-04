@@ -9,7 +9,7 @@
 
         <variable
             name="action"
-            type="view.adapter.ProjectRecyclerViewAdapter.ProjectItemAction"/>
+            type="view.recyclerViewAdapter.ProjectRecyclerViewAdapter.ProjectItemAction"/>
     </data>
     <!-- TODO: Sửa lại phần padding sau -->
     <FrameLayout
@@ -26,9 +26,9 @@
             android:elevation="2dp"
             android:focusable="true"
             android:foreground="?attr/selectableItemBackground"
-            android:onClick="@{action::selectProject}"
-            android:orientation="vertical">
 
+            android:orientation="vertical">
+            <!-- android:onClick="@{action::selectProject}" -->
             <components.TextBold
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

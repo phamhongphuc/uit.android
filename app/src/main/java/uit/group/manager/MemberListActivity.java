@@ -11,10 +11,10 @@ import android.view.View;
 import io.realm.Realm;
 import object.Project;
 import uit.group.manager.databinding.ActivityMainBinding;
-import view.adapter.UserRecyclerViewAdapter;
+import view.recyclerViewAdapter.UserRecyclerViewAdapter;
 import view.state.MainState;
 
-//import view.adapter.UserRecyclerViewAdapter;
+//import view.a.UserRecyclerViewAdapter;
 
 public class MemberListActivity extends AppCompatActivity {
 

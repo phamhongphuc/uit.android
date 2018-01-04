@@ -8,7 +8,6 @@ import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 
 public class Icon extends AppCompatTextView {
-
     public Icon(Context context) {
         super(context);
         Initialize(context, null);

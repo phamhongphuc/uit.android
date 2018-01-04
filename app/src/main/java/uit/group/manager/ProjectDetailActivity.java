@@ -11,7 +11,7 @@ import android.view.View;
 import app.Global;
 import object.Project;
 import uit.group.manager.databinding.ActivityProjectDetailBinding;
-import view.adapter.UserRecyclerViewAdapter;
+import view.recyclerViewAdapter.UserRecyclerViewAdapter;
 import view.state.ProjectDetailState;
 
 //import object.Channel;

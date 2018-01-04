@@ -21,11 +21,11 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <components.Socket_Status
+        <components.SocketStatus
             android:layout_width="match_parent"
             android:layout_height="3dp"
             app:_socketStatus="@{Global.socketStatus}">
-        </components.Socket_Status>
+        </components.SocketStatus>
 
         <android.support.v4.view.ViewPager
             android:id="@+id/viewPagerLogin"

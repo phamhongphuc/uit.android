@@ -15,12 +15,13 @@ import com.facebook.CallbackManager;
 import app.Global;
 import module.facebook._Facebook;
 import uit.group.manager.databinding.ActivityLoginBinding;
-import view.fragment.FragmentAdapter;
+import view.fragmentAdapter.FragmentAdapter;
 import view.state.LoginState;
 
 public class LoginActivity extends AppCompatActivity {
     private CallbackManager callbackManager = CallbackManager.Factory.create();
     private LoginState state = new LoginState();
+    private FragmentAdapter fragmentAdapter;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,19 +46,17 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void InitializePages() {
-        FragmentAdapter fragmentAdapter = new FragmentAdapter(getSupportFragmentManager(), new int[]{
+        fragmentAdapter = new FragmentAdapter(getSupportFragmentManager(), new int[]{
                 R.layout.fragment_login_1,
                 R.layout.fragment_login_2,
         });
-        state.viewPagerCount.set(fragmentAdapter.getCount());
+
+//        fragmentAdapter = new FragmentAdapter(getSupportFragmentManager(), new ArrayList<Fragment>() {{
+//            add(new LoginLeftFragment());
+//        }});
+
         ViewPager viewPager = findViewById(R.id.viewPagerLogin);
         viewPager.setAdapter(fragmentAdapter);
-        viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-            @Override
-            public void onPageSelected(int position) {
-                state.viewPagerIndex.set(position);
-            }
-        });
     }
 
     private void InitializeDataBinding() {

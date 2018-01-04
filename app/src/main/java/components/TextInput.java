@@ -12,7 +12,6 @@ public class TextInput extends AppCompatEditText {
     public TextInput(Context context) {
         super(context);
         Initialize(context, null);
-
     }
 
     public TextInput(Context context, AttributeSet attrs) {
@@ -56,7 +55,7 @@ public class TextInput extends AppCompatEditText {
     public void onEditorAction(int actionCode) {
         super.onEditorAction(actionCode);
         if (actionCode == EditorInfo.IME_ACTION_DONE) {
-            
+            clearFocus();
         }
     }
 }

@@ -9,15 +9,23 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import app.Global;
+import io.realm.Realm;
 import module.facebook._Facebook;
+import module.socket._Socket;
 import module.socket._Socket_Project;
+import object.User;
 import uit.group.manager.databinding.ActivityMainBinding;
-import view.adapter.ProjectRecyclerViewAdapter;
-import view.state.MainState;
+import view.recyclerViewAdapter.ProjectRecyclerViewAdapter;
 
 public class MainActivity extends AppCompatActivity {
+    private final Realm realm = Realm.getDefaultInstance();
+    private final User user;
+    private final Global global = Global.getInstance();
 
-    private MainState state = new MainState();
+    MainActivity() {
+        String userId = global.currentUserId.get();
+        user = User.getUserById(userId);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +38,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void InitializeDataBinding() {
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        binding.setState(state);
-        binding.setGlobal(Global.getInstance());
+        binding.setGlobal(global);
+        binding.setUser(user);
+        binding.setSocket(_Socket.getInstance());
     }
 
     private void InitializeRecyclerView() {
-        ProjectRecyclerViewAdapter adapter = new ProjectRecyclerViewAdapter(state.user.get().getProjects());
+        ProjectRecyclerViewAdapter adapter = new ProjectRecyclerViewAdapter(user.getProjects());
         RecyclerView recyclerView = findViewById(R.id.list_project);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
@@ -49,6 +58,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void createProject(View view) {
-        _Socket_Project.CreateProject(state.user.get().getId());
+        _Socket_Project.CreateProject(user.getId());
     }
 }

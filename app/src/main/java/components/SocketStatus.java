@@ -15,29 +15,29 @@ import uit.group.manager.R;
 
 import static io.socket.client.Socket.EVENT_CONNECT;
 
-public class Socket_Status extends View {
+public class SocketStatus extends View {
     private static final int RED = 0xffe74c3c;
     private static final int GREEN = 0xff2ecc71;
     private String status;
     private int currentColor;
     private int nextColor;
 
-    public Socket_Status(Context context) {
+    public SocketStatus(Context context) {
         super(context);
         Initialize(context, null);
     }
 
-    public Socket_Status(Context context, @Nullable AttributeSet attrs) {
+    public SocketStatus(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         Initialize(context, attrs);
     }
 
-    public Socket_Status(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public SocketStatus(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         Initialize(context, attrs);
     }
 
-    public Socket_Status(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public SocketStatus(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         Initialize(context, attrs);
     }
@@ -48,8 +48,8 @@ public class Socket_Status extends View {
     }
 
     private void InitializeAttr(@NonNull Context context, @Nullable AttributeSet attrs) {
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.Socket_Status);
-        status = typedArray.getString(R.styleable.Socket_Status__socketStatus);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SocketStatus);
+        status = typedArray.getString(R.styleable.SocketStatus__status);
         typedArray.recycle();
     }
 

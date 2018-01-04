@@ -29,7 +29,7 @@ public class User extends RealmObject {
     }
 
 
-    public static User getUserById_client(String userId) {
+    public static User getUserById(String userId) {
         Realm realm = Realm.getDefaultInstance();
         boolean in = realm.isInTransaction();
         if (!in) realm.beginTransaction();
@@ -71,7 +71,8 @@ public class User extends RealmObject {
     }
 
     public RealmResults<Project> getProjects() {
-        return Realm.getDefaultInstance()
+        if (id == null) return Realm.getDefaultInstance().where(Project.class).findAll();
+        else return Realm.getDefaultInstance()
                 .where(Project.class)
                 .contains("members.id", id)
                 .findAll();

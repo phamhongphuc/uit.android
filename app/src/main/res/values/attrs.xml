@@ -41,7 +41,7 @@
         <attr name="_activeColor" format="color"/>
         <attr name="_viewPagerId" format="reference"/>
     </declare-styleable>
-    <declare-styleable name="Socket_Status">
-        <attr name="_socketStatus" format="reference"/>
+    <declare-styleable name="SocketStatus">
+        <attr name="_status" format="reference"/>
     </declare-styleable>
 </resources>

@@ -7,6 +7,14 @@
     <data>
 
         <variable
+            name="user"
+            type="object.User"/>
+
+        <variable
+            name="socket"
+            type="module.socket._Socket"/>
+
+        <variable
             name="State"
             type="view.state.MainState"/>
 
@@ -21,10 +29,11 @@
         android:background="@color/white"
         android:orientation="vertical">
 
-        <components.Socket_Status
+        <components.SocketStatus
             android:layout_width="match_parent"
             android:layout_height="3dp"
-            app:_socketStatus="@{Global.socketStatus}"/>
+            app:_socketStatus="@{socket.status}"
+            tools:foreground="#2ecc71"/>
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -40,14 +49,14 @@
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_gravity="center"
-                    app:_src="@{State.user.getPicture()}"/>
+                    app:_src="@{user.getPicture()}"/>
             </FrameLayout>
 
             <components.Button
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:_text="@{State.user.name}"
+                app:_text="@{user.name}"
                 app:_textAlign="left"
                 tools:_text="State.user.name"/>
 
@@ -83,11 +92,12 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
+                android:hint="@string/search"
+                android:imeOptions="actionDone"
                 android:inputType="text"
                 android:maxLines="1"
                 android:text=""
-                android:imeOptions="actionDone"
-                tools:text="@string/email_address"/>
+                tools:text="@string/search"/>
 
             <components.Line
                 android:layout_width="wrap_content"

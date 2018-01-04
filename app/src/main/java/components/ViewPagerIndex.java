@@ -68,15 +68,15 @@ public class ViewPagerIndex extends View {
         if (view == null || !(view instanceof ViewPager)) return;
 
         ViewPager viewPager = (ViewPager) view;
-//        if (viewPager.getAdapter() == null) return;
-//        count = viewPager.getAdapter().getCount();
-//        viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-//            @Override
-//            public void onPageSelected(int index) {
-//                ViewPagerIndex.this.index = index;
-//                invalidate();
-//            }
-//        });
+        if (viewPager.getAdapter() == null) return;
+        count = viewPager.getAdapter().getCount();
+        viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+            @Override
+            public void onPageSelected(int index) {
+                ViewPagerIndex.this.index = index;
+                invalidate();
+            }
+        });
         invalidate();
     }
 

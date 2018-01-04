@@ -27,5 +27,6 @@
     <string name="members">Danh sách thành viên</string>
     <string name="channels">Danh sách kênh chat</string>
     <string name="tasks">Danh sách nhiệm vụ</string>
-    <string name="button_login_with_facebook">Đăng nhập với Facebook</string>
+    <string name="button_login_with_facebook">Login with Facebook</string>
+    <string name="search">Tìm kiếm</string>
 </resources>

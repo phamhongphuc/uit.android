@@ -133,7 +133,7 @@ public class Project extends RealmObject {
     }
 
     public void setCreator(Realm realm, String creatorId) {
-        User user = User.getUserById_client(creatorId);
+        User user = User.getUserById(creatorId);
         if (user != null) creator = user;
         else {
             Log.e("ERROR", "Ngoại lệ");
@@ -156,7 +156,7 @@ public class Project extends RealmObject {
         for (int i = 0; i < membersId.length(); i++) {
             try {
                 String userId = membersId.getString(i);
-                User user = User.getUserById_client(userId);
+                User user = User.getUserById(userId);
                 if (user != null) addMember(user);
                 else {
                     final ObservableField<User> userField = new ObservableField<>();
