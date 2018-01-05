@@ -1,5 +1,6 @@
 package uit.group.manager;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.os.Bundle;
@@ -11,18 +12,28 @@ import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
 import view.fragment.FragmentAdapter;
 
 public class ProjectCreateActivity extends AppCompatActivity {
+    public int day, month, year;
+    private DialogFragment newFragment = new DatePickerFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_create);
         InitializePages();
+        /*TextView createdate = findViewById(R.id.createdate);
+        Date curentdate = Calendar.getInstance().getTime();
+        String day          = (String) DateFormat.format("dd",   curentdate); // 20
+        String month  = (String) DateFormat.format("MM",   curentdate); // 06
+        String year         = (String) DateFormat.format("yyyy", curentdate);
+
+        createdate.setText(String.format("%s/%s/%s", day, month, year));*/
     }
 
     private void InitializePages() {
@@ -35,12 +46,14 @@ public class ProjectCreateActivity extends AppCompatActivity {
     }
 
     public void showDatePickerDialog(View v) {
-        DialogFragment newFragment = new DatePickerFragment();
         newFragment.show(getSupportFragmentManager(), "datePicker");
     }
 
     public static class DatePickerFragment extends DialogFragment
             implements DatePickerDialog.OnDateSetListener {
+        @SuppressLint("SimpleDateFormat")
+        private static final SimpleDateFormat dateFormat =
+                new SimpleDateFormat("dd-MM-yyyy");
 
         @NonNull
         @Override
@@ -57,18 +70,12 @@ public class ProjectCreateActivity extends AppCompatActivity {
 
         @Override
         public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-            month++;
-            Date getDate;
-            String input_date = day + "/" + month + "/" + year;
-            ///Them ngay vao bien dang Date
-        /*    SimpleDateFormat format=new SimpleDateFormat("dd/MM/yyyy");
-            try {
-                getDate=format.parse(input_date);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }*/
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(year, month, day);
+            Date date = calendar.getTime();
 
-            Log.d("GET DATE AFTER CHOOSING", day + "/" + month + "/" + year);
+            String str = dateFormat.format(date);
+            Log.d("DATE", str);
         }
     }
 }

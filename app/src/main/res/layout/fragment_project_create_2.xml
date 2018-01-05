@@ -25,6 +25,16 @@
         android:layout_width="match_parent"
         android:layout_height="1dp" />
 
+    <components.Text
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/size"
+        android:text="Create date" />
+
+    <TextView
+        android:id="@+id/createdate"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size" />
+
     <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
