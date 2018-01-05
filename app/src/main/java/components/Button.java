@@ -35,7 +35,7 @@ public class Button extends LinearLayoutCompat {
 
     private String text;
     private String icon;
-    private boolean active = false;
+    private boolean active;
     private int backgroundActive;
     private int background;
     private int foreground;
@@ -45,6 +45,7 @@ public class Button extends LinearLayoutCompat {
     private Drawable selectedItemDrawable;
     private int textAlign;
     private boolean textPaddingLeft;
+    private boolean hasRipple;
 
     public Button(Context context) {
         super(context, null, R.attr.ButtonStyle);
@@ -67,13 +68,14 @@ public class Button extends LinearLayoutCompat {
         typedArray = context.obtainStyledAttributes(attrs, R.styleable.Button);
         icon = (String) typedArray.getText(R.styleable.Button__icon);
         text = (String) typedArray.getText(R.styleable.Button__text);
-        textAlign = Gravity.CENTER_VERTICAL | ALIGN.get(typedArray.getInt(R.styleable.Button__textAlign, CENTER));
+        textAlign = ALIGN.get(typedArray.getInt(R.styleable.Button__textAlign, CENTER)) | Gravity.CENTER_VERTICAL;
 
         active = typedArray.getBoolean(R.styleable.Button__active, false);
         background = typedArray.getColor(R.styleable.Button__background, Color.TRANSPARENT);
         foreground = typedArray.getColor(R.styleable.Button__foreground, context.getColor(R.color.blue));
         backgroundActive = typedArray.getColor(R.styleable.Button__backgroundActive, Color.parseColor("#333498db"));
         textPaddingLeft = typedArray.getBoolean(R.styleable.Button__textPaddingLeft, true);
+        hasRipple = typedArray.getBoolean(R.styleable.Button__hasRipple, true);
 
         typedArray.recycle();
     }
@@ -132,11 +134,11 @@ public class Button extends LinearLayoutCompat {
     }
 
     private void InitializeRipple() {
-        setForeground(active ?
-                new ColorDrawable(Color.TRANSPARENT) :
+        setForeground(!active && hasRipple ?
                 getContext()
                         .obtainStyledAttributes(new int[]{R.attr.selectableItemBackground})
-                        .getDrawable(0)
+                        .getDrawable(0) :
+                new ColorDrawable(Color.TRANSPARENT)
         );
     }
 
@@ -156,9 +158,8 @@ public class Button extends LinearLayoutCompat {
         if (textView != null) {
             textView.setTextSize(size * 0.35f / dp);
             textView.setPadding(
-                    (iconView == null || textPaddingLeft)
-                            ? (int) (size * 0.5f / dp)
-                            : 0,
+                    (iconView == null && textPaddingLeft)
+                            ? (int) (size * 0.5f / dp) : 0,
                     0,
                     (int) (size * 0.5f / dp),
                     0

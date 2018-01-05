@@ -31,7 +31,6 @@ public class LoginActivity extends AppCompatActivity {
         InitializePages();
         InitializeListener();
 
-
         _Facebook.Login(this);
     }
 

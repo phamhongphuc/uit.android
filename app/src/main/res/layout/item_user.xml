@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -22,16 +23,14 @@
             android:focusable="true"
             android:foreground="?attr/selectableItemBackground">
 
-            <android.support.v7.widget.LinearLayoutCompat
-                android:layout_width="@dimen/size"
-                android:layout_height="@dimen/size"
-                android:gravity="center">
+            <components.ImageAvatar
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                app:_size="35dp"
+                app:_userId="@{user.id}"
+                tools:background="@color/blueTransparent"/>
 
-                <components.Image
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    app:_src="@{user.getPicture()}"/>
-            </android.support.v7.widget.LinearLayoutCompat>
 
             <components.Text
                 android:layout_width="0dp"

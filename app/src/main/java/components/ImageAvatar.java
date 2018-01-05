@@ -69,7 +69,7 @@ public class ImageAvatar extends android.support.v7.widget.AppCompatImageView {
         paint.setDither(true);
 
         canvas.drawARGB(0, 0, 0, 0);
-        paint.setColor(Color.WHITE);
+        paint.setColor(Color.GRAY);
         canvas.drawCircle(
                 size / 2,
                 size / 2,
@@ -106,8 +106,8 @@ public class ImageAvatar extends android.support.v7.widget.AppCompatImageView {
 
     private void InitializeView(Context context) {
         if (userId == null) return;
-        if (outerSize.get() == 0) return;
-        Uri src = ImageRequest.getProfilePictureUri(userId, outerSize.get(), outerSize.get());
+        if (outerSize.get() == 0 || innerSize == 0) return;
+        Uri src = ImageRequest.getProfilePictureUri(userId, innerSize, innerSize);
         picasso.load(src).into(this);
         picasso.setIndicatorsEnabled(true);
     }

@@ -10,7 +10,6 @@ import io.realm.RealmObject;
 import io.realm.RealmResults;
 import io.realm.annotations.LinkingObjects;
 import io.realm.annotations.PrimaryKey;
-import module.facebook._Facebook;
 
 public class User extends RealmObject {
     public static final boolean FEMALE = false;
@@ -61,10 +60,6 @@ public class User extends RealmObject {
 
     public String getEmail() {
         return email;
-    }
-
-    public String getPicture() {
-        return _Facebook.GetPicture(id);
     }
 
     public String getDescription() {
