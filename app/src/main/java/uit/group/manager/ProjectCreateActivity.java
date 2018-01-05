@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -13,9 +14,12 @@ import android.view.View;
 import android.widget.DatePicker;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+import view.fragment.ProjectCreateContent_Fragment;
+import view.fragment.ProjectCreateTitle_Fragment;
 import view.fragmentAdapter.FragmentAdapter;
 
 public class ProjectCreateActivity extends AppCompatActivity {
@@ -38,10 +42,17 @@ public class ProjectCreateActivity extends AppCompatActivity {
     }
 
     private void InitializePages() {
-        FragmentAdapter fragmentAdapter = new FragmentAdapter(getSupportFragmentManager(), new int[]{
+        /*FragmentAdapter fragmentAdapter = new FragmentAdapter(getSupportFragmentManager(), new int[]{
                 R.layout.fragment_project_create_1,
                 R.layout.fragment_project_create_2
-        });
+        });*/
+        FragmentAdapter fragmentAdapter = new FragmentAdapter(
+                getSupportFragmentManager(),
+                new ArrayList<Fragment>() {{
+                    add(new ProjectCreateTitle_Fragment());
+                    add(new ProjectCreateContent_Fragment());
+                }}
+        );
         ViewPager viewPager = findViewById(R.id.viewPagerProjectCreate);
         viewPager.setAdapter(fragmentAdapter);
     }

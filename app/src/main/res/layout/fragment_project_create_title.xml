@@ -1,0 +1,46 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="sss"
+            type="view.fragment.ProjectCreateTitle_Fragment.State" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <View
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:background="@drawable/ic_login_1" />
+
+        <components.TextBold
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@{sss.status}"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            tools:text="q322dd32" />
+
+        <components.TextInput
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size" />
+
+        <components.Line
+            android:layout_width="wrap_content"
+            android:layout_height="1dp" />
+
+        <components.Button
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/size"
+            app:_text="NEXT >" />
+    </LinearLayout>
+</layout>
