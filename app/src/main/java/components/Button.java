@@ -44,6 +44,7 @@ public class Button extends LinearLayoutCompat {
     private AppCompatTextView iconView;
     private Drawable selectedItemDrawable;
     private int textAlign;
+    private boolean textPaddingLeft;
 
     public Button(Context context) {
         super(context, null, R.attr.ButtonStyle);
@@ -72,6 +73,7 @@ public class Button extends LinearLayoutCompat {
         background = typedArray.getColor(R.styleable.Button__background, Color.TRANSPARENT);
         foreground = typedArray.getColor(R.styleable.Button__foreground, context.getColor(R.color.blue));
         backgroundActive = typedArray.getColor(R.styleable.Button__backgroundActive, Color.parseColor("#333498db"));
+        textPaddingLeft = typedArray.getBoolean(R.styleable.Button__textPaddingLeft, true);
 
         typedArray.recycle();
     }
@@ -154,7 +156,9 @@ public class Button extends LinearLayoutCompat {
         if (textView != null) {
             textView.setTextSize(size * 0.35f / dp);
             textView.setPadding(
-                    iconView == null ? (int) (size * 0.5f / dp) : 0,
+                    (iconView == null || textPaddingLeft)
+                            ? (int) (size * 0.5f / dp)
+                            : 0,
                     0,
                     (int) (size * 0.5f / dp),
                     0

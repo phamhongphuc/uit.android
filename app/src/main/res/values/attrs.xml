@@ -33,6 +33,7 @@
         <attr name="_textAlign"/>
         <attr name="_foreground"/>
         <attr name="_background"/>
+        <attr name="_textPaddingLeft" format="boolean"/>
         <attr name="_backgroundActive" format="color"/>
         <attr name="_active" format="boolean"/>
     </declare-styleable>
