@@ -32,7 +32,7 @@
         <components.SocketStatus
             android:layout_width="match_parent"
             android:layout_height="3dp"
-            app:_socketStatus="@{socket.status}"
+            app:_status="@{socket.status}"
             tools:foreground="#2ecc71"/>
 
         <android.support.v7.widget.LinearLayoutCompat

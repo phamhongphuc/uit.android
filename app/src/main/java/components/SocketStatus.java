@@ -29,22 +29,21 @@ import static io.socket.client.Socket.EVENT_RECONNECT_FAILED;
 
 public class SocketStatus extends View {
     private static final Map<String, Integer> colors = ImmutableMap.<String, Integer>builder()
-            .put(EVENT_CONNECT, 0x2ecc71)
-            .put(EVENT_CONNECT_ERROR, 0xc0392b)
-            .put(EVENT_CONNECT_TIMEOUT, 0xe74c3c)
-            .put(EVENT_CONNECTING, 0x1abc9c)
-            .put(EVENT_DISCONNECT, 0xc0392b)
-            .put(EVENT_ERROR, 0xc0392b)
-            .put(EVENT_RECONNECT, 0x1abc9c)
-            .put(EVENT_RECONNECT_ATTEMPT, 0x16a085)
-            .put(EVENT_RECONNECT_FAILED, 0xc0392b)
-            .put(EVENT_RECONNECT_ERROR, 0xc0392b)
-            .put(EVENT_RECONNECTING, 0xabc9c)
+            .put(EVENT_CONNECT, 0xff2ecc71)
+            .put(EVENT_CONNECT_ERROR, 0xffc0392b)
+            .put(EVENT_CONNECT_TIMEOUT, 0xffe74c3c)
+            .put(EVENT_CONNECTING, 0xff1abc9c)
+            .put(EVENT_DISCONNECT, 0xffc0392b)
+            .put(EVENT_ERROR, 0xffc0392b)
+            .put(EVENT_RECONNECT, 0xff1abc9c)
+            .put(EVENT_RECONNECT_ATTEMPT, 0xff16a085)
+            .put(EVENT_RECONNECT_FAILED, 0xffc0392b)
+            .put(EVENT_RECONNECT_ERROR, 0xffc0392b)
+            .put(EVENT_RECONNECTING, 0xffabc9c)
             .build();
 
-    private String status;
+    private String status = "";
     private int currentColor;
-    private int nextColor;
 
     public SocketStatus(Context context) {
         super(context);
@@ -78,7 +77,8 @@ public class SocketStatus extends View {
     }
 
     private void InitializeView(Context context) {
-        nextColor = colors.get(status);
+        if (status == null) return;
+        int nextColor = colors.get(status);
         if (currentColor == nextColor) return;
 
         AnimatorSet set;
@@ -97,7 +97,7 @@ public class SocketStatus extends View {
         invalidate();
     }
 
-    public void set_socketStatus(String status) {
+    public void set_status(String status) {
         this.status = status;
         InitializeView(getContext());
     }

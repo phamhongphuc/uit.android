@@ -5,6 +5,10 @@
         <variable
             name="Global"
             type="app.Global"/>
+
+        <variable
+            name="socket"
+            type="module.socket._Socket.State"/>
         <variable
             name="State"
             type="view.state.ProjectDetailState"/>
@@ -22,7 +26,7 @@
         <components.SocketStatus
             android:layout_width="match_parent"
             android:layout_height="3dp"
-            app:_socketStatus="@{Global.socketStatus}"/>
+            app:_status="@{socket.status}"/>
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"

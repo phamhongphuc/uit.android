@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import app.Global;
+import module.socket._Socket;
 import object.Project;
 import uit.group.manager.databinding.ActivityProjectDetailBinding;
 import view.recyclerViewAdapter.UserRecyclerViewAdapter;
@@ -67,6 +68,8 @@ public class ProjectDetailActivity extends AppCompatActivity {
 
     private void InitializeDataBinding() {
         ActivityProjectDetailBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_project_detail);
+        binding.setSocket(_Socket.State.getInstance());
+
         binding.setState(state);
         binding.setGlobal(Global.getInstance());
     }

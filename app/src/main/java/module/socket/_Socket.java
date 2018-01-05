@@ -62,7 +62,7 @@ public class _Socket {
 
     public static class State {
         private static final State INSTANCE = new State();
-        public final ObservableField<String> status = new ObservableField<>();
+        public final ObservableField<String> status = new ObservableField<>("");
 
         public static State getInstance() {
             return INSTANCE;
