@@ -61,7 +61,7 @@ public class Project extends RealmObject {
     }
 
     public RealmResults<Task> getTasks(int status) {
-        return tasks.where().equalTo("status", status).findAll();
+        return tasks.where().equalTo("State", status).findAll();
     }
 
     public RealmList<User> getMembers() {

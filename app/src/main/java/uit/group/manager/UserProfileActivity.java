@@ -25,7 +25,7 @@ public class UserProfileActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
-//                state.viewPagerIndex.set(position);
+//                State.viewPagerIndex.set(position);
             }
 
             @Override

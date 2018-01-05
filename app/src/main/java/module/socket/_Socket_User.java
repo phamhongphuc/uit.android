@@ -1,21 +1,23 @@
 package module.socket;
 
-import android.annotation.SuppressLint;
 import android.databinding.ObservableField;
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.facebook.AccessToken;
 
 import org.json.JSONObject;
 
-import app.Global;
+import javax.annotation.Nullable;
+
 import io.realm.Realm;
 import io.socket.client.Ack;
-import io.socket.emitter.Emitter;
+import io.socket.client.Socket;
+import module.Callback;
 import object.User;
 
 public class _Socket_User {
-    private static io.socket.client.Socket socket = _Socket.getSocket();
+    private static final Socket socket = _Socket.getSocket();
 
     public static void GetUserById(String userId, final ObservableField<User> user) {
         socket.emit("Get:User(id)", userId, new Ack() {
@@ -34,44 +36,29 @@ public class _Socket_User {
         });
     }
 
-    public static void LoginUserByAccessToken() {
-        if (AccessToken.getCurrentAccessToken() != null) {
-            String accessToken = AccessToken.getCurrentAccessToken().getToken();
-            socket.emit("Get:User(accessToken)", accessToken, new Ack() {
-                @SuppressLint("LongLogTag")
+    public static void GetUserByAccessToken(@Nullable AccessToken accessToken, final Callback callback) {
+        AccessToken token = accessToken != null ? accessToken : AccessToken.getCurrentAccessToken();
+
+        if (token != null) {
+            String accessTokenString = token.getToken();
+            socket.emit("Get:User(accessToken)", accessTokenString, new Ack() {
                 @Override
                 public void call(Object... args) {
                     Realm realm = Realm.getDefaultInstance();
                     if (args[0] != null) {
                         Log.d("SOCKET: ERROR", "Lỗi trả về" + args[0]);
                     } else {
-                        JSONObject obj = (JSONObject) args[1];
-                        realm.beginTransaction();
-                        final User user = realm.createOrUpdateObjectFromJson(User.class, obj);
-                        realm.commitTransaction();
-                        _Socket_Project.GetProjectsByUserId(user.getId());
-                        Global.getInstance().currentUserId.set(user.getId());
+                        final JSONObject obj = (JSONObject) args[1];
+                        realm.executeTransaction(new Realm.Transaction() {
+                            @Override
+                            public void execute(@NonNull Realm realm) {
+                                final User user = realm.createOrUpdateObjectFromJson(User.class, obj);
+                                callback.Call(user.getId());
+                            }
+                        });
                     }
                 }
             });
-        } else {
-            Global.getInstance().currentUserId.set(null);
         }
-    }
-
-    public static void socket_on() {
-        socket.on("Update:User", new Emitter.Listener() {
-            @Override
-            public void call(Object... args) {
-//                Realm realm = Realm.getDefaultInstance();
-//                if (args[0] != null) {
-//                    JSONObject obj = (JSONObject) args[0];
-//                    realm.beginTransaction();
-//                    final User user = realm.createOrUpdateObjectFromJson(User.class, obj);
-//                    realm.commitTransaction();
-//                    _Socket_Project.GetProjectsByUserId(user.getId());
-//                }
-            }
-        });
     }
 }

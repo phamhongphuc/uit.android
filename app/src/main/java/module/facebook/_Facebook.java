@@ -3,6 +3,7 @@ package module.facebook;
 import android.databinding.ObservableField;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
@@ -13,6 +14,7 @@ import com.facebook.login.LoginManager;
 
 import java.util.Collections;
 
+import module.Callback;
 import module.socket._Socket_User;
 
 public class _Facebook {
@@ -20,11 +22,24 @@ public class _Facebook {
      * Hàm này được khai báo luôn trong App
      */
     public static void Initialize() {
-        _Socket_User.LoginUserByAccessToken();
+        final Callback UserId_Callback = new Callback() {
+            @Override
+            public void Call(String userId) {
+                Log.d("SOCKET", userId);
+            }
+        };
+
+        _Socket_User.GetUserByAccessToken(
+                null,
+                UserId_Callback
+        );
         new AccessTokenTracker() {
             @Override
             protected void onCurrentAccessTokenChanged(AccessToken oldAccessToken, AccessToken currentAccessToken) {
-                _Socket_User.LoginUserByAccessToken();
+                _Socket_User.GetUserByAccessToken(
+                        currentAccessToken,
+                        UserId_Callback
+                );
             }
         };
     }
@@ -57,7 +72,6 @@ public class _Facebook {
                             url.set((String) response.getJSONObject().getJSONObject("data").get("url"));
                         } catch (Exception e) {
                             url.set("");
-//                            e.printStackTrace();
                         }
                     }
                 }

@@ -10,66 +10,70 @@ import io.socket.client.IO;
 import io.socket.client.Socket;
 import io.socket.emitter.Emitter;
 
+import static io.socket.client.Socket.EVENT_CONNECT;
+import static io.socket.client.Socket.EVENT_CONNECTING;
+import static io.socket.client.Socket.EVENT_CONNECT_ERROR;
+import static io.socket.client.Socket.EVENT_CONNECT_TIMEOUT;
+import static io.socket.client.Socket.EVENT_DISCONNECT;
+import static io.socket.client.Socket.EVENT_ERROR;
+import static io.socket.client.Socket.EVENT_RECONNECT;
+import static io.socket.client.Socket.EVENT_RECONNECTING;
+import static io.socket.client.Socket.EVENT_RECONNECT_ATTEMPT;
+import static io.socket.client.Socket.EVENT_RECONNECT_ERROR;
+import static io.socket.client.Socket.EVENT_RECONNECT_FAILED;
+
 public class _Socket {
-    private static final _Socket INSTANCE = new _Socket();
-    public final ObservableField<String> status = new ObservableField<>();
-    private Socket socket;
-
-    private _Socket() {
-        InitializeSocket();
-        InitializeListener();
-    }
-
-    public static Socket getSocket() {
-        return getInstance().socket;
-    }
-
-    public static _Socket getInstance() {
-        return INSTANCE;
-    }
+    private static Socket socket;
 
     public static void Initialize() {
-        _Socket socket = getInstance();
-    }
-
-    private void InitializeSocket() {
+        if (socket != null) return;
         try {
             socket = IO.socket(Constant.SERVER_URL);
         } catch (URISyntaxException e) {
-            socket = null;
+            e.printStackTrace();
         }
-    }
-
-    private void InitializeListener() {
-        socket
-                .on(Socket.EVENT_CONNECT, emitter(Socket.EVENT_CONNECT))
-                .on(Socket.EVENT_CONNECTING, emitter(Socket.EVENT_CONNECTING))
-                .on(Socket.EVENT_CONNECT_ERROR, emitter(Socket.EVENT_CONNECT_ERROR))
-                .on(Socket.EVENT_CONNECT_TIMEOUT, emitter(Socket.EVENT_CONNECT_TIMEOUT))
-                .on(Socket.EVENT_RECONNECT, emitter(Socket.EVENT_RECONNECT))
-                .on(Socket.EVENT_RECONNECT_ERROR, emitter(Socket.EVENT_RECONNECT_ERROR))
-                .on(Socket.EVENT_RECONNECT_FAILED, emitter(Socket.EVENT_RECONNECT_FAILED))
-                .on(Socket.EVENT_RECONNECT_ATTEMPT, emitter(Socket.EVENT_RECONNECT_ATTEMPT))
-                .on(Socket.EVENT_RECONNECTING, emitter(Socket.EVENT_RECONNECTING));
+        socket_event(EVENT_CONNECT);
+        socket_event(EVENT_CONNECT_ERROR);
+        socket_event(EVENT_CONNECT_TIMEOUT);
+        socket_event(EVENT_CONNECTING);
+        socket_event(EVENT_DISCONNECT);
+        socket_event(EVENT_ERROR);
+        socket_event(EVENT_RECONNECT);
+        socket_event(EVENT_RECONNECT_ATTEMPT);
+        socket_event(EVENT_RECONNECT_FAILED);
+        socket_event(EVENT_RECONNECT_ERROR);
+        socket_event(EVENT_RECONNECTING);
         socket.connect();
-        _Socket_User.socket_on();
     }
 
-    private Emitter.Listener emitter(final String event) {
-        return new Emitter.Listener() {
+    private static void socket_event(final String event) {
+        socket.on(event, new Emitter.Listener() {
             @Override
             public void call(Object... args) {
                 Log.d("SOCKET", event);
-//                global.socketStatus.set(event);
-                status.set(event);
+                State.INSTANCE.status.set(event);
             }
-        };
+        });
     }
+
+    public static Socket getSocket() {
+        return socket;
+    }
+
+    public static class State {
+        private static final State INSTANCE = new State();
+        public final ObservableField<String> status = new ObservableField<>();
+
+        public static State getInstance() {
+            return INSTANCE;
+        }
+    }
+
 
 //    public static Project EditProject(final Project project) {
 //        socket.emit("Edit:Project(project)", project, new Ack() {
 //            @Override
-//            public void call(Object... args) {
+//            public void CallbackString(Object... args) {
 //                Realm realm = Realm.getDefaultInstance();
 //                if (args[0] != null) {
 //                    Log.d("SOCKET: ERROR", "Lỗi chỉnh sửa: " + args[0]);
@@ -89,7 +93,7 @@ public class _Socket {
 //            RealmList<Task> tasks = new RealmList<>();
 //
 //            @Override
-//            public void call(Object... args) {
+//            public void CallbackString(Object... args) {
 //                Realm realm = Realm.getDefaultInstance();
 //                if (args[0] != null) {
 //                    Log.d("SOCKET: ERROR", "Lỗi trả về: " + args[0]);
@@ -116,7 +120,7 @@ public class _Socket {
 //            RealmList<Channel> channels = new RealmList<>();
 //
 //            @Override
-//            public void call(Object... args) {
+//            public void CallbackString(Object... args) {
 //                Realm realm = Realm.getDefaultInstance();
 //                if (args[0] != null) {
 //                    Log.d("SOCKET: ERROR", "Lỗi trả về: " + args[0]);
@@ -142,7 +146,7 @@ public class _Socket {
 //            RealmList<User> users = new RealmList<>();
 //
 //            @Override
-//            public void call(Object... args) {
+//            public void CallbackString(Object... args) {
 //                Realm realm = Realm.getDefaultInstance();
 //                if (args[0] != null) {
 //                    Log.d("SOCKET: ERROR", "Lỗi trả về " + args[0]);

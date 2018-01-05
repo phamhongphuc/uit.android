@@ -14,7 +14,7 @@ public class App extends Application {
         super.onCreate();
         FacebookSdk.sdkInitialize(getApplicationContext());
 
-        _Socket a = _Socket.getInstance();
+        _Socket.Initialize();
         _Facebook.Initialize();
 
         Realm.init(this);

@@ -11,7 +11,6 @@ import android.view.View;
 import app.Global;
 import io.realm.Realm;
 import module.facebook._Facebook;
-import module.socket._Socket;
 import module.socket._Socket_Project;
 import object.User;
 import uit.group.manager.databinding.ActivityMainBinding;
@@ -40,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.setGlobal(global);
         binding.setUser(user);
-        binding.setSocket(_Socket.getInstance());
+//        binding.setSocket(_Socket.getInstance());
     }
 
     private void InitializeRecyclerView() {

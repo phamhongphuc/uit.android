@@ -42,7 +42,7 @@ public class ProjectDetailActivity extends AppCompatActivity {
     }
 
     private void InitializeChannelsRecyclerView() {
-//        ChannelRecyclerViewAdapter adapter = new ChannelRecyclerViewAdapter(state.project.get().getChannels());
+//        ChannelRecyclerViewAdapter adapter = new ChannelRecyclerViewAdapter(State.project.get().getChannels());
 //        RecyclerView recyclerView = findViewById(R.id.list_channels);
 //        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 //        recyclerView.setAdapter(adapter);
@@ -50,7 +50,7 @@ public class ProjectDetailActivity extends AppCompatActivity {
     }
 
     private void InitializeTasksRecyclerView() {
-//        TaskRecyclerViewAdapter adapter = new TaskRecyclerViewAdapter(state.project.get().getTasks());
+//        TaskRecyclerViewAdapter adapter = new TaskRecyclerViewAdapter(State.project.get().getTasks());
 //        RecyclerView recyclerView = findViewById(R.id.list_tasks);
 //        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 //        recyclerView.setAdapter(adapter);

@@ -14,14 +14,14 @@ import com.facebook.CallbackManager;
 
 import app.Global;
 import module.facebook._Facebook;
+import module.socket._Socket;
 import uit.group.manager.databinding.ActivityLoginBinding;
 import view.fragmentAdapter.FragmentAdapter;
 import view.state.LoginState;
 
 public class LoginActivity extends AppCompatActivity {
     private CallbackManager callbackManager = CallbackManager.Factory.create();
-    private LoginState state = new LoginState();
-    private FragmentAdapter fragmentAdapter;
+    private LoginState loginState = new LoginState();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,14 +46,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void InitializePages() {
-        fragmentAdapter = new FragmentAdapter(getSupportFragmentManager(), new int[]{
+        FragmentAdapter fragmentAdapter = new FragmentAdapter(getSupportFragmentManager(), new int[]{
                 R.layout.fragment_login_1,
                 R.layout.fragment_login_2,
         });
-
-//        fragmentAdapter = new FragmentAdapter(getSupportFragmentManager(), new ArrayList<Fragment>() {{
-//            add(new LoginLeftFragment());
-//        }});
 
         ViewPager viewPager = findViewById(R.id.viewPagerLogin);
         viewPager.setAdapter(fragmentAdapter);
@@ -61,8 +57,9 @@ public class LoginActivity extends AppCompatActivity {
 
     private void InitializeDataBinding() {
         ActivityLoginBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
-        binding.setState(state);
+        binding.setState(loginState);
         binding.setGlobal(Global.getInstance());
+        binding.setSocket(_Socket.State.getInstance());
     }
 
     @Override

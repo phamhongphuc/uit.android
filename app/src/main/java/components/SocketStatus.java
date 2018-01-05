@@ -9,15 +9,39 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
-import java.util.Objects;
+import com.google.common.collect.ImmutableMap;
+
+import java.util.Map;
 
 import uit.group.manager.R;
 
 import static io.socket.client.Socket.EVENT_CONNECT;
+import static io.socket.client.Socket.EVENT_CONNECTING;
+import static io.socket.client.Socket.EVENT_CONNECT_ERROR;
+import static io.socket.client.Socket.EVENT_CONNECT_TIMEOUT;
+import static io.socket.client.Socket.EVENT_DISCONNECT;
+import static io.socket.client.Socket.EVENT_ERROR;
+import static io.socket.client.Socket.EVENT_RECONNECT;
+import static io.socket.client.Socket.EVENT_RECONNECTING;
+import static io.socket.client.Socket.EVENT_RECONNECT_ATTEMPT;
+import static io.socket.client.Socket.EVENT_RECONNECT_ERROR;
+import static io.socket.client.Socket.EVENT_RECONNECT_FAILED;
 
 public class SocketStatus extends View {
-    private static final int RED = 0xffe74c3c;
-    private static final int GREEN = 0xff2ecc71;
+    private static final Map<String, Integer> colors = ImmutableMap.<String, Integer>builder()
+            .put(EVENT_CONNECT, 0x2ecc71)
+            .put(EVENT_CONNECT_ERROR, 0xc0392b)
+            .put(EVENT_CONNECT_TIMEOUT, 0xe74c3c)
+            .put(EVENT_CONNECTING, 0x1abc9c)
+            .put(EVENT_DISCONNECT, 0xc0392b)
+            .put(EVENT_ERROR, 0xc0392b)
+            .put(EVENT_RECONNECT, 0x1abc9c)
+            .put(EVENT_RECONNECT_ATTEMPT, 0x16a085)
+            .put(EVENT_RECONNECT_FAILED, 0xc0392b)
+            .put(EVENT_RECONNECT_ERROR, 0xc0392b)
+            .put(EVENT_RECONNECTING, 0xabc9c)
+            .build();
+
     private String status;
     private int currentColor;
     private int nextColor;
@@ -54,7 +78,7 @@ public class SocketStatus extends View {
     }
 
     private void InitializeView(Context context) {
-        nextColor = Objects.equals(status, EVENT_CONNECT) ? GREEN : RED;
+        nextColor = colors.get(status);
         if (currentColor == nextColor) return;
 
         AnimatorSet set;

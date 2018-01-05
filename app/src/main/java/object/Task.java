@@ -93,7 +93,7 @@ public class Task extends RealmObject {
             obj.put("description", description);
             obj.put("assigned", assigned);
             obj.put("members", members);
-            obj.put("status", status);
+            obj.put("State", status);
         } catch (JSONException e) {
             e.printStackTrace();
         }
