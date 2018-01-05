@@ -11,6 +11,7 @@ import android.view.View;
 import app.Global;
 import io.realm.Realm;
 import module.facebook._Facebook;
+import module.socket._Socket;
 import module.socket._Socket_Project;
 import object.User;
 import uit.group.manager.databinding.ActivityMainBinding;
@@ -22,8 +23,9 @@ public class MainActivity extends AppCompatActivity {
     private final Global global = Global.getInstance();
 
     MainActivity() {
-        String userId = global.currentUserId.get();
-        user = User.getUserById(userId);
+        user = User.getUserById(
+                global.userId.get()
+        );
     }
 
     @Override
@@ -37,21 +39,20 @@ public class MainActivity extends AppCompatActivity {
 
     private void InitializeDataBinding() {
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        binding.setGlobal(global);
+        binding.setSocket(_Socket.State.getInstance());
         binding.setUser(user);
-//        binding.setSocket(_Socket.getInstance());
     }
 
     private void InitializeRecyclerView() {
-        ProjectRecyclerViewAdapter adapter = new ProjectRecyclerViewAdapter(user.getProjects());
         RecyclerView recyclerView = findViewById(R.id.list_project);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(new ProjectRecyclerViewAdapter(user.getProjects()));
         recyclerView.setHasFixedSize(true);
     }
 
     public void facebookLogout(View view) {
         _Facebook.Logout();
+        global.userId = null;
         startActivity(new Intent(this, LoginActivity.class));
         finish();
     }

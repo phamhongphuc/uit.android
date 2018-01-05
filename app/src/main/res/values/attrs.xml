@@ -44,4 +44,8 @@
     <declare-styleable name="SocketStatus">
         <attr name="_status" format="reference"/>
     </declare-styleable>
+    <declare-styleable name="ImageAvatar">
+        <attr name="_size" format="dimension"/>
+        <attr name="_userId" format="string"/>
+    </declare-styleable>
 </resources>

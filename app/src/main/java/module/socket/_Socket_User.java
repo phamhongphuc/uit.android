@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 import io.realm.Realm;
 import io.socket.client.Ack;
 import io.socket.client.Socket;
-import module.Callback;
+import module.callback.CallbackString;
 import object.User;
 
 public class _Socket_User {
@@ -36,7 +36,7 @@ public class _Socket_User {
         });
     }
 
-    public static void GetUserByAccessToken(@Nullable AccessToken accessToken, final Callback callback) {
+    public static void GetUserByAccessToken(@Nullable AccessToken accessToken, final CallbackString callback) {
         AccessToken token = accessToken != null ? accessToken : AccessToken.getCurrentAccessToken();
 
         if (token != null) {
@@ -53,7 +53,7 @@ public class _Socket_User {
                             @Override
                             public void execute(@NonNull Realm realm) {
                                 final User user = realm.createOrUpdateObjectFromJson(User.class, obj);
-                                callback.Call(user.getId());
+                                callback.Response(user.getId());
                             }
                         });
                     }

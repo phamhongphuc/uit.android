@@ -2,8 +2,6 @@ package uit.group.manager;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.databinding.Observable;
-import android.databinding.ObservableField;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
@@ -13,6 +11,7 @@ import android.view.View;
 import com.facebook.CallbackManager;
 
 import app.Global;
+import module.callback.CallbackString;
 import module.facebook._Facebook;
 import module.socket._Socket;
 import uit.group.manager.databinding.ActivityLoginBinding;
@@ -31,16 +30,19 @@ public class LoginActivity extends AppCompatActivity {
         InitializeDataBinding();
         InitializePages();
         InitializeListener();
+
+
+        _Facebook.Login(this);
     }
 
     private void InitializeListener() {
-        Global.getInstance().currentUserId.addOnPropertyChangedCallback(new Observable.OnPropertyChangedCallback() {
+        _Facebook.InitializeLogin(new CallbackString() {
             @Override
-            public void onPropertyChanged(Observable sender, int propertyId) {
-                if (((ObservableField) sender).get() != null) {
-                    startActivity(new Intent(getBaseContext(), MainActivity.class));
-                    finish();
-                }
+            public void Response(String userId) {
+                Global.getInstance().userId.set(userId);
+                Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
@@ -68,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    public void facebookLogin(View view) {
+    public void facebookLoginButton(View view) {
         _Facebook.Login(this);
     }
 }

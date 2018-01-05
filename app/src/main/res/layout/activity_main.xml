@@ -17,10 +17,6 @@
         <variable
             name="State"
             type="view.state.MainState"/>
-
-        <variable
-            name="Global"
-            type="app.Global"/>
     </data>
 
     <android.support.v7.widget.LinearLayoutCompat
@@ -41,16 +37,18 @@
             android:orientation="horizontal">
 
             <!-- Todo: Chuyển cái chỗ avatar này thành một thẻ riêng -->
-            <FrameLayout
-                android:layout_width="@dimen/size"
-                android:layout_height="@dimen/size">
+            <!--<FrameLayout-->
+            <!--android:layout_width="@dimen/size"-->
+            <!--android:layout_height="@dimen/size">-->
 
-                <components.Image
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_gravity="center"
-                    app:_src="@{user.getPicture()}"/>
-            </FrameLayout>
+            <!--</FrameLayout>-->
+            <components.ImageAvatar
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                app:_size="35dp"
+                app:_userId="@{user.id}"
+                tools:background="@color/blueTransparent"/>
 
             <components.Button
                 android:layout_width="0dp"

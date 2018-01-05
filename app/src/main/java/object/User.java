@@ -8,13 +8,15 @@ import java.util.Date;
 import io.realm.Realm;
 import io.realm.RealmObject;
 import io.realm.RealmResults;
+import io.realm.annotations.LinkingObjects;
 import io.realm.annotations.PrimaryKey;
 import module.facebook._Facebook;
 
 public class User extends RealmObject {
     public static final boolean FEMALE = false;
     public static final boolean MALE = false;
-
+    @LinkingObjects("members")
+    private final RealmResults<Project> projects = null;
     @PrimaryKey
     private String id;
     private String name;
@@ -23,18 +25,17 @@ public class User extends RealmObject {
     private String email;
     private String description;
     private Date lastupdate;
-//  private final RealmResults<Project> projects;
 
     public User() {
     }
 
-
     public static User getUserById(String userId) {
+
         Realm realm = Realm.getDefaultInstance();
-        boolean in = realm.isInTransaction();
-        if (!in) realm.beginTransaction();
+        realm.beginTransaction();
         User user = realm.where(User.class).equalTo("id", userId).findFirst();
-        if (!in) realm.commitTransaction();
+        realm.commitTransaction();
+        realm.close();
         return user;
     }
 
@@ -71,11 +72,7 @@ public class User extends RealmObject {
     }
 
     public RealmResults<Project> getProjects() {
-        if (id == null) return Realm.getDefaultInstance().where(Project.class).findAll();
-        else return Realm.getDefaultInstance()
-                .where(Project.class)
-                .contains("members.id", id)
-                .findAll();
+        return projects;
     }
 
     public Date getLastupdate() {
