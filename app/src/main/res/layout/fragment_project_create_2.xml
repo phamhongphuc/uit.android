@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -23,5 +24,28 @@
     <components.Line
         android:layout_width="match_parent"
         android:layout_height="1dp" />
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/deadline"
+            android:layout_width="250dp"
+            android:layout_height="@dimen/size" />
+
+        <components.Line
+            android:layout_width="1dp"
+            android:layout_height="@dimen/size" />
+
+        <components.Button
+            android:layout_width="100dp"
+            android:layout_height="@dimen/size"
+            android:onClick="showDatePickerDialog"
+            app:_text="change" />
+
+    </android.support.v7.widget.LinearLayoutCompat>
+    <!--android:text="@string/pick_date" />-->
+
 
 </android.support.v7.widget.LinearLayoutCompat>

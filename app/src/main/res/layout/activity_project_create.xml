@@ -9,11 +9,11 @@
     tools:context="uit.group.manager.ProjectCreateActivity">
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/viewPagerLogin"
+        android:id="@+id/viewPagerProjectCreate"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        tools:background="@color/blueTransparent"></android.support.v4.view.ViewPager>
+        tools:background="@color/blueTransparent" />
     <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,32 +25,9 @@
             android:layout_height="15dp"
             app:_activeColor="#f08c"
             app:_inactiveColor="#608c"
-            app:_viewPagerId="@id/viewPagerLogin" />
+            app:_viewPagerId="@id/viewPagerProjectCreate" />
 
     </android.support.v7.widget.LinearLayoutCompat>
 
-    <android.support.v7.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:gravity="center">
-
-        <android.support.v7.widget.ContentFrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="25dp"
-            android:background="@color/blue"
-            android:padding="1dp">
-
-            <components.Button
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                app:_background="#ffffff"
-                app:_foreground="@color/blue"
-                app:_icon=""
-                app:_text="@string/button_login_with_facebook" />
-
-        </android.support.v7.widget.ContentFrameLayout>
-    </android.support.v7.widget.LinearLayoutCompat>
 
 </android.support.v7.widget.LinearLayoutCompat>
