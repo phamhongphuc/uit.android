@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="uit.group.manager.UserInformationActivity">
+
+    <components.ImageAvatar
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        app:_size="50dp"
+        app:_userId="@{user.id}"
+        tools:background="@color/blueTransparent" />
+
+    <components.Text
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size"
+        android:gravity="center"
+        android:text="cần lấy tên user"
+        android:textSize="20sp"
+        app:_textAlign="center"
+        app:_textPaddingLeft="false"
+        tools:_text="State.user.name" />
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:text="Cần lấy description" />
+    </android.support.v7.widget.LinearLayoutCompat>
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <components.Text
+            android:layout_width="0dp"
+            android:layout_height="@dimen/size"
+            android:layout_weight="1"
+            android:text="@string/birthdate" />
+
+        <components.Line
+            android:layout_width="1dp"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/size"
+            android:layout_weight="3"
+            android:text="Cần lấy birthdate" />
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <components.Text
+            android:layout_width="0dp"
+            android:layout_height="@dimen/size"
+            android:layout_weight="1"
+            android:text="@string/gender" />
+
+        <components.Line
+            android:layout_width="1dp"
+            android:layout_height="match_parent" />
+
+        <TextView
+
+            android:layout_width="0dp"
+            android:layout_height="@dimen/size"
+            android:layout_alignParentEnd="true"
+            android:layout_weight="3"
+            android:text="Cần lấy gender" />
+    </android.support.v7.widget.LinearLayoutCompat>
+
+</android.support.v7.widget.LinearLayoutCompat>

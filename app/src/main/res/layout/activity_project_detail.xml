@@ -197,18 +197,20 @@
                         android:layout_height="wrap_content"
                         app:_isFull="true"/>
 
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/list_members"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:scrollbarSize="3dp"
-                        android:scrollbarThumbVertical="@color/blueTransparent"
-                        android:scrollbars="vertical"
-                        tools:itemCount="2"
-                        tools:listitem="@layout/item_user"/>
                 </android.support.v7.widget.LinearLayoutCompat>
 
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/list_members"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbarSize="3dp"
+                    android:scrollbarThumbVertical="@color/blueTransparent"
+                    android:scrollbars="vertical"
+                    tools:itemCount="2"
+                    tools:listitem="@layout/item_user" />
+
             </android.support.v7.widget.LinearLayoutCompat>
+
         </ScrollView>
 
     </android.support.v7.widget.LinearLayoutCompat>

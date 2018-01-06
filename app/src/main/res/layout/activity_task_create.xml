@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="uit.group.manager.TaskCreateActivity">
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size"
+        android:background="@color/white"
+        android:elevation="2dp"
+        android:orientation="horizontal">
+
+        <components.Button
+            android:layout_width="@dimen/size"
+            android:layout_height="match_parent"
+            app:_icon="" />
+
+        <components.Line
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+        <components.Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:_icon=""
+            app:_text="Create New Task" />
+
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+    <components.TextInput
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size"
+        android:hint="@string/name" />
+
+    <components.Line
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <components.Text
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size"
+        android:hint="@string/deadline"
+        android:onClick="showDatePickerDialog" />
+
+    <components.Line
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <components.TextInput
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:hint="@string/description" />
+
+    <components.Line
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <components.Line
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <components.TextInput
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:hint="@string/add_members" />
+
+    <components.Button
+
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size"
+        android:gravity="center"
+        app:_text="CREATE TASK" />
+</android.support.v7.widget.LinearLayoutCompat>
