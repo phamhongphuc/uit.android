@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="newproject"
+            type="view.fragment.ProjectCreateContent_Fragment.Infor" />
+    </data>
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <components.TextBold
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{newproject.str}"
+            android:textSize="30sp" />
+
+        <components.Line
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:hint="Description" />
+
+        <components.Line
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
+
+        <components.Text
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/size"
+            android:text="Create date" />
+
+        <TextView
+            android:id="@+id/createdate"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size" />
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/deadline"
+                android:layout_width="250dp"
+                android:layout_height="@dimen/size" />
+
+            <components.Line
+                android:layout_width="1dp"
+                android:layout_height="@dimen/size" />
+
+            <components.Button
+                android:layout_width="100dp"
+                android:layout_height="@dimen/size"
+                android:onClick="showDatePickerDialog"
+                app:_text="change" />
+
+        </android.support.v7.widget.LinearLayoutCompat>
+        <!--android:text="@string/pick_date" />-->
+
+
+    </android.support.v7.widget.LinearLayoutCompat>
+</layout>
