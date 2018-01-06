@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
-          package="uit.group.manager">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="uit.group.manager">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name="app.App"
@@ -16,33 +16,40 @@
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id"/>
+            android:value="@string/facebook_app_id" />
 
         <activity
             android:name=".SplashActivity"
             android:noHistory="true"
             android:theme="@style/SplashTheme">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity"/>
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".ProjectListActivity"/>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".ProjectListActivity" />
         <activity android:name=".ProjectCreateActivity" />
-
-        <activity android:name=".MemberListActivity"/>
-        <activity android:name=".ProjectDetailActivity"/>
-        <activity android:name=".UserProfileActivity"/>
-        <activity android:name=".TaskListActivity"/>
-        <activity android:name=".TaskDetailActivity"/>
-
+        <activity android:name=".MemberListActivity" />
+        <activity android:name=".ProjectDetailActivity" />
+        <activity android:name=".UserProfileActivity" />
+        <activity android:name=".TaskListActivity" />
+        <activity android:name=".TaskDetailActivity" />
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity android:name=".TaskCreateActivity" />
+        <activity android:name=".ChannelListActivity" />
+        <activity android:name=".ChannelCreateActivity" />
+        <activity android:name=".ChatActivity" />
+        <activity android:name=".TaskEditActivity" />
+        <activity android:name=".MemberListDeleteActivity" />
+        <activity android:name=".UserInformationActivity" />
+        <activity android:name=".ProjectEditActivity" />
     </application>
 
 </manifest>

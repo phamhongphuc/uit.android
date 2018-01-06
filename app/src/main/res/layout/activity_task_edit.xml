@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context="uit.group.manager.TaskDetailActivity">
+        tools:context="uit.group.manager.TaskEditActivity">
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -24,31 +24,23 @@
 
             <components.Line
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:onClick="goBackToTaskList" />
+                android:layout_height="match_parent" />
 
             <components.Button
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:_icon=""
-                app:_text="Task name" />
+                app:_icon=""
+                app:_text="Edit Task" />
 
-            <components.Line
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
 
         </android.support.v7.widget.LinearLayoutCompat>
 
-        <components.Line
-            android:layout_width="match_parent"
-            android:layout_height="1dp" />
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="20dp"
-            android:background="@color/white"
             android:orientation="vertical">
 
             <android.support.v7.widget.LinearLayoutCompat
@@ -57,82 +49,65 @@
                 android:orientation="horizontal">
 
                 <components.Text
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="@dimen/size"
+                    android:layout_weight="1"
+                    android:text="@string/name" />
+
+                <components.Line
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent" />
+
+                <components.TextInput
+                    android:id="@+id/taskedit_name"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/size"
+                    android:layout_weight="3" />
+            </android.support.v7.widget.LinearLayoutCompat>
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <components.Text
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/size"
+                    android:layout_weight="1"
                     android:text="@string/description" />
 
-                <components.Text
-                    android:id="@+id/taskdetail_description"
+                <components.Line
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent" />
+
+                <components.TextInput
+                    android:id="@+id/taskedit_description"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/size"
-                    android:layout_weight="1" />
+                    android:layout_weight="3" />
             </android.support.v7.widget.LinearLayoutCompat>
 
-            <android.support.v7.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <components.Text
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/size"
-                    android:text="@string/assigned" />
-
-                <components.Text
-                    android:id="@+id/taskdetail_assgined"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/size"
-                    android:layout_weight="1" />
-            </android.support.v7.widget.LinearLayoutCompat>
-
-            <android.support.v7.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <components.Text
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/size"
-                    android:text="@string/create_date" />
-
-                <components.Text
-                    android:id="@+id/taskdetail_createdate"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/size"
-                    android:layout_weight="1" />
-            </android.support.v7.widget.LinearLayoutCompat>
 
             <android.support.v7.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <components.Text
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="@dimen/size"
+                    android:layout_weight="1"
                     android:text="@string/deadline" />
 
-                <components.Text
-                    android:id="@+id/taskdetail_deadline"
+                <components.Line
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent" />
+
+                <components.TextInput
+                    android:id="@+id/taskedit_deadline"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/size"
-                    android:layout_weight="1" />
-            </android.support.v7.widget.LinearLayoutCompat>
-
-            <android.support.v7.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <components.Text
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/size"
-                    android:text="@string/last_update" />
-
-                <components.Text
-                    android:id="@+id/taskdetail_lastupdate"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/size"
-                    android:layout_weight="1" />
+                    android:layout_weight="3"
+                    android:onClick="showDatePickerDialog" />
             </android.support.v7.widget.LinearLayoutCompat>
 
             <components.Text
@@ -140,16 +115,29 @@
                 android:layout_height="@dimen/size"
                 android:text="@string/members" />
 
-            <android.support.v7.widget.RecyclerView
-
-                android:id="@+id/list_members"
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scrollbarSize="3dp"
-                android:scrollbarThumbVertical="@color/blueTransparent"
-                android:scrollbars="vertical"
-                tools:itemCount="2"
-                tools:listitem="@layout/item_user" />
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/list_members"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbarSize="3dp"
+                    android:scrollbarThumbVertical="@color/blueTransparent"
+                    android:scrollbars="vertical"
+                    tools:listitem="@layout/item_user" />
+            </ScrollView>
+
+            <components.Line
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <components.Button
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size"
+                app:_text="Save Task" />
         </android.support.v7.widget.LinearLayoutCompat>
 
     </android.support.v7.widget.LinearLayoutCompat>

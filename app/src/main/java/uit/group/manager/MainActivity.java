@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private final User user;
     private final Global global = Global.getInstance();
 
-    MainActivity() {
+    public MainActivity() {
         user = User.getUserById(
                 global.userId.get()
         );

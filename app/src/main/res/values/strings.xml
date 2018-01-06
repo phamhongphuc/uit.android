@@ -8,7 +8,6 @@
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="description">Description</string>
     <string name="about_me">About me</string>
-    <string name="gender">Gender</string>
     <string name="birthday">Birthday</string>
     <string name="email_address">Email Address</string>
 
@@ -30,4 +29,14 @@
     <string name="search">Tìm kiếm</string>
     <string name="button_login_with_facebook">Đăng nhập với Facebook</string>
     <string name="name_new_project">Name your new project</string>
+    <string name="name">Tên</string>
+    <string name="birthdate">Ngày sinh</string>
+    <string name="deadline">Hạn nộp</string>
+    <string name="assigned">Người tạo</string>
+    <string name="create_date">Ngày tạo</string>
+    <string name="last_update">Cập nhật lần cuối</string>
+    <string name="add_members">Thêm thành viên</string>
+    <string name="gender">Giới tính</string>
+    <string name="sender">Người gửi</string>
+    <string name="channel_list">Danh sách kênh</string>
 </resources>
