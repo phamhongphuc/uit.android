@@ -115,9 +115,10 @@ public class ImageAvatar extends android.support.v7.widget.AppCompatImageView {
             paint.setAntiAlias(true);
             paint.setFilterBitmap(true);
             paint.setDither(true);
-
             paint.setColor(Color.WHITE);
+            canvas.drawColor(Color.TRANSPARENT);
             canvas.drawCircle(center, center, radius, paint);
+
             paint.setXfermode(new PorterDuffXfermode(SRC_IN));
             canvas.drawBitmap(source, null, rect, paint);
             source.recycle();

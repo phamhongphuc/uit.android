@@ -32,18 +32,20 @@ public class LoginActivity extends AppCompatActivity {
         InitializeDataBinding();
         InitializePages();
         InitializeListener();
-//        _Facebook.Login(this);
     }
 
     private void InitializeListener() {
         _Facebook.InitializeLogin(new CallbackString() {
             @Override
             public void Response(String userId) {
-                if (!Objects.equals(userId, Global.getInstance().userId.get()))
+                if (!Objects.equals(userId, Global.getInstance().userId.get())) {
                     Global.getInstance().userId.set(userId);
-                Intent intent = new Intent(getBaseContext(), MainActivity.class);
-                startActivity(intent);
-                finish();
+
+
+                    Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
         });
     }

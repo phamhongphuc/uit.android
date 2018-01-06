@@ -57,14 +57,6 @@
 
         </android.support.v7.widget.LinearLayoutCompat>
 
-        <components.ImageAvatar
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="@color/blueTransparent"
-            app:_innerSize="40dp"
-            app:_outerSize="60dp"
-            app:_userId="120163692032921"/>
-
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
