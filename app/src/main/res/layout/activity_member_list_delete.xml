@@ -30,14 +30,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:clickable="false"
+                android:focusable="false"
                 app:_icon=""
-                app:_text="Member list" />
+                app:_text="@string/members" />
 
             <components.Line
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent" />
 
         </android.support.v7.widget.LinearLayoutCompat>
+
+        <components.Line
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            app:_isFull="true" />
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -54,7 +61,7 @@
                 android:scrollbarThumbVertical="@color/blueTransparent"
                 android:scrollbars="vertical"
                 tools:itemCount="2"
-                tools:listitem="@layout/item_user" />
+                tools:listitem="@layout/item_user_edit" />
         </android.support.v7.widget.LinearLayoutCompat>
 
     </android.support.v7.widget.LinearLayoutCompat>

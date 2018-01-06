@@ -1,57 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="uit.group.manager.ChannelListActivity">
+<layout>
 
-    <android.support.v7.widget.LinearLayoutCompat
+    <data>
+
+        <variable
+            name="project"
+            type="object.Project" />
+    </data>
+
+    <android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="uit.group.manager.ChannelListActivity">
 
-        <components.Button
-            android:layout_width="@dimen/size"
-            android:layout_height="@dimen/size"
-            app:_icon="" />
-
-        <components.TextBold
-
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/channel_list"
-            android:textSize="30sp" />
-
-        <components.Line
-            android:layout_width="1dp"
-            android:layout_height="match_parent" />
-
-        <components.Button
-            android:layout_width="@dimen/size"
-            android:layout_height="@dimen/size"
-            app:_icon="" />
-    </android.support.v7.widget.LinearLayoutCompat>
-
-    <android.support.v7.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="#eeee">
-
-        <android.support.v7.widget.RecyclerView
-
-            android:id="@+id/list_tasks"
+        <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@color/white"
-            android:scrollbarSize="3dp"
-            android:scrollbarThumbVertical="@color/blueTransparent"
-            android:scrollbars="vertical"
-            tools:listitem="@layout/item_channel" />
-    </android.support.v7.widget.LinearLayoutCompat>
+            android:layout_height="wrap_content">
 
-</android.support.v7.widget.LinearLayoutCompat>
+            <components.Button
+                android:layout_width="@dimen/size"
+                android:layout_height="@dimen/size"
+                app:_icon="" />
+
+            <components.Button
+                android:layout_width="0dp"
+                android:layout_height="@dimen/size"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:focusable="false"
+                android:textSize="30sp"
+                app:_icon=""
+                app:_text="@string/channel_list" />
+
+            <components.Line
+                android:layout_width="1dp"
+                android:layout_height="match_parent" />
+
+            <components.Button
+                android:layout_width="@dimen/size"
+                android:layout_height="@dimen/size"
+                app:_icon="" />
+        </android.support.v7.widget.LinearLayoutCompat>
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="#eeee">
+
+            <android.support.v7.widget.RecyclerView
+
+                android:id="@+id/list_tasks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:scrollbarSize="3dp"
+                android:scrollbarThumbVertical="@color/blueTransparent"
+                android:scrollbars="vertical"
+                tools:listitem="@layout/item_channel" />
+        </android.support.v7.widget.LinearLayoutCompat>
+
+    </android.support.v7.widget.LinearLayoutCompat>
+</layout>
