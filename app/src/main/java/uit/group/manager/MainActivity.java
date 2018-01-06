@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void facebookLogout(View view) {
         _Facebook.Logout();
-        global.userId = null;
+        global.userId.set(null);
         startActivity(new Intent(this, LoginActivity.class));
         finish();
     }

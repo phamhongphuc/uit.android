@@ -45,17 +45,20 @@
                 android:foreground="?attr/selectableItemBackground">
 
                 <components.ImageAvatar
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="@dimen/size"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    app:_size="35dp"
-                    app:_userId="@{user.id}"
+                    app:_innerSize="30dp"
+                    app:_outerSize="@dimen/size"
+                    app:_userId="120163692032921"
                     tools:background="@color/blueTransparent"/>
 
                 <components.Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:clickable="false"
+                    android:focusable="false"
                     app:_hasRipple="false"
                     app:_text="@{user.name}"
                     app:_textAlign="left"
@@ -89,22 +92,34 @@
             android:focusableInTouchMode="true"
             android:orientation="horizontal">
 
-            <components.Button
-                android:layout_width="@dimen/size"
-                android:layout_height="match_parent"
-                app:_icon=""/>
-
-            <components.TextInput
+            <android.support.v7.widget.LinearLayoutCompat
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="@dimen/size"
                 android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:hint="@string/search"
-                android:imeOptions="actionDone"
-                android:inputType="text"
-                android:maxLines="1"
-                android:text=""
-                tools:text="@string/search"/>
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground">
+
+                <components.Button
+                    android:layout_width="@dimen/size"
+                    android:layout_height="match_parent"
+                    app:_icon=""/>
+
+                <components.TextInput
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="@color/transparent"
+                    android:gravity="center_vertical"
+                    android:hint="@string/search"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:text=""
+                    tools:text="@string/search"/>
+            </android.support.v7.widget.LinearLayoutCompat>
 
             <components.Line
                 android:layout_width="wrap_content"

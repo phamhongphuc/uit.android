@@ -69,6 +69,7 @@ public class ViewPagerIndex extends View {
 
         ViewPager viewPager = (ViewPager) view;
         if (viewPager.getAdapter() == null) return;
+
         count = viewPager.getAdapter().getCount();
         viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override

@@ -49,11 +49,21 @@
             <components.ViewPagerIndex
                 android:layout_width="match_parent"
                 android:layout_height="15dp"
+                android:layout_marginTop="20dp"
                 app:_activeColor="#f08c"
                 app:_inactiveColor="#608c"
-                app:_viewPagerId="@id/viewPagerLogin"/>
+                app:_viewPagerId="@id/viewPagerLogin"
+                tools:background="@color/blueTransparent"/>
 
         </android.support.v7.widget.LinearLayoutCompat>
+
+        <components.ImageAvatar
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@color/blueTransparent"
+            app:_innerSize="40dp"
+            app:_outerSize="60dp"
+            app:_userId="120163692032921"/>
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -61,23 +71,16 @@
             android:background="@color/white"
             android:gravity="center">
 
-            <android.support.v7.widget.ContentFrameLayout
+            <components.Button
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="25dp"
-                android:background="@color/blue"
-                android:padding="1dp">
+                android:layout_height="50dp"
+                android:layout_margin="20dp"
+                android:background="@drawable/rectangle_border"
+                android:onClick="facebookLoginButton"
+                app:_foreground="@color/blue"
+                app:_icon=""
+                app:_text="@string/button_login_with_facebook"/>
 
-                <components.Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:onClick="facebookLoginButton"
-                    app:_background="#ffffff"
-                    app:_foreground="@color/blue"
-                    app:_icon=""
-                    app:_text="@string/button_login_with_facebook"/>
-
-            </android.support.v7.widget.ContentFrameLayout>
         </android.support.v7.widget.LinearLayoutCompat>
     </android.support.v7.widget.LinearLayoutCompat>
 </layout>

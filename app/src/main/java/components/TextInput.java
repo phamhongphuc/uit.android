@@ -2,6 +2,8 @@ package components;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatEditText;
 import android.util.AttributeSet;
 import android.view.inputmethod.EditorInfo;
@@ -25,6 +27,11 @@ public class TextInput extends AppCompatEditText {
     }
 
     private void Initialize(Context context, AttributeSet attrs) {
+        InitializeAttr(context, attrs);
+        InitializeView(context);
+    }
+
+    private void InitializeView(Context context) {
         setTypeface(
                 Typeface.createFromAsset(context.getAssets(), "fonts/segoe.ttf")
         );
@@ -34,6 +41,10 @@ public class TextInput extends AppCompatEditText {
                 .obtainStyledAttributes(new int[]{R.attr.selectableItemBackground})
                 .getDrawable(0)
         );
+    }
+
+    private void InitializeAttr(@NonNull Context context, @Nullable AttributeSet attrs) {
+
     }
 
     @Override
