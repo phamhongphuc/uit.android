@@ -37,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void InitializeListener() {
-        final User.Callback _user = new User.Callback() {
+        final User.Callback responseUser = new User.Callback() {
             @Override
             public void Response(User user) {
                 _Socket_Realm.Pull(user, new VoidCallback() {
@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
                 });
             }
         };
-        _Facebook.InitializeLogin(_user);
+        _Facebook.InitializeLogin(responseUser);
     }
 
     private void InitializePages() {

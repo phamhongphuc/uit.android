@@ -25,7 +25,7 @@ public class _Socket_Realm {
                                 final User.Callback responseUser = new User.Callback() {
                                     @Override
                                     public void Response(final User user) {
-                                        project.addMember(user);
+//                                        project.addMember(user);
                                         countUsers.decrease();
                                     }
                                 };

@@ -23,10 +23,10 @@ public class Project extends RealmObject {
     private int id;
     private String name;
     private String description;
-    private RealmList<String> tags;
+    private RealmList<String> tags = new RealmList<>();
 
     private User creator;
-    private RealmList<User> members;
+    private RealmList<User> members = new RealmList<>();
 
     private Date createdate;
     private Date deadline;
