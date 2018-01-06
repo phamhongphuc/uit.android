@@ -6,7 +6,7 @@
     <string name="title_activity_user_profile">UserProfileActivity</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
-    <string name="description">Description</string>
+    <string name="description">Mô tả</string>
     <string name="about_me">About me</string>
     <string name="birthday">Birthday</string>
     <string name="email_address">Email Address</string>
@@ -35,8 +35,18 @@
     <string name="assigned">Người tạo</string>
     <string name="create_date">Ngày tạo</string>
     <string name="last_update">Cập nhật lần cuối</string>
-    <string name="add_members">Thêm thành viên</string>
     <string name="gender">Giới tính</string>
     <string name="sender">Người gửi</string>
     <string name="channel_list">Danh sách kênh</string>
+    <string name="add_channel_name">Điền vào tên kênh</string>
+    <string name="message">Nhập tin nhắn…</string>
+    <string name="add_members">Thêm thành viên</string>
+    <string name="add_task_name">Tên nhiệm vụ</string>
+    <string name="add_deadline">Điền vào hạn nộp</string>
+    <string name="add_description">Điền vào mô tả</string>
+    <string name="completed_task">Nhiệm vụ đã hoàn thành</string>
+    <string name="project">Dự án</string>
+    <string name="task">Nhiệm vụ</string>
+    <string name="channel">Kênh</string>
+    <string name="channel_name">Tên kênh</string>
 </resources>

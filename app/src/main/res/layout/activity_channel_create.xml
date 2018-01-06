@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="20dp"
     tools:context="uit.group.manager.ChannelCreateActivity">
 
     <android.support.v7.widget.LinearLayoutCompat
@@ -28,27 +27,64 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            app:_icon=""
-            app:_text="Chỉnh sửa thông tin kênh" />
+            android:clickable="false"
+            android:focusable="false"
+            app:_text="Thêm mới kênh"/>
 
+        <components.Line
+            android:layout_width="1dp"
+            android:layout_height="match_parent"/>
+
+        <components.Button
+            android:layout_width="@dimen/size"
+            android:layout_height="@dimen/size"
+            android:gravity="center"
+            app:_text="OK"/>
 
     </android.support.v7.widget.LinearLayoutCompat>
 
+    <components.Line
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:_isFull="true"/>
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <components.TextBold
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/size"
+            android:gravity="center_vertical"
+            android:text="@string/channel_name"/>
     <components.TextInput
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="@dimen/size"
-        android:hint="@string/name" />
-
-    <components.TextInput
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:hint="@string/add_members" />
-
-    <components.Button
+        android:layout_weight="1"
+        android:hint="@string/add_channel_name"/>
+    </android.support.v7.widget.LinearLayoutCompat>
 
 
-        android:layout_width="match_parent"
+    <components.TextBold
+        android:layout_width="wrap_content"
         android:layout_height="@dimen/size"
-        android:gravity="center"
-        app:_text="OK" />
+        android:gravity="bottom"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="Danh sách thành viên"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/list_users"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="10dp"
+        android:scrollbarSize="3dp"
+        android:scrollbarThumbVertical="@color/blueTransparent"
+        android:scrollbars="vertical"
+        tools:itemCount="2"
+        tools:listitem="@layout/item_user_edit"/>
+
 </android.support.v7.widget.LinearLayoutCompat>

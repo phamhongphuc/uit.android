@@ -23,6 +23,7 @@
         <components.ViewPagerIndex
             android:layout_width="match_parent"
             android:layout_height="15dp"
+            android:layout_margin="10dp"
             app:_activeColor="#f08c"
             app:_inactiveColor="#608c"
             app:_viewPagerId="@id/viewPagerProjectCreate" />

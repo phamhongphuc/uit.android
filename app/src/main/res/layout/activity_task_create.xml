@@ -27,54 +27,83 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            app:_icon=""
-            app:_text="Create New Task" />
+            app:_icon=""
+            app:_text="Thêm nhiệm vụ mới"/>
 
 
     </android.support.v7.widget.LinearLayoutCompat>
 
-    <components.TextInput
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/size"
-        android:hint="@string/name" />
-
     <components.Line
         android:layout_width="match_parent"
-        android:layout_height="1dp" />
+        android:layout_height="1dp"
+        app:_isFull="true"/>
 
-    <components.Text
+    <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.LinearLayoutCompat
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <components.Button
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/size"
+                app:_text="Tên nhiệm vụ"/>
+
+            <components.Button
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/size"
+                app:_text="@string/deadline"/>
+        </android.support.v7.widget.LinearLayoutCompat>
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <components.TextInput
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size"
+                android:hint="@string/add_task_name"/>
+
+            <components.TextInput
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size"
+                android:hint="@string/add_deadline"
+                android:onClick="showDatePickerDialog"/>
+        </android.support.v7.widget.LinearLayoutCompat>
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+    <components.Button
+        android:layout_width="wrap_content"
         android:layout_height="@dimen/size"
-        android:hint="@string/deadline"
-        android:onClick="showDatePickerDialog" />
-
-    <components.Line
-        android:layout_width="match_parent"
-        android:layout_height="1dp" />
+        app:_text="@string/description"/>
 
     <components.TextInput
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:hint="@string/description" />
+        android:hint="@string/add_description"
+        android:inputType="textMultiLine"/>
+
 
     <components.Line
         android:layout_width="match_parent"
-        android:layout_height="1dp" />
-
-    <components.Line
-        android:layout_width="match_parent"
-        android:layout_height="1dp" />
-
-    <components.TextInput
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:hint="@string/add_members" />
+        android:layout_height="1dp"
+        app:_isFull="true"/>
 
     <components.Button
-
         android:layout_width="match_parent"
         android:layout_height="@dimen/size"
         android:gravity="center"
         app:_text="CREATE TASK" />
+
+    <components.Line
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:_isFull="true"/>
 </android.support.v7.widget.LinearLayoutCompat>
