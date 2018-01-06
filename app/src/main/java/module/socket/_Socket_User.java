@@ -1,6 +1,5 @@
 package module.socket;
 
-import android.databinding.ObservableField;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
@@ -13,14 +12,14 @@ import javax.annotation.Nullable;
 import io.realm.Realm;
 import io.socket.client.Ack;
 import io.socket.client.Socket;
-import module.callback.CallbackString;
+import module.callback._Callback;
 import object.User;
 
 public class _Socket_User {
     private static final Socket socket = _Socket.getSocket();
 
-    public static void GetUserById(String userId, final ObservableField<User> user) {
-        socket.emit("Get:User(id)", userId, new Ack() {
+    public static void GetUserById(String userId, final _Callback callback) {
+        socket.emit("Get:User(userId)", userId, new Ack() {
             @Override
             public void call(Object... args) {
                 Realm realm = Realm.getDefaultInstance();
@@ -29,14 +28,15 @@ public class _Socket_User {
                 } else {
                     JSONObject obj = (JSONObject) args[1];
                     realm.beginTransaction();
-                    user.set(realm.createOrUpdateObjectFromJson(User.class, obj));
+                    User user = realm.createOrUpdateObjectFromJson(User.class, obj);
                     realm.commitTransaction();
+                    callback.Response(user);
                 }
             }
         });
     }
 
-    public static void GetUserByAccessToken(@Nullable AccessToken accessToken, final CallbackString callback) {
+    public static void GetUserByAccessToken(@Nullable AccessToken accessToken, final _Callback callback) {
         AccessToken token = accessToken != null ? accessToken : AccessToken.getCurrentAccessToken();
 
         if (token != null) {

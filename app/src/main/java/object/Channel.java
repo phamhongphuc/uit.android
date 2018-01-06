@@ -7,14 +7,19 @@ import java.util.Date;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;
+import io.realm.RealmResults;
+import io.realm.annotations.LinkingObjects;
 import io.realm.annotations.PrimaryKey;
 
 public class Channel extends RealmObject {
+    @LinkingObjects("channel")
+    private final RealmResults<Message> messages = null;
     @PrimaryKey
     private String id;
     private String name;
     private User assigned;
     private RealmList<User> members;
+    private Project project;
     private Date createdate;
     private Date lastupdate;
 

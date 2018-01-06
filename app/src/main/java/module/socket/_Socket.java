@@ -69,11 +69,10 @@ public class _Socket {
         }
     }
 
-
 //    public static Project EditProject(final Project project) {
 //        socket.emit("Edit:Project(project)", project, new Ack() {
 //            @Override
-//            public void CallbackString(Object... args) {
+//            public void _Callback(Object... args) {
 //                Realm realm = Realm.getDefaultInstance();
 //                if (args[0] != null) {
 //                    Log.d("SOCKET: ERROR", "Lỗi chỉnh sửa: " + args[0]);
@@ -93,7 +92,7 @@ public class _Socket {
 //            RealmList<Task> tasks = new RealmList<>();
 //
 //            @Override
-//            public void CallbackString(Object... args) {
+//            public void _Callback(Object... args) {
 //                Realm realm = Realm.getDefaultInstance();
 //                if (args[0] != null) {
 //                    Log.d("SOCKET: ERROR", "Lỗi trả về: " + args[0]);
@@ -120,7 +119,7 @@ public class _Socket {
 //            RealmList<Channel> channels = new RealmList<>();
 //
 //            @Override
-//            public void CallbackString(Object... args) {
+//            public void _Callback(Object... args) {
 //                Realm realm = Realm.getDefaultInstance();
 //                if (args[0] != null) {
 //                    Log.d("SOCKET: ERROR", "Lỗi trả về: " + args[0]);
@@ -146,7 +145,7 @@ public class _Socket {
 //            RealmList<User> users = new RealmList<>();
 //
 //            @Override
-//            public void CallbackString(Object... args) {
+//            public void _Callback(Object... args) {
 //                Realm realm = Realm.getDefaultInstance();
 //                if (args[0] != null) {
 //                    Log.d("SOCKET: ERROR", "Lỗi trả về " + args[0]);

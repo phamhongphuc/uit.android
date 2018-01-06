@@ -21,12 +21,15 @@ public class Task extends RealmObject {
     @PrimaryKey
     private int id;
     private String name;
+    private String description;
+
+    private Project project;
+    private User assigned;
+    private RealmList<User> subscribers;
+
+    private int status;
     private Date createdate;
     private Date deadline;
-    private String description;
-    private User assigned;
-    private RealmList<User> members;
-    private int status;
     private Date lastupdate;
 
     public Task() {
@@ -88,12 +91,11 @@ public class Task extends RealmObject {
         try {
             obj.put("id", id);
             obj.put("name", name);
-            obj.put("createdate", createdate);
-            obj.put("deadline", deadline);
             obj.put("description", description);
-            obj.put("assigned", assigned);
-            obj.put("members", members);
-            obj.put("State", status);
+
+            obj.put("status", status);
+            obj.put("deadline", deadline);
+            obj.put("createdate", createdate);
         } catch (JSONException e) {
             e.printStackTrace();
         }

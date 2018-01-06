@@ -13,9 +13,10 @@ import com.facebook.CallbackManager;
 import java.util.Objects;
 
 import app.Global;
-import module.callback.CallbackString;
+import module.callback._Callback;
 import module.facebook._Facebook;
 import module.socket._Socket;
+import module.socket._Socket_Realm;
 import uit.group.manager.databinding.ActivityLoginBinding;
 import view.fragmentAdapter.FragmentAdapter;
 import view.state.LoginState;
@@ -35,16 +36,17 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void InitializeListener() {
-        _Facebook.InitializeLogin(new CallbackString() {
+        _Facebook.InitializeLogin(new _Callback() {
             @Override
             public void Response(String userId) {
                 if (!Objects.equals(userId, Global.getInstance().userId.get())) {
                     Global.getInstance().userId.set(userId);
 
+                    _Socket_Realm.Pull(userId);
 
-                    Intent intent = new Intent(getBaseContext(), MainActivity.class);
-                    startActivity(intent);
-                    finish();
+//                    Intent intent = new Intent(getBaseContext(), MainActivity.class);
+//                    startActivity(intent);
+//                    finish();
                 }
             }
         });

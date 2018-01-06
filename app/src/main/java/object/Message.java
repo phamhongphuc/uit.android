@@ -12,10 +12,10 @@ public class Message extends RealmObject {
     @PrimaryKey
     private long id;
     private Date time;
+    private String content;
+
     private User sender;
     private Channel channel;
-    private String content;
-    private Date lastupdate;
 
     public Message() {
     }

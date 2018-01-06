@@ -16,6 +16,16 @@ public class User extends RealmObject {
     public static final boolean MALE = false;
     @LinkingObjects("members")
     private final RealmResults<Project> projects = null;
+    @LinkingObjects("creator")
+    private final RealmResults<Project> projectsOwn = null;
+    @LinkingObjects("subscribers")
+    private final RealmResults<Task> tasks = null;
+    @LinkingObjects("assigned")
+    private final RealmResults<Task> tasksOwn = null;
+    @LinkingObjects("members")
+    private final RealmResults<Channel> channels = null;
+    @LinkingObjects("assigned")
+    private final RealmResults<Channel> channelsOwn = null;
     @PrimaryKey
     private String id;
     private String name;
@@ -34,12 +44,7 @@ public class User extends RealmObject {
         realm.beginTransaction();
         User user = realm.where(User.class).equalTo("id", userId).findFirst();
         realm.commitTransaction();
-        realm.close();
         return user;
-    }
-
-    public static void getUserById_socket(String userId) {
-
     }
 
     public String getId() {
@@ -66,12 +71,32 @@ public class User extends RealmObject {
         return description;
     }
 
+    public Date getLastupdate() {
+        return lastupdate;
+    }
+
     public RealmResults<Project> getProjects() {
         return projects;
     }
 
-    public Date getLastupdate() {
-        return lastupdate;
+    public RealmResults<Project> getProjectsOwn() {
+        return projectsOwn;
+    }
+
+    public RealmResults<Task> getTasks() {
+        return tasks;
+    }
+
+    public RealmResults<Task> getTasksOwn() {
+        return tasksOwn;
+    }
+
+    public RealmResults<Channel> getChannels() {
+        return channels;
+    }
+
+    public RealmResults<Channel> getChannelsOwn() {
+        return channelsOwn;
     }
 
     public JSONObject getJson() {

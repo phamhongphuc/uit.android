@@ -15,7 +15,7 @@ public class App extends Application {
 
         _Socket.Initialize();
 //        _Facebook.Initialize();
-
+//        Realm.deleteRealm(Realm.getDefaultConfiguration());
         Realm.init(this);
     }
 }

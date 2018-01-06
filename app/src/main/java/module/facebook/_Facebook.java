@@ -8,11 +8,11 @@ import com.facebook.login.LoginManager;
 
 import java.util.Collections;
 
-import module.callback.CallbackString;
+import module.callback._Callback;
 import module.socket._Socket_User;
 
 public class _Facebook {
-    public static void InitializeLogin(final CallbackString userId_Callback) {
+    public static void InitializeLogin(final _Callback userId_Callback) {
         new AccessTokenTracker() {
             @Override
             protected void onCurrentAccessTokenChanged(AccessToken oldAccessToken, AccessToken currentAccessToken) {

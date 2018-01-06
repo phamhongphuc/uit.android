@@ -12,20 +12,19 @@ import app.Global;
 import io.realm.Realm;
 import module.facebook._Facebook;
 import module.socket._Socket;
-import module.socket._Socket_Project;
 import object.User;
 import uit.group.manager.databinding.ActivityMainBinding;
 import view.recyclerViewAdapter.ProjectRecyclerViewAdapter;
 
 public class MainActivity extends AppCompatActivity {
     private final Realm realm = Realm.getDefaultInstance();
-    private final User user;
     private final Global global = Global.getInstance();
+    private User user;
 
     MainActivity() {
-        user = User.getUserById(
-                global.userId.get()
-        );
+//        user = User.getUserById(
+//                global.userId.get()
+//        );
     }
 
     @Override
@@ -58,6 +57,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void createProject(View view) {
-        _Socket_Project.CreateProject(user.getId());
+//        _Socket_Project.CreateProject(user.getId());
     }
 }
