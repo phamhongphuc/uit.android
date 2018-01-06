@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    <data>
 
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+        <variable
+            name="task"
+            type="object.Task" />
+    </data>
+
+    <android.support.v7.widget.LinearLayoutCompat
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -27,45 +34,107 @@
                 android:layout_height="match_parent"
                 android:onClick="goBackToTaskList" />
 
-            <components.Button
+            <components.TextBold
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:_icon=""
-                app:_text="Task name" />
+                android:gravity="center"
+                android:text="@{task.name}"
+                tools:text="task.name" />
 
             <components.Line
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent" />
 
+            <components.Button
+                android:layout_width="@dimen/size"
+                android:layout_height="@dimen/size"
+                app:_icon="" />
         </android.support.v7.widget.LinearLayoutCompat>
 
         <components.Line
             android:layout_width="match_parent"
-            android:layout_height="1dp" />
+            android:layout_height="1dp"
+            app:_isFull="true" />
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="20dp"
+            android:layout_marginBottom="5dp"
             android:background="@color/white"
             android:orientation="vertical">
 
             <android.support.v7.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp">
+
+                    <components.TextBold
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/size"
+                        android:text="@string/description" />
+
+                    <components.TextBold
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/size"
+                        android:text="@string/assigned" />
+
+                    <components.TextBold
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/size"
+                        android:text="@string/create_date" />
+
+                    <components.TextBold
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/size"
+                        android:text="@string/deadline" />
+                </android.support.v7.widget.LinearLayoutCompat>
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <components.Text
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/size"
+                        android:text="@{task.description}"
+                        tools:text="task.description" />
+
+                    <components.Text
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/size"
+                        android:text="@{task.assigned.name}"
+                        tools:text="task.assigned" />
+
+                    <components.Text
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/size"
+                        android:text="@{task.createdate.toString()}"
+                        tools:text="task.createdate" />
+
+                    <components.Text
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/size"
+                        android:text="@{task.deadline.toString()}"
+                        tools:text="task.deadline" />
+                </android.support.v7.widget.LinearLayoutCompat>
+            </android.support.v7.widget.LinearLayoutCompat>
+
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <components.Text
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/size"
-                    android:text="@string/description" />
 
-                <components.Text
-                    android:id="@+id/taskdetail_description"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/size"
-                    android:layout_weight="1" />
             </android.support.v7.widget.LinearLayoutCompat>
 
             <android.support.v7.widget.LinearLayoutCompat
@@ -73,16 +142,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <components.Text
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/size"
-                    android:text="@string/assigned" />
 
-                <components.Text
-                    android:id="@+id/taskdetail_assgined"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/size"
-                    android:layout_weight="1" />
             </android.support.v7.widget.LinearLayoutCompat>
 
             <android.support.v7.widget.LinearLayoutCompat
@@ -90,54 +150,22 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <components.Text
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/size"
-                    android:text="@string/create_date" />
 
-                <components.Text
-                    android:id="@+id/taskdetail_createdate"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/size"
-                    android:layout_weight="1" />
             </android.support.v7.widget.LinearLayoutCompat>
 
             <android.support.v7.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <components.Text
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/size"
-                    android:text="@string/deadline" />
 
-                <components.Text
-                    android:id="@+id/taskdetail_deadline"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/size"
-                    android:layout_weight="1" />
             </android.support.v7.widget.LinearLayoutCompat>
 
-            <android.support.v7.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
 
-                <components.Text
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/size"
-                    android:text="@string/last_update" />
-
-                <components.Text
-                    android:id="@+id/taskdetail_lastupdate"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/size"
-                    android:layout_weight="1" />
-            </android.support.v7.widget.LinearLayoutCompat>
-
-            <components.Text
+            <components.TextBold
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/size"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 android:text="@string/members" />
 
             <android.support.v7.widget.RecyclerView
@@ -145,6 +173,8 @@
                 android:id="@+id/list_members"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 android:scrollbarSize="3dp"
                 android:scrollbarThumbVertical="@color/blueTransparent"
                 android:scrollbars="vertical"
