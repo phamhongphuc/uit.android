@@ -3,10 +3,12 @@ package module.callback;
 import android.databinding.Observable;
 import android.databinding.ObservableInt;
 
+import javax.annotation.Nullable;
+
 public class Count extends ObservableInt {
     private final VoidCallback done;
 
-    public Count(int value, final VoidCallback done) {
+    public Count(int value, @Nullable final VoidCallback done) {
         set(value);
         this.done = done;
         responseIfZero();

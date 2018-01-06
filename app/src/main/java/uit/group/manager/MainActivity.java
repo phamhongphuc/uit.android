@@ -4,8 +4,11 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+
+import com.facebook.AccessToken;
 
 import app.Global;
 import io.realm.Realm;
@@ -15,6 +18,7 @@ import module.socket._Socket_Project;
 import object.Project;
 import object.User;
 import uit.group.manager.databinding.ActivityMainBinding;
+import view.recyclerViewAdapter.ProjectRecyclerViewAdapter;
 
 public class MainActivity extends AppCompatActivity {
     private final Realm realm = Realm.getDefaultInstance();
@@ -22,7 +26,9 @@ public class MainActivity extends AppCompatActivity {
     private final User user;
 
     public MainActivity() {
-        this.user = global.user.get();
+        this.user = User.getUserById(
+                AccessToken.getCurrentAccessToken().getUserId()
+        );
     }
 
     @Override
@@ -42,14 +48,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void InitializeRecyclerView() {
         RecyclerView recyclerView = findViewById(R.id.list_project);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//        recyclerView.setAdapter(new ProjectRecyclerViewAdapter(user.getProjects()));
-//        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(new ProjectRecyclerViewAdapter(user.getProjects()));
+        recyclerView.setHasFixedSize(true);
     }
 
     public void facebookLogout(View view) {
         _Facebook.Logout();
-        global.user.set(null);
         startActivity(new Intent(this, LoginActivity.class));
         finish();
     }

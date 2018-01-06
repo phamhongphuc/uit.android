@@ -12,7 +12,8 @@
         android:layout_height="150dp"
         android:layout_gravity="center"
         android:layout_margin="20dp"
-        app:_size="50dp"
+        app:_innerSize="150dp"
+        app:_outerSize="150dp"
         app:_userId="@{user.id}"
         tools:background="@color/blueTransparent" />
 

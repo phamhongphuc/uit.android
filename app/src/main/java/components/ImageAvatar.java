@@ -79,7 +79,7 @@ public class ImageAvatar extends android.support.v7.widget.AppCompatImageView {
      */
     public void set_userId(String userId) {
         this.userId = userId;
-        requestLayout();
+        InitializeImage();
     }
 
     @Override

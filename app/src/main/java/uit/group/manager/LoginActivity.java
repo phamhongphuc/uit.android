@@ -39,11 +39,10 @@ public class LoginActivity extends AppCompatActivity {
     private void InitializeListener() {
         final User.Callback _user = new User.Callback() {
             @Override
-            public void Response(final User user) {
+            public void Response(User user) {
                 _Socket_Realm.Pull(user, new VoidCallback() {
                     @Override
                     public void Response() {
-                        Global.getInstance().user.set(user);
                         startActivity(new Intent(getBaseContext(), MainActivity.class));
                         finish();
                     }

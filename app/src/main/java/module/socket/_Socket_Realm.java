@@ -1,7 +1,5 @@
 package module.socket;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 
 import module.callback.Count;
@@ -12,36 +10,50 @@ import object.User;
 public class _Socket_Realm {
     private static final io.socket.client.Socket socket = _Socket.getSocket();
 
-    public static void Pull(final User user, final VoidCallback done) {
-        final Project.Callback _project = new Project.Callback() {
+    public static void Pull(final User user, final VoidCallback afterPull) {
+        final Project.CallbackProjects responseProjectIds = new Project.CallbackProjects() {
             @Override
-            public void Response(Project project) {
-                Log.d("PROJECT NAME", project.getName());
-            }
-        };
+            public void Response(ArrayList<Integer> projectIds, final VoidCallback afterGetProjectIds) {
+                final Count countProjects = new Count(projectIds.size(), afterGetProjectIds);
+                final Project.Callback responseProject = new Project.Callback() {
+                    @Override
+                    public void Response(final Project project) {
+                        final User.CallbackUsers responseUserIds = new User.CallbackUsers() {
+                            @Override
+                            public void Response(ArrayList<String> userIds, VoidCallback afterGetProjectMember) {
+                                final Count countUsers = new Count(userIds.size(), afterGetProjectMember);
+                                final User.Callback responseUser = new User.Callback() {
+                                    @Override
+                                    public void Response(final User user) {
+                                        project.addMember(user);
+                                        countUsers.decrease();
+                                    }
+                                };
 
-        final Project.CallbackProjects _projectIds = new Project.CallbackProjects() {
-            @Override
-            public void Response(ArrayList<Integer> projectIds, final VoidCallback projectsDone) {
-                final Count count = new Count(projectIds.size(), projectsDone);
+                                for (String userId : userIds) {
+                                    _Socket_User.GetUserById(userId, responseUser, countUsers);
+                                }
+                            }
+                        };
+                        _Socket_Project.GetProjectMemberIdsByProjectId(project.getId(), responseUserIds, new VoidCallback() {
+                            @Override
+                            public void Response() {
+                                countProjects.decrease();
+                            }
+                        });
+                    }
+                };
+
                 for (Integer projectId : projectIds) {
-                    _Socket_Project.GetProjectById(projectId, _project, count);
+                    _Socket_Project.GetProjectById(projectId, responseProject);
                 }
             }
         };
-
-        final User.Callback responseUser = new User.Callback() {
+        _Socket_Project.GetProjectIdsByUserId(user.getId(), responseProjectIds, new VoidCallback() {
             @Override
-            public void Response(final User user) {
-                _Socket_Project.GetProjectIdsByUserId(user.getId(), _projectIds, new VoidCallback() {
-                    @Override
-                    public void Response() {
-                        done.Response();
-                    }
-                });
+            public void Response() {
+                afterPull.Response();
             }
-        };
-
-        responseUser.Response(user);
+        });
     }
 }

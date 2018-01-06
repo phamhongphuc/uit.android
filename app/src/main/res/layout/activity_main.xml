@@ -6,6 +6,8 @@
 
     <data>
 
+        <import type="android.view.View"/>
+
         <variable
             name="user"
             type="object.User"/>
@@ -46,7 +48,7 @@
                     android:layout_gravity="center"
                     app:_innerSize="30dp"
                     app:_outerSize="@dimen/size"
-                    app:_userId="120163692032921"
+                    app:_userId="@{user.id}"
                     tools:background="@color/blueTransparent"/>
 
                 <components.Button
@@ -58,7 +60,6 @@
                     app:_hasRipple="false"
                     app:_text="@{user.name}"
                     app:_textAlign="left"
-                    app:_textPaddingLeft="false"
                     tools:_text="user.name"/>
             </android.support.v7.widget.LinearLayoutCompat>
 

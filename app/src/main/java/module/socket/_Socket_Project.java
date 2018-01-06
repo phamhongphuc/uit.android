@@ -12,9 +12,9 @@ import javax.annotation.Nullable;
 
 import io.realm.Realm;
 import io.socket.client.Ack;
-import module.callback.Count;
 import module.callback.VoidCallback;
 import object.Project;
+import object.User;
 
 public class _Socket_Project {
     private static final io.socket.client.Socket socket = _Socket.getSocket();
@@ -62,8 +62,7 @@ public class _Socket_Project {
     }
 
     public static void GetProjectById(int projectId,
-                                      final Project.Callback responseProject,
-                                      @Nullable final Count count) {
+                                      final Project.Callback responseProject) {
         socket.emit("Get:Project(projectId)", projectId, new Ack() {
             @Override
             public void call(Object... args) {
@@ -78,9 +77,28 @@ public class _Socket_Project {
                     realm.commitTransaction();
 
                     responseProject.Response(project);
-                    if (count != null) {
-                        count.decrease();
+                }
+            }
+        });
+    }
+
+    public static void GetProjectMemberIdsByProjectId(int projectId, final User.CallbackUsers callback, @Nullable final VoidCallback done) {
+        socket.emit("Get:Project.members(projectId)", projectId, new Ack() {
+            @Override
+            public void call(Object... args) {
+                if (args[0] != null) {
+                    Log.e("SOCKET: ERROR", args[0].toString());
+                } else {
+                    JSONArray array = (JSONArray) args[1];
+                    ArrayList<String> userIds = new ArrayList<>();
+                    for (int i = 0; i < array.length(); i++) {
+                        try {
+                            userIds.add(array.getString(i));
+                        } catch (JSONException ignored) {
+                            ignored.printStackTrace();
+                        }
                     }
+                    callback.Response(userIds, done);
                 }
             }
         });

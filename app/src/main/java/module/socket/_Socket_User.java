@@ -11,17 +11,18 @@ import javax.annotation.Nullable;
 import io.realm.Realm;
 import io.socket.client.Ack;
 import io.socket.client.Socket;
+import module.callback.Count;
 import object.User;
 
 public class _Socket_User {
     private static final Socket socket = _Socket.getSocket();
 
-    public static void GetUserById(String userId, final User.Callback callback) {
+    public static void GetUserById(String userId, final User.Callback callback, Count count) {
         socket.emit("Get:User(userId)", userId, new Ack() {
             @Override
             public void call(Object... args) {
                 if (args[0] != null) {
-                    Log.d("REALM", "Không có user, request lỗi");
+                    Log.d("REALM", "Không có userId, request lỗi");
                 } else {
                     JSONObject obj = (JSONObject) args[1];
 
