@@ -12,6 +12,7 @@ import io.realm.RealmObject;
 import io.realm.RealmResults;
 import io.realm.annotations.LinkingObjects;
 import io.realm.annotations.PrimaryKey;
+import module.callback.VoidCallback;
 
 public class Project extends RealmObject {
     @LinkingObjects("project")
@@ -104,11 +105,11 @@ public class Project extends RealmObject {
     }
 
     public interface Callback {
-        void Response(Project user);
+        void Response(Project project);
     }
 
     public interface CallbackProjects {
-        void Response(ArrayList<Integer> projects);
+        void Response(ArrayList<Integer> projects, VoidCallback done);
     }
 }
 

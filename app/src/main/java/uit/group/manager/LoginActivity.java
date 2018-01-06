@@ -12,6 +12,7 @@ import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 
 import app.Global;
+import module.callback.VoidCallback;
 import module.facebook._Facebook;
 import module.socket._Socket;
 import module.socket._Socket_Realm;
@@ -36,18 +37,20 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void InitializeListener() {
-        final User.Callback responseUser = new User.Callback() {
+        final User.Callback _user = new User.Callback() {
             @Override
-            public void Response(User user) {
-                _Socket_Realm.Pull(user, new User.Callback() {
+            public void Response(final User user) {
+                _Socket_Realm.Pull(user, new VoidCallback() {
                     @Override
-                    public void Response(User user) {
+                    public void Response() {
                         Global.getInstance().user.set(user);
+                        startActivity(new Intent(getBaseContext(), MainActivity.class));
+                        finish();
                     }
                 });
             }
         };
-        _Facebook.InitializeLogin(responseUser);
+        _Facebook.InitializeLogin(_user);
     }
 
     private void InitializePages() {
