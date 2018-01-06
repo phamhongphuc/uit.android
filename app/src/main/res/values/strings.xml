@@ -49,4 +49,5 @@
     <string name="task">Nhiệm vụ</string>
     <string name="channel">Kênh</string>
     <string name="channel_name">Tên kênh</string>
+    <string name="project_name">Tên dự án</string>
 </resources>

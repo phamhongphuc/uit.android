@@ -23,11 +23,13 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent" />
 
-        <components.Button
+        <components.TextBold
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            app:_text="Chỉnh sửa dự án" />
+            android:gravity="center"
+            android:text="Chỉnh sửa dự án" />
+
         <components.Line
             android:layout_width="1dp"
             android:layout_height="match_parent" />
@@ -39,32 +41,43 @@
 
     </android.support.v7.widget.LinearLayoutCompat>
 
+    <components.Line
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:_isFull="true" />
+
     <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp">
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
 
-            <components.Button
+            <components.TextBold
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/size"
+                android:gravity="center_vertical"
+                android:text="@string/project_name" />
+
+            <components.TextBold
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/size"
+                android:gravity="center_vertical"
+                android:text="@string/description" />
+
+            <components.TextBold
 
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/size"
-                app:_text="Tên dự án" />
-
-            <components.Button
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/size"
-                app:_text="@string/description" />
-
-            <components.Button
-
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/size"
-                app:_text="@string/deadline" />
+                android:gravity="center_vertical"
+                android:text="@string/deadline" />
 
         </android.support.v7.widget.LinearLayoutCompat>
 
