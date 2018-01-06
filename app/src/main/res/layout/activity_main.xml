@@ -13,10 +13,6 @@
         <variable
             name="socket"
             type="module.socket._Socket.State"/>
-
-        <variable
-            name="State"
-            type="view.state.MainState"/>
     </data>
 
     <android.support.v7.widget.LinearLayoutCompat
@@ -63,7 +59,7 @@
                     app:_text="@{user.name}"
                     app:_textAlign="left"
                     app:_textPaddingLeft="false"
-                    tools:_text="State.user.name"/>
+                    tools:_text="user.name"/>
             </android.support.v7.widget.LinearLayoutCompat>
 
             <components.Line

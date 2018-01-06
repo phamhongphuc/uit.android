@@ -3,6 +3,7 @@ package object;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import io.realm.Realm;
@@ -100,6 +101,14 @@ public class Project extends RealmObject {
             e.printStackTrace();
         }
         return obj;
+    }
+
+    public interface Callback {
+        void Response(Project user);
+    }
+
+    public interface CallbackProjects {
+        void Response(ArrayList<Integer> projects);
     }
 }
 

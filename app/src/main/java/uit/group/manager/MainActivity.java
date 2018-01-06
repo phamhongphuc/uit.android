@@ -19,12 +19,10 @@ import view.recyclerViewAdapter.ProjectRecyclerViewAdapter;
 public class MainActivity extends AppCompatActivity {
     private final Realm realm = Realm.getDefaultInstance();
     private final Global global = Global.getInstance();
-    private User user;
+    private User user = global.user.get();
 
     MainActivity() {
-//        user = User.getUserById(
-//                global.userId.get()
-//        );
+
     }
 
     @Override
@@ -51,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void facebookLogout(View view) {
         _Facebook.Logout();
-        global.userId.set(null);
+        global.user.set(null);
         startActivity(new Intent(this, LoginActivity.class));
         finish();
     }

@@ -2,9 +2,11 @@ package app;
 
 import android.databinding.ObservableField;
 
+import object.User;
+
 public class Global {
     private static final Global INSTANCE = new Global();
-    public final ObservableField<String> userId = new ObservableField<>("");
+    public final ObservableField<User> user = new ObservableField<>();
 
     private Global() {
 

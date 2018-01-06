@@ -113,4 +113,12 @@ public class User extends RealmObject {
         }
         return obj;
     }
+
+    public interface Callback {
+        void Response(User user);
+    }
+
+    public interface CallbackUserId {
+        void Response(String userId);
+    }
 }
