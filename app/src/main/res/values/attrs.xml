@@ -44,6 +44,10 @@
         <attr name="_backgroundActive" format="color"/>
         <attr name="_font"/>
         <attr name="_active" format="boolean"/>
+        <attr name="_fontSize" format="enum">
+            <enum name="small" value="0"/>
+            <enum name="large" value="1"/>
+        </attr>
     </declare-styleable>
     <declare-styleable name="ViewPagerIndex">
         <attr name="_inactiveColor" format="color"/>

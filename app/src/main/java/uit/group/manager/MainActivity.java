@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         Project.Callback project = new Project.Callback() {
             @Override
             public void Response(Project project) {
+
             }
         };
         _Socket_Project.CreateProject(user.getId(), project);

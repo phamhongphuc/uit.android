@@ -7,6 +7,7 @@
     <dimen name="text_size_4">18sp</dimen>
     <dimen name="text_size_5">16sp</dimen>
 
+    <dimen name="bound_7">2dp</dimen>
     <dimen name="bound_6">4dp</dimen>
     <dimen name="bound_5">6dp</dimen>
     <dimen name="bound_4">8dp</dimen>

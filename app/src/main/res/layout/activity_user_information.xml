@@ -6,6 +6,10 @@
     <data>
 
         <variable
+            name="state"
+            type="uit.group.manager.UserInformationActivity.State"/>
+
+        <variable
             name="user"
             type="object.User"/>
     </data>
@@ -13,6 +17,7 @@
     <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         android:orientation="vertical"
         tools:context="uit.group.manager.UserInformationActivity">
 
@@ -50,7 +55,7 @@
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="@color/white"
             android:orientation="vertical">
 
@@ -113,7 +118,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center_vertical"
-                            android:text="@{true ? `Nam` : `Nữ`}"
+                            android:text="@{state.gender}"
                             android:textSize="@dimen/text_size_5"
                             tools:text="user.gender"/>
                     </android.support.v7.widget.LinearLayoutCompat>
@@ -121,85 +126,171 @@
 
             </android.support.v7.widget.LinearLayoutCompat>
 
+        </android.support.v7.widget.LinearLayoutCompat>
 
-            <components.Line
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                app:_isFull="true"/>
+        <components.Line
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            app:_isFull="true"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
             <android.support.v7.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white">
-
-                <components.Button
-                    android:layout_width="@dimen/size_1"
-                    android:layout_height="@dimen/size_1"
-                    app:_hasRipple="false"
-                    app:_icon=""/>
-
-                <components.TextBold
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:text="87\nNhiệm vụ đã hoàn thành"/>
-
-
-            </android.support.v7.widget.LinearLayoutCompat>
-
-            <components.Line
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                app:_isFull="true"/>
-
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1">
+                android:orientation="vertical"
+                android:padding="@dimen/bound_5">
 
                 <android.support.v7.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_margin="@dimen/bound_5"
+                    android:layout_weight="1"
+                    android:background="@drawable/rectangle_border"
+                    android:elevation="2dp"
+                    android:orientation="vertical"
+                    android:padding="@dimen/bound_5">
+
+                    <components.Button
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        app:_font="bold"
+                        app:_fontSize="large"
+                        app:_icon=""
+                        app:_text="Dự án"
+                        app:_textAlign="left"/>
+
+                    <components.Line
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="@dimen/bound_7"
+                        app:_isFull="true"/>
 
                     <android.support.v7.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:orientation="horizontal"
-                        android:padding="@dimen/bound_5">
+                        android:layout_height="28dp"
+                        android:orientation="horizontal">
 
-                        <android.support.v7.widget.LinearLayoutCompat
+                        <components.Button
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_margin="@dimen/bound_5"
                             android:layout_weight="1"
-                            android:background="@drawable/rectangle_border"
-                            android:orientation="vertical"
-                            android:padding="@dimen/bound_5">
+                            app:_fontSize="large"
+                            app:_text="Đã tạo"
+                            app:_textAlign="left"/>
 
-                            <components.Button
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:_font="bold"
-                                app:_text="@string/project"/>
-
-                        </android.support.v7.widget.LinearLayoutCompat>
-
-                        <android.support.v7.widget.LinearLayoutCompat
-                            android:layout_width="0dp"
+                        <components.Button
+                            android:layout_width="30dp"
                             android:layout_height="match_parent"
-                            android:layout_margin="@dimen/bound_5"
-                            android:layout_weight="1"
-                            android:background="@drawable/rectangle_border">
+                            app:_fontSize="large"
+                            app:_text="@{String.valueOf(state.projectsOwn)}"
+                            app:_textAlign="right"
+                            tools:_text="1"/>
 
-                        </android.support.v7.widget.LinearLayoutCompat>
                     </android.support.v7.widget.LinearLayoutCompat>
 
+                    <android.support.v7.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="28dp"
+                        android:orientation="horizontal">
+
+                        <components.Button
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            app:_fontSize="large"
+                            app:_text="Đã tham gia"
+                            app:_textAlign="left"/>
+
+                        <components.Button
+                            android:layout_width="30dp"
+                            android:layout_height="match_parent"
+                            app:_fontSize="large"
+                            app:_text="@{String.valueOf(state.projects)}"
+                            app:_textAlign="right"
+                            tools:_text="10"/>
+
+                    </android.support.v7.widget.LinearLayoutCompat>
                 </android.support.v7.widget.LinearLayoutCompat>
 
-            </ScrollView>
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/bound_5"
+                    android:layout_weight="1"
+                    android:background="@drawable/rectangle_border"
+                    android:elevation="2dp"
+                    android:orientation="vertical"
+                    android:padding="@dimen/bound_5">
 
-        </android.support.v7.widget.LinearLayoutCompat>
+                    <components.Button
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        app:_font="bold"
+                        app:_fontSize="large"
+                        app:_icon=""
+                        app:_text="Nhiệm vụ"
+                        app:_textAlign="left"/>
+
+                    <components.Line
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="@dimen/bound_7"
+                        app:_isFull="true"/>
+
+                    <android.support.v7.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="28dp"
+                        android:orientation="horizontal">
+
+                        <components.Button
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            app:_fontSize="large"
+                            app:_text="Đã tạo"
+                            app:_textAlign="left"/>
+
+                        <components.Button
+                            android:layout_width="30dp"
+                            android:layout_height="match_parent"
+                            app:_fontSize="large"
+                            app:_text="@{String.valueOf(state.tasksOwn)}"
+                            app:_textAlign="right"
+                            tools:_text="10"/>
+
+                    </android.support.v7.widget.LinearLayoutCompat>
+
+                    <android.support.v7.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="28dp"
+                        android:orientation="horizontal">
+
+                        <components.Button
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            app:_fontSize="large"
+                            app:_text="Đã tham gia"
+                            app:_textAlign="left"/>
+
+                        <components.Button
+                            android:layout_width="30dp"
+                            android:layout_height="match_parent"
+                            app:_fontSize="large"
+                            app:_text="@{String.valueOf(state.tasks)}"
+                            app:_textAlign="right"
+                            tools:_text="10"/>
+
+                    </android.support.v7.widget.LinearLayoutCompat>
+                </android.support.v7.widget.LinearLayoutCompat>
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
+        </ScrollView>
 
     </android.support.v7.widget.LinearLayoutCompat>
 </layout>

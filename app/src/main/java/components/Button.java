@@ -42,6 +42,13 @@ public class Button extends LinearLayoutCompat {
             .put(2, BOLD)
             .build();
 
+    private static final float SMALL = 0.35f;
+    private static final float LARGE = 0.6f;
+    private static final Map<Integer, Float> SIZEs = ImmutableMap.<Integer, Float>builder()
+            .put(0, SMALL)
+            .put(1, LARGE)
+            .build();
+
     private String text;
     private String icon;
     private boolean active;
@@ -56,6 +63,7 @@ public class Button extends LinearLayoutCompat {
     private boolean textPaddingLeft;
     private boolean hasRipple;
     private String font;
+    private Float fontSize;
 
     public Button(Context context) {
         super(context, null, R.attr.ButtonStyle);
@@ -87,6 +95,7 @@ public class Button extends LinearLayoutCompat {
         textPaddingLeft = typedArray.getBoolean(R.styleable.Button__textPaddingLeft, true);
         hasRipple = typedArray.getBoolean(R.styleable.Button__hasRipple, true);
         font = FONTs.get(typedArray.getInt(R.styleable.Button__font, 0));
+        fontSize = SIZEs.get(typedArray.getInt(R.styleable.Button__fontSize, 0));
 
         typedArray.recycle();
     }
@@ -163,11 +172,11 @@ public class Button extends LinearLayoutCompat {
         setMinimumHeight(size);
 
         if (iconView != null) {
-            iconView.setTextSize(size * 0.4f / dp);
+            iconView.setTextSize(size * (fontSize + 0.05f) / dp);
             iconView.setWidth(size);
         }
         if (textView != null) {
-            textView.setTextSize(size * 0.35f / dp);
+            textView.setTextSize(size * fontSize / dp);
             textView.setPadding(
                     (iconView == null && textPaddingLeft)
                             ? (int) (size * 0.5f / dp) : 0,
