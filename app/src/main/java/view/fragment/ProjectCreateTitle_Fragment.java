@@ -1,7 +1,6 @@
 package view.fragment;
 
 import android.databinding.DataBindingUtil;
-import android.databinding.ObservableField;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -22,15 +21,13 @@ public class ProjectCreateTitle_Fragment extends Fragment {
                         R.layout.fragment_project_create_title,
                         container, false
                 );
-        binding.setSss(new State());
+//        binding.setProject(new State());
         return binding.getRoot();
     }
 
     public class State {
-        public ObservableField<String> status = new ObservableField<>();
+        public State() {
 
-        State() {
-            status.set("");
         }
     }
 }

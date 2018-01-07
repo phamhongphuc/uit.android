@@ -2,7 +2,6 @@ package view.fragment;
 
 
 import android.databinding.DataBindingUtil;
-import android.databinding.ObservableField;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -21,15 +20,12 @@ public class ProjectCreateContent_Fragment extends Fragment {
                 R.layout.fragment_project_create_content,
                 container,
                 false);
-        binding.setNewproject(new Infor());
         return binding.getRoot();
     }
 
-    public class Infor {
-        public ObservableField<String> str = new ObservableField<>();
+    public class State {
+        State() {
 
-        Infor() {
-            str.set("game Aladdin");
         }
     }
 }

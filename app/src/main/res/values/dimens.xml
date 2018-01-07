@@ -2,6 +2,9 @@
 <resources>
     <dimen name="size_1">50dp</dimen>
     <dimen name="size_2">40dp</dimen>
+    <dimen name="size_3">30dp</dimen>
+    <dimen name="size_4">20dp</dimen>
+    <dimen name="size_5">10dp</dimen>
 
 
     <dimen name="text_size_4">18sp</dimen>

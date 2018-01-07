@@ -1,72 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
         <variable
-            name="newproject"
-            type="view.fragment.ProjectCreateContent_Fragment.Infor" />
+            name="project"
+            type="object.Project"/>
     </data>
 
     <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="@dimen/bound_3">
 
-        <components.TextBold
+        <components.Button
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@{newproject.str}"
-            android:textSize="30sp" />
-
-        <components.Line
-            android:layout_width="match_parent"
-            android:layout_height="1dp" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:hint="Description" />
+            android:layout_height="@dimen/size_1"
+            app:_font="bold"
+            app:_fontSize="medium"
+            app:_text="Tên dự án"
+            app:_textAlign="left"/>
 
         <components.Line
             android:layout_width="match_parent"
-            android:layout_height="1dp" />
+            android:layout_height="1dp"
+            app:_isFull="true"/>
 
         <components.Text
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/size_1"
-            android:text="Create date" />
-
-        <TextView
-            android:id="@+id/createdate"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/size_1"/>
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/bound_7"
+            android:layout_marginTop="@dimen/bound_3"
+            android:text="@string/description"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rectangle_border">
+
+            <components.TextInput
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="@drawable/rectangle_border"/>
+
+        </FrameLayout>
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/bound_7"
+            android:layout_marginTop="@dimen/bound_3"
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/deadline"
-                android:layout_width="250dp"
-                android:layout_height="@dimen/size_1"/>
+            <components.Text
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/start_date"
+                app:_fontSize="medium"
+                app:_textAlign="left"
+                app:_textPaddingLeft="false"/>
 
-            <components.Line
-                android:layout_width="1dp"
-                android:layout_height="@dimen/size_1"/>
+            <View
+                android:layout_width="@dimen/bound_7"
+                android:layout_height="0dp"/>
 
-            <components.Button
-                android:layout_width="100dp"
-                android:layout_height="@dimen/size_1"
-                android:onClick="showDatePickerDialog"
-                app:_text="change" />
+            <components.Text
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/end_date"
+                app:_fontSize="medium"
+                app:_textAlign="left"
+                app:_textPaddingLeft="false"/>
 
         </android.support.v7.widget.LinearLayoutCompat>
-        <!--android:text="@string/pick_date" />-->
 
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_2"
+            android:orientation="horizontal">
+
+            <components.Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/rectangle_border"
+                android:gravity="center"
+                app:_fontSize="medium"
+                app:_text="1012134"/>
+
+            <View
+                android:layout_width="@dimen/bound_7"
+                android:layout_height="0dp"/>
+
+            <components.Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/rectangle_border"
+                android:gravity="center"
+                app:_fontSize="medium"
+                app:_text="1012134"/>
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+        <components.Text
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/bound_7"
+            android:layout_marginTop="@dimen/bound_3"
+            android:text="@string/members"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_2"
+            android:background="@drawable/rectangle_border">
+
+            <components.TextInput
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/rectangle_border"
+                android:maxLines="1"/>
+
+        </FrameLayout>
 
     </android.support.v7.widget.LinearLayoutCompat>
 </layout>
