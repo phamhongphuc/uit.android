@@ -159,6 +159,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:clickable="false"
+                        android:focusable="false"
                         app:_font="bold"
                         app:_fontSize="large"
                         app:_icon=""
@@ -180,6 +181,8 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
+                            android:clickable="false"
+                            android:focusable="false"
                             app:_fontSize="large"
                             app:_text="Đã tạo"
                             app:_textAlign="left"/>
@@ -187,6 +190,8 @@
                         <components.Button
                             android:layout_width="30dp"
                             android:layout_height="match_parent"
+                            android:clickable="false"
+                            android:focusable="false"
                             app:_fontSize="large"
                             app:_text="@{String.valueOf(state.projectsOwn)}"
                             app:_textAlign="right"
@@ -203,6 +208,8 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
+                            android:clickable="false"
+                            android:focusable="false"
                             app:_fontSize="large"
                             app:_text="Đã tham gia"
                             app:_textAlign="left"/>
@@ -210,6 +217,8 @@
                         <components.Button
                             android:layout_width="30dp"
                             android:layout_height="match_parent"
+                            android:clickable="false"
+                            android:focusable="false"
                             app:_fontSize="large"
                             app:_text="@{String.valueOf(state.projects)}"
                             app:_textAlign="right"
@@ -231,9 +240,11 @@
                     <components.Button
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
+                        android:clickable="false"
+                        android:focusable="false"
                         app:_font="bold"
                         app:_fontSize="large"
-                        app:_icon=""
+                        app:_icon=""
                         app:_text="Nhiệm vụ"
                         app:_textAlign="left"/>
 
@@ -252,6 +263,8 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
+                            android:clickable="false"
+                            android:focusable="false"
                             app:_fontSize="large"
                             app:_text="Đã tạo"
                             app:_textAlign="left"/>
@@ -259,6 +272,8 @@
                         <components.Button
                             android:layout_width="30dp"
                             android:layout_height="match_parent"
+                            android:clickable="false"
+                            android:focusable="false"
                             app:_fontSize="large"
                             app:_text="@{String.valueOf(state.tasksOwn)}"
                             app:_textAlign="right"
@@ -275,6 +290,8 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
+                            android:clickable="false"
+                            android:focusable="false"
                             app:_fontSize="large"
                             app:_text="Đã tham gia"
                             app:_textAlign="left"/>
@@ -282,6 +299,8 @@
                         <components.Button
                             android:layout_width="30dp"
                             android:layout_height="match_parent"
+                            android:clickable="false"
+                            android:focusable="false"
                             app:_fontSize="large"
                             app:_text="@{String.valueOf(state.tasks)}"
                             app:_textAlign="right"
@@ -303,9 +322,11 @@
                     <components.Button
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
+                        android:clickable="false"
+                        android:focusable="false"
                         app:_font="bold"
                         app:_fontSize="large"
-                        app:_icon=""
+                        app:_icon=""
                         app:_text="Kênh chat"
                         app:_textAlign="left"/>
 
@@ -324,6 +345,8 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
+                            android:clickable="false"
+                            android:focusable="false"
                             app:_fontSize="large"
                             app:_text="Đã tạo"
                             app:_textAlign="left"/>
@@ -331,6 +354,8 @@
                         <components.Button
                             android:layout_width="30dp"
                             android:layout_height="match_parent"
+                            android:clickable="false"
+                            android:focusable="false"
                             app:_fontSize="large"
                             app:_text="@{String.valueOf(state.channelsOwn)}"
                             app:_textAlign="right"
@@ -347,6 +372,8 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
+                            android:clickable="false"
+                            android:focusable="false"
                             app:_fontSize="large"
                             app:_text="Đã tham gia"
                             app:_textAlign="left"/>
@@ -354,6 +381,8 @@
                         <components.Button
                             android:layout_width="30dp"
                             android:layout_height="match_parent"
+                            android:clickable="false"
+                            android:focusable="false"
                             app:_fontSize="large"
                             app:_text="@{String.valueOf(state.channels)}"
                             app:_textAlign="right"

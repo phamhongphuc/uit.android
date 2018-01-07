@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 import object.User;
