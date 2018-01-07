@@ -11,15 +11,12 @@ import android.view.View;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
-import app.Global;
 import object.User;
 import uit.group.manager.databinding.ActivityUserInformationBinding;
 
 public class UserInformationActivity extends AppCompatActivity {
-    private final User user = User.getUserById(
-            Global.getInstance().userId.get()
-    );
     private final State state = new State();
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +24,10 @@ public class UserInformationActivity extends AppCompatActivity {
         int layout = R.layout.activity_user_information;
         setContentView(layout);
         ActivityUserInformationBinding binding = DataBindingUtil.setContentView(this, layout);
+
+        user = User.getUserById(
+                AccessToken.getCurrentAccessToken().getUserId()
+        );
 
         state.Initialize(user);
         binding.setUser(user);
@@ -38,16 +39,17 @@ public class UserInformationActivity extends AppCompatActivity {
     }
 
     public class State {
+        @SuppressLint("SimpleDateFormat")
+        private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         public ObservableInt projectsOwn = new ObservableInt();
         public ObservableInt projects = new ObservableInt();
         public ObservableInt tasksOwn = new ObservableInt();
         public ObservableInt tasks = new ObservableInt();
+        public ObservableInt channelsOwn = new ObservableInt();
+        public ObservableInt channels = new ObservableInt();
         public ObservableField<String> gender = new ObservableField<>();
         public ObservableField<String> birthday = new ObservableField<>();
 
-        @SuppressLint("SimpleDateFormat")
-        private final SimpleDateFormat dateFormat =
-                new SimpleDateFormat("dd-MM-yyyy");
         public void Initialize(User user) {
             projectsOwn.set(
                     user.getProjectsOwn().size()
@@ -61,11 +63,17 @@ public class UserInformationActivity extends AppCompatActivity {
             tasks.set(
                     user.getTasks().size()
             );
+            channelsOwn.set(
+                    user.getChannelsOwn().size()
+            );
+            channels.set(
+                    user.getChannels().size()
+            );
             gender.set(
-                    user.getGender() ? "Name" : "Nữ"
+                    user.getGender() == null ? "???" : user.getGender() ? "Name" : "Nữ"
             );
             birthday.set(
-                    dateFormat.format(user.getBirthdate())
+                    user.getBirthdate() == null ? "???" : dateFormat.format(user.getBirthdate())
             );
         }
     }

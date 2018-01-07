@@ -26,6 +26,7 @@ public class MessageRecyclerViewAdapter extends RealmRecyclerViewAdapter<Message
                 messages.add(new Message());
             }
         });
+        realm.close();
     }
 
     @Override

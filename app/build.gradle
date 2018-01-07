@@ -39,4 +39,6 @@ dependencies {
     api 'io.realm:android-adapters:2.1.1'
     api 'com.google.guava:guava:23.6-android'
     api 'com.squareup.picasso:picasso:2.5.2'
+    api 'org.parceler:parceler-api:1.1.9'
+    annotationProcessor 'org.parceler:parceler:1.1.9'
 }

@@ -24,8 +24,6 @@ public class ProjectCreateContent_Fragment extends Fragment {
     }
 
     public class State {
-        State() {
 
-        }
     }
 }

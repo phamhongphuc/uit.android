@@ -40,6 +40,7 @@ public class Project extends RealmObject {
         realm.beginTransaction();
         Project project = realm.where(Project.class).equalTo("id", projectId).findFirst();
         realm.commitTransaction();
+        realm.close();
         return project;
     }
 
@@ -51,8 +52,16 @@ public class Project extends RealmObject {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getDescription() {
         return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public RealmList<String> getTags() {
@@ -73,6 +82,7 @@ public class Project extends RealmObject {
             realm.beginTransaction();
             members.add(user);
             realm.commitTransaction();
+            realm.close();
         }
     }
 
@@ -82,6 +92,10 @@ public class Project extends RealmObject {
 
     public Date getDeadline() {
         return deadline;
+    }
+
+    public void setDeadline(Date deadline) {
+        this.deadline = deadline;
     }
 
     public Date getLastupdate() {

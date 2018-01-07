@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -42,10 +43,24 @@
             android:layout_height="wrap_content"
             android:background="@drawable/rectangle_border">
 
-            <components.TextInput
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:background="@drawable/rectangle_border"/>
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle_border">
+
+                <components.TextInput
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:gravity="top"
+                    android:paddingBottom="5dp"
+                    android:paddingEnd="5dp"
+                    android:paddingStart="5dp"
+                    android:paddingTop="5dp"
+                    android:text="@={project.description}"
+                    android:textSize="16sp"
+                    app:_autoSize="false"
+                    tools:ignore="RtlSymmetry"/>
+            </FrameLayout>
 
         </FrameLayout>
 
@@ -116,18 +131,64 @@
             android:layout_marginTop="@dimen/bound_3"
             android:text="@string/members"/>
 
-        <FrameLayout
+        <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_2"
-            android:background="@drawable/rectangle_border">
+            android:background="@drawable/rectangle_border"
+            android:orientation="horizontal">
 
             <components.TextInput
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/rectangle_border"
+                android:layout_weight="1"
                 android:maxLines="1"/>
 
-        </FrameLayout>
+            <components.Button
+                android:layout_width="@dimen/size_2"
+                android:layout_height="match_parent"
+                app:_fontSize="medium"
+                app:_icon="">
+
+            </components.Button>
+        </android.support.v7.widget.LinearLayoutCompat>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/list_users"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/bound_3"
+            android:layout_weight="1"
+            android:background="@drawable/rectangle_border"
+            android:scrollbarSize="3dp"
+            android:scrollbarThumbVertical="@color/blueTransparent"
+            android:scrollbars="vertical"
+            tools:itemCount="2"
+            tools:listitem="@layout/item_user"/>
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_1"
+            android:layout_marginTop="@dimen/bound_3"
+            android:gravity="center">
+
+            <components.Button
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/size_1"
+                android:background="@drawable/rectangle_border"
+                android:onClick="createProjectBack"
+                app:_text="Quay lại"/>
+
+            <View
+                android:layout_width="@dimen/bound_3"
+                android:layout_height="0dp"/>
+
+            <components.Button
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/size_1"
+                android:background="@drawable/rectangle_border"
+                android:onClick="createProjectDone"
+                app:_text="Xong"/>
+        </android.support.v7.widget.LinearLayoutCompat>
 
     </android.support.v7.widget.LinearLayoutCompat>
 </layout>

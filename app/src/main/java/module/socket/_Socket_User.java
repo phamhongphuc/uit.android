@@ -33,6 +33,7 @@ public class _Socket_User {
                     realm.beginTransaction();
                     User user = realm.createOrUpdateObjectFromJson(User.class, obj);
                     realm.commitTransaction();
+                    realm.close();
 
                     callback.Response(user);
                 }
@@ -64,6 +65,7 @@ public class _Socket_User {
                         final User user = realm.createOrUpdateObjectFromJson(User.class, obj);
                         realm.createOrUpdateAllFromJson(Project.class, projects);
                         realm.commitTransaction();
+                        realm.close();
 
                         callback.Response(user);
                     }

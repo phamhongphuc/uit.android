@@ -44,7 +44,7 @@ public class Button extends LinearLayoutCompat {
 
     private static final float SMALL = 0.35f;
     private static final float LARGE = 0.6f;
-    private static final Float MEDIUM = 0.5f;
+    private static final float MEDIUM = 0.5f;
     private static final Map<Integer, Float> SIZEs = ImmutableMap.<Integer, Float>builder()
             .put(0, SMALL)
             .put(1, LARGE)

@@ -13,11 +13,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 
+import org.parceler.Parcels;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+import object.Project;
 import view.fragment.ProjectCreateContent_Fragment;
 import view.fragment.ProjectCreateTitle_Fragment;
 import view.fragmentAdapter.FragmentAdapter;
@@ -26,36 +29,50 @@ public class ProjectCreateActivity extends AppCompatActivity {
     public int day, month, year;
     private DialogFragment newFragment = new DatePickerFragment();
 
+    private ViewPager viewPager;
+    private Project project;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_create);
+        InitializeProject();
         InitializePages();
+    }
+
+    private void InitializeProject() {
+        project = Parcels.unwrap(getIntent().getParcelableExtra("project"));
     }
 
     private void InitializePages() {
         FragmentAdapter fragmentAdapter = new FragmentAdapter(
                 getSupportFragmentManager(),
                 new ArrayList<Fragment>() {{
-                    add(new ProjectCreateTitle_Fragment());
+                    add(new ProjectCreateTitle_Fragment(project));
                     add(new ProjectCreateContent_Fragment());
                 }}
         );
-        ViewPager viewPager = findViewById(R.id.viewPagerProjectCreate);
+        viewPager = findViewById(R.id.viewPagerProjectCreate);
         viewPager.setAdapter(fragmentAdapter);
+    }
+
+    public void createProjectNext(View view) {
+        viewPager.setCurrentItem(1);
+    }
+
+    public void createProjectBack(View view) {
+        viewPager.setCurrentItem(0);
     }
 
     public void showDatePickerDialog(View v) {
         newFragment.show(getSupportFragmentManager(), "datePicker");
     }
 
-    public void createProjectNext(View view) {
-        ViewPager viewPager = findViewById(R.id.viewPagerProjectCreate);
-        viewPager.setCurrentItem(1);
+    public void createProjectDone(View view) {
+        finish();
     }
 
-    public static class DatePickerFragment extends DialogFragment
-            implements DatePickerDialog.OnDateSetListener {
+    public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
         @SuppressLint("SimpleDateFormat")
         private static final SimpleDateFormat dateFormat =
                 new SimpleDateFormat("dd-MM-yyyy");

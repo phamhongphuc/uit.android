@@ -63,6 +63,9 @@
         <attr name="_outerSize" format="dimension"/>
         <attr name="_userId" format="string"/>
     </declare-styleable>
+    <declare-styleable name="TextInput">
+        <attr name="_autoSize" format="boolean"/>
+    </declare-styleable>
     <declare-styleable name="Text">
         <attr name="_font"/>
     </declare-styleable>

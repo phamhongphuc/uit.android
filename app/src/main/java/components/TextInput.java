@@ -1,6 +1,7 @@
 package components;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,6 +12,8 @@ import android.view.inputmethod.EditorInfo;
 import uit.group.manager.R;
 
 public class TextInput extends AppCompatEditText {
+    private boolean autoSize;
+
     public TextInput(Context context) {
         super(context);
         Initialize(context, null);
@@ -44,7 +47,12 @@ public class TextInput extends AppCompatEditText {
     }
 
     private void InitializeAttr(@NonNull Context context, @Nullable AttributeSet attrs) {
+        TypedArray typedArray;
 
+        typedArray = context.obtainStyledAttributes(attrs, R.styleable.TextInput);
+        autoSize = typedArray.getBoolean(R.styleable.TextInput__autoSize, true);
+
+        typedArray.recycle();
     }
 
     @Override
@@ -55,11 +63,13 @@ public class TextInput extends AppCompatEditText {
         int height = MeasureSpec.getSize(heightMeasureSpec);
         int size = Math.min(width, height);
 
-        setTextSize(size * 0.35f / dp);
-        setPadding(
-                (int) (size * 0.5f / dp), 0,
-                (int) (size * 0.5f / dp), 0
-        );
+        if (autoSize) {
+            setTextSize(size * 0.35f / dp);
+            setPadding(
+                    (int) (size * 0.5f / dp), 0,
+                    (int) (size * 0.5f / dp), 0
+            );
+        }
     }
 
     @Override

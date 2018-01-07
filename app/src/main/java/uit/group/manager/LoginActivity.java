@@ -11,6 +11,8 @@ import android.view.View;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 
+import org.parceler.Parcels;
+
 import app.Global;
 import module.facebook._Facebook;
 import module.socket._Socket;
@@ -38,8 +40,12 @@ public class LoginActivity extends AppCompatActivity {
         _Facebook.InitializeLogin(new User.Callback() {
             @Override
             public void Response(User user) {
-                Global.getInstance().userId.set(user.getId());
-                startActivity(new Intent(getBaseContext(), MainActivity.class));
+                Intent intent;
+
+                intent = new Intent(getBaseContext(), MainActivity.class);
+                intent.putExtra("user", Parcels.wrap(user));
+
+                startActivity(intent);
                 finish();
             }
         });

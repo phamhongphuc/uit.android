@@ -8,8 +8,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import app.Global;
-import io.realm.Realm;
+import org.parceler.Parcels;
+
 import module.facebook._Facebook;
 import module.socket._Socket;
 import module.socket._Socket_Project;
@@ -19,22 +19,20 @@ import uit.group.manager.databinding.ActivityMainBinding;
 import view.recyclerViewAdapter.ProjectRecyclerViewAdapter;
 
 public class MainActivity extends AppCompatActivity {
-    private final Realm realm = Realm.getDefaultInstance();
-    private final User user;
-
-    public MainActivity() {
-        this.user = User.getUserById(
-                Global.getInstance().userId.get()
-        );
-    }
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        InitializeUser();
         InitializeDataBinding();
         InitializeRecyclerView();
+    }
+
+    private void InitializeUser() {
+        user = Parcels.unwrap(getIntent().getParcelableExtra("user"));
     }
 
     private void InitializeDataBinding() {
@@ -60,7 +58,12 @@ public class MainActivity extends AppCompatActivity {
         Project.Callback project = new Project.Callback() {
             @Override
             public void Response(Project project) {
-                startActivity(new Intent(getBaseContext(), ProjectCreateActivity.class));
+                Intent intent;
+
+                intent = new Intent(getBaseContext(), ProjectCreateActivity.class);
+                intent.putExtra("project", Parcels.wrap(project));
+
+                startActivity(intent);
             }
         };
         _Socket_Project.CreateProject(user.getId(), project);
