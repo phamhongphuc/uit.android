@@ -62,16 +62,19 @@
             <components.TextBold
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/size_1"
+                android:gravity="center"
                 android:text="Tên dự án" />
 
             <components.TextBold
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/size_1"
+                android:gravity="center"
                 android:text="@string/description" />
 
             <components.TextBold
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/size_1"
+                android:gravity="center"
                 android:text="@string/deadline" />
 
         </android.support.v7.widget.LinearLayoutCompat>
@@ -84,7 +87,8 @@
 
             <components.TextInput
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_1"/>
+                android:layout_height="@dimen/size_1"
+                android:text="sdfsdfsdf" />
 
             <components.TextInput
                 android:layout_width="match_parent"
