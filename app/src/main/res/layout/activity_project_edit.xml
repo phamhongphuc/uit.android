@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -17,22 +18,30 @@
         <components.Button
             android:layout_width="@dimen/size_1"
             android:layout_height="match_parent"
-            app:_icon="" />
+            app:_icon=""/>
 
         <components.Line
             android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"/>
 
         <components.Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:clickable="false"
+            android:focusable="false"
             android:gravity="center"
             app:_text="Chỉnh sửa dự án"
             app:_textAlign="left"/>
+
+        <components.Button
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            app:_icon=""/>
+
         <components.Line
             android:layout_width="1dp"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"/>
 
         <components.Button
             android:layout_width="@dimen/size_1"
@@ -44,7 +53,7 @@
     <components.Line
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        app:_isFull="true" />
+        app:_isFull="true"/>
 
     <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -61,20 +70,39 @@
             <components.Button
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/size_1"
+                android:clickable="false"
+                android:focusable="false"
                 android:gravity="center"
                 app:_text="Tên dự án"
                 app:_textAlign="left"/>
 
-            <components.Button
+            <components.Line
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_1"
-                android:gravity="center"
-                app:_text="Mô tả"
-                app:_textAlign="left"/>
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/bound_7"
+                app:_isFull="true"/>
 
             <components.Button
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/size_1"
+                android:clickable="false"
+                android:focusable="false"
+                android:gravity="center"
+                app:_text="Mô tả"
+                app:_textAlign="left"/>
+
+            <components.Line
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/bound_7"
+                app:_isFull="true"/>
+
+
+            <components.Button
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_1"
+                android:clickable="false"
+                android:focusable="false"
                 android:gravity="center"
                 app:_text="Hạn nộp"
                 app:_textAlign="left"/>
@@ -90,11 +118,24 @@
             <components.TextInput
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/size_1"
-                android:text="sdfsdfsdf" />
+                android:text="project.name"/>
+
+            <components.Line
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/bound_7"
+                app:_isFull="true"/>
 
             <components.TextInput
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_1"/>
+                android:layout_height="@dimen/size_1"
+                android:text="project.description"/>
+
+            <components.Line
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/bound_7"
+                app:_isFull="true"/>
 
             <components.TextInput
                 android:layout_width="match_parent"
@@ -102,6 +143,20 @@
                 android:onClick="showDatePickerDialog"/>
 
         </android.support.v7.widget.LinearLayoutCompat>
+
     </android.support.v7.widget.LinearLayoutCompat>
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center">
+
+        <View
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:background="@drawable/ic_garlands"/>
+    </android.support.v7.widget.LinearLayoutCompat>
+
 
 </android.support.v7.widget.LinearLayoutCompat>
