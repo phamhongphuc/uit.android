@@ -23,12 +23,12 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent" />
 
-        <components.Button
+        <components.TextBold
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            app:_icon=""
-            app:_text="Thêm nhiệm vụ mới"/>
+            android:gravity="center"
+            android:text="Thêm nhiệm vụ mới" />
 
 
     </android.support.v7.widget.LinearLayoutCompat>
@@ -36,27 +36,28 @@
     <components.Line
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        app:_isFull="true"/>
+        app:_isFull="true" />
 
     <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <android.support.v7.widget.LinearLayoutCompat
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
 
-            <components.Button
+            <components.TextBold
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/size_1"
-                app:_text="Tên nhiệm vụ"/>
+                android:text="Tên nhiệm vụ" />
 
-            <components.Button
+            <components.TextBold
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/size_1"
-                app:_text="@string/deadline"/>
+                android:text="@string/deadline" />
         </android.support.v7.widget.LinearLayoutCompat>
 
         <android.support.v7.widget.LinearLayoutCompat
@@ -68,33 +69,37 @@
             <components.TextInput
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/size_1"
-                android:hint="@string/add_task_name"/>
+                android:hint="@string/add_task_name" />
 
             <components.TextInput
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/size_1"
                 android:hint="@string/add_deadline"
-                android:onClick="showDatePickerDialog"/>
+                android:onClick="showDatePickerDialog" />
         </android.support.v7.widget.LinearLayoutCompat>
 
     </android.support.v7.widget.LinearLayoutCompat>
 
-    <components.Button
+    <components.TextBold
         android:layout_width="wrap_content"
         android:layout_height="@dimen/size_1"
-        app:_text="@string/description"/>
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="@string/description" />
 
     <components.TextInput
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:hint="@string/add_description"
-        android:inputType="textMultiLine"/>
+        android:inputType="textMultiLine"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" />
 
 
     <components.Line
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        app:_isFull="true"/>
+        app:_isFull="true" />
 
     <components.Button
         android:layout_width="match_parent"
@@ -105,5 +110,5 @@
     <components.Line
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        app:_isFull="true"/>
+        app:_isFull="true" />
 </android.support.v7.widget.LinearLayoutCompat>
