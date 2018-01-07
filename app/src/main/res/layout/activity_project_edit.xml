@@ -27,7 +27,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            app:_text="Chỉnh sửa dự án"/>
+            android:gravity="center"
+            android:text="Chỉnh sửa dự án" />
         <components.Line
             android:layout_width="1dp"
             android:layout_height="match_parent" />
@@ -61,18 +62,17 @@
             <components.TextBold
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/size_1"
-                app:_text="Tên dự án"/>
+                android:text="Tên dự án" />
 
             <components.TextBold
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/size_1"
-                app:_text="@string/description"/>
+                android:text="@string/description" />
 
             <components.TextBold
-
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/size_1"
-                app:_text="@string/deadline"/>
+                android:text="@string/deadline" />
 
         </android.support.v7.widget.LinearLayoutCompat>
 
