@@ -24,7 +24,7 @@ public class UserEditRecyclerViewAdapter extends RealmRecyclerViewAdapter<User, 
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         ViewDataBinding viewDataBinding = DataBindingUtil.inflate(
                 layoutInflater,
-                R.layout.item_user_edit,
+                R.layout.item_user_add,
                 parent, false
         );
         return new UserViewHolder(viewDataBinding);
