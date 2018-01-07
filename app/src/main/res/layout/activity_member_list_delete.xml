@@ -76,6 +76,14 @@
                 tools:listitem="@layout/item_user_delete"/>
         </android.support.v7.widget.LinearLayoutCompat>
 
+        <components.Line
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/bound_7"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            app:_isFull="true"/>
+
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="0dp"
