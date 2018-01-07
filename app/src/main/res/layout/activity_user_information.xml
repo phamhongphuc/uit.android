@@ -232,7 +232,7 @@
                         android:layout_height="30dp"
                         app:_font="bold"
                         app:_fontSize="large"
-                        app:_icon=""
+                        app:_icon=""
                         app:_text="Nhiệm vụ"
                         app:_textAlign="left"/>
 
@@ -304,7 +304,7 @@
                         android:layout_height="30dp"
                         app:_font="bold"
                         app:_fontSize="large"
-                        app:_icon=""
+                        app:_icon=""
                         app:_text="Kênh chat"
                         app:_textAlign="left"/>
 
