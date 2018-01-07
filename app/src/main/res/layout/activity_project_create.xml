@@ -13,7 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        tools:background="@color/blueTransparent" />
+        tools:background="@color/blueTransparent"/>
+
     <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,10 +24,10 @@
         <components.ViewPagerIndex
             android:layout_width="match_parent"
             android:layout_height="15dp"
-            android:layout_margin="10dp"
+            android:layout_margin="@dimen/bound_3"
             app:_activeColor="#f08c"
             app:_inactiveColor="#608c"
-            app:_viewPagerId="@id/viewPagerProjectCreate" />
+            app:_viewPagerId="@id/viewPagerProjectCreate"/>
 
     </android.support.v7.widget.LinearLayoutCompat>
 

@@ -1,46 +1,72 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <variable
-            name="sss"
-            type="view.fragment.ProjectCreateTitle_Fragment.State" />
+            name="project"
+            type="object.Project"/>
+
+        <variable
+            name="state"
+            type="view.fragment.ProjectCreateTitle_Fragment.State"/>
     </data>
 
-    <LinearLayout
+    <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:paddingEnd="@dimen/bound_1"
+        android:paddingStart="@dimen/bound_1">
 
-        <View
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:background="@drawable/ic_login_1" />
-
-        <components.TextBold
+        <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="@{sss.status}"
-            android:textAlignment="center"
-            android:textSize="18sp"
-            tools:text="q322dd32" />
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center">
 
-        <components.TextInput
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/size_1"/>
+            <View
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:background="@drawable/ic_rocket"/>
 
-        <components.Line
-            android:layout_width="wrap_content"
-            android:layout_height="1dp" />
+        </android.support.v7.widget.LinearLayoutCompat>
 
         <components.Button
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_2"
+            android:clickable="false"
+            app:_font="bold"
+            app:_fontSize="large"
+            app:_text="Tạo dự án mới"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rectangle_border">
+
+            <components.TextInput
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_1"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"/>
+        </FrameLayout>
+
+
+        <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="wrap_content"
             android:layout_height="@dimen/size_1"
-            app:_text="NEXT >" />
-    </LinearLayout>
+            android:layout_marginTop="@dimen/bound_3">
+
+            <components.Button
+                android:onClick="createProjectNext"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/size_1"
+                android:background="@drawable/rectangle_border"
+                app:_text="Tiếp theo"/>
+        </android.support.v7.widget.LinearLayoutCompat>
+
+    </android.support.v7.widget.LinearLayoutCompat>
 </layout>

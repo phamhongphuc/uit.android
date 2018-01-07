@@ -56,6 +56,7 @@ public class Text extends AppCompatTextView {
     }
 
     private void InitializeTypeface(Context context) {
+        setIncludeFontPadding(false);
         setTypeface(
                 Typeface.createFromAsset(context.getAssets(), font)
         );

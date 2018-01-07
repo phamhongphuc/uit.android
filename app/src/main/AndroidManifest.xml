@@ -33,7 +33,9 @@
             android:noHistory="true"/>
         <activity android:name=".MainActivity"/>
         <activity android:name=".ProjectListActivity"/>
-        <activity android:name=".ProjectCreateActivity"/>
+        <activity
+            android:name=".ProjectCreateActivity"
+            android:windowSoftInputMode="stateVisible|adjustResize"/>
         <activity android:name=".MemberListActivity"/>
         <activity android:name=".ProjectDetailActivity"/>
         <activity android:name=".UserProfileActivity"/>

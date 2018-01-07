@@ -44,9 +44,11 @@ public class Button extends LinearLayoutCompat {
 
     private static final float SMALL = 0.35f;
     private static final float LARGE = 0.6f;
+    private static final Float MEDIUM = 0.5f;
     private static final Map<Integer, Float> SIZEs = ImmutableMap.<Integer, Float>builder()
             .put(0, SMALL)
             .put(1, LARGE)
+            .put(2, MEDIUM)
             .build();
 
     private String text;
@@ -121,6 +123,7 @@ public class Button extends LinearLayoutCompat {
                     LayoutParams.WRAP_CONTENT,
                     LayoutParams.MATCH_PARENT
             ));
+            iconView.setIncludeFontPadding(false);
             iconView.setGravity(Gravity.CENTER);
             iconView.setTextColor(foreground);
             iconView.setBackgroundColor(currentColor);
@@ -147,6 +150,7 @@ public class Button extends LinearLayoutCompat {
             textView.setSingleLine(true);
             textView.setBackgroundColor(currentColor);
             textView.setGravity(textAlign);
+            textView.setIncludeFontPadding(false);
         } else if (textView != null) {
             removeView(textView);
         }

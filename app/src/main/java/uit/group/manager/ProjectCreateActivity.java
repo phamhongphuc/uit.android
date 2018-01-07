@@ -31,21 +31,9 @@ public class ProjectCreateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_create);
         InitializePages();
-
-        /*TextView createdate = findViewById(R.id.createdate);
-        Date curentdate = Calendar.getInstance().getTime();
-        String day          = (String) DateFormat.format("dd",   curentdate); // 20
-        String month  = (String) DateFormat.format("MM",   curentdate); // 06
-        String year         = (String) DateFormat.format("yyyy", curentdate);
-
-        createdate.setText(String.format("%s/%s/%s", day, month, year));*/
     }
 
     private void InitializePages() {
-        /*FragmentAdapter fragmentAdapter = new FragmentAdapter(getSupportFragmentManager(), new int[]{
-                R.layout.fragment_project_create_1,
-                R.layout.fragment_project_create_2
-        });*/
         FragmentAdapter fragmentAdapter = new FragmentAdapter(
                 getSupportFragmentManager(),
                 new ArrayList<Fragment>() {{
@@ -59,6 +47,11 @@ public class ProjectCreateActivity extends AppCompatActivity {
 
     public void showDatePickerDialog(View v) {
         newFragment.show(getSupportFragmentManager(), "datePicker");
+    }
+
+    public void createProjectNext(View view) {
+        ViewPager viewPager = findViewById(R.id.viewPagerProjectCreate);
+        viewPager.setCurrentItem(1);
     }
 
     public static class DatePickerFragment extends DialogFragment
