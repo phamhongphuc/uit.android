@@ -8,8 +8,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.facebook.AccessToken;
-
 import app.Global;
 import io.realm.Realm;
 import module.facebook._Facebook;
@@ -22,12 +20,11 @@ import view.recyclerViewAdapter.ProjectRecyclerViewAdapter;
 
 public class MainActivity extends AppCompatActivity {
     private final Realm realm = Realm.getDefaultInstance();
-    private final Global global = Global.getInstance();
     private final User user;
 
     public MainActivity() {
         this.user = User.getUserById(
-                AccessToken.getCurrentAccessToken().getUserId()
+                Global.getInstance().userId.get()
         );
     }
 
@@ -66,5 +63,9 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         _Socket_Project.CreateProject(user.getId(), project);
+    }
+
+    public void goToUserInfomation(View view) {
+        startActivity(new Intent(this, UserInformationActivity.class));
     }
 }

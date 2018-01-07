@@ -4,6 +4,8 @@ import android.util.Log;
 
 import com.facebook.AccessToken;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import javax.annotation.Nullable;
@@ -12,6 +14,7 @@ import io.realm.Realm;
 import io.socket.client.Ack;
 import io.socket.client.Socket;
 import module.callback.Count;
+import object.Project;
 import object.User;
 
 public class _Socket_User {
@@ -48,11 +51,18 @@ public class _Socket_User {
                     if (args[0] != null) {
                         Log.d("SOCKET: ERROR", "Lỗi trả về" + args[0]);
                     } else {
-                        final JSONObject obj = (JSONObject) args[1];
+                        JSONObject obj = (JSONObject) args[1];
+                        JSONArray projects = null;
+                        try {
+                            projects = obj.getJSONArray("projects");
+                        } catch (JSONException e) {
+                            Log.e("SOCKET", "Lỗi khi cố gắng đọc định dạng JSON");
+                        }
 
                         Realm realm = Realm.getDefaultInstance();
                         realm.beginTransaction();
                         final User user = realm.createOrUpdateObjectFromJson(User.class, obj);
+                        realm.createOrUpdateAllFromJson(Project.class, projects);
                         realm.commitTransaction();
 
                         callback.Response(user);

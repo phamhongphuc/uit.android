@@ -52,4 +52,12 @@
         <attr name="_outerSize" format="dimension"/>
         <attr name="_userId" format="string"/>
     </declare-styleable>
+    <declare-styleable name="Text">
+        <attr name="_font" format="enum">
+            <enum name="regular" value="0"/>
+            <enum name="light" value="1"/>
+            <enum name="bold" value="2"/>
+        </attr>
+
+    </declare-styleable>
 </resources>

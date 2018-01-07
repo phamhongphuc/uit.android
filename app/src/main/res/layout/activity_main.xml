@@ -40,7 +40,8 @@
                 android:layout_weight="1"
                 android:clickable="true"
                 android:focusable="true"
-                android:foreground="?attr/selectableItemBackground">
+                android:foreground="?attr/selectableItemBackground"
+                android:onClick="goToUserInfomation">
 
                 <components.ImageAvatar
                     android:layout_width="@dimen/size"
@@ -152,6 +153,7 @@
                     android:id="@+id/list_project"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_margin="@dimen/paddingSize"
                     android:scrollbarSize="3dp"
                     android:scrollbarThumbVertical="@color/blueTransparent"
                     android:scrollbars="vertical"

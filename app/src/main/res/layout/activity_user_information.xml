@@ -14,7 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="10dp"
         tools:context="uit.group.manager.UserInformationActivity">
 
         <android.support.v7.widget.LinearLayoutCompat
@@ -24,7 +23,24 @@
             <components.Button
                 android:layout_width="@dimen/size"
                 android:layout_height="@dimen/size"
+                android:onClick="goBack"
                 app:_icon=""/>
+
+            <components.Line
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
+
+            <components.Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:_text="Thông tin cá nhân"
+                app:_textAlign="left"/>
+
+            <components.Button
+                android:layout_width="@dimen/size"
+                android:layout_height="@dimen/size"
+                app:_icon=""/>
         </android.support.v7.widget.LinearLayoutCompat>
 
         <components.Line
@@ -34,287 +50,283 @@
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="10dp">
-
-            <components.ImageAvatar
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                app:_innerSize="100dp"
-                app:_outerSize="100dp"
-                app:_userId="@{user.id}"
-                tools:background="@color/blueTransparent"/>
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical">
 
             <android.support.v7.widget.LinearLayoutCompat
-                android:layout_width="0dp"
-                android:layout_height="@dimen/size"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/avartarMargin">
+
+                <components.ImageAvatar
+                    android:layout_width="@dimen/size"
+                    android:layout_height="@dimen/size"
+                    android:layout_marginEnd="@dimen/avartarMargin"
+                    app:_innerSize="@dimen/size"
+                    app:_outerSize="@dimen/size"
+                    app:_userId="@{user.id}"
+                    tools:background="@color/blueTransparent"/>
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <components.Text
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/paddingSize"
+                        android:gravity="center_vertical"
+                        android:text="@{user.name}"
+                        android:textSize="@dimen/h4_text_size"
+                        app:_font="bold"
+                        tools:ignore="RtlSymmetry"
+                        tools:text="user.name"/>
+
+                    <components.Text
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:text="@{user.email}"
+                        android:textSize="@dimen/h5_text_size"
+                        tools:ignore="RtlSymmetry"
+                        tools:text="user.email"/>
+
+                    <android.support.v7.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <components.Text
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="user.birthdate"
+                            android:textSize="@dimen/h5_text_size"
+                            tools:ignore="RtlSymmetry"
+                            tools:text="user.birthdate"/>
+
+                        <components.Text
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@{true ? `Nam` : `Nữ`}"
+                            android:textSize="@dimen/h5_text_size"
+                            tools:text="user.gender"/>
+                    </android.support.v7.widget.LinearLayoutCompat>
+                </android.support.v7.widget.LinearLayoutCompat>
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
+
+            <components.Line
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                app:_isFull="true"/>
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+                <components.Button
+                    android:layout_width="@dimen/size"
+                    android:layout_height="@dimen/size"
+                    app:_hasRipple="false"
+                    app:_icon=""/>
 
                 <components.TextBold
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:paddingStart="10dp"
-                    android:text="@{user.name}"
-                    tools:ignore="RtlSymmetry"
-                    tools:text="user.name"/>
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="87\nNhiệm vụ đã hoàn thành"/>
 
-                <components.Text
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:paddingStart="10dp"
-                    android:text="@{user.email}"
-                    tools:ignore="RtlSymmetry"
-                    tools:text="user.email"/>
 
             </android.support.v7.widget.LinearLayoutCompat>
 
-            <components.Button
-                android:layout_width="@dimen/size"
-                android:layout_height="@dimen/size"
-                app:_icon=""/>
-        </android.support.v7.widget.LinearLayoutCompat>
-
-        <android.support.v7.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
-
-
-            <android.support.v7.widget.LinearLayoutCompat
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="5dp">
-
-                <components.Text
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@{user.birthdate.toString()}"
-                    tools:text="user.birthdate"/>
-
-                <components.Text
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:clickable="false"
-                    android:focusable="false"
-                    android:gravity="center"
-                    android:text="@{user.gender.toString()}"
-                    tools:text="user.gender"/>
-            </android.support.v7.widget.LinearLayoutCompat>
-        </android.support.v7.widget.LinearLayoutCompat>
-
-        <components.Line
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            app:_isFull="true"/>
-
-        <android.support.v7.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white">
-
-            <components.Button
-                android:layout_width="@dimen/size"
-                android:layout_height="@dimen/size"
-                app:_hasRipple="false"
-                app:_icon=""/>
-
-            <components.TextBold
+            <components.Line
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:text="87\nNhiệm vụ đã hoàn thành"/>
+                android:layout_height="1dp"
+                app:_isFull="true"/>
 
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <android.support.v7.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@color/white"
+                        android:orientation="vertical"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp">
+
+                        <components.TextBold
+                            android:layout_width="match_parent"
+                            android:layout_height="25dp"
+                            android:text="@string/project"/>
+
+                        <components.Line
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            app:_isFull="true"/>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/size">
+
+                            <components.Text
+                                android:layout_width="wrap_content"
+                                android:layout_height="25dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_alignParentTop="true"
+                                android:text="Số dự án đã tạo"/>
+
+                            <components.Text
+                                android:layout_width="wrap_content"
+                                android:layout_height="25dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentTop="true"
+                                android:text="2"/>
+
+                            <components.Text
+                                android:layout_width="wrap_content"
+                                android:layout_height="25dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_alignParentStart="true"
+                                android:text="Số dự án đã tham gia"/>
+
+                            <components.Text
+                                android:layout_width="wrap_content"
+                                android:layout_height="25dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_alignParentEnd="true"
+                                android:text="9"/>
+
+                        </RelativeLayout>
+                    </android.support.v7.widget.LinearLayoutCompat>
+
+                    <android.support.v7.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@color/white"
+                        android:orientation="vertical"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp">
+
+                        <components.TextBold
+                            android:layout_width="match_parent"
+                            android:layout_height="25dp"
+                            android:text="@string/task"/>
+
+                        <components.Line
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            app:_isFull="true"/>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/size">
+
+                            <components.Text
+                                android:layout_width="wrap_content"
+                                android:layout_height="25dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_alignParentTop="true"
+                                android:text="Số nhiệm vụ đã tạo"/>
+
+                            <components.Text
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentTop="true"
+                                android:text="2"/>
+
+                            <components.Text
+                                android:layout_width="wrap_content"
+                                android:layout_height="25dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_alignParentStart="true"
+                                android:text="Số nhiệm vụ đã tham gia"/>
+
+                            <components.Text
+                                android:layout_width="wrap_content"
+                                android:layout_height="25dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_alignParentEnd="true"
+                                android:text="9"/>
+                        </RelativeLayout>
+                    </android.support.v7.widget.LinearLayoutCompat>
+
+                    <android.support.v7.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@color/white"
+                        android:orientation="vertical"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp">
+
+                        <components.TextBold
+                            android:layout_width="match_parent"
+                            android:layout_height="25dp"
+                            android:text="@string/channel"/>
+
+                        <components.Line
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            app:_isFull="true"/>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/size">
+
+                            <components.Text
+                                android:layout_width="wrap_content"
+                                android:layout_height="25dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_alignParentTop="true"
+                                android:text="Số kênh đã tạo"/>
+
+                            <components.Text
+                                android:layout_width="wrap_content"
+                                android:layout_height="25dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentTop="true"
+                                android:text="2"/>
+
+                            <components.Text
+                                android:layout_width="wrap_content"
+                                android:layout_height="25dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_alignParentStart="true"
+                                android:text="Số kênh đã tham gia"/>
+
+                            <components.Text
+                                android:layout_width="wrap_content"
+                                android:layout_height="25dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_alignParentEnd="true"
+                                android:text="9"/>
+
+                        </RelativeLayout>
+                    </android.support.v7.widget.LinearLayoutCompat>
+                </android.support.v7.widget.LinearLayoutCompat>
+
+            </ScrollView>
 
         </android.support.v7.widget.LinearLayoutCompat>
-
-        <components.Line
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            app:_isFull="true"/>
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
-
-            <android.support.v7.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#eeee"
-                android:orientation="vertical">
-
-
-                <android.support.v7.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:background="@color/white"
-                    android:orientation="vertical"
-                    android:paddingLeft="5dp"
-                    android:paddingRight="5dp">
-
-                    <components.TextBold
-                        android:layout_width="match_parent"
-                        android:layout_height="25dp"
-                        android:text="@string/project"/>
-
-                    <components.Line
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        app:_isFull="true"/>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/size">
-
-                        <components.Text
-                            android:layout_width="wrap_content"
-                            android:layout_height="25dp"
-                            android:layout_alignParentStart="true"
-                            android:layout_alignParentTop="true"
-                            android:text="Số dự án đã tạo"/>
-
-                        <components.Text
-                            android:layout_width="wrap_content"
-                            android:layout_height="25dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_alignParentTop="true"
-                            android:text="2"/>
-
-                        <components.Text
-                            android:layout_width="wrap_content"
-                            android:layout_height="25dp"
-                            android:layout_alignParentBottom="true"
-                            android:layout_alignParentStart="true"
-                            android:text="Số dự án đã tham gia"/>
-
-                        <components.Text
-                            android:layout_width="wrap_content"
-                            android:layout_height="25dp"
-                            android:layout_alignParentBottom="true"
-                            android:layout_alignParentEnd="true"
-                            android:text="9"/>
-
-                    </RelativeLayout>
-                </android.support.v7.widget.LinearLayoutCompat>
-
-                <android.support.v7.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:background="@color/white"
-                    android:orientation="vertical"
-                    android:paddingLeft="5dp"
-                    android:paddingRight="5dp">
-
-                    <components.TextBold
-                        android:layout_width="match_parent"
-                        android:layout_height="25dp"
-                        android:text="@string/task"/>
-
-                    <components.Line
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        app:_isFull="true"/>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/size">
-
-                        <components.Text
-                            android:layout_width="wrap_content"
-                            android:layout_height="25dp"
-                            android:layout_alignParentStart="true"
-                            android:layout_alignParentTop="true"
-                            android:text="Số nhiệm vụ đã tạo"/>
-
-                        <components.Text
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:layout_alignParentTop="true"
-                            android:text="2"/>
-
-                        <components.Text
-                            android:layout_width="wrap_content"
-                            android:layout_height="25dp"
-                            android:layout_alignParentBottom="true"
-                            android:layout_alignParentStart="true"
-                            android:text="Số nhiệm vụ đã tham gia"/>
-
-                        <components.Text
-                            android:layout_width="wrap_content"
-                            android:layout_height="25dp"
-                            android:layout_alignParentBottom="true"
-                            android:layout_alignParentEnd="true"
-                            android:text="9"/>
-                    </RelativeLayout>
-                </android.support.v7.widget.LinearLayoutCompat>
-
-                <android.support.v7.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:background="@color/white"
-                    android:orientation="vertical"
-                    android:paddingLeft="5dp"
-                    android:paddingRight="5dp">
-
-                    <components.TextBold
-                        android:layout_width="match_parent"
-                        android:layout_height="25dp"
-                        android:text="@string/channel"/>
-
-                    <components.Line
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        app:_isFull="true"/>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/size">
-
-                        <components.Text
-                            android:layout_width="wrap_content"
-                            android:layout_height="25dp"
-                            android:layout_alignParentStart="true"
-                            android:layout_alignParentTop="true"
-                            android:text="Số kênh đã tạo"/>
-
-                        <components.Text
-                            android:layout_width="wrap_content"
-                            android:layout_height="25dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_alignParentTop="true"
-                            android:text="2"/>
-
-                        <components.Text
-                            android:layout_width="wrap_content"
-                            android:layout_height="25dp"
-                            android:layout_alignParentBottom="true"
-                            android:layout_alignParentStart="true"
-                            android:text="Số kênh đã tham gia"/>
-
-                        <components.Text
-                            android:layout_width="wrap_content"
-                            android:layout_height="25dp"
-                            android:layout_alignParentBottom="true"
-                            android:layout_alignParentEnd="true"
-                            android:text="9"/>
-
-                    </RelativeLayout>
-                </android.support.v7.widget.LinearLayoutCompat>
-            </android.support.v7.widget.LinearLayoutCompat>
-
-        </ScrollView>
 
     </android.support.v7.widget.LinearLayoutCompat>
 </layout>

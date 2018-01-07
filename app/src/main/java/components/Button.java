@@ -115,7 +115,7 @@ public class Button extends LinearLayoutCompat {
             }
             textView.setText(text);
             textView.setTypeface(
-                    Typeface.createFromAsset(getContext().getAssets(), "fonts/segoe.ttf")
+                    Typeface.createFromAsset(getContext().getAssets(), "fonts/segoe regular.ttf")
             );
             LayoutParams params = new LayoutParams(
                     LayoutParams.WRAP_CONTENT,
