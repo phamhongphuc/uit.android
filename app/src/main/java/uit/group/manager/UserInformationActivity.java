@@ -1,11 +1,15 @@
 package uit.group.manager;
 
+import android.annotation.SuppressLint;
 import android.databinding.DataBindingUtil;
 import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 import app.Global;
 import object.User;
@@ -39,7 +43,11 @@ public class UserInformationActivity extends AppCompatActivity {
         public ObservableInt tasksOwn = new ObservableInt();
         public ObservableInt tasks = new ObservableInt();
         public ObservableField<String> gender = new ObservableField<>();
+        public ObservableField<String> birthday = new ObservableField<>();
 
+        @SuppressLint("SimpleDateFormat")
+        private final SimpleDateFormat dateFormat =
+                new SimpleDateFormat("dd-MM-yyyy");
         public void Initialize(User user) {
             projectsOwn.set(
                     user.getProjectsOwn().size()
@@ -55,6 +63,9 @@ public class UserInformationActivity extends AppCompatActivity {
             );
             gender.set(
                     user.getGender() ? "Name" : "Nữ"
+            );
+            birthday.set(
+                    dateFormat.format(user.getBirthdate())
             );
         }
     }
