@@ -9,6 +9,6 @@ public class CreateProjectState {
 
     public CreateProjectState() {
         ///Lay thong tin Nguoi dung de dua vao Assigned
-//        user.set(OldGlobal.user.get());
+//        userId.set(OldGlobal.userId.get());
     }
 }

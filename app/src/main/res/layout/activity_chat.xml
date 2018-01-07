@@ -5,43 +5,43 @@
 
         <variable
             name="message"
-            type="object.Message" />
+            type="object.Message"/>
     </data>
 
     <android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
 
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context="uit.group.manager.ChatActivity">
+                                                  xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                  xmlns:tools="http://schemas.android.com/tools"
+                                                  android:layout_width="match_parent"
+                                                  android:layout_height="match_parent"
+                                                  android:orientation="vertical"
+                                                  tools:context="uit.group.manager.ChatActivity">
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <components.Button
-                android:layout_width="@dimen/size"
-                android:layout_height="@dimen/size"
-                app:_icon="" />
+                android:layout_width="@dimen/size_1"
+                android:layout_height="@dimen/size_1"
+                app:_icon=""/>
 
             <components.Button
                 android:layout_width="0dp"
-                android:layout_height="@dimen/size"
+                android:layout_height="@dimen/size_1"
                 android:layout_weight="1"
                 android:clickable="false"
                 android:focusable="false"
                 android:gravity="center"
                 android:textSize="20sp"
                 app:_text="@{message.sender.name}"
-                tools:_text="Sender" />
+                tools:_text="Sender"/>
         </android.support.v7.widget.LinearLayoutCompat>
 
         <components.Line
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            app:_isFull="true" />
+            app:_isFull="true"/>
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -53,27 +53,27 @@
         <components.Line
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            app:_isFull="true" />
+            app:_isFull="true"/>
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="@dimen/size">
+            android:layout_height="@dimen/size_1">
 
             <components.TextInput
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:hint="@string/message"
-                android:padding="10dp" />
+                android:padding="10dp"/>
 
             <components.Line
                 android:layout_width="1dp"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"/>
 
             <components.Button
-                android:layout_width="@dimen/size"
-                android:layout_height="@dimen/size"
-                app:_icon="UP" />
+                android:layout_width="@dimen/size_1"
+                android:layout_height="@dimen/size_1"
+                app:_icon="UP"/>
         </android.support.v7.widget.LinearLayoutCompat>
     </android.support.v7.widget.LinearLayoutCompat>
 </layout>

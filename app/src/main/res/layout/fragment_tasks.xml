@@ -23,13 +23,13 @@
 
             <components.Button
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/size"
+                android:layout_height="@dimen/size_1"
                 android:layout_weight="1"
                 app:_text="Completed" />
 
             <components.Button
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/size"
+                android:layout_height="@dimen/size_1"
                 android:layout_weight="1"
                 app:_text="On going" />
         </android.support.v7.widget.LinearLayoutCompat>

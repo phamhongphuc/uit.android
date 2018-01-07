@@ -33,7 +33,7 @@ public class TextInput extends AppCompatEditText {
 
     private void InitializeView(Context context) {
         setTypeface(
-                Typeface.createFromAsset(context.getAssets(), "fonts/segoe.ttf")
+                Typeface.createFromAsset(context.getAssets(), "fonts/segoe light.ttf")
         );
         setTextColor(context.getColor(R.color.blue));
         setBackgroundColor(context.getColor(R.color.transparent));

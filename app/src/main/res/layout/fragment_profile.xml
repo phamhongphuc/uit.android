@@ -76,8 +76,8 @@
                 android:layout_weight="1"
                 android:text="@string/email_address"/>
             <components.Button
-                android:layout_width="@dimen/size"
-                android:layout_height="@dimen/size"
+                android:layout_width="@dimen/size_1"
+                android:layout_height="@dimen/size_1"
                 app:_icon="" />
 
         </android.support.v7.widget.LinearLayoutCompat>

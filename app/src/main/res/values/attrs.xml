@@ -9,6 +9,11 @@
         <attr name="ViewPagerIndexStyle" format="reference"/>
     </declare-styleable>
     <declare-styleable name="View">
+        <attr name="_font" format="enum">
+            <enum name="regular" value="0"/>
+            <enum name="light" value="1"/>
+            <enum name="bold" value="2"/>
+        </attr>
         <attr name="_foreground" format="color"/>
         <attr name="_background" format="color"/>
         <attr name="_color" format="color"/>
@@ -37,6 +42,7 @@
         <attr name="_textPaddingLeft" format="boolean"/>
         <attr name="_hasRipple"/>
         <attr name="_backgroundActive" format="color"/>
+        <attr name="_font"/>
         <attr name="_active" format="boolean"/>
     </declare-styleable>
     <declare-styleable name="ViewPagerIndex">
@@ -51,5 +57,8 @@
         <attr name="_innerSize" format="dimension"/>
         <attr name="_outerSize" format="dimension"/>
         <attr name="_userId" format="string"/>
+    </declare-styleable>
+    <declare-styleable name="Text">
+        <attr name="_font"/>
     </declare-styleable>
 </resources>

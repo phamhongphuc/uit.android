@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <variable
             name="user"
-            type="object.User" />
+            type="object.User"/>
     </data>
 
     <android.support.v7.widget.LinearLayoutCompat
@@ -28,9 +28,9 @@
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 app:_innerSize="35dp"
-                app:_outerSize="@dimen/size"
+                app:_outerSize="@dimen/size_1"
                 app:_userId="@{user.id}"
-                tools:background="@color/blueTransparent" />
+                tools:background="@color/blueTransparent"/>
 
 
             <components.Text
@@ -41,7 +41,7 @@
                 android:paddingEnd="10dp"
                 android:paddingStart="0dp"
                 android:text="@{user.name}"
-                android:textSize="18sp" />
+                android:textSize="18sp"/>
         </android.support.v7.widget.LinearLayoutCompat>
 
 
@@ -54,6 +54,6 @@
             android:gravity="center"
             android:textColor="@color/blue"
             android:textSize="22sp"
-            app:_icon="" />
+            app:_icon=""/>
     </android.support.v7.widget.LinearLayoutCompat>
 </layout>

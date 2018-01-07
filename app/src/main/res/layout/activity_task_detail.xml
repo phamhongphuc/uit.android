@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <variable
             name="task"
-            type="object.Task" />
+            type="object.Task"/>
     </data>
 
     <android.support.v7.widget.LinearLayoutCompat
@@ -19,13 +19,13 @@
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="@dimen/size"
+            android:layout_height="@dimen/size_1"
             android:background="@color/white"
             android:elevation="2dp"
             android:orientation="horizontal">
 
             <components.Button
-                android:layout_width="@dimen/size"
+                android:layout_width="@dimen/size_1"
                 android:layout_height="match_parent"
                 app:_icon="" />
 
@@ -40,22 +40,22 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="@{task.name}"
-                tools:text="task.name" />
+                tools:text="task.name"/>
 
             <components.Line
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent" />
 
             <components.Button
-                android:layout_width="@dimen/size"
-                android:layout_height="@dimen/size"
-                app:_icon="" />
+                android:layout_width="@dimen/size_1"
+                android:layout_height="@dimen/size_1"
+                app:_icon=""/>
         </android.support.v7.widget.LinearLayoutCompat>
 
         <components.Line
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            app:_isFull="true" />
+            app:_isFull="true"/>
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -77,23 +77,23 @@
 
                     <components.TextBold
                         android:layout_width="wrap_content"
-                        android:layout_height="@dimen/size"
-                        android:text="@string/description" />
+                        android:layout_height="@dimen/size_1"
+                        android:text="@string/description"/>
 
                     <components.TextBold
                         android:layout_width="wrap_content"
-                        android:layout_height="@dimen/size"
-                        android:text="@string/assigned" />
+                        android:layout_height="@dimen/size_1"
+                        android:text="@string/assigned"/>
 
                     <components.TextBold
                         android:layout_width="wrap_content"
-                        android:layout_height="@dimen/size"
-                        android:text="@string/create_date" />
+                        android:layout_height="@dimen/size_1"
+                        android:text="@string/create_date"/>
 
                     <components.TextBold
                         android:layout_width="wrap_content"
-                        android:layout_height="@dimen/size"
-                        android:text="@string/deadline" />
+                        android:layout_height="@dimen/size_1"
+                        android:text="@string/deadline"/>
                 </android.support.v7.widget.LinearLayoutCompat>
 
                 <android.support.v7.widget.LinearLayoutCompat
@@ -104,27 +104,27 @@
 
                     <components.Text
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/size"
+                        android:layout_height="@dimen/size_1"
                         android:text="@{task.description}"
-                        tools:text="task.description" />
+                        tools:text="task.description"/>
 
                     <components.Text
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/size"
+                        android:layout_height="@dimen/size_1"
                         android:text="@{task.assigned.name}"
-                        tools:text="task.assigned" />
+                        tools:text="task.assigned"/>
 
                     <components.Text
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/size"
+                        android:layout_height="@dimen/size_1"
                         android:text="@{task.createdate.toString()}"
-                        tools:text="task.createdate" />
+                        tools:text="task.createdate"/>
 
                     <components.Text
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/size"
+                        android:layout_height="@dimen/size_1"
                         android:text="@{task.deadline.toString()}"
-                        tools:text="task.deadline" />
+                        tools:text="task.deadline"/>
                 </android.support.v7.widget.LinearLayoutCompat>
             </android.support.v7.widget.LinearLayoutCompat>
 
@@ -163,7 +163,7 @@
 
             <components.TextBold
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size"
+                android:layout_height="@dimen/size_1"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
                 android:text="@string/members" />

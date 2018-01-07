@@ -3,6 +3,7 @@ package object;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import io.realm.Realm;
@@ -10,6 +11,7 @@ import io.realm.RealmObject;
 import io.realm.RealmResults;
 import io.realm.annotations.LinkingObjects;
 import io.realm.annotations.PrimaryKey;
+import module.callback.VoidCallback;
 
 public class User extends RealmObject {
     public static final boolean FEMALE = false;
@@ -120,5 +122,9 @@ public class User extends RealmObject {
 
     public interface CallbackUserId {
         void Response(String userId);
+    }
+
+    public interface CallbackUsers {
+        void Response(ArrayList<String> userIds, VoidCallback done);
     }
 }

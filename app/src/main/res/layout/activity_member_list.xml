@@ -11,13 +11,13 @@
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="@dimen/size"
+            android:layout_height="@dimen/size_1"
             android:background="@color/white"
             android:elevation="2dp"
             android:orientation="horizontal">
 
             <components.Button
-                android:layout_width="@dimen/size"
+                android:layout_width="@dimen/size_1"
                 android:layout_height="match_parent"
                 android:onClick="goBackToProjectDetail"
                 app:_icon="" />
@@ -33,7 +33,7 @@
                 android:clickable="false"
                 android:focusable="false"
                 app:_icon=""
-                app:_text="@string/members" />
+                app:_text="@string/members"/>
 
 
         </android.support.v7.widget.LinearLayoutCompat>
@@ -41,7 +41,7 @@
         <components.Line
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            app:_isFull="true" />
+            app:_isFull="true"/>
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="match_parent"

@@ -12,10 +12,8 @@ import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 
 import app.Global;
-import module.callback.VoidCallback;
 import module.facebook._Facebook;
 import module.socket._Socket;
-import module.socket._Socket_Realm;
 import object.User;
 import uit.group.manager.databinding.ActivityLoginBinding;
 import view.fragmentAdapter.FragmentAdapter;
@@ -37,20 +35,14 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void InitializeListener() {
-        final User.Callback _user = new User.Callback() {
+        _Facebook.InitializeLogin(new User.Callback() {
             @Override
-            public void Response(final User user) {
-                _Socket_Realm.Pull(user, new VoidCallback() {
-                    @Override
-                    public void Response() {
-                        Global.getInstance().user.set(user);
-                        startActivity(new Intent(getBaseContext(), MainActivity.class));
-                        finish();
-                    }
-                });
+            public void Response(User user) {
+                Global.getInstance().userId.set(user.getId());
+                startActivity(new Intent(getBaseContext(), MainActivity.class));
+                finish();
             }
-        };
-        _Facebook.InitializeLogin(_user);
+        });
     }
 
     private void InitializePages() {

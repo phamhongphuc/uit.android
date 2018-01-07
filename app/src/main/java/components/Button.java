@@ -33,6 +33,15 @@ public class Button extends LinearLayoutCompat {
             .put(RIGHT, Gravity.END)
             .build();
 
+    private static final String REGULAR = "fonts/segoe regular.ttf";
+    private static final String LIGHT = "fonts/segoe light.ttf";
+    private static final String BOLD = "fonts/segoe bold.ttf";
+    private static final Map<Integer, String> FONTs = ImmutableMap.<Integer, String>builder()
+            .put(0, REGULAR)
+            .put(1, LIGHT)
+            .put(2, BOLD)
+            .build();
+
     private String text;
     private String icon;
     private boolean active;
@@ -46,6 +55,7 @@ public class Button extends LinearLayoutCompat {
     private int textAlign;
     private boolean textPaddingLeft;
     private boolean hasRipple;
+    private String font;
 
     public Button(Context context) {
         super(context, null, R.attr.ButtonStyle);
@@ -76,6 +86,7 @@ public class Button extends LinearLayoutCompat {
         backgroundActive = typedArray.getColor(R.styleable.Button__backgroundActive, Color.parseColor("#333498db"));
         textPaddingLeft = typedArray.getBoolean(R.styleable.Button__textPaddingLeft, true);
         hasRipple = typedArray.getBoolean(R.styleable.Button__hasRipple, true);
+        font = FONTs.get(typedArray.getInt(R.styleable.Button__font, 0));
 
         typedArray.recycle();
     }
@@ -115,7 +126,7 @@ public class Button extends LinearLayoutCompat {
             }
             textView.setText(text);
             textView.setTypeface(
-                    Typeface.createFromAsset(getContext().getAssets(), "fonts/segoe.ttf")
+                    Typeface.createFromAsset(getContext().getAssets(), font)
             );
             LayoutParams params = new LayoutParams(
                     LayoutParams.WRAP_CONTENT,

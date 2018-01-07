@@ -23,9 +23,11 @@ public class Project extends RealmObject {
     private int id;
     private String name;
     private String description;
-    private RealmList<String> tags;
+    private RealmList<String> tags = new RealmList<>();
+
     private User creator;
-    private RealmList<User> members;
+    private RealmList<User> members = new RealmList<>();
+
     private Date createdate;
     private Date deadline;
     private Date lastupdate;
@@ -63,6 +65,15 @@ public class Project extends RealmObject {
 
     public RealmList<User> getMembers() {
         return members;
+    }
+
+    public void addMember(User user) {
+        if (!members.contains(user)) {
+            Realm realm = Realm.getDefaultInstance();
+            realm.beginTransaction();
+            members.add(user);
+            realm.commitTransaction();
+        }
     }
 
     public Date getCreatedate() {

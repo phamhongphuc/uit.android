@@ -9,13 +9,13 @@
 
     <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="@dimen/size"
+        android:layout_height="@dimen/size_1"
         android:background="@color/white"
         android:elevation="2dp"
         android:orientation="horizontal">
 
         <components.Button
-            android:layout_width="@dimen/size"
+            android:layout_width="@dimen/size_1"
             android:layout_height="match_parent"
             app:_icon="" />
 
@@ -27,17 +27,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="Chỉnh sửa dự án" />
-
+            app:_text="Chỉnh sửa dự án"/>
         <components.Line
             android:layout_width="1dp"
             android:layout_height="match_parent" />
 
         <components.Button
-            android:layout_width="@dimen/size"
-            android:layout_height="@dimen/size"
-            app:_text="OK" />
+            android:layout_width="@dimen/size_1"
+            android:layout_height="@dimen/size_1"
+            app:_text="OK"/>
 
     </android.support.v7.widget.LinearLayoutCompat>
 
@@ -62,22 +60,19 @@
 
             <components.TextBold
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/size"
-                android:gravity="center_vertical"
-                android:text="@string/project_name" />
+                android:layout_height="@dimen/size_1"
+                app:_text="Tên dự án"/>
 
             <components.TextBold
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/size"
-                android:gravity="center_vertical"
-                android:text="@string/description" />
+                android:layout_height="@dimen/size_1"
+                app:_text="@string/description"/>
 
             <components.TextBold
 
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/size"
-                android:gravity="center_vertical"
-                android:text="@string/deadline" />
+                android:layout_height="@dimen/size_1"
+                app:_text="@string/deadline"/>
 
         </android.support.v7.widget.LinearLayoutCompat>
 
@@ -89,16 +84,16 @@
 
             <components.TextInput
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size" />
+                android:layout_height="@dimen/size_1"/>
 
             <components.TextInput
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size" />
+                android:layout_height="@dimen/size_1"/>
 
             <components.TextInput
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size"
-                android:onClick="showDatePickerDialog" />
+                android:layout_height="@dimen/size_1"
+                android:onClick="showDatePickerDialog"/>
 
         </android.support.v7.widget.LinearLayoutCompat>
     </android.support.v7.widget.LinearLayoutCompat>
