@@ -28,7 +28,7 @@
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 app:_innerSize="35dp"
-                app:_outerSize="@dimen/size"
+                app:_outerSize="@dimen/size_1"
                 app:_userId="@{user.id}"
                 tools:background="@color/blueTransparent"/>
 

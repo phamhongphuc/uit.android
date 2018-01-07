@@ -37,13 +37,13 @@
 
         <components.Text
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/size"
+            android:layout_height="@dimen/size_1"
             android:text="Create date" />
 
         <TextView
             android:id="@+id/createdate"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/size" />
+            android:layout_height="@dimen/size_1"/>
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -52,15 +52,15 @@
             <TextView
                 android:id="@+id/deadline"
                 android:layout_width="250dp"
-                android:layout_height="@dimen/size" />
+                android:layout_height="@dimen/size_1"/>
 
             <components.Line
                 android:layout_width="1dp"
-                android:layout_height="@dimen/size" />
+                android:layout_height="@dimen/size_1"/>
 
             <components.Button
                 android:layout_width="100dp"
-                android:layout_height="@dimen/size"
+                android:layout_height="@dimen/size_1"
                 android:onClick="showDatePickerDialog"
                 app:_text="change" />
 

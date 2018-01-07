@@ -32,7 +32,7 @@
 
         <components.TextInput
             android:layout_width="match_parent"
-            android:layout_height="@dimen/size" />
+            android:layout_height="@dimen/size_1"/>
 
         <components.Line
             android:layout_width="wrap_content"
@@ -40,7 +40,7 @@
 
         <components.Button
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/size"
+            android:layout_height="@dimen/size_1"
             app:_text="NEXT >" />
     </LinearLayout>
 </layout>

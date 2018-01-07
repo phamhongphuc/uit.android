@@ -12,13 +12,13 @@
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="@dimen/size"
+            android:layout_height="@dimen/size_1"
             android:background="@color/white"
             android:elevation="2dp"
             android:orientation="horizontal">
 
             <components.Button
-                android:layout_width="@dimen/size"
+                android:layout_width="@dimen/size_1"
                 android:layout_height="match_parent"
                 app:_icon="" />
 
@@ -50,7 +50,7 @@
 
                 <components.Text
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/size"
+                    android:layout_height="@dimen/size_1"
                     android:layout_weight="1"
                     android:text="@string/name" />
 
@@ -61,7 +61,7 @@
                 <components.TextInput
                     android:id="@+id/taskedit_name"
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/size"
+                    android:layout_height="@dimen/size_1"
                     android:layout_weight="3" />
             </android.support.v7.widget.LinearLayoutCompat>
 
@@ -72,7 +72,7 @@
 
                 <components.Text
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/size"
+                    android:layout_height="@dimen/size_1"
                     android:layout_weight="1"
                     android:text="@string/description" />
 
@@ -83,7 +83,7 @@
                 <components.TextInput
                     android:id="@+id/taskedit_description"
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/size"
+                    android:layout_height="@dimen/size_1"
                     android:layout_weight="3" />
             </android.support.v7.widget.LinearLayoutCompat>
 
@@ -94,7 +94,7 @@
 
                 <components.Text
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/size"
+                    android:layout_height="@dimen/size_1"
                     android:layout_weight="1"
                     android:text="@string/deadline" />
 
@@ -105,14 +105,14 @@
                 <components.TextInput
                     android:id="@+id/taskedit_deadline"
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/size"
+                    android:layout_height="@dimen/size_1"
                     android:layout_weight="3"
                     android:onClick="showDatePickerDialog" />
             </android.support.v7.widget.LinearLayoutCompat>
 
             <components.Text
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size"
+                android:layout_height="@dimen/size_1"
                 android:text="@string/members" />
 
             <ScrollView
@@ -136,7 +136,7 @@
 
             <components.Button
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size"
+                android:layout_height="@dimen/size_1"
                 app:_text="Save Task" />
         </android.support.v7.widget.LinearLayoutCompat>
 

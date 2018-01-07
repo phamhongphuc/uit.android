@@ -31,7 +31,7 @@
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="@dimen/size"
+            android:layout_height="@dimen/size_1"
             android:orientation="horizontal">
 
             <android.support.v7.widget.LinearLayoutCompat
@@ -44,11 +44,11 @@
                 android:onClick="goToUserInfomation">
 
                 <components.ImageAvatar
-                    android:layout_width="@dimen/size"
+                    android:layout_width="@dimen/size_1"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     app:_innerSize="30dp"
-                    app:_outerSize="@dimen/size"
+                    app:_outerSize="@dimen/size_1"
                     app:_userId="@{user.id}"
                     tools:background="@color/blueTransparent"/>
 
@@ -69,7 +69,7 @@
                 android:layout_height="match_parent"/>
 
             <components.Button
-                android:layout_width="@dimen/size"
+                android:layout_width="@dimen/size_1"
                 android:layout_height="match_parent"
                 android:onClick="facebookLogout"
                 app:_icon=""/>
@@ -84,7 +84,7 @@
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="@dimen/size"
+            android:layout_height="@dimen/size_1"
             android:background="@color/white"
             android:descendantFocusability="beforeDescendants"
             android:focusableInTouchMode="true"
@@ -92,14 +92,14 @@
 
             <android.support.v7.widget.LinearLayoutCompat
                 android:layout_width="0dp"
-                android:layout_height="@dimen/size"
+                android:layout_height="@dimen/size_1"
                 android:layout_weight="1"
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?attr/selectableItemBackground">
 
                 <components.Button
-                    android:layout_width="@dimen/size"
+                    android:layout_width="@dimen/size_1"
                     android:layout_height="match_parent"
                     app:_icon=""/>
 
@@ -153,7 +153,7 @@
                     android:id="@+id/list_project"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="@dimen/paddingSize"
+                    android:layout_margin="@dimen/bound_6"
                     android:scrollbarSize="3dp"
                     android:scrollbarThumbVertical="@color/blueTransparent"
                     android:scrollbars="vertical"

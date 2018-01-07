@@ -19,13 +19,13 @@
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="@dimen/size"
+            android:layout_height="@dimen/size_1"
             android:background="@color/white"
             android:elevation="2dp"
             android:orientation="horizontal">
 
             <components.Button
-                android:layout_width="@dimen/size"
+                android:layout_width="@dimen/size_1"
                 android:layout_height="match_parent"
                 app:_icon="" />
 
@@ -47,8 +47,8 @@
                 android:layout_height="match_parent" />
 
             <components.Button
-                android:layout_width="@dimen/size"
-                android:layout_height="@dimen/size"
+                android:layout_width="@dimen/size_1"
+                android:layout_height="@dimen/size_1"
                 app:_icon=""/>
         </android.support.v7.widget.LinearLayoutCompat>
 
@@ -77,22 +77,22 @@
 
                     <components.TextBold
                         android:layout_width="wrap_content"
-                        android:layout_height="@dimen/size"
+                        android:layout_height="@dimen/size_1"
                         android:text="@string/description"/>
 
                     <components.TextBold
                         android:layout_width="wrap_content"
-                        android:layout_height="@dimen/size"
+                        android:layout_height="@dimen/size_1"
                         android:text="@string/assigned"/>
 
                     <components.TextBold
                         android:layout_width="wrap_content"
-                        android:layout_height="@dimen/size"
+                        android:layout_height="@dimen/size_1"
                         android:text="@string/create_date"/>
 
                     <components.TextBold
                         android:layout_width="wrap_content"
-                        android:layout_height="@dimen/size"
+                        android:layout_height="@dimen/size_1"
                         android:text="@string/deadline"/>
                 </android.support.v7.widget.LinearLayoutCompat>
 
@@ -104,25 +104,25 @@
 
                     <components.Text
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/size"
+                        android:layout_height="@dimen/size_1"
                         android:text="@{task.description}"
                         tools:text="task.description"/>
 
                     <components.Text
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/size"
+                        android:layout_height="@dimen/size_1"
                         android:text="@{task.assigned.name}"
                         tools:text="task.assigned"/>
 
                     <components.Text
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/size"
+                        android:layout_height="@dimen/size_1"
                         android:text="@{task.createdate.toString()}"
                         tools:text="task.createdate"/>
 
                     <components.Text
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/size"
+                        android:layout_height="@dimen/size_1"
                         android:text="@{task.deadline.toString()}"
                         tools:text="task.deadline"/>
                 </android.support.v7.widget.LinearLayoutCompat>
@@ -163,7 +163,7 @@
 
             <components.TextBold
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size"
+                android:layout_height="@dimen/size_1"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
                 android:text="@string/members" />

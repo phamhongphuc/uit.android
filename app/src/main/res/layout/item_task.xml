@@ -33,7 +33,7 @@
 
                 <components.Button
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/itemSize"
+                    android:layout_height="@dimen/size_2"
                     android:layout_weight="1"
                     android:clickable="false"
                     android:textAlignment="textStart"
@@ -41,8 +41,8 @@
                     tools:_text="123"/>
 
                 <components.Button
-                    android:layout_width="@dimen/itemSize"
-                    android:layout_height="@dimen/itemSize"
+                    android:layout_width="@dimen/size_2"
+                    android:layout_height="@dimen/size_2"
                     app:_icon=""/>
             </android.support.v7.widget.LinearLayoutCompat>
 
@@ -63,8 +63,8 @@
                     tools:text="Chú thích"/>
 
                 <components.Button
-                    android:layout_width="@dimen/itemSize"
-                    android:layout_height="@dimen/itemSize"
+                    android:layout_width="@dimen/size_2"
+                    android:layout_height="@dimen/size_2"
                     android:animationCache="true"
                     app:_icon=""/>
             </android.support.v7.widget.LinearLayoutCompat>

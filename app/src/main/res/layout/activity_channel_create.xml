@@ -9,13 +9,13 @@
 
     <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="@dimen/size"
+        android:layout_height="@dimen/size_1"
         android:background="@color/white"
         android:elevation="2dp"
         android:orientation="horizontal">
 
         <components.Button
-            android:layout_width="@dimen/size"
+            android:layout_width="@dimen/size_1"
             android:layout_height="match_parent"
             app:_icon="" />
 
@@ -36,8 +36,8 @@
             android:layout_height="match_parent"/>
 
         <components.Button
-            android:layout_width="@dimen/size"
-            android:layout_height="@dimen/size"
+            android:layout_width="@dimen/size_1"
+            android:layout_height="@dimen/size_1"
             android:gravity="center"
             app:_text="OK"/>
 
@@ -56,12 +56,12 @@
 
         <components.TextBold
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/size"
+            android:layout_height="@dimen/size_1"
             android:gravity="center_vertical"
             android:text="@string/channel_name"/>
     <components.TextInput
         android:layout_width="0dp"
-        android:layout_height="@dimen/size"
+        android:layout_height="@dimen/size_1"
         android:layout_weight="1"
         android:hint="@string/add_channel_name"/>
     </android.support.v7.widget.LinearLayoutCompat>
@@ -69,7 +69,7 @@
 
     <components.TextBold
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/size"
+        android:layout_height="@dimen/size_1"
         android:gravity="bottom"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"

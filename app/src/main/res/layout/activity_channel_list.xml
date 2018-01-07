@@ -21,13 +21,13 @@
             android:layout_height="wrap_content">
 
             <components.Button
-                android:layout_width="@dimen/size"
-                android:layout_height="@dimen/size"
+                android:layout_width="@dimen/size_1"
+                android:layout_height="@dimen/size_1"
                 app:_icon=""/>
 
             <components.Button
                 android:layout_width="0dp"
-                android:layout_height="@dimen/size"
+                android:layout_height="@dimen/size_1"
                 android:layout_weight="1"
                 android:clickable="false"
                 android:focusable="false"
@@ -40,8 +40,8 @@
                 android:layout_height="match_parent"/>
 
             <components.Button
-                android:layout_width="@dimen/size"
-                android:layout_height="@dimen/size"
+                android:layout_width="@dimen/size_1"
+                android:layout_height="@dimen/size_1"
                 app:_icon=""/>
         </android.support.v7.widget.LinearLayoutCompat>
 
