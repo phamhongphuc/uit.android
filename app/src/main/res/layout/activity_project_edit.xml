@@ -23,12 +23,13 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent" />
 
-        <components.TextBold
+        <components.Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Chỉnh sửa dự án" />
+            app:_text="Chỉnh sửa dự án"
+            app:_textAlign="left"/>
         <components.Line
             android:layout_width="1dp"
             android:layout_height="match_parent" />
@@ -55,27 +56,28 @@
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp">
+            android:orientation="vertical">
 
-            <components.TextBold
+            <components.Button
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/size_1"
                 android:gravity="center"
-                android:text="Tên dự án" />
+                app:_text="Tên dự án"
+                app:_textAlign="left"/>
 
-            <components.TextBold
-                android:layout_width="wrap_content"
+            <components.Button
+                android:layout_width="match_parent"
                 android:layout_height="@dimen/size_1"
                 android:gravity="center"
-                android:text="@string/description" />
+                app:_text="Mô tả"
+                app:_textAlign="left"/>
 
-            <components.TextBold
-                android:layout_width="wrap_content"
+            <components.Button
+                android:layout_width="match_parent"
                 android:layout_height="@dimen/size_1"
                 android:gravity="center"
-                android:text="@string/deadline" />
+                app:_text="Hạn nộp"
+                app:_textAlign="left"/>
 
         </android.support.v7.widget.LinearLayoutCompat>
 
