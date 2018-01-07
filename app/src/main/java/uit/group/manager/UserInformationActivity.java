@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 import app.Global;
@@ -38,16 +37,17 @@ public class UserInformationActivity extends AppCompatActivity {
     }
 
     public class State {
+        @SuppressLint("SimpleDateFormat")
+        private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         public ObservableInt projectsOwn = new ObservableInt();
         public ObservableInt projects = new ObservableInt();
         public ObservableInt tasksOwn = new ObservableInt();
         public ObservableInt tasks = new ObservableInt();
+        public ObservableInt channelsOwn = new ObservableInt();
+        public ObservableInt channels = new ObservableInt();
         public ObservableField<String> gender = new ObservableField<>();
         public ObservableField<String> birthday = new ObservableField<>();
 
-        @SuppressLint("SimpleDateFormat")
-        private final SimpleDateFormat dateFormat =
-                new SimpleDateFormat("dd-MM-yyyy");
         public void Initialize(User user) {
             projectsOwn.set(
                     user.getProjectsOwn().size()
@@ -60,6 +60,12 @@ public class UserInformationActivity extends AppCompatActivity {
             );
             tasks.set(
                     user.getTasks().size()
+            );
+            channelsOwn.set(
+                    user.getChannelsOwn().size()
+            );
+            channels.set(
+                    user.getChannels().size()
             );
             gender.set(
                     user.getGender() ? "Name" : "Nữ"
