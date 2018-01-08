@@ -21,12 +21,19 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:gravity="center">
+            android:gravity="center"
+            android:padding="@dimen/size_2">
 
-            <View
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:background="@drawable/ic_rocket"/>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/createNewProjectTitle"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_rocket"/>
+            <!--<View-->
+            <!--android:layout_width="200dp"-->
+            <!--android:layout_height="200dp"-->
+            <!--android:background="@drawable/ic_rocket"/>-->
 
         </android.support.v7.widget.LinearLayoutCompat>
 
@@ -41,11 +48,16 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/rectangle_border">
+            android:background="@drawable/rectangle_border"
+            android:descendantFocusability="beforeDescendants"
+            android:focusableInTouchMode="true">
 
             <components.TextInput
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/size_1"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:maxLines="1"
                 android:paddingBottom="10dp"
                 android:paddingTop="10dp"
                 android:text="@={project.name}"/>

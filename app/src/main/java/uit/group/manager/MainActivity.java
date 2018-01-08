@@ -10,6 +10,7 @@ import android.view.View;
 
 import org.parceler.Parcels;
 
+import io.realm.Realm;
 import module.facebook._Facebook;
 import module.socket._Socket;
 import module.socket._Socket_Project;
@@ -20,12 +21,14 @@ import view.recyclerViewAdapter.ProjectRecyclerViewAdapter;
 
 public class MainActivity extends AppCompatActivity {
     private User user;
+    private Realm realm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        realm = Realm.getDefaultInstance();
         InitializeUser();
         InitializeDataBinding();
         InitializeRecyclerView();
@@ -33,16 +36,23 @@ public class MainActivity extends AppCompatActivity {
 
     private void InitializeUser() {
         user = Parcels.unwrap(getIntent().getParcelableExtra("user"));
+        realm.beginTransaction();
+        user = realm.copyToRealmOrUpdate(user);
+        realm.commitTransaction();
     }
 
     private void InitializeDataBinding() {
-        ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        final ActivityMainBinding binding;
+
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.setSocket(_Socket.State.getInstance());
         binding.setUser(user);
     }
 
     private void InitializeRecyclerView() {
-        RecyclerView recyclerView = findViewById(R.id.list_project);
+        final RecyclerView recyclerView;
+
+        recyclerView = findViewById(R.id.list_project);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new ProjectRecyclerViewAdapter(user.getProjects()));
         recyclerView.setHasFixedSize(true);
@@ -57,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
     public void createProject(View view) {
         _Socket_Project.CreateProject(user.getId(), new Project.Callback() {
             @Override
-            public void Response(Project project) {
+            public void Response(final Project project) {
                 Intent intent;
 
                 intent = new Intent(getBaseContext(), ProjectCreateActivity.class);

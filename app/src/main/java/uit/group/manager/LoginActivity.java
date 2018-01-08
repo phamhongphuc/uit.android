@@ -14,6 +14,7 @@ import com.facebook.CallbackManager;
 import org.parceler.Parcels;
 
 import app.Global;
+import io.realm.Realm;
 import module.facebook._Facebook;
 import module.socket._Socket;
 import object.User;
@@ -44,6 +45,13 @@ public class LoginActivity extends AppCompatActivity {
 
                 intent = new Intent(getBaseContext(), MainActivity.class);
                 intent.putExtra("user", Parcels.wrap(user));
+
+                Realm realm;
+                realm = Realm.getDefaultInstance();
+                realm.beginTransaction();
+                realm.copyToRealmOrUpdate(user);
+                realm.commitTransaction();
+                realm.close();
 
                 startActivity(intent);
                 finish();

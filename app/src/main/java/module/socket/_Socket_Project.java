@@ -61,8 +61,7 @@ public class _Socket_Project {
         });
     }
 
-    public static void GetProjectById(int projectId,
-                                      final Project.Callback responseProject) {
+    public static void GetProjectById(int projectId, final Project.Callback responseProject) {
         socket.emit("Get:Project(projectId)", projectId, new Ack() {
             @Override
             public void call(Object... args) {
@@ -103,4 +102,6 @@ public class _Socket_Project {
             }
         });
     }
+
+
 }

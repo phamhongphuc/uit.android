@@ -9,10 +9,24 @@ import android.support.v7.widget.AppCompatEditText;
 import android.util.AttributeSet;
 import android.view.inputmethod.EditorInfo;
 
+import com.google.common.collect.ImmutableMap;
+
+import java.util.Map;
+
 import uit.group.manager.R;
 
 public class TextInput extends AppCompatEditText {
+    private static final String REGULAR = "fonts/segoe regular.ttf";
+    private static final String LIGHT = "fonts/segoe light.ttf";
+    private static final String BOLD = "fonts/segoe bold.ttf";
+    private static final Map<Integer, String> FONTs = ImmutableMap.<Integer, String>builder()
+            .put(0, REGULAR)
+            .put(1, LIGHT)
+            .put(2, BOLD)
+            .build();
+
     private boolean autoSize;
+    private String font;
 
     public TextInput(Context context) {
         super(context);
@@ -36,12 +50,12 @@ public class TextInput extends AppCompatEditText {
 
     private void InitializeView(Context context) {
         setTypeface(
-                Typeface.createFromAsset(context.getAssets(), "fonts/segoe light.ttf")
+                Typeface.createFromAsset(getContext().getAssets(), font)
         );
         setTextColor(context.getColor(R.color.blue));
         setBackgroundColor(context.getColor(R.color.transparent));
         setForeground(context
-                .obtainStyledAttributes(new int[]{R.attr.selectableItemBackground})
+                .obtainStyledAttributes(new int[]{R.attr.selectableItemBackgroundBorderless})
                 .getDrawable(0)
         );
     }
@@ -51,6 +65,7 @@ public class TextInput extends AppCompatEditText {
 
         typedArray = context.obtainStyledAttributes(attrs, R.styleable.TextInput);
         autoSize = typedArray.getBoolean(R.styleable.TextInput__autoSize, true);
+        font = FONTs.get(typedArray.getInt(R.styleable.Button__font, 0));
 
         typedArray.recycle();
     }

@@ -20,14 +20,28 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+import io.realm.Realm;
 import object.Project;
 import view.fragment.ProjectCreateContent_Fragment;
 import view.fragment.ProjectCreateTitle_Fragment;
+import view.fragmentAbstract.ProjectFragment;
 import view.fragmentAdapter.FragmentAdapter;
 
 public class ProjectCreateActivity extends AppCompatActivity {
+    private final ProjectFragment title_fragment = new ProjectCreateTitle_Fragment();
+    private final ProjectFragment content_fragment = new ProjectCreateContent_Fragment();
+    private final FragmentAdapter fragmentAdapter = new FragmentAdapter(
+            getSupportFragmentManager(),
+            new ArrayList<Fragment>() {{
+                add(title_fragment);
+                add(content_fragment);
+            }}
+    );
+    public Project project;
+    // Will delete
+    public int day, month, year;
     private ViewPager viewPager;
-    private Project project;
+    private DialogFragment newFragment = new DatePickerFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,19 +53,23 @@ public class ProjectCreateActivity extends AppCompatActivity {
 
     private void InitializeProject() {
         project = Parcels.unwrap(getIntent().getParcelableExtra("project"));
-//        Realm.getDefaultInstance().copyToRealmOrUpdate(project);
     }
 
     private void InitializePages() {
-        FragmentAdapter fragmentAdapter = new FragmentAdapter(
-                getSupportFragmentManager(),
-                new ArrayList<Fragment>() {{
-                    add(new ProjectCreateTitle_Fragment(project));
-                    add(new ProjectCreateContent_Fragment(project));
-                }}
-        );
+        final int[] index = {0};
         viewPager = findViewById(R.id.viewPagerProjectCreate);
         viewPager.setAdapter(fragmentAdapter);
+        viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                final ProjectFragment oldPage = (ProjectFragment) fragmentAdapter.getItem(index[0]);
+                final ProjectFragment newPage = (ProjectFragment) fragmentAdapter.getItem(position);
+                project = oldPage.project;
+                newPage.setProject(project);
+                index[0] = position;
+            }
+        });
     }
 
     public void createProjectNext(View view) {
@@ -64,11 +82,19 @@ public class ProjectCreateActivity extends AppCompatActivity {
 
     public void createProjectDone(View view) {
         finish();
-    }
+        ProjectFragment projectFragment = (ProjectFragment) fragmentAdapter.getItem(viewPager.getCurrentItem());
+        project = projectFragment.project;
+        title_fragment.setProject(null);
+        content_fragment.setProject(null);
 
-    // Will delete
-    public int day, month, year;
-    private DialogFragment newFragment = new DatePickerFragment();
+//        _Socket_Project.CreateProject();
+
+        Realm realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+        realm.copyToRealmOrUpdate(project);
+        realm.commitTransaction();
+        realm.close();
+    }
 
     public void showDatePickerDialog(View v) {
         newFragment.show(getSupportFragmentManager(), "datePicker");
