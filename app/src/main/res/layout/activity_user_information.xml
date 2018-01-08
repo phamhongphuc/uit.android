@@ -326,7 +326,7 @@
                         android:focusable="false"
                         app:_font="bold"
                         app:_fontSize="large"
-                        app:_icon=""
+                        app:_icon=""
                         app:_text="Kênh chat"
                         app:_textAlign="left"/>
 

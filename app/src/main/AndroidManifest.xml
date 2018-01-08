@@ -36,6 +36,7 @@
             android:name=".ProjectCreateActivity"
             android:windowSoftInputMode="stateVisible|adjustResize"/>
         <activity android:name=".MemberListActivity"/>
+        <activity android:name=".MemberTasksActivity"/>
         <activity android:name=".ProjectDetailActivity"/>
         <activity android:name=".UserProfileActivity"/>
         <activity android:name=".TaskListActivity"/>

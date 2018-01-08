@@ -9,7 +9,7 @@ public class MemberListDeleteActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_member_list_delete);
+        setContentView(R.layout.activity_member_list_edit);
     }
 
     public void goBackToProjectDetail(View view) {

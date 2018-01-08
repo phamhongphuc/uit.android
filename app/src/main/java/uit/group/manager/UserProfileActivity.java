@@ -35,7 +35,7 @@ public class UserProfileActivity extends AppCompatActivity {
         };
 
         FragmentAdapter fragmentAdapter = new FragmentAdapter(getSupportFragmentManager(), new int[]{
-                R.layout.fragment_tasks,
+                R.layout.fragment_member_tasks,
                 R.layout.fragment_profile,
         });
         ViewPager viewPager = findViewById(R.id.viewPagerLogin);

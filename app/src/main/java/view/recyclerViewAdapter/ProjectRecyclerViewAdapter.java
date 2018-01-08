@@ -68,7 +68,6 @@ public class ProjectRecyclerViewAdapter
         public void selectProject(View view) {
             Intent intent = new Intent(view.getContext(), ProjectDetailActivity.class);
             intent.putExtra("projectId", project.getId());
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             view.getContext().startActivity(intent);
         }
     }
