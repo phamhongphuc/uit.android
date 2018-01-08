@@ -27,24 +27,26 @@
             <components.Button
                 android:layout_width="@dimen/size_1"
                 android:layout_height="match_parent"
-                app:_icon="" />
+                app:_icon=""/>
 
             <components.Line
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:onClick="goBackToTaskList" />
+                android:onClick="goBackToTaskList"/>
 
-            <components.TextBold
+            <components.Button
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:clickable="false"
+                android:focusable="false"
                 android:gravity="center"
-                android:text="@{task.name}"
-                tools:text="task.name"/>
+                app:_text="Tên nhiệm vụ"
+                app:_textAlign="left"/>
 
             <components.Line
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"/>
 
             <components.Button
                 android:layout_width="@dimen/size_1"
@@ -75,25 +77,37 @@
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp">
 
-                    <components.TextBold
-                        android:layout_width="wrap_content"
+                    <components.Button
+                        android:layout_width="match_parent"
                         android:layout_height="@dimen/size_1"
-                        android:text="@string/description"/>
+                        android:clickable="false"
+                        android:focusable="false"
+                        app:_text="Mô tả"
+                        app:_textAlign="left"/>
 
-                    <components.TextBold
-                        android:layout_width="wrap_content"
+                    <components.Button
+                        android:layout_width="match_parent"
                         android:layout_height="@dimen/size_1"
-                        android:text="@string/assigned"/>
+                        android:clickable="false"
+                        android:focusable="false"
+                        app:_text="Ngày tạo"
+                        app:_textAlign="left"/>
 
-                    <components.TextBold
-                        android:layout_width="wrap_content"
+                    <components.Button
+                        android:layout_width="match_parent"
                         android:layout_height="@dimen/size_1"
-                        android:text="@string/create_date"/>
+                        android:clickable="false"
+                        android:focusable="false"
+                        app:_text="Hạn nộp"
+                        app:_textAlign="left"/>
 
-                    <components.TextBold
+                    <components.Button
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/size_1"
-                        android:text="@string/deadline"/>
+                        android:clickable="false"
+                        android:focusable="false"
+                        app:_text="Người tạo"
+                        app:_textAlign="left"/>
                 </android.support.v7.widget.LinearLayoutCompat>
 
                 <android.support.v7.widget.LinearLayoutCompat
@@ -105,26 +119,31 @@
                     <components.Text
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/size_1"
+                        android:gravity="center_vertical"
                         android:text="@{task.description}"
                         tools:text="task.description"/>
 
                     <components.Text
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/size_1"
-                        android:text="@{task.assigned.name}"
-                        tools:text="task.assigned"/>
-
-                    <components.Text
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/size_1"
+                        android:gravity="center_vertical"
                         android:text="@{task.createdate.toString()}"
                         tools:text="task.createdate"/>
 
                     <components.Text
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/size_1"
+                        android:gravity="center_vertical"
                         android:text="@{task.deadline.toString()}"
                         tools:text="task.deadline"/>
+
+                    <components.Text
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/size_1"
+                        android:gravity="center_vertical"
+                        android:text="@{task.assigned.name}"
+                        tools:text="task.assigned"/>
+
                 </android.support.v7.widget.LinearLayoutCompat>
             </android.support.v7.widget.LinearLayoutCompat>
 
@@ -161,12 +180,13 @@
             </android.support.v7.widget.LinearLayoutCompat>
 
 
-            <components.TextBold
+            <components.Button
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/size_1"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
-                android:text="@string/members" />
+                app:_text="Thành viên"
+                app:_textAlign="left"/>
 
             <android.support.v7.widget.RecyclerView
 
@@ -179,7 +199,7 @@
                 android:scrollbarThumbVertical="@color/blueTransparent"
                 android:scrollbars="vertical"
                 tools:itemCount="2"
-                tools:listitem="@layout/item_user" />
+                tools:listitem="@layout/item_user"/>
         </android.support.v7.widget.LinearLayoutCompat>
 
     </android.support.v7.widget.LinearLayoutCompat>
