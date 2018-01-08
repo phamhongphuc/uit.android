@@ -8,6 +8,10 @@
         <variable
             name="user"
             type="object.User"/>
+
+        <variable
+            name="state"
+            type="uit.group.manager.MemberProfileActivity.State"/>
     </data>
 
     <android.support.v7.widget.LinearLayoutCompat
@@ -133,7 +137,7 @@
                     android:clickable="false"
                     android:focusable="false"
                     app:_fontSize="large"
-                    app:_text="Nữ"
+                    app:_text="@{state.gender}"
                     app:_textAlign="left"/>
             </android.support.v7.widget.LinearLayoutCompat>
 
@@ -159,7 +163,7 @@
                     android:clickable="false"
                     android:focusable="false"
                     app:_fontSize="large"
-                    app:_text="4/4/1996"
+                    app:_text="@{state.birthday}"
                     app:_textAlign="left"/>
             </android.support.v7.widget.LinearLayoutCompat>
 
@@ -189,14 +193,13 @@
                 app:_text="Mô tả"
                 app:_textAlign="left"/>
 
-            <components.Button
+            <components.Text
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 android:clickable="false"
                 android:focusable="false"
-                app:_fontSize="large"
-                app:_text="Siêu nhân Gao"
-                app:_textAlign="left"/>
+                android:padding="10dp"
+                android:text="@{user.description}"/>
 
         </android.support.v7.widget.LinearLayoutCompat>
 
