@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
     <android.support.v7.widget.LinearLayoutCompat
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context="uit.group.manager.ProjectEditActivity">
+        android:orientation="vertical">
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -34,13 +31,8 @@
                 android:clickable="false"
                 android:focusable="false"
                 android:gravity="center"
-                app:_text="Chỉnh sửa dự án"
+                app:_text="Chỉnh sửa thông tin"
                 app:_textAlign="left"/>
-
-            <components.Button
-                android:layout_width="50dp"
-                android:layout_height="match_parent"
-                app:_icon=""/>
 
             <components.Line
                 android:layout_width="1dp"
@@ -60,9 +52,7 @@
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp">
+            android:layout_height="wrap_content">
 
 
             <android.support.v7.widget.LinearLayoutCompat
@@ -71,43 +61,45 @@
                 android:orientation="vertical">
 
                 <components.Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:clickable="false"
+                    android:focusable="false"
+                    app:_font="bold"
+                    app:_text="Tên"
+                    app:_textAlign="left"/>
+
+                <components.Line
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    app:_isFull="true"/>
+
+                <components.Button
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_1"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:gravity="center"
+                    app:_font="bold"
+                    app:_text="Giới tính"
+                    app:_textAlign="left"/>
+
+                <components.Line
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    app:_isFull="true"/>
+
+
+                <components.Button
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/size_1"
                     android:clickable="false"
                     android:focusable="false"
                     android:gravity="center"
-                    app:_text="Tên dự án"
-                    app:_textAlign="left"/>
-
-                <components.Line
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="@dimen/bound_7"
-                    app:_isFull="true"/>
-
-                <components.Button
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/size_1"
-                    android:clickable="false"
-                    android:focusable="false"
-                    android:gravity="center"
-                    app:_text="Mô tả"
-                    app:_textAlign="left"/>
-
-                <components.Line
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="@dimen/bound_7"
-                    app:_isFull="true"/>
-
-
-                <components.Button
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/size_1"
-                    android:clickable="false"
-                    android:focusable="false"
-                    android:gravity="center"
-                    app:_text="Hạn nộp"
+                    app:_font="bold"
+                    app:_text="Ngày sinh"
                     app:_textAlign="left"/>
 
             </android.support.v7.widget.LinearLayoutCompat>
@@ -121,12 +113,14 @@
                 <components.TextInput
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/size_1"
+                    android:clickable="false"
+                    android:focusable="false"
                     android:text="project.name"/>
 
                 <components.Line
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="@dimen/bound_7"
+                    android:layout_marginEnd="10dp"
                     app:_isFull="true"/>
 
                 <components.TextInput
@@ -137,7 +131,7 @@
                 <components.Line
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="@dimen/bound_7"
+                    android:layout_marginEnd="10dp"
                     app:_isFull="true"/>
 
                 <components.TextInput
@@ -149,18 +143,59 @@
 
         </android.support.v7.widget.LinearLayoutCompat>
 
+        <components.Line
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            app:_isFull="true"/>
+
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="center">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
 
-            <View
-                android:layout_width="250dp"
-                android:layout_height="250dp"
-                android:background="@drawable/ic_garlands"/>
+            <components.Text
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/bound_7"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="@dimen/bound_3"
+                android:text="@string/description"
+                android:textSize="17dp"
+                app:_font="bold"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle_border">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rectangle_border">
+
+                    <components.TextInput
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:gravity="top"
+                        android:paddingBottom="5dp"
+                        android:paddingEnd="5dp"
+                        android:paddingStart="5dp"
+                        android:paddingTop="5dp"
+                        android:text="@={project.description}"
+                        android:textSize="16sp"
+                        app:_autoSize="false"
+                        tools:ignore="RtlSymmetry"/>
+                </FrameLayout>
+
+            </FrameLayout>
+
         </android.support.v7.widget.LinearLayoutCompat>
 
-
     </android.support.v7.widget.LinearLayoutCompat>
+
 </layout>

@@ -203,72 +203,8 @@
         <components.Line
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             app:_isFull="true"/>
-
-        <android.support.v7.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/bound_2"
-            android:orientation="vertical">
-
-            <components.Button
-                android:layout_width="170dp"
-                android:layout_height="30dp"
-                android:clickable="false"
-                android:focusable="false"
-                app:_font="bold"
-                app:_fontSize="large"
-                app:_text="Kỹ năng lập trình"
-                app:_textAlign="left"/>
-
-            <components.Button
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:clickable="false"
-                android:focusable="false"
-                app:_fontSize="large"
-                app:_text="C++, Js"
-                app:_textAlign="left"/>
-
-        </android.support.v7.widget.LinearLayoutCompat>
-
-        <components.Line
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
-            app:_isFull="true"/>
-
-        <android.support.v7.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/bound_2"
-            android:orientation="vertical">
-
-            <components.Button
-                android:layout_width="170dp"
-                android:layout_height="30dp"
-                android:clickable="false"
-                android:focusable="false"
-                app:_font="bold"
-                app:_fontSize="large"
-                app:_text="Kỹ năng mềm"
-                app:_textAlign="left"/>
-
-            <components.Button
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:clickable="false"
-                android:focusable="false"
-                app:_fontSize="large"
-                app:_text="Lãnh đạo, sáng tao"
-                app:_textAlign="left"/>
-
-        </android.support.v7.widget.LinearLayoutCompat>
 
     </android.support.v7.widget.LinearLayoutCompat>
 </layout>
