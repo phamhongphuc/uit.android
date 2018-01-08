@@ -32,7 +32,6 @@ public class _Socket_Project {
                     realm.beginTransaction();
                     Project project = realm.createOrUpdateObjectFromJson(Project.class, obj);
                     realm.commitTransaction();
-                    realm.close();
 
                     callback.Response(project);
                 }
@@ -76,7 +75,6 @@ public class _Socket_Project {
                     realm.beginTransaction();
                     final Project project = realm.createOrUpdateObjectFromJson(Project.class, obj);
                     realm.commitTransaction();
-                    realm.close();
 
                     responseProject.Response(project);
                 }

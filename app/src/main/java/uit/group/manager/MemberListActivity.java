@@ -28,7 +28,6 @@ public class MemberListActivity extends AppCompatActivity {
         realm.beginTransaction();
         Project project = realm.where(Project.class).findFirst();
         realm.commitTransaction();
-        realm.close();
 
         if (project != null) {
             UserRecyclerViewAdapter adapter = new UserRecyclerViewAdapter(project.getMembers());

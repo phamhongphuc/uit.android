@@ -26,9 +26,6 @@ import view.fragment.ProjectCreateTitle_Fragment;
 import view.fragmentAdapter.FragmentAdapter;
 
 public class ProjectCreateActivity extends AppCompatActivity {
-    public int day, month, year;
-    private DialogFragment newFragment = new DatePickerFragment();
-
     private ViewPager viewPager;
     private Project project;
 
@@ -42,6 +39,7 @@ public class ProjectCreateActivity extends AppCompatActivity {
 
     private void InitializeProject() {
         project = Parcels.unwrap(getIntent().getParcelableExtra("project"));
+//        Realm.getDefaultInstance().copyToRealmOrUpdate(project);
     }
 
     private void InitializePages() {
@@ -49,7 +47,7 @@ public class ProjectCreateActivity extends AppCompatActivity {
                 getSupportFragmentManager(),
                 new ArrayList<Fragment>() {{
                     add(new ProjectCreateTitle_Fragment(project));
-                    add(new ProjectCreateContent_Fragment());
+                    add(new ProjectCreateContent_Fragment(project));
                 }}
         );
         viewPager = findViewById(R.id.viewPagerProjectCreate);
@@ -64,12 +62,16 @@ public class ProjectCreateActivity extends AppCompatActivity {
         viewPager.setCurrentItem(0);
     }
 
-    public void showDatePickerDialog(View v) {
-        newFragment.show(getSupportFragmentManager(), "datePicker");
-    }
-
     public void createProjectDone(View view) {
         finish();
+    }
+
+    // Will delete
+    public int day, month, year;
+    private DialogFragment newFragment = new DatePickerFragment();
+
+    public void showDatePickerDialog(View v) {
+        newFragment.show(getSupportFragmentManager(), "datePicker");
     }
 
     public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {

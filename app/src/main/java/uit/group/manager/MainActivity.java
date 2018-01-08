@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void createProject(View view) {
-        Project.Callback project = new Project.Callback() {
+        _Socket_Project.CreateProject(user.getId(), new Project.Callback() {
             @Override
             public void Response(Project project) {
                 Intent intent;
@@ -65,8 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
                 startActivity(intent);
             }
-        };
-        _Socket_Project.CreateProject(user.getId(), project);
+        });
     }
 
     public void goToUserInfomation(View view) {
