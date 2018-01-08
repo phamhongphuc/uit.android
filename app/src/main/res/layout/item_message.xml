@@ -5,10 +5,11 @@
 
         <variable
             name="message"
-            type="object.Message" />
+            type="object.Message"/>
     </data>
 
-    <android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.v7.widget.LinearLayoutCompat
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -18,12 +19,12 @@
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            tools:text="Fijetso" />
+            tools:text="Fijetso"/>
 
         <components.Text
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            tools:text="Hello world!" />
+            tools:text="Hello world!"/>
     </android.support.v7.widget.LinearLayoutCompat>
 </layout>

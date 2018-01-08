@@ -13,35 +13,38 @@
     <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/bound_6"
         android:clickable="true"
         android:focusable="true"
         android:foreground="?attr/selectableItemBackground"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="@dimen/size_2"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <components.Button
-                android:layout_width="@dimen/size_2"
-                android:layout_height="@dimen/size_2"
-                android:clickable="false"
-                app:_icon=""/>
-
-            <components.Line
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
 
             <components.Button
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/size_2"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
                 android:layout_weight="1"
                 android:clickable="false"
                 android:textAlignment="textStart"
                 app:_text="@{channel.name}"
-                tools:_text="123"/>
+                app:_textAlign="left"
+                tools:_text="#Android"/>
 
+            <components.Icon
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/blue"
+                android:textSize="22sp"/>
         </android.support.v7.widget.LinearLayoutCompat>
 
         <components.Line

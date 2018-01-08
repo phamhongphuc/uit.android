@@ -3,12 +3,12 @@
 
     <android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
 
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context="uit.group.manager.TaskListActivity">
+                                                  xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                  xmlns:tools="http://schemas.android.com/tools"
+                                                  android:layout_width="match_parent"
+                                                  android:layout_height="match_parent"
+                                                  android:orientation="vertical"
+                                                  tools:context="uit.group.manager.TaskListActivity">
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -21,27 +21,27 @@
                 android:layout_width="@dimen/size_1"
                 android:layout_height="match_parent"
                 android:onClick="goBackToProjectDetail"
-                app:_icon="" />
+                app:_icon=""/>
 
             <components.Line
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"/>
 
             <components.Button
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:_icon=""
-                app:_text="Task list" />
+                app:_text="Danh sách nhiệm vụ"
+                app:_textAlign="left"/>
 
             <components.Line
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"/>
 
             <components.Button
                 android:layout_width="@dimen/size_1"
                 android:layout_height="@dimen/size_1"
-                app:_icon="" />
+                app:_icon=""/>
 
 
         </android.support.v7.widget.LinearLayoutCompat>
@@ -52,10 +52,10 @@
             android:background="@color/white"
             android:orientation="horizontal">
 
-
             <android.support.v7.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:background="#eee"
                 android:gravity="center"
                 android:orientation="vertical">
