@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <components.Button
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_1"
+                app:_font="bold"
+                app:_icon=""
+                app:_text="@string/member_list"
+                app:_textAlign="left"/>
+            
+        </android.support.v7.widget.LinearLayoutCompat>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/list_members"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:scrollbarSize="3dp"
+            android:scrollbarThumbVertical="@color/blueTransparent"
+            android:scrollbars="vertical"
+            tools:itemCount="2"
+            tools:listitem="@layout/item_user"/>
+
+    </android.support.v7.widget.LinearLayoutCompat>
+</layout>
