@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import org.parceler.Parcels;
+
 import io.realm.OrderedRealmCollection;
 import io.realm.RealmRecyclerViewAdapter;
 import object.Project;
@@ -67,7 +69,7 @@ public class ProjectRecyclerViewAdapter
 
         public void selectProject(View view) {
             Intent intent = new Intent(view.getContext(), ProjectDetailActivity.class);
-            intent.putExtra("projectId", project.getId());
+            intent.putExtra("project", Parcels.wrap(project));
             view.getContext().startActivity(intent);
         }
     }

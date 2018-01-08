@@ -4,16 +4,12 @@
     <data>
 
         <variable
-            name="Global"
-            type="app.Global"/>
+            name="project"
+            type="object.Project"/>
 
         <variable
             name="socket"
             type="module.socket._Socket.State"/>
-
-        <variable
-            name="State"
-            type="view.state.ProjectDetailState"/>
     </data>
 
     <android.support.v7.widget.LinearLayoutCompat
@@ -51,7 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:_text="@{State.project.name}"/>
+                app:_text="@{project.name}"/>
 
             <components.Button
                 android:layout_width="50dp"

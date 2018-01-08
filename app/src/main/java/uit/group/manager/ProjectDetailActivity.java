@@ -1,6 +1,5 @@
 package uit.group.manager;
 
-import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,38 +7,33 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import app.Global;
+import org.parceler.Parcels;
+
 import module.socket._Socket;
 import object.Project;
 import uit.group.manager.databinding.ActivityProjectDetailBinding;
 import view.recyclerViewAdapter.UserRecyclerViewAdapter;
-import view.state.ProjectDetailState;
 
 //import object.Channel;
 
 public class ProjectDetailActivity extends AppCompatActivity {
-
-    private ProjectDetailState state = new ProjectDetailState();
+    private Project project;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_detail);
 
+        InitializeObject();
         InitializeDataBinding();
-        InitializeIntent();
 
         InitializeChannelsRecyclerView();
         InitializeTasksRecyclerView();
         InitializeMembersRecyclerView();
     }
 
-    private void InitializeIntent() {
-        Intent intent = getIntent();
-        int projectId = intent.getIntExtra("projectId", -1);
-        if (projectId != -1) {
-            state.project.set(Project.getProjectById(projectId));
-        }
+    private void InitializeObject() {
+        project = Parcels.unwrap(getIntent().getParcelableExtra("project"));
     }
 
     private void InitializeChannelsRecyclerView() {
@@ -59,7 +53,7 @@ public class ProjectDetailActivity extends AppCompatActivity {
     }
 
     private void InitializeMembersRecyclerView() {
-        UserRecyclerViewAdapter adapter = new UserRecyclerViewAdapter(state.project.get().getMembers());
+        UserRecyclerViewAdapter adapter = new UserRecyclerViewAdapter(project.getMembers());
         RecyclerView recyclerView = findViewById(R.id.list_members);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
@@ -70,8 +64,8 @@ public class ProjectDetailActivity extends AppCompatActivity {
         ActivityProjectDetailBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_project_detail);
         binding.setSocket(_Socket.State.getInstance());
 
-        binding.setState(state);
-        binding.setGlobal(Global.getInstance());
+//        binding.setSocket(state);
+//        binding.setGlobal(Global.getInstance());
     }
 
     public void back(View view) {
