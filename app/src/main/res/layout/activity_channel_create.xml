@@ -76,6 +76,8 @@
     <components.Button
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_1"
+        android:clickable="false"
+        android:focusable="false"
         android:gravity="bottom"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
