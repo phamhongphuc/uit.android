@@ -175,6 +175,11 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
+                        <components.Button
+                            android:layout_width="@dimen/size_1"
+                            android:layout_height="@dimen/size_1"
+                            app:_icon=""/>
+
                         <components.TextBold
                             android:layout_width="0dp"
                             android:layout_height="@dimen/size_1"
@@ -183,13 +188,10 @@
                             android:gravity="center_vertical"
                             android:paddingLeft="10dp"
                             android:paddingRight="10dp"
-                            android:text="@string/members"
+                            android:text="Danh sách thành viên"
                             android:textSize="16sp"/>
 
-                        <components.Button
-                            android:layout_width="@dimen/size_1"
-                            android:layout_height="@dimen/size_1"
-                            app:_icon=""/>
+
                     </android.support.v7.widget.LinearLayoutCompat>
 
                     <components.Line
