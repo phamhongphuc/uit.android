@@ -122,7 +122,7 @@
                     android:layout_height="@dimen/size_1"
                     android:clickable="false"
                     android:focusable="false"
-                    android:text="project.name"/>
+                    android:text="@={user.name}"/>
 
                 <components.Line
                     android:layout_width="match_parent"
@@ -133,7 +133,7 @@
                 <components.TextInput
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/size_1"
-                    android:text="project.description"/>
+                    android:text="@={user.gender}"/>
 
                 <components.Line
                     android:layout_width="match_parent"
@@ -144,7 +144,8 @@
                 <components.TextInput
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/size_1"
-                    android:onClick="showDatePickerDialog"/>
+                    android:onClick="showDatePickerDialog"
+                    android:text="@={user.birthdate}"/>
 
             </android.support.v7.widget.LinearLayoutCompat>
 
@@ -155,24 +156,21 @@
             android:layout_height="match_parent"
             android:layout_marginEnd="10dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
             app:_isFull="true"/>
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp">
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:orientation="vertical">
 
             <components.Text
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/bound_7"
-                android:layout_marginStart="2dp"
                 android:layout_marginTop="@dimen/bound_3"
                 android:text="@string/description"
-                android:textSize="17dp"
+                android:textSize="17sp"
                 app:_font="bold"/>
 
             <FrameLayout
@@ -193,7 +191,7 @@
                         android:paddingEnd="5dp"
                         android:paddingStart="5dp"
                         android:paddingTop="5dp"
-
+                        android:text="@={user.description}"
                         android:textSize="16sp"
                         app:_autoSize="false"
                         tools:ignore="RtlSymmetry"/>
