@@ -21,6 +21,8 @@ import java.util.Calendar;
 import java.util.Date;
 
 import io.realm.Realm;
+import module.callback.VoidCallback;
+import module.socket._Socket_Project;
 import object.Project;
 import view.fragment.ProjectCreateContent_Fragment;
 import view.fragment.ProjectCreateTitle_Fragment;
@@ -40,6 +42,7 @@ public class ProjectCreateActivity extends AppCompatActivity {
     public Project project;
     // Will delete
     public int day, month, year;
+    private String userId;
     private ViewPager viewPager;
     private DialogFragment newFragment = new DatePickerFragment();
 
@@ -47,12 +50,13 @@ public class ProjectCreateActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_create);
-        InitializeProject();
+        InitializeObject();
         InitializePages();
     }
 
-    private void InitializeProject() {
+    private void InitializeObject() {
         project = Parcels.unwrap(getIntent().getParcelableExtra("project"));
+        userId = getIntent().getStringExtra("userId");
     }
 
     private void InitializePages() {
@@ -82,18 +86,23 @@ public class ProjectCreateActivity extends AppCompatActivity {
 
     public void createProjectDone(View view) {
         finish();
-        ProjectFragment projectFragment = (ProjectFragment) fragmentAdapter.getItem(viewPager.getCurrentItem());
-        project = projectFragment.project;
+        project = ((ProjectFragment) fragmentAdapter.getItem(viewPager.getCurrentItem())).project;
         title_fragment.setProject(null);
         content_fragment.setProject(null);
 
-//        _Socket_Project.CreateProject();
+        _Socket_Project.EditProject(project, userId, new VoidCallback() {
+            @Override
+            public void Response() {
+                Realm.getDefaultInstance().executeTransaction(new Realm.Transaction() {
+                    @Override
+                    public void execute(@NonNull Realm realm) {
+                        realm.copyToRealmOrUpdate(project);
+                        realm.close();
+                    }
+                });
+            }
+        });
 
-        Realm realm = Realm.getDefaultInstance();
-        realm.beginTransaction();
-        realm.copyToRealmOrUpdate(project);
-        realm.commitTransaction();
-        realm.close();
     }
 
     public void showDatePickerDialog(View v) {

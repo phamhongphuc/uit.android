@@ -21,6 +21,7 @@ import view.recyclerViewAdapter.ProjectRecyclerViewAdapter;
 
 public class MainActivity extends AppCompatActivity {
     private User user;
+    private String userId;
     private Realm realm;
 
     @Override
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         realm.beginTransaction();
         user = realm.copyToRealmOrUpdate(user);
         realm.commitTransaction();
+        userId = user.getId();
     }
 
     private void InitializeDataBinding() {
@@ -62,16 +64,23 @@ public class MainActivity extends AppCompatActivity {
         _Facebook.Logout();
         startActivity(new Intent(this, LoginActivity.class));
         finish();
+
+        Realm realm = Realm.getDefaultInstance();
+        realm.commitTransaction();
+        realm.deleteAll();
+        realm.beginTransaction();
+        realm.close();
     }
 
     public void createProject(View view) {
-        _Socket_Project.CreateProject(user.getId(), new Project.Callback() {
+        _Socket_Project.CreateProject(user, new Project.CallbackWithUser() {
             @Override
-            public void Response(final Project project) {
+            public void Response(final Project project, final User user) {
                 Intent intent;
 
                 intent = new Intent(getBaseContext(), ProjectCreateActivity.class);
                 intent.putExtra("project", Parcels.wrap(project));
+                intent.putExtra("userId", userId);
 
                 startActivity(intent);
             }

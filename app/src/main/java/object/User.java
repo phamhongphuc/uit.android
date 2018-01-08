@@ -1,7 +1,8 @@
-    package object;
+package object;
 
 import android.os.Parcelable;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.parceler.Parcel;
@@ -10,6 +11,8 @@ import org.parceler.TypeRangeParcelConverter;
 
 import java.util.ArrayList;
 import java.util.Date;
+
+import javax.annotation.Nullable;
 
 import io.realm.Realm;
 import io.realm.RealmList;
@@ -58,6 +61,12 @@ public class User extends RealmObject {
         return user;
     }
 
+    public static JSONArray getJSONArray(@Nullable RealmList<User> users) {
+        JSONArray jsonArray = new JSONArray();
+        if (users != null) for (User user : users) jsonArray.put(user.getJson());
+        return jsonArray;
+    }
+
     public JSONObject getJson() {
         JSONObject obj = new JSONObject();
         try {
@@ -72,46 +81,6 @@ public class User extends RealmObject {
         }
         return obj;
     }
-
-    public interface Callback {
-        void Response(User user);
-    }
-
-    public interface CallbackUserId {
-        void Response(String userId);
-    }
-
-    public interface CallbackUsers {
-        void Response(ArrayList<String> userIds, VoidCallback done);
-    }
-
-    public static class RealmListUserParcelConverter
-            implements TypeRangeParcelConverter<RealmList<User>, RealmList<User>> {
-        private static final int NULL = -1;
-
-        @Override
-        public void toParcel(RealmList<User> users, android.os.Parcel parcel) {
-            parcel.writeInt(users == null ? NULL : users.size());
-            if (users != null) {
-                for (User user : users) {
-                    parcel.writeParcelable(Parcels.wrap(user), 0);
-                }
-            }
-        }
-
-        @Override
-        public RealmList<User> fromParcel(android.os.Parcel parcel) {
-            int size = parcel.readInt();
-            RealmList<User> users = new RealmList<>();
-            for (int i = 0; i < size; i++) {
-                Parcelable parcelable = parcel.readParcelable(getClass().getClassLoader());
-                users.add((User) Parcels.unwrap(parcelable));
-            }
-            return users;
-        }
-    }
-
-    // ----- GETTER AND SETTER ----- //
 
     public RealmResults<Project> getProjects() {
         return projects;
@@ -128,6 +97,8 @@ public class User extends RealmObject {
     public RealmResults<Task> getTasksOwn() {
         return tasksOwn;
     }
+
+    // ----- GETTER AND SETTER ----- //
 
     public RealmResults<Channel> getChannels() {
         return channels;
@@ -191,5 +162,43 @@ public class User extends RealmObject {
 
     public void setLastupdate(Date lastupdate) {
         this.lastupdate = lastupdate;
+    }
+
+    public interface Callback {
+        void Response(User user);
+    }
+
+    public interface CallbackUserId {
+        void Response(String userId);
+    }
+
+    public interface CallbackUsers {
+        void Response(ArrayList<String> userIds, VoidCallback done);
+    }
+
+    public static class RealmListUserParcelConverter
+            implements TypeRangeParcelConverter<RealmList<User>, RealmList<User>> {
+        private static final int NULL = -1;
+
+        @Override
+        public void toParcel(RealmList<User> users, android.os.Parcel parcel) {
+            parcel.writeInt(users == null ? NULL : users.size());
+            if (users != null) {
+                for (User user : users) {
+                    parcel.writeParcelable(Parcels.wrap(user), 0);
+                }
+            }
+        }
+
+        @Override
+        public RealmList<User> fromParcel(android.os.Parcel parcel) {
+            int size = parcel.readInt();
+            RealmList<User> users = new RealmList<>();
+            for (int i = 0; i < size; i++) {
+                Parcelable parcelable = parcel.readParcelable(getClass().getClassLoader());
+                users.add((User) Parcels.unwrap(parcelable));
+            }
+            return users;
+        }
     }
 }

@@ -1,17 +1,18 @@
 package object;
 
-import android.annotation.SuppressLint;
-
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.parceler.Parcel;
+import org.parceler.ParcelPropertyConverter;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import javax.annotation.Nullable;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;
+import io.realm.RealmResults;
 import io.realm.TaskRealmProxy;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.RealmClass;
@@ -42,55 +43,16 @@ public class Task extends RealmObject {
     public Task() {
     }
 
-    public Task(int id, String name, String deadline, String description, User assigned) {
-        this.id = id;
-        this.name = name;
-        this.createdate = new Date();
-        this.description = description;
-        this.assigned = assigned;
-        this.status = ONGOING;
-        @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        Date date = null;
-        try {
-            date = format.parse(deadline);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        this.deadline = date;
+    public static JSONArray getJSONArray(@Nullable RealmList<Task> tasks) {
+        JSONArray jsonArray = new JSONArray();
+        if (tasks != null) for (Task task : tasks) jsonArray.put(task.getJson());
+        return jsonArray;
     }
 
-    ///Getter
-    public String getName() {
-        return name;
-    }
-
-    public Date getCreatedate() {
-        return createdate;
-    }
-
-    public Date getDeadline() {
-        return deadline;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public User getAssigned() {
-        return assigned;
-    }
-
-    public int getStatus() {
-        return status;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public long getDaysLeft() {
-        long daysLeft = deadline.getTime() - (new Date()).getTime();
-        return (daysLeft / (60 * 60 * 1000));
+    public static JSONArray getJSONArray(@Nullable RealmResults<Task> tasks) {
+        JSONArray jsonArray = new JSONArray();
+        if (tasks != null) for (Task task : tasks) jsonArray.put(task.getJson());
+        return jsonArray;
     }
 
     public JSONObject getJson() {
@@ -109,4 +71,84 @@ public class Task extends RealmObject {
         return obj;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
+
+    public User getAssigned() {
+        return assigned;
+    }
+
+    public void setAssigned(User assigned) {
+        this.assigned = assigned;
+    }
+
+    public RealmList<User> getSubscribers() {
+        return subscribers;
+    }
+
+    @ParcelPropertyConverter(User.RealmListUserParcelConverter.class)
+    public void setSubscribers(RealmList<User> subscribers) {
+        this.subscribers = subscribers;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public Date getCreatedate() {
+        return createdate;
+    }
+
+    public void setCreatedate(Date createdate) {
+        this.createdate = createdate;
+    }
+
+    public Date getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(Date deadline) {
+        this.deadline = deadline;
+    }
+
+    public Date getLastupdate() {
+        return lastupdate;
+    }
+
+    public void setLastupdate(Date lastupdate) {
+        this.lastupdate = lastupdate;
+    }
 }
