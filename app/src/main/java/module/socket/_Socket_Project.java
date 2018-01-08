@@ -19,8 +19,8 @@ import object.User;
 public class _Socket_Project {
     private static final io.socket.client.Socket socket = _Socket.getSocket();
 
-    public static void CreateProject(final String userId, final Project.Callback callback) {
-        socket.emit("Create:Project(userId)", userId, new Ack() {
+    public static void CreateProject(final User user, final Project.CallbackWithUser callback) {
+        socket.emit("Create:Project(userId)", user.getId(), new Ack() {
             @Override
             public void call(Object... args) {
                 if (args[0] != null) {
@@ -33,7 +33,7 @@ public class _Socket_Project {
                     Project project = realm.createOrUpdateObjectFromJson(Project.class, obj);
                     realm.commitTransaction();
 
-                    callback.Response(project);
+                    callback.Response(project, user);
                 }
             }
         });
@@ -103,5 +103,19 @@ public class _Socket_Project {
         });
     }
 
-
+    public static void EditProject(final Project project, final String userId, final @Nullable VoidCallback voidCallback) {
+        JSONObject projectJson = project.getJson(true, true, true);
+        socket.emit("Edit:Project(project, userId)", projectJson, userId, new Ack() {
+            @Override
+            public void call(Object... args) {
+                if (args[0] != null) {
+                    Log.e("SOCKET: ERROR", args[0].toString());
+                } else {
+                    if (voidCallback != null) {
+                        voidCallback.Response();
+                    }
+                }
+            }
+        });
+    }
 }

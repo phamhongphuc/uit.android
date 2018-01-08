@@ -1,10 +1,14 @@
 package object;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.parceler.Parcel;
+import org.parceler.ParcelPropertyConverter;
 
 import java.util.Date;
+
+import javax.annotation.Nullable;
 
 import io.realm.ChannelRealmProxy;
 import io.realm.RealmList;
@@ -33,41 +37,16 @@ public class Channel extends RealmObject {
     public Channel() {
     }
 
-    public Channel(String id, String name) {
-        this.id = id;
-        this.name = name;
+    public static JSONArray getJSONArray(@Nullable RealmList<Channel> channels) {
+        JSONArray jsonArray = new JSONArray();
+        if (channels != null) for (Channel channel : channels) jsonArray.put(channel.getJson());
+        return jsonArray;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public User getAssigned() {
-        return assigned;
-    }
-
-    public void setAssigned(User assigned) {
-        this.assigned = assigned;
-    }
-
-    public RealmList<User> getMembers() {
-        return members;
-    }
-
-    public Date getCreatedate() {
-        return createdate;
-    }
-
-    public void setCreatedate(Date createdate) {
-        this.createdate = createdate;
-    }
-
-    public Date getLastupdate() {
-        return lastupdate;
+    public static JSONArray getJSONArray(@Nullable RealmResults<Channel> channels) {
+        JSONArray jsonArray = new JSONArray();
+        if (channels != null) for (Channel channel : channels) jsonArray.put(channel.getJson());
+        return jsonArray;
     }
 
     public JSONObject getJson() {
@@ -82,5 +61,66 @@ public class Channel extends RealmObject {
             e.printStackTrace();
         }
         return obj;
+    }
+
+    public RealmResults<Message> getMessages() {
+        return messages;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public User getAssigned() {
+        return assigned;
+    }
+
+    public void setAssigned(User assigned) {
+        this.assigned = assigned;
+    }
+
+    public RealmList<User> getMembers() {
+        return members;
+    }
+
+    @ParcelPropertyConverter(User.RealmListUserParcelConverter.class)
+    public void setMembers(RealmList<User> members) {
+        this.members = members;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
+
+    public Date getCreatedate() {
+        return createdate;
+    }
+
+    public void setCreatedate(Date createdate) {
+        this.createdate = createdate;
+    }
+
+    public Date getLastupdate() {
+        return lastupdate;
+    }
+
+    public void setLastupdate(Date lastupdate) {
+        this.lastupdate = lastupdate;
     }
 }

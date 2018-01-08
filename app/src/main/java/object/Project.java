@@ -55,33 +55,24 @@ public class Project extends RealmObject {
         return project;
     }
 
-    public JSONObject getJson() {
+    public JSONObject getJson(boolean isMember, boolean isTask, boolean isChannel) {
         JSONObject obj = new JSONObject();
         try {
             obj.put("id", id);
             obj.put("name", name);
-            obj.put("tasks", tasks);
-            obj.put("members", members);
             obj.put("description", description);
-            obj.put("creator", creator);
-            obj.put("channels", channels);
+            obj.put("creator", creator.getJson());
             obj.put("createdate", createdate);
             obj.put("deadline", deadline);
+
+            obj.put("members", User.getJSONArray(members));
+            obj.put("tasks", Task.getJSONArray(tasks));
+            obj.put("channels", Channel.getJSONArray(channels));
         } catch (JSONException e) {
             e.printStackTrace();
         }
         return obj;
     }
-
-    public interface Callback {
-        void Response(Project project);
-    }
-
-    public interface CallbackProjects {
-        void Response(ArrayList<Integer> projects, VoidCallback done);
-    }
-
-    // ----- GETTER AND SETTER ----- //
 
     public RealmResults<Channel> getChannels() {
         return channels;
@@ -94,6 +85,8 @@ public class Project extends RealmObject {
     public int getId() {
         return id;
     }
+
+    // ----- GETTER AND SETTER ----- //
 
     public void setId(int id) {
         this.id = id;
@@ -154,5 +147,17 @@ public class Project extends RealmObject {
 
     public void setLastupdate(Date lastupdate) {
         this.lastupdate = lastupdate;
+    }
+
+    public interface Callback {
+        void Response(Project project);
+    }
+
+    public interface CallbackWithUser {
+        void Response(Project project, User user);
+    }
+
+    public interface CallbackProjects {
+        void Response(ArrayList<Integer> projects, VoidCallback done);
     }
 }
