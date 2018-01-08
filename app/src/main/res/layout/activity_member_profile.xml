@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="user"
+            type="object.User"/>
+    </data>
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <components.Button
+                android:layout_width="@dimen/size_1"
+                android:layout_height="@dimen/size_1"
+                android:onClick="goBack"
+                app:_icon=""/>
+
+            <components.Line
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
+
+            <components.Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:focusable="false"
+                app:_text="Thông tin cá nhân"
+                app:_textAlign="left"/>
+
+            <components.Button
+                android:layout_width="@dimen/size_1"
+                android:layout_height="@dimen/size_1"
+                app:_icon=""/>
+        </android.support.v7.widget.LinearLayoutCompat>
+
+        <components.Line
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:_isFull="true"/>
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/bound_2">
+
+                <components.ImageAvatar
+                    android:layout_width="@dimen/size_1"
+                    android:layout_height="@dimen/size_1"
+                    android:layout_marginEnd="@dimen/bound_2"
+                    app:_innerSize="@dimen/size_1"
+                    app:_outerSize="@dimen/size_1"
+                    app:_userId="@{user.id}"
+                    tools:background="@color/blueTransparent"/>
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <components.Text
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/bound_6"
+                        android:gravity="center_vertical"
+                        android:text="@{user.name}"
+                        android:textSize="@dimen/text_size_4"
+                        app:_font="bold"
+                        tools:ignore="RtlSymmetry"
+                        tools:text="user.name"/>
+
+                    <components.Text
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:text="@{user.email}"
+                        android:textSize="@dimen/text_size_5"
+                        tools:ignore="RtlSymmetry"
+                        tools:text="user.email"/>
+
+                    <android.support.v7.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </android.support.v7.widget.LinearLayoutCompat>
+                </android.support.v7.widget.LinearLayoutCompat>
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/bound_2">
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <components.Button
+                    android:layout_width="170dp"
+                    android:layout_height="30dp"
+                    android:clickable="false"
+                    android:focusable="false"
+                    app:_font="bold"
+                    app:_fontSize="large"
+                    app:_text="Giới tính"
+                    app:_textAlign="left"/>
+
+                <components.Button
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:clickable="false"
+                    android:focusable="false"
+                    app:_fontSize="large"
+                    app:_text="Nữ"
+                    app:_textAlign="left"/>
+            </android.support.v7.widget.LinearLayoutCompat>
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <components.Button
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:clickable="false"
+                    android:focusable="false"
+                    app:_font="bold"
+                    app:_fontSize="large"
+                    app:_text="Ngày sinh"
+                    app:_textAlign="left"/>
+
+                <components.Button
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:clickable="false"
+                    android:focusable="false"
+                    app:_fontSize="large"
+                    app:_text="4/4/1996"
+                    app:_textAlign="left"/>
+            </android.support.v7.widget.LinearLayoutCompat>
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+        <components.Line
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            app:_isFull="true"/>
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/bound_2"
+            android:orientation="vertical">
+
+            <components.Button
+                android:layout_width="170dp"
+                android:layout_height="30dp"
+                android:clickable="false"
+                android:focusable="false"
+                app:_font="bold"
+                app:_fontSize="large"
+                app:_text="Mô tả"
+                app:_textAlign="left"/>
+
+            <components.Button
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:clickable="false"
+                android:focusable="false"
+                app:_fontSize="large"
+                app:_text="Siêu nhân Gao"
+                app:_textAlign="left"/>
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+        <components.Line
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            app:_isFull="true"/>
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/bound_2"
+            android:orientation="vertical">
+
+            <components.Button
+                android:layout_width="170dp"
+                android:layout_height="30dp"
+                android:clickable="false"
+                android:focusable="false"
+                app:_font="bold"
+                app:_fontSize="large"
+                app:_text="Kỹ năng lập trình"
+                app:_textAlign="left"/>
+
+            <components.Button
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:clickable="false"
+                android:focusable="false"
+                app:_fontSize="large"
+                app:_text="C++, Js"
+                app:_textAlign="left"/>
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+        <components.Line
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            app:_isFull="true"/>
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/bound_2"
+            android:orientation="vertical">
+
+            <components.Button
+                android:layout_width="170dp"
+                android:layout_height="30dp"
+                android:clickable="false"
+                android:focusable="false"
+                app:_font="bold"
+                app:_fontSize="large"
+                app:_text="Kỹ năng mềm"
+                app:_textAlign="left"/>
+
+            <components.Button
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:clickable="false"
+                android:focusable="false"
+                app:_fontSize="large"
+                app:_text="Lãnh đạo, sáng tao"
+                app:_textAlign="left"/>
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+    </android.support.v7.widget.LinearLayoutCompat>
+</layout>
