@@ -53,4 +53,5 @@
     <string name="start_date">Ngày bắt đầu</string>
     <string name="end_date">Ngày kết thúc</string>
     <string name="createNewProjectTitle">Tạo dự án mới</string>
+    <string name="member_list">Danh sách thành viên</string>
 </resources>

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -8,13 +11,10 @@
             type="object.Task"/>
     </data>
 
-    <android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
-
-                                                  xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                  xmlns:tools="http://schemas.android.com/tools"
-                                                  android:layout_width="match_parent"
-                                                  android:layout_height="match_parent"
-                                                  android:orientation="vertical">
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -25,13 +25,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/size_1"
                 android:layout_weight="1"
-                app:_text="Completed" />
+                app:_text="Completed"/>
 
             <components.Button
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/size_1"
                 android:layout_weight="1"
-                app:_text="On going" />
+                app:_text="On going"/>
         </android.support.v7.widget.LinearLayoutCompat>
 
         <android.support.v7.widget.RecyclerView

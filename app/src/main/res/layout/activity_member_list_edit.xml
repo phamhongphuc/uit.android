@@ -20,7 +20,7 @@
             <components.Button
                 android:layout_width="@dimen/size_1"
                 android:layout_height="match_parent"
-                android:onClick="goBackToProjectDetail"
+                android:onClick="go_back"
                 app:_icon=""/>
 
             <components.Line
@@ -43,7 +43,7 @@
             <components.Button
                 android:layout_width="@dimen/size_1"
                 android:layout_height="match_parent"
-                android:onClick="goBackToProjectDetail"
+                android:onClick="go_back"
                 app:_text="OK"/>
 
 

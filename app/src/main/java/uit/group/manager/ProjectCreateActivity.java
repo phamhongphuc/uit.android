@@ -42,8 +42,8 @@ public class ProjectCreateActivity extends AppCompatActivity {
     public Project project;
     // Will delete
     public int day, month, year;
-    private String userId;
     private ViewPager viewPager;
+    private String userId;
     private DialogFragment newFragment = new DatePickerFragment();
 
     @Override

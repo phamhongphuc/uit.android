@@ -94,6 +94,10 @@ public class User extends RealmObject {
         return tasks;
     }
 
+    public RealmResults<Task> getTasksComplete() {
+        return tasks.where().equalTo("status", Task.COMPLETE).findAll();
+    }
+
     public RealmResults<Task> getTasksOwn() {
         return tasksOwn;
     }

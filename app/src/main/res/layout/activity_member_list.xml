@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <android.support.v7.widget.LinearLayoutCompat
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -20,7 +20,7 @@
             <components.Button
                 android:layout_width="@dimen/size_1"
                 android:layout_height="match_parent"
-                android:onClick="goBackToProjectDetail"
+                android:onClick="go_back"
                 app:_icon=""/>
 
             <components.Line
@@ -43,7 +43,7 @@
             <components.Button
                 android:layout_width="@dimen/size_1"
                 android:layout_height="match_parent"
-                android:onClick="goBackToProjectDetail"
+                android:onClick="go_back"
                 app:_icon=""/>
 
 
