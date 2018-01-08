@@ -3,6 +3,7 @@ package object;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.parceler.Parcel;
+import org.parceler.ParcelPropertyConverter;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -45,10 +46,12 @@ public class Project extends RealmObject {
 
     public static Project getProjectById(int projectId) {
         Realm realm = Realm.getDefaultInstance();
+        Project project;
+
         realm.beginTransaction();
-        Project project = realm.where(Project.class).equalTo("id", projectId).findFirst();
+        project = realm.where(Project.class).equalTo("id", projectId).findFirst();
         realm.commitTransaction();
-        realm.close();
+
         return project;
     }
 
@@ -69,6 +72,16 @@ public class Project extends RealmObject {
         }
         return obj;
     }
+
+    public interface Callback {
+        void Response(Project project);
+    }
+
+    public interface CallbackProjects {
+        void Response(ArrayList<Integer> projects, VoidCallback done);
+    }
+
+    // ----- GETTER AND SETTER ----- //
 
     public RealmResults<Channel> getChannels() {
         return channels;
@@ -114,6 +127,11 @@ public class Project extends RealmObject {
         return members;
     }
 
+    @ParcelPropertyConverter(User.RealmListUserParcelConverter.class)
+    public void setMembers(RealmList<User> members) {
+        this.members = members;
+    }
+
     public Date getCreatedate() {
         return createdate;
     }
@@ -136,13 +154,5 @@ public class Project extends RealmObject {
 
     public void setLastupdate(Date lastupdate) {
         this.lastupdate = lastupdate;
-    }
-
-    public interface Callback {
-        void Response(Project project);
-    }
-
-    public interface CallbackProjects {
-        void Response(ArrayList<Integer> projects, VoidCallback done);
     }
 }

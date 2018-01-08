@@ -1,13 +1,18 @@
-package object;
+    package object;
+
+import android.os.Parcelable;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.parceler.Parcel;
+import org.parceler.Parcels;
+import org.parceler.TypeRangeParcelConverter;
 
 import java.util.ArrayList;
 import java.util.Date;
 
 import io.realm.Realm;
+import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.RealmResults;
 import io.realm.UserRealmProxy;
@@ -50,9 +55,63 @@ public class User extends RealmObject {
         realm.beginTransaction();
         User user = realm.where(User.class).equalTo("id", userId).findFirst();
         realm.commitTransaction();
-        realm.close();
         return user;
     }
+
+    public JSONObject getJson() {
+        JSONObject obj = new JSONObject();
+        try {
+            obj.put("id", id);
+            obj.put("name", name);
+            obj.put("email", email);
+            obj.put("birthdate", birthdate);
+            obj.put("gender", gender);
+            obj.put("description", description);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return obj;
+    }
+
+    public interface Callback {
+        void Response(User user);
+    }
+
+    public interface CallbackUserId {
+        void Response(String userId);
+    }
+
+    public interface CallbackUsers {
+        void Response(ArrayList<String> userIds, VoidCallback done);
+    }
+
+    public static class RealmListUserParcelConverter
+            implements TypeRangeParcelConverter<RealmList<User>, RealmList<User>> {
+        private static final int NULL = -1;
+
+        @Override
+        public void toParcel(RealmList<User> users, android.os.Parcel parcel) {
+            parcel.writeInt(users == null ? NULL : users.size());
+            if (users != null) {
+                for (User user : users) {
+                    parcel.writeParcelable(Parcels.wrap(user), 0);
+                }
+            }
+        }
+
+        @Override
+        public RealmList<User> fromParcel(android.os.Parcel parcel) {
+            int size = parcel.readInt();
+            RealmList<User> users = new RealmList<>();
+            for (int i = 0; i < size; i++) {
+                Parcelable parcelable = parcel.readParcelable(getClass().getClassLoader());
+                users.add((User) Parcels.unwrap(parcelable));
+            }
+            return users;
+        }
+    }
+
+    // ----- GETTER AND SETTER ----- //
 
     public RealmResults<Project> getProjects() {
         return projects;
@@ -132,32 +191,5 @@ public class User extends RealmObject {
 
     public void setLastupdate(Date lastupdate) {
         this.lastupdate = lastupdate;
-    }
-
-    public JSONObject getJson() {
-        JSONObject obj = new JSONObject();
-        try {
-            obj.put("id", id);
-            obj.put("name", name);
-            obj.put("email", email);
-            obj.put("birthdate", birthdate);
-            obj.put("gender", gender);
-            obj.put("description", description);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return obj;
-    }
-
-    public interface Callback {
-        void Response(User user);
-    }
-
-    public interface CallbackUserId {
-        void Response(String userId);
-    }
-
-    public interface CallbackUsers {
-        void Response(ArrayList<String> userIds, VoidCallback done);
     }
 }

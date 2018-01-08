@@ -26,9 +26,6 @@ import view.fragment.ProjectCreateTitle_Fragment;
 import view.fragmentAdapter.FragmentAdapter;
 
 public class ProjectCreateActivity extends AppCompatActivity {
-    public int day, month, year;
-    private DialogFragment newFragment = new DatePickerFragment();
-
     private ViewPager viewPager;
     private Project project;
 
@@ -42,6 +39,7 @@ public class ProjectCreateActivity extends AppCompatActivity {
 
     private void InitializeProject() {
         project = Parcels.unwrap(getIntent().getParcelableExtra("project"));
+//        Realm.getDefaultInstance().copyToRealmOrUpdate(project);
     }
 
     private void InitializePages() {
@@ -67,6 +65,10 @@ public class ProjectCreateActivity extends AppCompatActivity {
     public void createProjectDone(View view) {
         finish();
     }
+
+    // Will delete
+    public int day, month, year;
+    private DialogFragment newFragment = new DatePickerFragment();
 
     public void showDatePickerDialog(View v) {
         newFragment.show(getSupportFragmentManager(), "datePicker");

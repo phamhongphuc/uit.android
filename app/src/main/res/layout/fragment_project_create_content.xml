@@ -23,8 +23,9 @@
             android:layout_height="@dimen/size_1"
             app:_font="bold"
             app:_fontSize="medium"
-            app:_text="Tên dự án"
-            app:_textAlign="left"/>
+            app:_text="@{project.name}"
+            app:_textAlign="left"
+            tools:_text="project.name"/>
 
         <components.Line
             android:layout_width="match_parent"
@@ -110,7 +111,7 @@
                 app:_text="1012134"/>
 
             <View
-                android:layout_width="@dimen/bound_7"
+                android:layout_width="@dimen/bound_5"
                 android:layout_height="0dp"/>
 
             <components.Button

@@ -26,7 +26,6 @@ public class TaskRecyclerViewAdapter extends RealmRecyclerViewAdapter<Task, Task
                 tasks.add(new Task());
             }
         });
-        realm.close();
     }
 
     @Override

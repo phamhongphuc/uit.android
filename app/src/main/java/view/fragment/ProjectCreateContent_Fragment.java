@@ -29,6 +29,7 @@ public class ProjectCreateContent_Fragment extends Fragment {
                 R.layout.fragment_project_create_content,
                 container,
                 false);
+        binding.setProject(project);
         return binding.getRoot();
     }
 
