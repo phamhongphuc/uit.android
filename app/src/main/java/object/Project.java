@@ -2,28 +2,36 @@ package object;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcel;
 
 import java.util.ArrayList;
 import java.util.Date;
 
+import io.realm.ProjectRealmProxy;
 import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.RealmResults;
 import io.realm.annotations.LinkingObjects;
 import io.realm.annotations.PrimaryKey;
+import io.realm.annotations.RealmClass;
 import module.callback.VoidCallback;
 
+@RealmClass
+@Parcel(implementations = {ProjectRealmProxy.class},
+        value = Parcel.Serialization.BEAN,
+        analyze = {Project.class})
 public class Project extends RealmObject {
     @LinkingObjects("project")
     private final RealmResults<Channel> channels = null;
+
     @LinkingObjects("project")
     private final RealmResults<Task> tasks = null;
+
     @PrimaryKey
     private int id;
     private String name;
     private String description;
-    private RealmList<String> tags = new RealmList<>();
 
     private User creator;
     private RealmList<User> members = new RealmList<>();
@@ -44,8 +52,38 @@ public class Project extends RealmObject {
         return project;
     }
 
+    public JSONObject getJson() {
+        JSONObject obj = new JSONObject();
+        try {
+            obj.put("id", id);
+            obj.put("name", name);
+            obj.put("tasks", tasks);
+            obj.put("members", members);
+            obj.put("description", description);
+            obj.put("creator", creator);
+            obj.put("channels", channels);
+            obj.put("createdate", createdate);
+            obj.put("deadline", deadline);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return obj;
+    }
+
+    public RealmResults<Channel> getChannels() {
+        return channels;
+    }
+
+    public RealmResults<Task> getTasks() {
+        return tasks;
+    }
+
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -64,30 +102,24 @@ public class Project extends RealmObject {
         this.description = description;
     }
 
-    public RealmList<String> getTags() {
-        return tags;
-    }
-
     public User getCreator() {
         return creator;
+    }
+
+    public void setCreator(User creator) {
+        this.creator = creator;
     }
 
     public RealmList<User> getMembers() {
         return members;
     }
 
-    public void addMember(User user) {
-        if (!members.contains(user)) {
-            Realm realm = Realm.getDefaultInstance();
-            realm.beginTransaction();
-            members.add(user);
-            realm.commitTransaction();
-            realm.close();
-        }
-    }
-
     public Date getCreatedate() {
         return createdate;
+    }
+
+    public void setCreatedate(Date createdate) {
+        this.createdate = createdate;
     }
 
     public Date getDeadline() {
@@ -102,31 +134,8 @@ public class Project extends RealmObject {
         return lastupdate;
     }
 
-    public RealmResults<Channel> getChannels() {
-        return channels;
-    }
-
-    public RealmResults<Task> getTasks() {
-        return tasks;
-    }
-
-    public JSONObject getJson() {
-        JSONObject obj = new JSONObject();
-        try {
-            obj.put("id", id);
-            obj.put("name", name);
-            obj.put("tasks", tasks);
-            obj.put("members", members);
-            obj.put("description", description);
-            obj.put("creator", creator);
-            obj.put("tags", tags);
-            obj.put("channels", channels);
-            obj.put("createdate", createdate);
-            obj.put("deadline", deadline);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return obj;
+    public void setLastupdate(Date lastupdate) {
+        this.lastupdate = lastupdate;
     }
 
     public interface Callback {
@@ -137,4 +146,3 @@ public class Project extends RealmObject {
         void Response(ArrayList<Integer> projects, VoidCallback done);
     }
 }
-

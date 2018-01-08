@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcel;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -11,8 +12,14 @@ import java.util.Date;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;
+import io.realm.TaskRealmProxy;
 import io.realm.annotations.PrimaryKey;
+import io.realm.annotations.RealmClass;
 
+@RealmClass
+@Parcel(implementations = {TaskRealmProxy.class},
+        value = Parcel.Serialization.BEAN,
+        analyze = {Task.class})
 public class Task extends RealmObject {
     public static final int ONGOING = 0;
     public static final int ONHOLD = 1;
