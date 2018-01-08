@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import org.parceler.Parcels;
+
 import java.text.SimpleDateFormat;
 
 import object.User;
@@ -20,15 +22,19 @@ public class UserInformationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        int layout = R.layout.activity_user_information;
-        setContentView(layout);
-        ActivityUserInformationBinding binding = DataBindingUtil.setContentView(this, layout);
+        setContentView(R.layout.activity_user_information);
 
-        user = User.getUserById(
-                AccessToken.getCurrentAccessToken().getUserId()
-        );
+        InitializeUser();
+        InitializeDataBinding();
+    }
 
+    private void InitializeUser() {
+        user = Parcels.unwrap(getIntent().getParcelableExtra("user"));
         state.Initialize(user);
+    }
+
+    private void InitializeDataBinding() {
+        ActivityUserInformationBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_user_information);
         binding.setUser(user);
         binding.setState(state);
     }

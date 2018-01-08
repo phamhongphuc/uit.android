@@ -70,6 +70,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goToUserInfomation(View view) {
-        startActivity(new Intent(this, UserInformationActivity.class));
+        final Intent intent;
+
+        intent = new Intent(this, UserInformationActivity.class);
+        intent.putExtra("user", Parcels.wrap(user));
+
+        startActivity(intent);
     }
 }
