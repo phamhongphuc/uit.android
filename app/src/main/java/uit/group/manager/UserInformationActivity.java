@@ -12,11 +12,13 @@ import org.parceler.Parcels;
 
 import java.text.SimpleDateFormat;
 
+import io.realm.Realm;
 import object.User;
 import uit.group.manager.databinding.ActivityUserInformationBinding;
 
 public class UserInformationActivity extends AppCompatActivity {
     private final State state = new State();
+    private Realm realm = Realm.getDefaultInstance();
     private User user;
 
     @Override
@@ -30,6 +32,9 @@ public class UserInformationActivity extends AppCompatActivity {
 
     private void InitializeUser() {
         user = Parcels.unwrap(getIntent().getParcelableExtra("user"));
+        realm.beginTransaction();
+        user = realm.copyToRealmOrUpdate(user);
+        realm.commitTransaction();
         state.Initialize(user);
     }
 

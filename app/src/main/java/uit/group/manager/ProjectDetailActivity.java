@@ -9,6 +9,7 @@ import android.view.View;
 
 import org.parceler.Parcels;
 
+import io.realm.Realm;
 import module.socket._Socket;
 import object.Project;
 import uit.group.manager.databinding.ActivityProjectDetailBinding;
@@ -18,6 +19,7 @@ import view.recyclerViewAdapter.UserRecyclerViewAdapter;
 
 public class ProjectDetailActivity extends AppCompatActivity {
     private Project project;
+    private Realm realm = Realm.getDefaultInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,9 @@ public class ProjectDetailActivity extends AppCompatActivity {
 
     private void InitializeObject() {
         project = Parcels.unwrap(getIntent().getParcelableExtra("project"));
+        realm.beginTransaction();
+        project = realm.copyToRealmOrUpdate(project);
+        realm.commitTransaction();
     }
 
     private void InitializeChannelsRecyclerView() {
