@@ -43,10 +43,6 @@
                 android:textSize="18sp"/>
         </android.support.v7.widget.LinearLayoutCompat>
 
-        <components.Line
-            android:layout_width="match_parent"
-            android:layout_height="50dp"/>
-
         <components.Icon
             android:layout_width="50dp"
             android:layout_height="50dp"
