@@ -1,11 +1,17 @@
 package uit.group.manager;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-public class TaskListActivity extends AppCompatActivity {
+import org.parceler.Parcels;
+
+import object.Project;
+import view.recyclerViewAdapter.TaskRecyclerViewAdapter;
+
+public class TaskListActivity extends RealmActivity {
+    private Project project;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -13,7 +19,23 @@ public class TaskListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_task_list);
     }
 
-    public void goBackToProjectDetail(View view) {
-        startActivity(new Intent(getBaseContext(), ProjectDetailActivity.class));
+    private void InitializeObject() {
+        project = Parcels.unwrap(getIntent().getParcelableExtra("project"));
+        realm.beginTransaction();
+        project = realm.copyToRealmOrUpdate(project);
+        realm.commitTransaction();
+    }
+
+    private void InitializeRecyclerView() {
+        final RecyclerView recyclerView;
+
+        recyclerView = findViewById(R.id.list_project);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(new TaskRecyclerViewAdapter(project.getTasks()));
+        recyclerView.setHasFixedSize(true);
+    }
+
+    public void go_back(View view) {
+        finish();
     }
 }

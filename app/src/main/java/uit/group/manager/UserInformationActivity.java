@@ -1,6 +1,5 @@
 package uit.group.manager;
 
-import android.annotation.SuppressLint;
 import android.databinding.DataBindingUtil;
 import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
@@ -10,9 +9,8 @@ import android.view.View;
 
 import org.parceler.Parcels;
 
-import java.text.SimpleDateFormat;
-
 import io.realm.Realm;
+import module.converter._Converter;
 import object.User;
 import uit.group.manager.databinding.ActivityUserInformationBinding;
 
@@ -49,8 +47,6 @@ public class UserInformationActivity extends AppCompatActivity {
     }
 
     public class State {
-        @SuppressLint("SimpleDateFormat")
-        private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         public ObservableInt projectsOwn = new ObservableInt();
         public ObservableInt projects = new ObservableInt();
         public ObservableInt tasksOwn = new ObservableInt();
@@ -80,10 +76,10 @@ public class UserInformationActivity extends AppCompatActivity {
                     user.getChannels().size()
             );
             gender.set(
-                    user.getGender() == null ? "???" : user.getGender() ? "Name" : "Nữ"
+                    user.getGender() == null ? "???" : _Converter.Gender(user.getGender())
             );
             birthday.set(
-                    user.getBirthdate() == null ? "???" : dateFormat.format(user.getBirthdate())
+                    user.getBirthdate() == null ? "???" : _Converter.Date(user.getBirthdate())
             );
         }
     }

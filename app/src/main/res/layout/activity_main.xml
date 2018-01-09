@@ -21,7 +21,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:context="uit.group.manager.MainActivity">
 
         <components.SocketStatus
             android:layout_width="match_parent"
@@ -133,32 +134,25 @@
             android:layout_height="wrap_content"
             app:_isFull="true"/>
 
+
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:background="@color/white"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:background="#eee"
+            android:gravity="center"
+            android:orientation="vertical">
 
-            <android.support.v7.widget.LinearLayoutCompat
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/list_project"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#eee"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:layout_margin="@dimen/bound_6"
+                android:scrollbarSize="3dp"
+                android:scrollbarThumbVertical="@color/blueTransparent"
+                android:scrollbars="vertical"
+                tools:itemCount="2"
+                tools:listitem="@layout/item_project"/>
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/list_project"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="@dimen/bound_6"
-                    android:scrollbarSize="3dp"
-                    android:scrollbarThumbVertical="@color/blueTransparent"
-                    android:scrollbars="vertical"
-                    tools:itemCount="2"
-                    tools:listitem="@layout/item_project"/>
-
-            </android.support.v7.widget.LinearLayoutCompat>
         </android.support.v7.widget.LinearLayoutCompat>
     </android.support.v7.widget.LinearLayoutCompat>
 </layout>

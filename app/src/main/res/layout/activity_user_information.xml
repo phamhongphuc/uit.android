@@ -108,7 +108,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center_vertical"
-                            android:text="user.birthdate"
+                            android:text="@{state.birthday}"
                             android:textSize="@dimen/text_size_5"
                             tools:ignore="RtlSymmetry"
                             tools:text="user.birthdate"/>
@@ -148,7 +148,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/bound_5"
-                    android:layout_weight="1"
                     android:background="@drawable/rectangle_border"
                     android:clickable="false"
                     android:elevation="2dp"
@@ -169,7 +168,6 @@
                     <components.Line
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="@dimen/bound_7"
                         app:_isFull="true"/>
 
                     <android.support.v7.widget.LinearLayoutCompat
@@ -231,7 +229,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/bound_5"
-                    android:layout_weight="1"
                     android:background="@drawable/rectangle_border"
                     android:elevation="2dp"
                     android:orientation="vertical"
@@ -251,7 +248,6 @@
                     <components.Line
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="@dimen/bound_7"
                         app:_isFull="true"/>
 
                     <android.support.v7.widget.LinearLayoutCompat
@@ -313,7 +309,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/bound_5"
-                    android:layout_weight="1"
                     android:background="@drawable/rectangle_border"
                     android:elevation="2dp"
                     android:orientation="vertical"
@@ -333,7 +328,6 @@
                     <components.Line
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="@dimen/bound_7"
                         app:_isFull="true"/>
 
                     <android.support.v7.widget.LinearLayoutCompat

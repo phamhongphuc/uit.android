@@ -29,6 +29,10 @@ public class TaskEditActivity extends AppCompatActivity {
         newFragment.show(getSupportFragmentManager(), "datePicker");
     }
 
+    public void go_back(View view) {
+        finish();
+    }
+
     public static class DatePickerFragment extends DialogFragment
             implements DatePickerDialog.OnDateSetListener {
         @SuppressLint("SimpleDateFormat")
