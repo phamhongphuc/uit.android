@@ -118,4 +118,25 @@ public class _Socket_Project {
             }
         });
     }
+
+    public static void AddMember(final int projectId, final String email, final Project.Callback callback) {
+        socket.emit("Add:Project.Member(projectId, email)", projectId, email, new Ack() {
+            @Override
+            public void call(Object... args) {
+                if (args[0] != null) {
+                    Log.e("SOCKET: ERROR", args[0].toString());
+                } else {
+                    JSONObject obj = (JSONObject) args[1];
+
+                    Realm realm = Realm.getDefaultInstance();
+                    realm.beginTransaction();
+
+                    final Project project = realm.createOrUpdateObjectFromJson(Project.class, obj);
+                    realm.commitTransaction();
+
+                    callback.Response(project);
+                }
+            }
+        });
+    }
 }
