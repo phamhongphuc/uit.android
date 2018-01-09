@@ -8,6 +8,7 @@ import org.json.JSONObject;
 
 import io.realm.Realm;
 import io.socket.client.Ack;
+import module.callback.VoidCallback;
 import object.Task;
 
 public class _Socket_Task {
@@ -52,6 +53,26 @@ public class _Socket_Task {
                     realm.close();
 
                     callback.Response(task);
+                }
+            }
+        });
+    }
+
+    public static void DeleteTask(final int taskId, final String userId, final VoidCallback callback) {
+        socket.emit("Delete:Task(taskId, userId)", taskId, userId, new Ack() {
+            @Override
+            public void call(Object... args) {
+                if (args[0] != null) {
+                    Log.e("SOCKET: ERROR", args[0].toString());
+                } else {
+                    JSONObject obj = (JSONObject) args[1];
+
+                    Realm realm = Realm.getDefaultInstance();
+                    realm.beginTransaction();
+                    Task.getTaskById(taskId).deleteFromRealm();
+                    realm.commitTransaction();
+
+                    callback.Response();
                 }
             }
         });

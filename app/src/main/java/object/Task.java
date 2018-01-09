@@ -10,6 +10,7 @@ import java.util.Date;
 
 import javax.annotation.Nullable;
 
+import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.RealmResults;
@@ -41,6 +42,17 @@ public class Task extends RealmObject {
     private Date lastupdate;
 
     public Task() {
+    }
+
+    public static Task getTaskById(int taskId) {
+        Realm realm = Realm.getDefaultInstance();
+        Task task;
+
+        realm.beginTransaction();
+        task = realm.where(Task.class).equalTo("id", taskId).findFirst();
+        realm.commitTransaction();
+
+        return task;
     }
 
     public static JSONArray getJSONArray(@Nullable RealmList<Task> tasks) {

@@ -139,4 +139,24 @@ public class _Socket_Project {
             }
         });
     }
+
+    public static void DeleteProject(final int projectId, final String userId, final VoidCallback callback) {
+        socket.emit("Delete:Project(projectId, userId)", projectId, userId, new Ack() {
+            @Override
+            public void call(Object... args) {
+                if (args[0] != null) {
+                    Log.e("SOCKET: ERROR", args[0].toString());
+                } else {
+                    JSONObject obj = (JSONObject) args[1];
+
+                    Realm realm = Realm.getDefaultInstance();
+                    realm.beginTransaction();
+                    Project.getProjectById(projectId).deleteFromRealm();
+                    realm.commitTransaction();
+
+                    callback.Response();
+                }
+            }
+        });
+    }
 }
