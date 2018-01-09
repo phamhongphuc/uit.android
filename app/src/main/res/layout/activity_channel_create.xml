@@ -74,7 +74,7 @@
                 android:layout_height="@dimen/size_1"
                 app:_font="bold"
                 app:_fontSize="medium"
-                app:_text="@{channel.name}"
+                app:_text="@={channel.name}"
                 app:_textAlign="left"
                 tools:_text="channel.name"/>
 
@@ -105,6 +105,8 @@
                 <components.Button
                     android:layout_width="@dimen/size_2"
                     android:layout_height="match_parent"
+                    android:clickable="false"
+                    android:focusable="false"
                     app:_fontSize="medium"
                     app:_icon="">
 
