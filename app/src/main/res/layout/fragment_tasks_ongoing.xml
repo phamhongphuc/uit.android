@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <components.Button
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:_icon="">
+            </components.Button>
+
+            <components.Line
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
+
+            <components.Button
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:clickable="false"
+                android:focusable="false"
+                app:_fontSize="small"
+                app:_text="12"
+                app:_textAlign="center"/>
+
+            <components.Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:focusable="false"
+                app:_text="Nhiệm vụ đang tiến hành"
+                app:_textAlign="left"/>
+
+            <components.Line
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
+
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+        <components.Line
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:_isFull="true"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/list_project"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/bound_6"
+            android:scrollbarSize="3dp"
+            android:scrollbarThumbVertical="@color/blueTransparent"
+            android:scrollbars="vertical"
+            tools:itemCount="2"
+            tools:listitem="@layout/item_task"/>
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+</layout>

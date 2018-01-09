@@ -94,7 +94,7 @@
                     android:focusable="false"
                     android:gravity="center"
                     app:_fontSize="small"
-                    app:_text="12"
+                    app:_text="0"
                     app:_textAlign="center"/>
 
             </android.support.v7.widget.LinearLayoutCompat>
