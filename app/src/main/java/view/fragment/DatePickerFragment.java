@@ -12,6 +12,7 @@ import java.util.Date;
 
 public class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
     public Calendar calendar = Calendar.getInstance();
+    private Date date;
 
     @NonNull
     @Override
@@ -29,6 +30,10 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
     @Override
     public void onDateSet(DatePicker view, int year, int month, int day) {
         calendar.set(year, month, day);
-        Date date = calendar.getTime();
+        date = calendar.getTime();
+    }
+
+    public Date getDate() {
+        return date;
     }
 }

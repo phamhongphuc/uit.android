@@ -151,4 +151,8 @@ public class Task extends RealmObject {
     public void setLastupdate(Date lastupdate) {
         this.lastupdate = lastupdate;
     }
+
+    public interface Callback {
+        void Response(Task task);
+    }
 }

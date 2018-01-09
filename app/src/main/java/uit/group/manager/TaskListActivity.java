@@ -8,11 +8,16 @@ import android.view.View;
 
 import org.parceler.Parcels;
 
+import module.socket._Socket_Task;
 import object.Project;
+import object.Task;
+import object.User;
 import view.recyclerViewAdapter.TaskRecyclerViewAdapter;
 
 public class TaskListActivity extends RealmActivity {
     private Project project;
+    private int projectId = 1;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +27,8 @@ public class TaskListActivity extends RealmActivity {
 
     private void InitializeObject() {
         project = Parcels.unwrap(getIntent().getParcelableExtra("project"));
+        projectId = project.getId();
+        user = Parcels.unwrap(getIntent().getParcelableExtra("user"));
         realm.beginTransaction();
         project = realm.copyToRealmOrUpdate(project);
         realm.commitTransaction();
@@ -41,12 +48,16 @@ public class TaskListActivity extends RealmActivity {
     }
 
     public void go_createTask(View view) {
-        Intent intent;
+        _Socket_Task.CreateTask(projectId, new Task.Callback() {
+            @Override
+            public void Response(Task task) {
+                Intent intent;
 
-        intent = new Intent(getBaseContext(), TaskCreateActivity.class);
-        intent.putExtra("project", Parcels.wrap(project));
-//        intent.putExtra("userId", userId);
+                intent = new Intent(getBaseContext(), TaskCreateActivity.class);
+                intent.putExtra("task", Parcels.wrap(task));
 
-        startActivity(intent);
+                startActivity(intent);
+            }
+        });
     }
 }

@@ -8,7 +8,9 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
 
+import module.converter._Converter;
 import object.Project;
 import uit.group.manager.ProjectCreateActivity;
 import uit.group.manager.R;
@@ -28,6 +30,7 @@ public class ProjectCreateContent_Fragment extends ProjectFragment {
                 inflater, R.layout.fragment_project_create_content,
                 container, false
         );
+        state.Initialize();
         binding.setProject(project);
         binding.setState(state);
         return binding.getRoot();
@@ -40,10 +43,27 @@ public class ProjectCreateContent_Fragment extends ProjectFragment {
 
     public class State {
         public ObservableField<String> deadline = new ObservableField<>();
-        private DatePickerFragment datePicker = new DatePickerFragment();
+        public ObservableField<String> createdate = new ObservableField<>();
 
-        public void EditDeadline() {
-            datePicker.show(getFragmentManager(), "datePicker");
+        public void Initialize() {
+            deadline.set(
+                    _Converter.Date(project.getDeadline())
+            );
+            createdate.set(
+                    _Converter.Date(project.getCreatedate())
+            );
+        }
+
+        public void EditDeadline(View view) {
+            final DatePickerFragment deadlinePicker = new DatePickerFragment() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int month, int day) {
+                    super.onDateSet(view, year, month, day);
+                    project.setDeadline(getDate());
+                    Initialize();
+                }
+            };
+            deadlinePicker.show(getFragmentManager(), "deadlinePicker");
         }
     }
 }

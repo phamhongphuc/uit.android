@@ -5,7 +5,6 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.facebook.AccessToken;
@@ -22,7 +21,7 @@ import uit.group.manager.databinding.ActivityLoginBinding;
 import view.fragmentAdapter.FragmentAdapter;
 import view.state.LoginState;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends RealmActivity {
     private CallbackManager callbackManager = CallbackManager.Factory.create();
     private LoginState loginState = new LoginState();
     private Boolean isLogin = false;

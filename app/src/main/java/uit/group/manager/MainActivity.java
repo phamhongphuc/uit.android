@@ -3,7 +3,6 @@ package uit.group.manager;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -19,7 +18,7 @@ import object.User;
 import uit.group.manager.databinding.ActivityMainBinding;
 import view.recyclerViewAdapter.ProjectRecyclerViewAdapter;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends RealmActivity {
     private User user;
     private String userId;
     private Realm realm;
@@ -29,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        realm = Realm.getDefaultInstance();
         InitializeUser();
         InitializeDataBinding();
         InitializeRecyclerView();
@@ -37,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void InitializeUser() {
         user = Parcels.unwrap(getIntent().getParcelableExtra("user"));
+        Realm realm;
+        realm = Realm.getDefaultInstance();
         realm.beginTransaction();
         user = realm.copyToRealmOrUpdate(user);
         realm.commitTransaction();
@@ -65,11 +65,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, LoginActivity.class));
         finish();
 
-        Realm realm = Realm.getDefaultInstance();
         realm.commitTransaction();
         realm.deleteAll();
         realm.beginTransaction();
-        realm.close();
     }
 
     public void createProject(View view) {

@@ -17,8 +17,6 @@ import java.util.Date;
 
 public class TaskEditActivity extends AppCompatActivity {
 
-    private DialogFragment newFragment = new ProjectCreateActivity.DatePickerFragment();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +24,7 @@ public class TaskEditActivity extends AppCompatActivity {
     }
 
     public void showDatePickerDialog(View v) {
-        newFragment.show(getSupportFragmentManager(), "datePicker");
+//        newFragment.show(getSupportFragmentManager(), "datePicker");
     }
 
     public void go_back(View view) {

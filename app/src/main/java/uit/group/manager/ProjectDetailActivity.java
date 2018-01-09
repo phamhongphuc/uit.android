@@ -13,6 +13,7 @@ import io.realm.Realm;
 import module.socket._Socket;
 import object.Project;
 import object.Task;
+import object.User;
 import uit.group.manager.databinding.ActivityProjectDetailBinding;
 
 //import object.Channel;
@@ -21,6 +22,7 @@ public class ProjectDetailActivity extends AppCompatActivity {
     private final State state = new State();
     private Realm realm = Realm.getDefaultInstance();
     private Project project;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,7 @@ public class ProjectDetailActivity extends AppCompatActivity {
 
     private void InitializeObject() {
         project = Parcels.unwrap(getIntent().getParcelableExtra("project"));
+        user = Parcels.unwrap(getIntent().getParcelableExtra("user"));
         realm.beginTransaction();
         project = realm.copyToRealmOrUpdate(project);
         realm.commitTransaction();
@@ -70,6 +73,7 @@ public class ProjectDetailActivity extends AppCompatActivity {
 
         intent = new Intent(getBaseContext(), TaskListActivity.class);
         intent.putExtra("project", Parcels.wrap(project));
+        intent.putExtra("user", Parcels.wrap(user));
 
         startActivity(intent);
     }

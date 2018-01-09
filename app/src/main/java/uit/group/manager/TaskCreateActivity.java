@@ -16,9 +16,6 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class TaskCreateActivity extends AppCompatActivity {
-
-    private DialogFragment newFragment = new ProjectCreateActivity.DatePickerFragment();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +23,7 @@ public class TaskCreateActivity extends AppCompatActivity {
     }
 
     public void showDatePickerDialog(View v) {
-        newFragment.show(getSupportFragmentManager(), "datePicker");
+//        newFragment.show(getSupportFragmentManager(), "datePicker");
     }
 
     public static class DatePickerFragment extends DialogFragment

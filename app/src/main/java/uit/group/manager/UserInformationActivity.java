@@ -76,10 +76,10 @@ public class UserInformationActivity extends AppCompatActivity {
                     user.getChannels().size()
             );
             gender.set(
-                    user.getGender() == null ? "???" : _Converter.Gender(user.getGender())
+                    _Converter.Gender(user.getGender())
             );
             birthday.set(
-                    user.getBirthdate() == null ? "???" : _Converter.Date(user.getBirthdate())
+                    _Converter.Date(user.getBirthdate())
             );
         }
     }

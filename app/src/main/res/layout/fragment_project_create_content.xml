@@ -112,7 +112,7 @@
                 android:background="@drawable/rectangle_border"
                 android:gravity="center"
                 app:_fontSize="medium"
-                app:_text="1012134"/>
+                app:_text="@{state.createdate}"/>
 
             <View
                 android:layout_width="@dimen/bound_5"
@@ -124,8 +124,9 @@
                 android:layout_weight="1"
                 android:background="@drawable/rectangle_border"
                 android:gravity="center"
+                android:onClick="EditDeadline"
                 app:_fontSize="medium"
-                app:_text="1012134"/>
+                app:_text="@{state.deadline}"/>
 
         </android.support.v7.widget.LinearLayoutCompat>
 
