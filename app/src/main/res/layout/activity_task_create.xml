@@ -7,8 +7,8 @@
     <data>
 
         <variable
-            name="project"
-            type="object.Project"/>
+            name="task"
+            type="object.Task"/>
     </data>
 
     <android.support.v7.widget.LinearLayoutCompat
@@ -62,101 +62,161 @@
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="10dp">
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:padding="@dimen/bound_3">
+
+            <components.Button
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_1"
+                app:_font="bold"
+                app:_fontSize="medium"
+                app:_text="@{task.name}"
+                app:_textAlign="left"
+                tools:_text="Task.name"/>
+
+            <components.Line
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                app:_isFull="true"/>
+
+            <components.Text
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/bound_7"
+                android:layout_marginTop="@dimen/bound_3"
+                android:text="@string/description"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle_border">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rectangle_border">
+
+                    <components.TextInput
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:gravity="top"
+                        android:paddingBottom="5dp"
+                        android:paddingEnd="5dp"
+                        android:paddingStart="5dp"
+                        android:paddingTop="5dp"
+                        android:text="@={task.description}"
+                        android:textSize="16sp"
+                        app:_autoSize="false"
+                        tools:ignore="RtlSymmetry"/>
+                </FrameLayout>
+
+            </FrameLayout>
 
             <android.support.v7.widget.LinearLayoutCompat
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_marginBottom="@dimen/bound_7"
+                android:layout_marginTop="@dimen/bound_3"
+                android:orientation="horizontal">
 
-                <components.Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/size_1"
-                    android:clickable="false"
-                    android:focusable="false"
-                    app:_text="Tên nhiệm vụ"
-                    app:_textAlign="left"/>
+                <components.Text
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/start_date"
+                    app:_fontSize="medium"
+                    app:_textAlign="left"
+                    app:_textPaddingLeft="false"/>
 
-                <components.Line
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="2dp"
-                    app:_isFull="true"/>
+                <View
+                    android:layout_width="@dimen/bound_7"
+                    android:layout_height="0dp"/>
 
-                <components.Button
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/size_1"
-                    android:clickable="false"
-                    android:focusable="false"
-                    app:_text="Hạn nộp"
-                    app:_textAlign="left"/>
-
-                <components.Line
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="@dimen/bound_7"
-                    app:_isFull="true"/>
+                <components.Text
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/end_date"
+                    app:_fontSize="medium"
+                    app:_textAlign="left"
+                    app:_textPaddingLeft="false"/>
 
             </android.support.v7.widget.LinearLayoutCompat>
 
             <android.support.v7.widget.LinearLayoutCompat
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_2"
+                android:orientation="horizontal">
+
+                <components.Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/rectangle_border"
+                    android:gravity="center"
+                    app:_fontSize="medium"
+                    app:_text="1012134"/>
+
+                <View
+                    android:layout_width="@dimen/bound_5"
+                    android:layout_height="0dp"/>
+
+                <components.Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/rectangle_border"
+                    android:gravity="center"
+                    app:_fontSize="medium"
+                    app:_text="1012134"/>
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
+            <components.Text
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/bound_7"
+                android:layout_marginTop="@dimen/bound_3"
+                android:text="@string/members"/>
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_2"
+                android:background="@drawable/rectangle_border"
+                android:orientation="horizontal">
+
+                <components.TextInput
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:maxLines="1"/>
+
+                <components.Button
+                    android:layout_width="@dimen/size_2"
+                    android:layout_height="match_parent"
+                    app:_fontSize="medium"
+                    app:_icon="">
+
+                </components.Button>
+            </android.support.v7.widget.LinearLayoutCompat>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/list_users"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/bound_3"
                 android:layout_weight="1"
-                android:orientation="vertical">
-
-                <components.TextInput
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/size_1"
-                    android:hint="@string/add_task_name"
-                    android:text="@={project.name}"/>
-
-                <components.Line
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="@dimen/bound_7"
-                    app:_isFull="true"/>
-
-                <components.TextInput
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/size_1"
-                    android:hint="@string/add_deadline"
-                    android:onClick="showDatePickerDialog"
-                    android:text="@={project.deadline}"/>
-
-                <components.Line
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="@dimen/bound_7"
-                    app:_isFull="true"/>
-
-            </android.support.v7.widget.LinearLayoutCompat>
+                android:background="@drawable/rectangle_border"
+                android:scrollbarSize="3dp"
+                android:scrollbarThumbVertical="@color/blueTransparent"
+                android:scrollbars="vertical"
+                tools:itemCount="2"
+                tools:listitem="@layout/item_user"/>
 
         </android.support.v7.widget.LinearLayoutCompat>
 
-        <components.Button
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:clickable="false"
-            android:focusable="false"
-            app:_text="Mô tả"
-            app:_textAlign="left"/>
-
-        <components.TextInput
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/size_1"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="10dp"
-            android:text="@={project.description}"/>
-
-        <components.Line
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            app:_isFull="true"/>
 
     </android.support.v7.widget.LinearLayoutCompat>
 
