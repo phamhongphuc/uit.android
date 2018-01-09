@@ -34,4 +34,26 @@ public class _Socket_Task {
             }
         });
     }
+
+    public static void EditTask(final Task task, final Task.Callback callback) {
+        String userId = AccessToken.getCurrentAccessToken().getUserId();
+        socket.emit("Edit:Task(task, userId)", task.getJson(), userId, new Ack() {
+            @Override
+            public void call(Object... args) {
+                if (args[0] != null) {
+                    Log.d("SOCKET: ERROR", "Lỗi chỉnh sửa: " + args[0]);
+                } else {
+                    JSONObject obj = (JSONObject) args[1];
+
+                    Realm realm = Realm.getDefaultInstance();
+                    realm.beginTransaction();
+                    Task task = realm.createOrUpdateObjectFromJson(Task.class, obj);
+                    realm.commitTransaction();
+                    realm.close();
+
+                    callback.Response(task);
+                }
+            }
+        });
+    }
 }
