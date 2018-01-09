@@ -1,5 +1,6 @@
 package uit.group.manager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -37,5 +38,15 @@ public class TaskListActivity extends RealmActivity {
 
     public void go_back(View view) {
         finish();
+    }
+
+    public void go_createTask(View view) {
+        Intent intent;
+
+        intent = new Intent(getBaseContext(), TaskCreateActivity.class);
+        intent.putExtra("project", Parcels.wrap(project));
+//        intent.putExtra("userId", userId);
+
+        startActivity(intent);
     }
 }

@@ -39,6 +39,7 @@
                 android:layout_height="match_parent"/>
 
             <components.Button
+                android:onClick="go_createTask"
                 android:layout_width="@dimen/size_1"
                 android:layout_height="@dimen/size_1"
                 app:_icon=""/>

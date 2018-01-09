@@ -2,6 +2,7 @@ package view.fragment;
 
 import android.annotation.SuppressLint;
 import android.databinding.DataBindingUtil;
+import android.databinding.ObservableField;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import view.fragmentAbstract.ProjectFragment;
 @SuppressLint("ValidFragment")
 public class ProjectCreateContent_Fragment extends ProjectFragment {
     public FragmentProjectCreateContentBinding binding;
+    private final State state = new State();
 
     @Nullable
     @Override
@@ -27,11 +29,21 @@ public class ProjectCreateContent_Fragment extends ProjectFragment {
                 container, false
         );
         binding.setProject(project);
+        binding.setState(state);
         return binding.getRoot();
     }
 
     @Override
     public void setProject(Project project) {
         binding.setProject(project);
+    }
+
+    public class State {
+        public ObservableField<String> deadline = new ObservableField<>();
+        private DatePickerFragment datePicker = new DatePickerFragment();
+
+        public void EditDeadline() {
+            datePicker.show(getFragmentManager(), "datePicker");
+        }
     }
 }

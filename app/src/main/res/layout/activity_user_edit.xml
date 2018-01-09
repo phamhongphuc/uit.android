@@ -132,8 +132,7 @@
 
                 <components.TextInput
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/size_1"
-                    android:text="@={user.gender}"/>
+                    android:layout_height="@dimen/size_1"/>
 
                 <components.Line
                     android:layout_width="match_parent"
@@ -144,8 +143,7 @@
                 <components.TextInput
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/size_1"
-                    android:onClick="showDatePickerDialog"
-                    android:text="@={user.birthdate}"/>
+                    android:onClick="showDatePickerDialog"/>
 
             </android.support.v7.widget.LinearLayoutCompat>
 

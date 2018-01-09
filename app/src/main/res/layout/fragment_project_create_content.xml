@@ -9,6 +9,10 @@
         <variable
             name="project"
             type="object.Project"/>
+
+        <variable
+            name="state"
+            type="view.fragment.ProjectCreateContent_Fragment.State"/>
     </data>
 
     <android.support.v7.widget.LinearLayoutCompat

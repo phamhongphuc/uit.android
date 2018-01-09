@@ -29,18 +29,6 @@ public class TaskCreateActivity extends AppCompatActivity {
         newFragment.show(getSupportFragmentManager(), "datePicker");
     }
 
-    /*
-    public static Date toDate()
-    {
-        //Tạo đối tượng date sẽ lấy date hiện tại
-        Date date = new Date();
-        @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        date = sdf.format(date);
-        //gọi hàm format để lấy chuỗi ngày tháng năm đúng theo yêu cầu
-        return sdf.format(date);
-        System.out.println("Ngày hôm nay : " + sdf.format(date));
-    }
-*/
     public static class DatePickerFragment extends DialogFragment
             implements DatePickerDialog.OnDateSetListener {
         @SuppressLint("SimpleDateFormat")

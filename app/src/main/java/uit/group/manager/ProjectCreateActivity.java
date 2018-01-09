@@ -102,7 +102,6 @@ public class ProjectCreateActivity extends AppCompatActivity {
                 });
             }
         });
-
     }
 
     public void showDatePickerDialog(View v) {
