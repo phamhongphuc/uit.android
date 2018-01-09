@@ -13,7 +13,7 @@
     <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:background="@color/white"
         android:orientation="horizontal">
 
         <android.support.v7.widget.LinearLayoutCompat
@@ -45,7 +45,6 @@
                 android:textSize="18sp"/>
         </android.support.v7.widget.LinearLayoutCompat>
 
-
         <components.Icon
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -57,4 +56,5 @@
             android:textColor="@color/blue"
             android:textSize="22sp"/>
     </android.support.v7.widget.LinearLayoutCompat>
+
 </layout>
