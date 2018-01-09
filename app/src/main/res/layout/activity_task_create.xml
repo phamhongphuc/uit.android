@@ -9,6 +9,10 @@
         <variable
             name="task"
             type="object.Task"/>
+
+        <variable
+            name="state"
+            type="uit.group.manager.TaskCreateActivity.State"/>
     </data>
 
     <android.support.v7.widget.LinearLayoutCompat
@@ -27,6 +31,7 @@
             <components.Button
                 android:layout_width="@dimen/size_1"
                 android:layout_height="match_parent"
+                android:onClick="createTaskDone"
                 app:_icon=""/>
 
             <components.Line
@@ -50,6 +55,7 @@
             <components.Button
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:onClick="createTaskDone"
                 app:_text="Tạo"/>
 
 
@@ -67,19 +73,27 @@
             android:orientation="vertical"
             android:padding="@dimen/bound_3">
 
-            <components.Button
+            <components.Text
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_1"
-                app:_font="bold"
-                app:_fontSize="medium"
-                app:_text="@{task.name}"
-                app:_textAlign="left"
-                tools:_text="Task.name"/>
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/bound_7"
+                android:layout_marginTop="@dimen/bound_3"
+                android:text="@string/task_name"/>
 
-            <components.Line
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                app:_isFull="true"/>
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle_border">
+
+                <components.TextInput
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_1"
+                    android:text="@={task.name}"
+                    app:_font="bold"
+                    app:_fontSize="medium"
+                    app:_textAlign="left"
+                    tools:_text="Task.name"/>
+            </FrameLayout>
 
             <components.Text
                 android:layout_width="match_parent"
@@ -93,25 +107,18 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/rectangle_border">
 
-                <FrameLayout
+                <components.TextInput
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/rectangle_border">
-
-                    <components.TextInput
-                        android:layout_width="match_parent"
-                        android:layout_height="70dp"
-                        android:gravity="top"
-                        android:paddingBottom="5dp"
-                        android:paddingEnd="5dp"
-                        android:paddingStart="5dp"
-                        android:paddingTop="5dp"
-                        android:text="@={task.description}"
-                        android:textSize="16sp"
-                        app:_autoSize="false"
-                        tools:ignore="RtlSymmetry"/>
-                </FrameLayout>
-
+                    android:layout_height="70dp"
+                    android:gravity="top"
+                    android:paddingBottom="5dp"
+                    android:paddingEnd="5dp"
+                    android:paddingStart="5dp"
+                    android:paddingTop="5dp"
+                    android:text="@={task.description}"
+                    android:textSize="16sp"
+                    app:_autoSize="false"
+                    tools:ignore="RtlSymmetry"/>
             </FrameLayout>
 
             <android.support.v7.widget.LinearLayoutCompat
@@ -157,7 +164,7 @@
                     android:background="@drawable/rectangle_border"
                     android:gravity="center"
                     app:_fontSize="medium"
-                    app:_text="1012134"/>
+                    app:_text="@{state.createdate}"/>
 
                 <View
                     android:layout_width="@dimen/bound_5"
@@ -169,8 +176,9 @@
                     android:layout_weight="1"
                     android:background="@drawable/rectangle_border"
                     android:gravity="center"
+                    android:onClick="EditTaskDeadline"
                     app:_fontSize="medium"
-                    app:_text="1012134"/>
+                    app:_text="@{state.deadline}"/>
 
             </android.support.v7.widget.LinearLayoutCompat>
 
@@ -191,7 +199,8 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:maxLines="1"/>
+                    android:maxLines="1"
+                    android:text="@={state.email}"/>
 
                 <components.Button
                     android:layout_width="@dimen/size_2"

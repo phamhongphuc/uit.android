@@ -27,7 +27,6 @@ public class _Socket_Task {
                     realm.beginTransaction();
                     Task task = realm.createOrUpdateObjectFromJson(Task.class, obj);
                     realm.commitTransaction();
-                    realm.close();
 
                     callback.Response(task);
                 }
@@ -36,7 +35,7 @@ public class _Socket_Task {
     }
 
     public static void EditTask(final Task task, final Task.Callback callback) {
-        String userId = AccessToken.getCurrentAccessToken().getUserId();
+        final String userId = AccessToken.getCurrentAccessToken().getUserId();
         socket.emit("Edit:Task(task, userId)", task.getJson(), userId, new Ack() {
             @Override
             public void call(Object... args) {
@@ -48,6 +47,7 @@ public class _Socket_Task {
                     Realm realm = Realm.getDefaultInstance();
                     realm.beginTransaction();
                     Task task = realm.createOrUpdateObjectFromJson(Task.class, obj);
+//                    task.setAssigned(User.getUserById(userId));
                     realm.commitTransaction();
                     realm.close();
 

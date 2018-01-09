@@ -1,31 +1,27 @@
 package view.recyclerViewAdapter;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
-import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import org.parceler.Parcels;
+
 import io.realm.OrderedRealmCollection;
-import io.realm.Realm;
 import io.realm.RealmRecyclerViewAdapter;
 import object.Task;
 import uit.group.manager.BR;
 import uit.group.manager.R;
+import uit.group.manager.TaskDetailActivity;
 
-public class TaskRecyclerViewAdapter extends RealmRecyclerViewAdapter<Task, TaskRecyclerViewAdapter.TaskViewHolder> {
+public class TaskRecyclerViewAdapter
+        extends RealmRecyclerViewAdapter<Task, TaskRecyclerViewAdapter.TaskViewHolder> {
 
     public TaskRecyclerViewAdapter(final OrderedRealmCollection<Task> tasks) {
         super(tasks, true);
-        Realm realm = Realm.getDefaultInstance();
-        realm.executeTransaction(new Realm.Transaction() {
-            @Override
-            public void execute(@NonNull Realm realm) {
-                tasks.add(new Task());
-            }
-        });
     }
 
     @Override
@@ -72,7 +68,9 @@ public class TaskRecyclerViewAdapter extends RealmRecyclerViewAdapter<Task, Task
         }
 
         public void selectTask(View view) {
-
+            Intent intent = new Intent(view.getContext(), TaskDetailActivity.class);
+            intent.putExtra("task", Parcels.wrap(task));
+            view.getContext().startActivity(intent);
         }
     }
 }

@@ -2,6 +2,7 @@ package uit.group.manager;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -10,8 +11,10 @@ import android.view.View;
 import org.parceler.Parcels;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import io.realm.Realm;
+import module.callback.DateCallback;
 import module.callback.VoidCallback;
 import module.socket._Socket_Project;
 import object.Project;
@@ -21,9 +24,6 @@ import view.fragmentAbstract.ProjectFragment;
 import view.fragmentAdapter.FragmentAdapter;
 
 public class ProjectCreateActivity extends AppCompatActivity {
-    public Project project;
-    private String userId;
-    private ViewPager viewPager;
     private final ProjectFragment title_fragment = new ProjectCreateTitle_Fragment();
     private final ProjectFragment content_fragment = new ProjectCreateContent_Fragment();
     private final FragmentAdapter fragmentAdapter = new FragmentAdapter(
@@ -33,6 +33,11 @@ public class ProjectCreateActivity extends AppCompatActivity {
                 add(content_fragment);
             }}
     );
+    public Project project;
+    // Will delete
+    public int day, month, year;
+    private ViewPager viewPager;
+    private String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,10 +90,20 @@ public class ProjectCreateActivity extends AppCompatActivity {
                     @Override
                     public void execute(@NonNull Realm realm) {
                         realm.copyToRealmOrUpdate(project);
-                        realm.close();
                     }
                 });
             }
         });
+    }
+
+    public void EditDeadline(View view) {
+        DialogFragment deadlinePicker = new view.fragment.DatePickerFragment(new DateCallback() {
+            @Override
+            public void Response(Date date) {
+                project.setDeadline(date);
+                content_fragment.setProject(project);
+            }
+        });
+        deadlinePicker.show(getSupportFragmentManager(), "deadlinePicker");
     }
 }

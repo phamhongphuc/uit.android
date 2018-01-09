@@ -65,6 +65,10 @@ public class Task extends RealmObject {
             obj.put("status", status);
             obj.put("deadline", deadline);
             obj.put("createdate", createdate);
+
+            if (assigned != null) obj.put("assigned", assigned.getJson());
+            if (subscribers != null) obj.put("subscribers", User.getJSONArray(subscribers));
+            if (project != null) obj.put("project", project.getJson(false, false, false));
         } catch (JSONException e) {
             e.printStackTrace();
         }

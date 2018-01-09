@@ -50,7 +50,6 @@ public class LoginActivity extends RealmActivity {
                 realm.beginTransaction();
                 realm.copyToRealmOrUpdate(user);
                 realm.commitTransaction();
-                realm.close();
 
                 startActivity(intent);
                 finish();

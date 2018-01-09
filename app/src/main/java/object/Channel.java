@@ -63,10 +63,6 @@ public class Channel extends RealmObject {
         return obj;
     }
 
-    public RealmResults<Message> getMessages() {
-        return messages;
-    }
-
     public String getId() {
         return id;
     }

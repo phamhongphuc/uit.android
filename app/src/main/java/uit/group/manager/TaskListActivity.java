@@ -23,21 +23,23 @@ public class TaskListActivity extends RealmActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_list);
+        InitializeObject();
+        InitializeRecyclerView();
     }
 
     private void InitializeObject() {
         project = Parcels.unwrap(getIntent().getParcelableExtra("project"));
-        projectId = project.getId();
         user = Parcels.unwrap(getIntent().getParcelableExtra("user"));
         realm.beginTransaction();
         project = realm.copyToRealmOrUpdate(project);
+        projectId = project.getId();
         realm.commitTransaction();
     }
 
     private void InitializeRecyclerView() {
         final RecyclerView recyclerView;
 
-        recyclerView = findViewById(R.id.list_project);
+        recyclerView = findViewById(R.id.list_tasks);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new TaskRecyclerViewAdapter(project.getTasks()));
         recyclerView.setHasFixedSize(true);

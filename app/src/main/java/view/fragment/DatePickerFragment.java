@@ -1,5 +1,6 @@
 package view.fragment;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.os.Bundle;
@@ -10,9 +11,17 @@ import android.widget.DatePicker;
 import java.util.Calendar;
 import java.util.Date;
 
+import module.callback.DateCallback;
+
+@SuppressLint("ValidFragment")
 public class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
     public Calendar calendar = Calendar.getInstance();
     private Date date;
+    private DateCallback dateCallback;
+
+    public DatePickerFragment(DateCallback dateCallback) {
+        this.dateCallback = dateCallback;
+    }
 
     @NonNull
     @Override
@@ -31,6 +40,7 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
     public void onDateSet(DatePicker view, int year, int month, int day) {
         calendar.set(year, month, day);
         date = calendar.getTime();
+        dateCallback.Response(date);
     }
 
     public Date getDate() {

@@ -8,7 +8,6 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.DatePicker;
 
 import module.converter._Converter;
 import object.Project;
@@ -19,8 +18,8 @@ import view.fragmentAbstract.ProjectFragment;
 
 @SuppressLint("ValidFragment")
 public class ProjectCreateContent_Fragment extends ProjectFragment {
-    public FragmentProjectCreateContentBinding binding;
     private final State state = new State();
+    public FragmentProjectCreateContentBinding binding;
 
     @Nullable
     @Override
@@ -39,6 +38,7 @@ public class ProjectCreateContent_Fragment extends ProjectFragment {
     @Override
     public void setProject(Project project) {
         binding.setProject(project);
+        state.Initialize();
     }
 
     public class State {
@@ -52,18 +52,6 @@ public class ProjectCreateContent_Fragment extends ProjectFragment {
             createdate.set(
                     _Converter.Date(project.getCreatedate())
             );
-        }
-
-        public void EditDeadline(View view) {
-            final DatePickerFragment deadlinePicker = new DatePickerFragment() {
-                @Override
-                public void onDateSet(DatePicker view, int year, int month, int day) {
-                    super.onDateSet(view, year, month, day);
-                    project.setDeadline(getDate());
-                    Initialize();
-                }
-            };
-            deadlinePicker.show(getFragmentManager(), "deadlinePicker");
         }
     }
 }

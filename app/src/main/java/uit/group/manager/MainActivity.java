@@ -64,10 +64,6 @@ public class MainActivity extends RealmActivity {
         _Facebook.Logout();
         startActivity(new Intent(this, LoginActivity.class));
         finish();
-
-        realm.commitTransaction();
-        realm.deleteAll();
-        realm.beginTransaction();
     }
 
     public void createProject(View view) {
