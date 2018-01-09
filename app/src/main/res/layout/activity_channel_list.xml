@@ -4,8 +4,12 @@
     <data>
 
         <variable
-            name="project"
-            type="object.Project"/>
+            name="channel"
+            type="object.Channel"/>
+
+        <variable
+            name="state"
+            type="uit.group.manager.ChannelListActivity.State"/>
     </data>
 
     <android.support.v7.widget.LinearLayoutCompat
@@ -56,6 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             app:_isFull="true"/>
+
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_1"
@@ -89,7 +94,7 @@
                     android:imeOptions="actionDone"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:text=""
+                    android:text="@={channel.search}"
                     tools:text="@string/search"/>
             </android.support.v7.widget.LinearLayoutCompat>
 
