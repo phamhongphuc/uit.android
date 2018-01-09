@@ -1,11 +1,14 @@
 package uit.group.manager;
 
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import org.parceler.Parcels;
 
 import object.Project;
+import view.recyclerViewAdapter.TaskRecyclerViewAdapter;
 
 public class TaskListActivity extends RealmActivity {
     private Project project;
@@ -21,6 +24,15 @@ public class TaskListActivity extends RealmActivity {
         realm.beginTransaction();
         project = realm.copyToRealmOrUpdate(project);
         realm.commitTransaction();
+    }
+
+    private void InitializeRecyclerView() {
+        final RecyclerView recyclerView;
+
+        recyclerView = findViewById(R.id.list_project);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(new TaskRecyclerViewAdapter(project.getTasks()));
+        recyclerView.setHasFixedSize(true);
     }
 
     public void go_back(View view) {

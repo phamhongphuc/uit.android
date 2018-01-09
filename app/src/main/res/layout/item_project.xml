@@ -9,7 +9,7 @@
 
         <variable
             name="action"
-            type="view.recyclerViewAdapter.ProjectRecyclerViewAdapter.ProjectItemAction"/>
+            type="view.recyclerViewAdapter.ProjectRecyclerViewAdapter.Action"/>
     </data>
     <!-- TODO: Sửa lại phần padding sau -->
     <FrameLayout

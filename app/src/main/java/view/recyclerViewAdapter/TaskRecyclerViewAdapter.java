@@ -44,30 +44,7 @@ public class TaskRecyclerViewAdapter extends RealmRecyclerViewAdapter<Task, Task
         Task task = getItem(position);
         taskViewHolder.bind(task);
     }
-    //        final Project projects = getItem(position);
-//        holder.projects = projects;
-//        //noinspection ConstantConditions
-//        holder.projectView.set_text(projects.getName());
-//        if (inDeletionMode) {
-//            holder.deletedCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//                @Override
-//                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                    if (isChecked) {
-//                        countersToDelete.add(projects.getId());
-//                    } else {
-//                        countersToDelete.remove(projects.getId());
-//                    }
-//                }
-//            });
-//        } else {
-//            holder.deletedCheckBox.setOnCheckedChangeListener(null);
-//        }
-//        holder.deletedCheckBox.setVisibility(inDeletionMode ? View.VISIBLE : View.GONE);
 
-    //    @Override
-//    public long getItemId(int position) {
-//        return getItem(position).getId();
-//    }
     class TaskViewHolder extends RecyclerView.ViewHolder {
         private final ViewDataBinding binding;
 
@@ -82,19 +59,20 @@ public class TaskRecyclerViewAdapter extends RealmRecyclerViewAdapter<Task, Task
 
         public void bind(Task task) {
             binding.setVariable(BR.task, task);
-            binding.setVariable(BR.action, new TaskItemAction(task));
+            binding.setVariable(BR.action, new Action(task));
             binding.executePendingBindings();
         }
     }
 
-    public class TaskItemAction {
+    public class Action {
         private Task task;
 
-        TaskItemAction(Task task) {
+        Action(Task task) {
             this.task = task;
         }
 
         public void selectTask(View view) {
+
         }
     }
 }

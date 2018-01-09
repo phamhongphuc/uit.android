@@ -8,19 +8,22 @@
         <variable
             name="task"
             type="object.Task"/>
+
+        <variable
+            name="action"
+            type="view.recyclerViewAdapter.TaskRecyclerViewAdapter.Action"/>
     </data>
 
-    <android.support.v7.widget.LinearLayoutCompat
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/bound_6"
-        android:background="@drawable/rectangle_border"
-        android:orientation="vertical">
+        android:background="@drawable/rectangle_border">
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#afff"
+            android:background="@color/whiteTransparent"
             android:clickable="true"
             android:clipToPadding="false"
             android:elevation="2dp"
@@ -41,7 +44,7 @@
                     android:textAlignment="textStart"
                     app:_text="@{task.name}"
                     app:_textAlign="left"
-                    tools:_text="Task1"/>
+                    tools:_text="task.name"/>
 
                 <components.Icon
                     android:layout_width="50dp"
@@ -58,9 +61,9 @@
 
             <components.Line
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="10dp"
-                android:layout_marginStart="10dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/bound_4"
+                android:layout_marginStart="@dimen/bound_4"
                 app:_isFull="true"/>
 
             <android.support.v7.widget.LinearLayoutCompat
@@ -70,40 +73,32 @@
 
                 <components.Text
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="fill_vertical|start"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
+                    android:paddingBottom="@dimen/bound_7"
+                    android:paddingEnd="@dimen/bound_4"
+                    android:paddingStart="@dimen/bound_4"
+                    android:paddingTop="@dimen/bound_7"
                     android:text="@{task.description}"
-                    android:textSize="18sp"
-                    tools:text="mô tả"/>
-
-                <components.Icon
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:gravity="center"
-                    android:text=""
-                    android:textColor="@color/blue"
-                    android:textSize="22sp"/>
+                    android:textColor="@color/gray"
+                    android:textSize="16sp"
+                    tools:text="task\ndescription"/>
 
                 <components.Button
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@drawable/view_circle"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/circle_border"
                     android:clickable="false"
                     android:focusable="false"
                     android:gravity="center"
                     app:_fontSize="small"
-                    app:_foreground="@color/white"
                     app:_text="12"
                     app:_textAlign="center"/>
 
             </android.support.v7.widget.LinearLayoutCompat>
         </android.support.v7.widget.LinearLayoutCompat>
 
-    </android.support.v7.widget.LinearLayoutCompat>
+    </FrameLayout>
 </layout>

@@ -55,15 +55,15 @@ public class ProjectRecyclerViewAdapter
 
         public void bind(Project project) {
             binding.setVariable(BR.project, project);
-            binding.setVariable(BR.action, new ProjectItemAction(project));
+            binding.setVariable(BR.action, new Action(project));
             binding.executePendingBindings();
         }
     }
 
-    public class ProjectItemAction {
+    public class Action {
         private Project project;
 
-        ProjectItemAction(Project project) {
+        Action(Project project) {
             this.project = project;
         }
 
